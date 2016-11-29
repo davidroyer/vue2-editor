@@ -113,11 +113,11 @@ export default {
 </script>
 ```
 
-### How do I get the html content from the text editor?
+## How do I get the html content from the text editor?
 _There are 2 different scenarios we need to address._
 </br></br>
 
-#### 1. Using the default Save Button
+### 1. Using the default Save Button
 
    When the button is clicked, an event called '**_save-content_**' is emitted with the value of the text editor.
 
@@ -149,7 +149,7 @@ export default {
 </script>
 ```
 <br>
-#### Using your own button
+### Using your own button
 
 The event '**_editor-updated_**' is emitted whenever the text inside the text editor changes. The current editor contents are sent as a value with this event.
 
