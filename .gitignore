@@ -1,0 +1,7 @@
+.idea/
+node_modules/
+demo/
+dist/
+.npmignore
+.DS_Store
+npm-debug.log
