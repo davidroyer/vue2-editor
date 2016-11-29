@@ -38,7 +38,7 @@ var toolbarOptions = [
   ['clean']                                         // remove formatting button
 ];
 export default {
-  name: 'quill',
+  name: 'vue-editor',
   props: {
     editorContent: String,
     placeholder: String,
