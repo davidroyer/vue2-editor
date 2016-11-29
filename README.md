@@ -234,7 +234,6 @@ EX:
   </div>
 </template>
 
-</br>
 <script>
   import { VueEditor } from 'vue2-editor'
 
