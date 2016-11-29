@@ -59,10 +59,9 @@ You can set the the content of the editor dynamically. If you don't need this fe
   }
 </script>
 ```
-
 </br>
 **_show-preview_**:
-<br>
+</br>
 This is set to FALSE by default. To enable:
 
 ```html
@@ -73,7 +72,7 @@ This is set to FALSE by default. To enable:
 
 </br>
 **_editor-toolbar_**:
-<br>
+</br>
 If you want to use a custom toolbar then you can set it to a property from the data object.
 
 ```html
@@ -164,8 +163,8 @@ export default {
 }
 </script>
 ```
-
 </br>
+
 ### 2. Using your own button
 
 The event '**_editor-updated_**' is emitted when the text inside the editor changes. The current editor contents are sent with this event.
@@ -213,8 +212,8 @@ EX:
   }
 </script>
 ```
-
 </br>
+
 ## Example using several configuration options
 
 ```html
