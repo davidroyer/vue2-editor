@@ -16,12 +16,16 @@ HTML Editor using Vue.js 2.0 and Quilljs
 $ npm install --save vue2-editor
 ```
 
-<hr>
+## Use
+```js
+import { VueEditor } from 'vue2-editor'
+```
 ## Props
 
 **_editor-content_**:
 <br>
 You can set the the content of the editor dynamically. If you don't need this feature then do not include it.
+
 
 **_show-preview_**:
 <br>
@@ -45,7 +49,7 @@ If you want to use a custom toolbar then you can set it to a property from the d
 </template>
 
 <script>
-import {VueEditor} from 'vue2-editor'
+import { VueEditor } from 'vue2-editor'
 
 export default {
   data: function () {
@@ -72,9 +76,9 @@ Default is 'Save Content'. If you want to use the built in Save button but want 
   button-text="Custom Save Message">
 </vue-editor>
 ```
+</br>
 
 ---
-</br>
 ## Events
 
 **_editor-updated_**:
@@ -97,7 +101,7 @@ EX:
 </template>
 
 <script>
-import {VueEditor} from 'vue2-editor'
+import { VueEditor } from 'vue2-editor'
 
 export default {
   methods: {
@@ -114,10 +118,12 @@ _There are 2 different scenarios we need to address._
 </br></br>
 
 #### 1. Using the default Save Button
-When the button is clicked, an event called '**_save-content_**' is emitted with the value of the text editor.
 
-You can listen for this event then execute a method that you create when the '**_save-content_**'' method fires.
-Note: You will need to pass a parameter to the method you create. This parameter holds the value of editor contents.
+   When the button is clicked, an event called '**_save-content_**' is emitted with the value of the text editor.
+
+   You can listen for this event then execute a method that you create when the '**_save-content_**'' method fires.
+
+   Note: You will need to pass a parameter to the method you create. This parameter holds the value of editor contents.
 
 EX:
 ```html
@@ -131,7 +137,7 @@ EX:
 </template>
 
 <script>
-import {VueEditor} from 'vue2-editor'
+import { VueEditor } from 'vue2-editor'
 
 export default {
   methods: {
@@ -170,7 +176,7 @@ EX:
 </template>
 
 <script>
-import {VueEditor} from 'vue2-editor'
+import { VueEditor } from 'vue2-editor'
 
 export default {
   data: function () {
