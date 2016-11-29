@@ -18,7 +18,7 @@ import Quill from 'quill'
 require('../node_modules/quill/dist/quill.core.css')
 require('../node_modules/quill/dist/quill.snow.css')
 
-var toolbarOptions = [
+var defaultToolbar = [
   ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
   ['blockquote', 'code-block'],
 
@@ -43,6 +43,7 @@ export default {
     editorContent: String,
     placeholder: String,
     buttonText: String,
+    editorToolbar: Array,
     useSaveButton: {
       type: Boolean,
       default () {
@@ -61,7 +62,8 @@ export default {
     return {
       quill: null,
       editor: null,
-      toolbar: toolbarOptions
+      toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar,
+
       // toolbar: [
       //     [{ header: [1, 2, 3, 4, 5 , 6, false] }],
       //     ['bold', 'italic', 'underline'],

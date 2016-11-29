@@ -16,25 +16,89 @@ HTML Editor using Vue.js 2.0 and Quilljs
 $ npm install --save vue2-editor
 ```
 
+<hr>
+## Props
 
-## Usage
+**_editor-content_**:
+<br>
+You can set the the content of the editor dynamically. If you don't need this feature then do not include it.
+
+**_show-preview_**:
+<br>
+This is set to FALSE by default. To enable,
+```html
+<vue-editor
+  :show-preview="true">
+</vue-editor>
+```
+
+**_editor-toolbar_**:
+<br>
+If you want to use a custom toolbar then you can set it to a property from the data object
+```html
+<template>
+  <div id="app">
+    <vue-editor
+      :editor-toolbar="customToolbar">
+    </vue-editor>
+  </div>
+</template>
+
+<script>
+import {VueEditor} from 'vue2-editor'
+
+export default {
+  data: function () {
+    return {
+      customToolbar: [
+          ['bold', 'italic', 'underline'],
+          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+          ['image', 'code-block']
+        ]
+    }
+  }
+}
+</script>
+```
+
+**_use-save-button_**:
+Default is TRUE.
+
+
+**_button-text_**:
+Default is 'Save Content'. If you want to use the built in Save button but want it to have different text then you can set this prop a String
+```html
+<vue-editor
+  button-text="Custom Save Message">
+</vue-editor>
+```
+
+---
+</br>
+## Events
+
+**_editor-updated_**:
+
+**_save-content_**:
 
 ### Example using all configuration options
 EX:
 ```html
 <template>
   <div id="app">
-    <quill
+    <vue-editor
       :editor-content="htmlForEditor"
       :show-preview="true"
       @editor-updated="handleUpdatedContent"
       @save-content="handleSavingContent"
       button-text="Save Your Content">
-    </quill>
+    </vue-editor>
   </div>
 </template>
 
-<script type="text/javascript">
+<script>
+import {VueEditor} from 'vue2-editor'
+
 export default {
   methods: {
     handleSavingContent: function (value) {
@@ -46,31 +110,33 @@ export default {
 ```
 
 ### How do I get the html content from the text editor?
-
 _There are 2 different scenarios we need to address._
 </br></br>
 
 #### 1. Using the default Save Button
 When the button is clicked, an event called '**_save-content_**' is emitted with the value of the text editor.
 
-You can listen for this event then execute whichever method you would like when the '**_save-content_**'' method fires. You will retrieve the text contents from the emitted event by passing a parameter to your own function.
+You can listen for this event then execute a method that you create when the '**_save-content_**'' method fires.
+Note: You will need to pass a parameter to the method you create. This parameter holds the value of editor contents.
 
 EX:
 ```html
 <template>
   <div id="app">
     <h1>Write Your Message and save it!</h1>
-    <quill
+    <vue-editor
       @save-content="handleSavingContent">
-    </quill>
+    </vue-editor>
   </div>
 </template>
 
-<script type="text/javascript">
+<script>
+import {VueEditor} from 'vue2-editor'
+
 export default {
   methods: {
-    handleSavingContent: function (value) {
-      console.log(value)
+    handleSavingContent: function (contentsToBeSaved) {
+      console.log(contentsToBeSaved)
     }
   }  
 }
@@ -90,9 +156,10 @@ EX:
 <template>
   <div id="app">
 
-    <quill
+    <vue-editor
+      :use-save-button="false"
       @editor-updated=handleUpdatedContent>
-    </quill>
+    </vue-editor>
 
     <button type="button" name="save-content"
       @click="saveTheContent">
@@ -102,7 +169,9 @@ EX:
   </div>
 </template>
 
-<script type="text/javascript">
+<script>
+import {VueEditor} from 'vue2-editor'
+
 export default {
   data: function () {
     return {
