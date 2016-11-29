@@ -1,9 +1,9 @@
 ## Vue2-Editor
 
+ ![Vue2Editor-Centered](/Users/droyer/Desktop/Vue2Editor-Centered.png)
 HTML Editor using Vue.js 2.0 and Quilljs
-<br>
+
 [Vue.js](https://vuejs.org)
-</br>
 [Quill](http://quilljs.com/)
 
 <!-- ## Demo -->
@@ -15,19 +15,23 @@ HTML Editor using Vue.js 2.0 and Quilljs
 ```bash
 $ npm install --save vue2-editor
 ```
-</br>
+
+
 
 ## Use
+
 ```js
 import { VueEditor } from 'vue2-editor'
 ```
-</br>
+
+
 
 ## Props
 
 **_editor-content_**:
-<br>
+
 You can set the the content of the editor dynamically. If you don't need this feature then do not include it.
+
 ```html
 <template>
   <div id="app">
@@ -59,9 +63,11 @@ You can set the the content of the editor dynamically. If you don't need this fe
   }
 </script>
 ```
-</br>
+
+
+
 **_show-preview_**:
-</br>
+
 This is set to FALSE by default. To enable:
 
 ```html
@@ -70,9 +76,10 @@ This is set to FALSE by default. To enable:
 </vue-editor>
 ```
 
-</br>
+
+
 **_editor-toolbar_**:
-</br>
+
 If you want to use a custom toolbar then you can set it to a property from the data object.
 
 ```html
@@ -100,47 +107,53 @@ If you want to use a custom toolbar then you can set it to a property from the d
   }
 </script>
 ```
-</br>
+
+
+
 **_use-save-button_**:
-</br>
+
 This is set to true by default. Set to false to use your own button.
 
-</br>
+
+
 **_button-text_**:
-</br>
+
 The default text is 'Save Content'. If you want to use the built in Save button but with different text then you can set this prop to a String.
+
 ```html
 <vue-editor
   button-text="Custom Save Message">
 </vue-editor>
 ```
-</br>
+
 
 
 ## Events
 
 **_editor-updated_**:
-</br>
+
 Emitted when the editor contents change. You will want to listen for this event if using your own save button.
 
-</br>
+
+
 **_save-content_**:
-</br>
+
 Emitted when the default save button is clicked.
 
-</br>
 ## How do I get the html content from the text editor?
+
 _There are 2 different scenarios we need to address._
-</br></br>
+
+
 
 ### 1. Using the default Save Button
 
-   When the button is clicked, the '**_save-content_**' event is emitted with the current contents of the editor.
-   You need to create a method that runs when this event is emitted.
+When the button is clicked, the '**_save-content_**' event is emitted with the current contents of the editor.
 
-   You will need to pass a parameter to the method you create. This parameter holds the editor contents.
+You need to create a method that runs when this event is emitted and pass a parameter to this method. This parameter holds the editor contents.
 
 EX:
+
 ```html
 <template>
   <div id="app">
@@ -163,7 +176,8 @@ export default {
 }
 </script>
 ```
-</br>
+
+
 
 ### 2. Using your own button
 
@@ -172,6 +186,7 @@ The event '**_editor-updated_**' is emitted when the text inside the editor chan
 You need to create a method that runs when this event is emitted.
 
 EX:
+
 ```html
 <template>
   <div id="app">
@@ -212,7 +227,8 @@ EX:
   }
 </script>
 ```
-</br>
+
+
 
 ## Example using several configuration options
 
@@ -259,5 +275,7 @@ EX:
   }
 </script>
 ```
+
 # License
+
 MIT
