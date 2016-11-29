@@ -5,7 +5,9 @@
   "keywords": [
     "vue",
     "vue-component",
-    "quill"
+    "quill",
+    "html editor",
+    "text editor"
   ],
   "author": "David Royer <droyer01@gmail.com>",
   "licenses": "MIT",
