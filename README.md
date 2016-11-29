@@ -15,11 +15,14 @@ HTML Editor using Vue.js 2.0 and Quilljs
 ```bash
 $ npm install --save vue2-editor
 ```
+</br>
 
 ## Use
 ```js
 import { VueEditor } from 'vue2-editor'
 ```
+</br>
+
 ## Props
 
 **_editor-content_**:
@@ -78,12 +81,14 @@ Default is 'Save Content'. If you want to use the built in Save button but want 
 ```
 </br>
 
----
+
 ## Events
 
 **_editor-updated_**:
 
 **_save-content_**:
+
+</br>
 
 ### Example using all configuration options
 EX:
