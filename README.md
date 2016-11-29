@@ -214,8 +214,8 @@ export default {
 </script>
 ```
 
-### Example using several configuration options
-EX:
+###Example using several configuration options
+
 ```html
 <template>
   <div id="app">
