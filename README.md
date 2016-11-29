@@ -42,29 +42,29 @@ You can set the the content of the editor dynamically. If you don't need this fe
 </template>
 
 <script>
-import { VueEditor } from 'vue2-editor'
+  import { VueEditor } from 'vue2-editor'
 
-export default {
-  data: function () {
-    return {
-      htmlForEditor: null  
-    }
-  },
+  export default {
+    data: function () {
+      return {
+        htmlForEditor: null  
+      }
+    },
 
-  methods: {
-    setEditorContent: function () {
-      this.htmlForEditor = '<h1>Html For Editor</h1>'
+    methods: {
+      setEditorContent: function () {
+        this.htmlForEditor = '<h1>Html For Editor</h1>'
+      }
     }
   }
-}
 </script>
 ```
 
 </br>
-
 **_show-preview_**:
 <br>
-This is set to FALSE by default. To enable,
+This is set to FALSE by default. To enable:
+
 ```html
 <vue-editor
   :show-preview="true">
@@ -74,7 +74,8 @@ This is set to FALSE by default. To enable,
 </br>
 **_editor-toolbar_**:
 <br>
-If you want to use a custom toolbar then you can set it to a property from the data object
+If you want to use a custom toolbar then you can set it to a property from the data object.
+
 ```html
 <template>
   <div id="app">
@@ -85,30 +86,30 @@ If you want to use a custom toolbar then you can set it to a property from the d
 </template>
 
 <script>
-import { VueEditor } from 'vue2-editor'
+  import { VueEditor } from 'vue2-editor'
 
-export default {
-  data: function () {
-    return {
-      customToolbar: [
-          ['bold', 'italic', 'underline'],
-          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-          ['image', 'code-block']
-        ]
+  export default {
+    data: function () {
+      return {
+        customToolbar: [
+            ['bold', 'italic', 'underline'],
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            ['image', 'code-block']
+          ]
+      }
     }
   }
-}
 </script>
 ```
-
+</br>
 **_use-save-button_**:
 </br>
-Default is TRUE.
+This is set to true by default. Set to false to use your own button.
 
 </br>
 **_button-text_**:
 </br>
-Default is 'Save Content'. If you want to use the built in Save button but want it to have different text then you can set this prop a String
+The default text is 'Save Content'. If you want to use the built in Save button but with different text then you can set this prop to a String.
 ```html
 <vue-editor
   button-text="Custom Save Message">
@@ -120,64 +121,25 @@ Default is 'Save Content'. If you want to use the built in Save button but want 
 ## Events
 
 **_editor-updated_**:
-
-**_save-content_**:
+</br>
+Emitted when the editor contents change. You will want to listen for this event if using your own save button.
 
 </br>
+**_save-content_**:
+</br>
+Emitted when the default save button is clicked.
 
-### Example using several configuration options
-EX:
-```html
-<template>
-  <div id="app">
-    <vue-editor
-      :editor-content="htmlForEditor"
-      :show-preview="true"
-      @editor-updated="handleUpdatedContent"
-      @save-content="handleSavingContent"
-      button-text="Save Your Content">
-    </vue-editor>
-  </div>
-</template>
-
-<script>
-import { VueEditor } from 'vue2-editor'
-
-export default {
-  data: function () {
-    return {
-      htmlForEditor: null  
-    }
-  },
-  
-  methods: {
-    handleSavingContent: function (value) {
-      console.log(value)
-    },
-
-    handleUpdatedContent: function (value) {
-      console.log(value);
-    },
-
-    setEditorContent: function () {
-      this.htmlForEditor = '<h1>Html For Editor</h1>'
-    }
-  }  
-}
-</script>
-```
-
+</br>
 ## How do I get the html content from the text editor?
 _There are 2 different scenarios we need to address._
 </br></br>
 
 ### 1. Using the default Save Button
 
-   When the button is clicked, an event called '**_save-content_**' is emitted with the value of the text editor.
+   When the button is clicked, the '**_save-content_**' event is emitted with the current contents of the editor.
+   You need to create a method that runs when this event is emitted.
 
-   You can listen for this event then execute a method that you create when the '**_save-content_**'' method fires.
-
-   Note: You will need to pass a parameter to the method you create. This parameter holds the value of editor contents.
+   Note: You will need to pass a parameter to the method you create. This parameter holds the editor contents.
 
 EX:
 ```html
@@ -202,14 +164,13 @@ export default {
 }
 </script>
 ```
-<br>
+
+</br>
 ### Using your own button
 
-The event '**_editor-updated_**' is emitted whenever the text inside the text editor changes. The current editor contents are sent as a value with this event.
+The event '**_editor-updated_**' is emitted when the text inside the editor changes. The current editor contents are sent with this event.
 
-This means we can listen for the '**_editor-updated_**' event, get the value of the editor from it, and set it to a data reference in our current instance.
-
-Then, we can use THAT data reference from our own instance however we please.
+You need to create a method that runs when this event is emitted.
 
 EX:
 ```html
@@ -253,5 +214,47 @@ export default {
 </script>
 ```
 
+### Example using several configuration options
+EX:
+```html
+<template>
+  <div id="app">
+    <vue-editor
+      :editor-content="htmlForEditor"
+      :show-preview="true"
+      @editor-updated="handleUpdatedContent"
+      @save-content="handleSavingContent"
+      button-text="Save Your Content">
+    </vue-editor>
+  </div>
+</template>
+
+</br>
+<script>
+  import { VueEditor } from 'vue2-editor'
+
+  export default {
+    data: function () {
+      return {
+        htmlForEditor: null  
+      }
+    },
+
+    methods: {
+      handleSavingContent: function (value) {
+        console.log(value)
+      },
+
+      handleUpdatedContent: function (value) {
+        console.log(value);
+      },
+
+      setEditorContent: function () {
+        this.htmlForEditor = '<h1>Html For Editor</h1>'
+      }
+    }  
+  }
+</script>
+```
 # License
 MIT
