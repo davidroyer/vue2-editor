@@ -28,7 +28,39 @@ import { VueEditor } from 'vue2-editor'
 **_editor-content_**:
 <br>
 You can set the the content of the editor dynamically. If you don't need this feature then do not include it.
+```html
+<template>
+  <div id="app">
+    <button type="button"
+      @click="setEditorContent">
+    </button>
 
+    <vue-editor
+      :editor-content="htmlForEditor">
+    </vue-editor>
+  </div>
+</template>
+
+<script>
+import { VueEditor } from 'vue2-editor'
+
+export default {
+  data: function () {
+    return {
+      htmlForEditor: null  
+    }
+  },
+
+  methods: {
+    setEditorContent: function () {
+      this.htmlForEditor = '<h1>Html For Editor</h1>'
+    }
+  }
+}
+</script>
+```
+
+</br>
 
 **_show-preview_**:
 <br>
@@ -39,6 +71,7 @@ This is set to FALSE by default. To enable,
 </vue-editor>
 ```
 
+</br>
 **_editor-toolbar_**:
 <br>
 If you want to use a custom toolbar then you can set it to a property from the data object
@@ -69,10 +102,12 @@ export default {
 ```
 
 **_use-save-button_**:
+</br>
 Default is TRUE.
 
-
+</br>
 **_button-text_**:
+</br>
 Default is 'Save Content'. If you want to use the built in Save button but want it to have different text then you can set this prop a String
 ```html
 <vue-editor
@@ -90,7 +125,7 @@ Default is 'Save Content'. If you want to use the built in Save button but want 
 
 </br>
 
-### Example using all configuration options
+### Example using several configuration options
 EX:
 ```html
 <template>
@@ -109,9 +144,23 @@ EX:
 import { VueEditor } from 'vue2-editor'
 
 export default {
+  data: function () {
+    return {
+      htmlForEditor: null  
+    }
+  },
+  
   methods: {
     handleSavingContent: function (value) {
       console.log(value)
+    },
+
+    handleUpdatedContent: function (value) {
+      console.log(value);
+    },
+
+    setEditorContent: function () {
+      this.htmlForEditor = '<h1>Html For Editor</h1>'
     }
   }  
 }
