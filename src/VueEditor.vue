@@ -8,7 +8,7 @@
         {{ buttonText ? buttonText : 'Save Content' }}
       </button>
 
-      <div v-if="showLivePreview" ref="livePreview" class="ql-editor"></div>
+      <div v-if="showPreview" ref="livePreview" class="ql-editor"></div>
 
   </div>
 </template>
@@ -49,7 +49,7 @@ export default {
         return true
       }
     },
-    showLivePreview: {
+    showPreview: {
       type: Boolean,
       default () {
         return false

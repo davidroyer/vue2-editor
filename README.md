@@ -26,7 +26,7 @@ EX:
   <div id="app">
     <quill
       :editor-content="htmlForEditor"
-      :show-live-preview="true"
+      :show-preview="true"
       @editor-updated="handleUpdatedContent"
       @save-content="handleSavingContent"
       button-text="Save Your Content">
