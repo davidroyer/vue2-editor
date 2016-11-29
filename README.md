@@ -139,7 +139,7 @@ _There are 2 different scenarios we need to address._
    When the button is clicked, the '**_save-content_**' event is emitted with the current contents of the editor.
    You need to create a method that runs when this event is emitted.
 
-   Note: You will need to pass a parameter to the method you create. This parameter holds the editor contents.
+   You will need to pass a parameter to the method you create. This parameter holds the editor contents.
 
 EX:
 ```html
@@ -166,7 +166,7 @@ export default {
 ```
 
 </br>
-### Using your own button
+### 2. Using your own button
 
 The event '**_editor-updated_**' is emitted when the text inside the editor changes. The current editor contents are sent with this event.
 
@@ -191,34 +191,39 @@ EX:
 </template>
 
 <script>
-import { VueEditor } from 'vue2-editor'
+  import { VueEditor } from 'vue2-editor'
 
-export default {
-  data: function () {
-    return {
-      htmlFromEditor: null
-    }
-  },
-
-  methods: {
-    handleUpdatedContent: function (value) {
-      this.htmlFromEditor = value
+  export default {
+    data: function () {
+      return {
+        htmlFromEditor: null
+      }
     },
 
-    saveTheContent: function () {
-      // Do whatever you want
-      console.log(this.htmlFromEditor)
+    methods: {
+      handleUpdatedContent: function (value) {
+        this.htmlFromEditor = value
+      },
+
+      saveTheContent: function () {
+        // Do whatever you want
+        console.log(this.htmlFromEditor)
+      }
     }
   }
-}
 </script>
 ```
 
-###Example using several configuration options
+</br>
+## Example using several configuration options
 
 ```html
 <template>
   <div id="app">
+    <button type="button"
+      @click="setEditorContent">
+    </button>
+
     <vue-editor
       :editor-content="htmlForEditor"
       :show-preview="true"
