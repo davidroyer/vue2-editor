@@ -1,6 +1,6 @@
 ## Vue2-Editor
 
- ![Vue2Editor-Centered](/Users/droyer/Desktop/Vue2Editor-Centered.png)
+ ![Vue2Editor-Centered](https://www.dropbox.com/s/7com4d32zct44nc/Vue2Editor-Centered.png?raw=1)
 HTML Editor using Vue.js 2.0 and Quilljs
 
 [Vue.js](https://vuejs.org)
