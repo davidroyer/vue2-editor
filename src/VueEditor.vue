@@ -1,8 +1,15 @@
 <template>
   <div id="quillWrapper">
+
       <div ref="quillContainer" id="quill-container"></div>
-      <button @click="saveContent">Save Content</button>
-      <div ref="livePreview" v-if="showPreview"></div>
+
+      <button v-if="useSaveButton" class="save-content"
+        @click="saveContent">
+        {{ buttonText ? buttonText : 'Save Content' }}
+      </button>
+
+      <div v-if="showLivePreview" ref="livePreview" class="ql-editor"></div>
+
   </div>
 </template>
 
@@ -11,15 +18,41 @@ import Quill from 'quill'
 require('../node_modules/quill/dist/quill.core.css')
 require('../node_modules/quill/dist/quill.snow.css')
 
+var toolbarOptions = [
+  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+  ['blockquote', 'code-block'],
+
+  [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+  [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+  [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+  [{ 'direction': 'rtl' }],                         // text direction
+
+  // [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+
+  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+  [{ 'font': [] }],
+  [{ 'align': [] }],
+
+  ['clean']                                         // remove formatting button
+];
 export default {
   name: 'quill',
   props: {
     editorContent: String,
-
-    showPreview: {
+    placeholder: String,
+    buttonText: String,
+    useSaveButton: {
       type: Boolean,
-      default: function () {
+      default () {
         return true
+      }
+    },
+    showLivePreview: {
+      type: Boolean,
+      default () {
+        return false
       }
     }
   },
@@ -28,12 +61,13 @@ export default {
     return {
       quill: null,
       editor: null,
-      toolbar: [
-          [{ header: [1, 2, 3, 4, 5 , 6, false] }],
-          ['bold', 'italic', 'underline'],
-          [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-          ['image', 'code-block']
-        ]
+      toolbar: toolbarOptions
+      // toolbar: [
+      //     [{ header: [1, 2, 3, 4, 5 , 6, false] }],
+      //     ['bold', 'italic', 'underline'],
+      //     [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      //     ['image', 'code-block']
+      //   ]
     }
   },
 
@@ -44,15 +78,23 @@ export default {
       modules: {
         toolbar: this.toolbar
       },
-      placeholder: 'Compose an epic...',
+      placeholder: this.placeholder ? this.placeholder : '',
       theme: 'snow'
     });
 
     vm.editor = document.querySelector('.ql-editor')
 
+    // Update LivePreview & emit the editor-updated event
     if ( vm.$refs.livePreview !== undefined || false ) {
+
       vm.quill.on('text-change', function() {
         vm.$refs.livePreview.innerHTML = vm.editor.innerHTML
+        vm.$emit('editor-updated', vm.editor.innerHTML)
+      });
+    } else {
+
+      // Only emit the editor-updated event
+      vm.quill.on('text-change', function() {
         vm.$emit('editor-updated', vm.editor.innerHTML)
       });
     }
@@ -66,12 +108,8 @@ export default {
   },
 
   methods: {
-    emitOnChange: function (value) {
-      this.$emit('increment', value)
-    },
-
     saveContent: function (value) {
-      console.log(this.editor.innerHTML)
+      this.$emit('save-content', this.editor.innerHTML)
     }
   }
 }
