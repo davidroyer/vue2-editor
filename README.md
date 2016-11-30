@@ -4,6 +4,7 @@
 HTML Editor using Vue.js 2.0 and Quilljs
 
 [Vue.js](https://vuejs.org)
+
 [Quill](http://quilljs.com/)
 
 <!-- ## Demo -->

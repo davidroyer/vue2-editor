@@ -1,6 +1,6 @@
 {
   "name": "vue2-editor",
-  "version": "1.0.94",
+  "version": "1.0.95",
   "description": "HTML editor using Vue.js 2.0 and Quill.js, an open source edtior",
   "keywords": [
     "vue",
@@ -10,6 +10,10 @@
     "text editor"
   ],
   "author": "David Royer <droyer01@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marcosmoura/vue-material.git"
+  },
   "licenses": "MIT",
   "main": "./dist/index.js",
   "scripts": {
