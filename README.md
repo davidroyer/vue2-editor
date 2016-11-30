@@ -178,7 +178,7 @@ When the button is clicked, the '**_save-content_**' event is emitted with the c
 
 You need to create a method that runs when this event is emitted and pass a parameter to this method. This parameter holds the editor contents.
 
-EX:
+**Note:** The default save button has a class of _save-button_ which you can target for styling the button.
 
 ```html
 <template>
@@ -205,6 +205,24 @@ EX:
     }  
   }
 </script>
+<style>
+  .save-button {
+    color: #fff;
+    padding: .5em 1em;
+    background-color: rgba(53, 73, 94, 0.85);
+    text-decoration: none;
+    border-radius: 2px;
+    cursor: pointer;
+    font-weight: 900;
+    transition: background-color .2s ease;
+    margin: 1em 0;
+    float: right;
+  }
+
+  .save-button:hover {
+      background-color: #35495e;
+  }
+</style>
 ```
 
 
