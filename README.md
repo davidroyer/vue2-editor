@@ -37,6 +37,7 @@ You can set the the content of the editor dynamically. If you don't need this fe
   <div id="app">
     <button type="button"
       @click="setEditorContent">
+      Set Editor Contents
     </button>
 
     <vue-editor
@@ -55,6 +56,10 @@ You can set the the content of the editor dynamically. If you don't need this fe
       }
     },
 
+    components: {
+      VueEditor
+    },
+
     methods: {
       setEditorContent: function () {
         this.htmlForEditor = '<h1>Html For Editor</h1>'
@@ -63,6 +68,8 @@ You can set the the content of the editor dynamically. If you don't need this fe
   }
 </script>
 ```
+
+
 
 
 
@@ -75,6 +82,8 @@ This is set to FALSE by default. To enable:
   :show-preview="true">
 </vue-editor>
 ```
+
+
 
 
 
@@ -103,6 +112,10 @@ If you want to use a custom toolbar then you can set it to a property from the d
             ['image', 'code-block']
           ]
       }
+    },
+
+    components: {
+      VueEditor
     }
   }
 </script>
@@ -110,9 +123,13 @@ If you want to use a custom toolbar then you can set it to a property from the d
 
 
 
+
+
 **_use-save-button_**:
 
 This is set to true by default. Set to false to use your own button.
+
+
 
 
 
@@ -128,6 +145,8 @@ The default text is 'Save Content'. If you want to use the built in Save button 
 
 
 
+
+
 ## Events
 
 **_editor-updated_**:
@@ -136,9 +155,15 @@ Emitted when the editor contents change. You will want to listen for this event 
 
 
 
+
+
 **_save-content_**:
 
 Emitted when the default save button is clicked.
+
+
+
+
 
 ## How do I get the html content from the text editor?
 
@@ -165,15 +190,19 @@ EX:
 </template>
 
 <script>
-import { VueEditor } from 'vue2-editor'
+  import { VueEditor } from 'vue2-editor'
 
-export default {
-  methods: {
-    handleSavingContent: function (contentsToBeSaved) {
-      console.log(contentsToBeSaved)
-    }
-  }  
-}
+  export default {
+    components: {
+      VueEditor
+    },
+
+    methods: {
+      handleSavingContent: function (contentsToBeSaved) {
+        console.log(contentsToBeSaved)
+      }
+    }  
+  }
 </script>
 ```
 
@@ -214,6 +243,10 @@ EX:
       }
     },
 
+    components: {
+      VueEditor
+    },
+
     methods: {
       handleUpdatedContent: function (value) {
         this.htmlFromEditor = value
@@ -237,6 +270,7 @@ EX:
   <div id="app">
     <button type="button"
       @click="setEditorContent">
+      Set Editor Content
     </button>
 
     <vue-editor
@@ -257,6 +291,10 @@ EX:
       return {
         htmlForEditor: null  
       }
+    },
+
+    components: {
+      VueEditor
     },
 
     methods: {
