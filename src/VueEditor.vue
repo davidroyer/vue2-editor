@@ -3,7 +3,7 @@
 
       <div ref="quillContainer" id="quill-container"></div>
 
-      <button v-if="useSaveButton" class="save-content"
+      <button v-if="useSaveButton" class="save-button"
         @click="saveContent">
         {{ buttonText ? buttonText : 'Save Content' }}
       </button>
