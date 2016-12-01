@@ -29,10 +29,25 @@ import { VueEditor } from 'vue2-editor'
 
 ## Props
 
-**_editor-content_**:
+Name | Type | Default | Description
+---- | ----   ------- | -----------
+placeholder | String | - | Placeholder text for the editor
+editor-content | String | null | Set the the content of the editor
+use-save-button | Boolean | True | Set to false to use your own button to save editor content
+button-text | String | Save Content | Lorem text
+editor-toolbar | Array | ** _It is too long for effective legibility and comprehension._  | Set
+show-preview | Boolean | False | Set to true to get live preview
 
-You can set the the content of the editor dynamically. If you don't need this feature then do not include it.
+## Events
 
+Name             | Description
+---------------- | -----------
+editor-updated   | Emitted when the editor contents change. You will want to listen for this event if using your own save button.
+save-content     | Emitted when the default save button is clicked.
+
+
+## Example
+**_editor-content_**
 ```html
 <template>
   <div id="app">
@@ -73,10 +88,8 @@ You can set the the content of the editor dynamically. If you don't need this fe
 
 
 
-
-**_show-preview_**:
-
-This is set to FALSE by default. To enable:
+## Example
+**_show-preview_**
 
 ```html
 <vue-editor
@@ -87,10 +100,8 @@ This is set to FALSE by default. To enable:
 
 
 
-
-**_editor-toolbar_**:
-
-If you want to use a custom toolbar then you can set it to a property from the data object.
+## Example
+**_editor-toolbar_**
 
 ```html
 <template>
@@ -125,44 +136,24 @@ If you want to use a custom toolbar then you can set it to a property from the d
 
 
 
+## Example
+**_use-save-button_**
+```html
+<vue-editor
+  :use-save-button="false">
+</vue-editor>
+```
 
-**_use-save-button_**:
-
-This is set to true by default. Set to false to use your own button.
 
 
-
-
-
-**_button-text_**:
-
-The default text is 'Save Content'. If you want to use the built in Save button but with different text then you can set this prop to a String.
+## Example
+**_button-text_**
 
 ```html
 <vue-editor
   button-text="Custom Save Message">
 </vue-editor>
 ```
-
-
-
-
-
-## Events
-
-**_editor-updated_**:
-
-Emitted when the editor contents change. You will want to listen for this event if using your own save button.
-
-
-
-
-
-**_save-content_**:
-
-Emitted when the default save button is clicked.
-
-
 
 
 

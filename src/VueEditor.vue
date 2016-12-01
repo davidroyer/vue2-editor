@@ -32,7 +32,8 @@ var defaultToolbar = [
   [{ 'align': [] }],
 
   ['clean']
-];
+]
+
 export default {
   name: 'vue-editor',
   props: {
