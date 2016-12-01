@@ -35,15 +35,15 @@ placeholder | String | - | Placeholder text for the editor
 editor-content | String | null | Set the the content of the editor
 use-save-button | Boolean | True | Set to false to use your own button to save editor content
 button-text | String | Save Content | Set the button's text
-editor-toolbar | Array | ** _It is too long for effective legibility and comprehension._  | Use a custom toolbar
+editor-toolbar | Array | ** _Too long for table. See toolbar example below_  | Use a custom toolbar
 show-preview | Boolean | False | Set to true to get live preview
 
 ## Events
 
 Name             | Description
 ---------------- | -----------
-editor-updated   | Emitted when the editor contents change. You will want to listen for this event if using your own save button.
-save-content     | Emitted when the default save button is clicked.
+editor-updated   | Emitted when the editor contents change
+save-content     | Emitted when the default save button is clicked
 
 
 ## Example
