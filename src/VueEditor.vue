@@ -19,23 +19,19 @@ require('../node_modules/quill/dist/quill.core.css')
 require('../node_modules/quill/dist/quill.snow.css')
 
 var defaultToolbar = [
-  ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+  ['bold', 'italic', 'underline', 'strike'],
   ['blockquote', 'code-block'],
 
-  // [{ 'header': 1 }, { 'header': 2 }],               // custom button values
   [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-  // [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-  [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-  // [{ 'direction': 'rtl' }],                         // text direction
 
-  // [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+  [{ 'indent': '-1'}, { 'indent': '+1' }],
   [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
 
-  [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+  [{ 'color': [] }, { 'background': [] }],
   [{ 'font': [] }],
   [{ 'align': [] }],
 
-  ['clean']                                         // remove formatting button
+  ['clean']
 ];
 export default {
   name: 'vue-editor',
@@ -62,14 +58,7 @@ export default {
     return {
       quill: null,
       editor: null,
-      toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar,
-
-      // toolbar: [
-      //     [{ header: [1, 2, 3, 4, 5 , 6, false] }],
-      //     ['bold', 'italic', 'underline'],
-      //     [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      //     ['image', 'code-block']
-      //   ]
+      toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar
     }
   },
 
@@ -86,21 +75,21 @@ export default {
 
     vm.editor = document.querySelector('.ql-editor')
 
-    // Update LivePreview & emit the editor-updated event
+
     if ( vm.$refs.livePreview !== undefined || false ) {
 
       vm.quill.on('text-change', function() {
         vm.$refs.livePreview.innerHTML = vm.editor.innerHTML
         vm.$emit('editor-updated', vm.editor.innerHTML)
       });
+
     } else {
 
-      // Only emit the editor-updated event
       vm.quill.on('text-change', function() {
         vm.$emit('editor-updated', vm.editor.innerHTML)
       });
-    }
 
+    }
   },
 
   watch: {
