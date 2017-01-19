@@ -37,6 +37,7 @@ use-save-button | Boolean | True | Set to false to use your own button to save e
 button-text | String | Save Content | Set the button's text
 editor-toolbar | Array | ** _Too long for table. See toolbar example below_  | Use a custom toolbar
 show-preview | Boolean | False | Set to true to get live preview
+is-disabled | Boolean | False | Set to true to disable the editor window
 
 ## Events
 
