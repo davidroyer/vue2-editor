@@ -1,7 +1,7 @@
 <template>
   <div id="quillWrapper">
 
-      <div ref="quillContainer" id="quill-container"></div>
+      <div ref="quillContainer" id="quill-container">{{editorContent}}</div>
 
       <button v-if="useSaveButton" class="save-button"
         @click="saveContent">
@@ -15,6 +15,7 @@
 
 <script>
 import Quill from 'quill'
+
 require('../node_modules/quill/dist/quill.core.css')
 require('../node_modules/quill/dist/quill.snow.css')
 
