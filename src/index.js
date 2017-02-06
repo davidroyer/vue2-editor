@@ -1,14 +1,14 @@
-import Test from './components/Test.vue'
+import VueEditor from './components/VueEditor.vue'
 
 // Install the components
 export function install (Vue) {
-  Vue.component('test', Test)
+  Vue.component('vue-editor', VueEditor)
   /* -- Add more components here -- */
 }
 
 // Expose the components
 export {
-  Test,
+  VueEditor,
   /* -- Add more components here -- */
 }
 
