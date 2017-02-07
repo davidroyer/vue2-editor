@@ -1,0 +1,49 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'build:docs' ]
+2 info using npm@3.10.10
+3 info using node@v6.9.4
+4 verbose run-script [ 'prebuild:docs', 'build:docs', 'postbuild:docs' ]
+5 info lifecycle vue2-editor@1.0.99~prebuild:docs: vue2-editor@1.0.99
+6 silly lifecycle vue2-editor@1.0.99~prebuild:docs: no script for prebuild:docs, continuing
+7 info lifecycle vue2-editor@1.0.99~build:docs: vue2-editor@1.0.99
+8 verbose lifecycle vue2-editor@1.0.99~build:docs: unsafe-perm in lifecycle true
+9 verbose lifecycle vue2-editor@1.0.99~build:docs: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/droyer/Playground-2017/vue2-editor/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+10 verbose lifecycle vue2-editor@1.0.99~build:docs: CWD: /Users/droyer/Playground-2017/vue2-editor
+11 silly lifecycle vue2-editor@1.0.99~build:docs: Args: [ '-c',
+11 silly lifecycle   'cross-env NODE_ENV=production webpack --config config/webpack.config.docs.js --progress --hide-modules' ]
+12 silly lifecycle vue2-editor@1.0.99~build:docs: Returned: code: 2  signal: null
+13 info lifecycle vue2-editor@1.0.99~build:docs: Failed to exec build:docs script
+14 verbose stack Error: vue2-editor@1.0.99 build:docs: `cross-env NODE_ENV=production webpack --config config/webpack.config.docs.js --progress --hide-modules`
+14 verbose stack Exit status 2
+14 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:255:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
+14 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:40:14)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:877:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:226:5)
+15 verbose pkgid vue2-editor@1.0.99
+16 verbose cwd /Users/droyer/Playground-2017/vue2-editor/gh-pages
+17 error Darwin 16.0.0
+18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "build:docs"
+19 error node v6.9.4
+20 error npm  v3.10.10
+21 error code ELIFECYCLE
+22 error vue2-editor@1.0.99 build:docs: `cross-env NODE_ENV=production webpack --config config/webpack.config.docs.js --progress --hide-modules`
+22 error Exit status 2
+23 error Failed at the vue2-editor@1.0.99 build:docs script 'cross-env NODE_ENV=production webpack --config config/webpack.config.docs.js --progress --hide-modules'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the vue2-editor package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     cross-env NODE_ENV=production webpack --config config/webpack.config.docs.js --progress --hide-modules
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs vue2-editor
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls vue2-editor
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]
