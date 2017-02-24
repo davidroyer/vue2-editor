@@ -7,7 +7,7 @@
         @click="saveContent">
         {{ buttonText ? buttonText : 'Save Content' }}
       </button>
-      <h1>TEST NEW</h1>
+
       <div v-if="showPreview" ref="livePreview" class="ql-editor"></div>
 
   </div>
