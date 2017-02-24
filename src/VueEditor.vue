@@ -1,13 +1,13 @@
 <template>
   <div id="quillWrapper">
 
-      <div ref="quillContainer" id="quill-container">{{editorContent}}</div>
+      <div ref="quillContainer" id="quill-container" v-html="editorContent"></div>
 
       <button v-if="useSaveButton" class="save-button"
         @click="saveContent">
         {{ buttonText ? buttonText : 'Save Content' }}
       </button>
-
+      <h1>TEST NEW</h1>
       <div v-if="showPreview" ref="livePreview" class="ql-editor"></div>
 
   </div>
