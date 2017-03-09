@@ -232,7 +232,7 @@ EX:
 
     <vue-editor
       :use-save-button="false"
-      @editor-updated=handleUpdatedContent>
+      @editor-updated="handleUpdatedContent">
     </vue-editor>
 
     <button type="button" name="save-content"
