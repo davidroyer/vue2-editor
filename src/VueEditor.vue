@@ -35,14 +35,7 @@ export default {
   props: {
     value: String,
     placeholder: String,
-    buttonText: String,
     editorToolbar: Array,
-    useSaveButton: {
-      type: Boolean,
-      default () {
-        return true
-      }
-    },
     showPreview: {
       type: Boolean,
       default () {
