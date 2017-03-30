@@ -22,7 +22,7 @@ $ npm install --save vue2-editor
 ## Use
 
 ```js
-import { VueEditor } from 'vue2-editor'
+import VueEditor from 'vue2-editor'
 ```
 
 
@@ -57,18 +57,18 @@ save-content     | Emitted when the default save button is clicked
     </button>
 
     <vue-editor
-      :editor-content="htmlForEditor">
+      v-model="htmlForEditor">
     </vue-editor>
   </div>
 </template>
 
 <script>
-  import { VueEditor } from 'vue2-editor'
+  import VueEditor from 'vue2-editor'
 
   export default {
     data: function () {
       return {
-        htmlForEditor: null  
+        htmlForEditor: null
       }
     },
 
@@ -113,7 +113,7 @@ save-content     | Emitted when the default save button is clicked
 </template>
 
 <script>
-  import { VueEditor } from 'vue2-editor'
+  import VueEditor from 'vue2-editor'
 
   export default {
     data: function () {
@@ -133,144 +133,9 @@ save-content     | Emitted when the default save button is clicked
 </script>
 ```
 
-
-
-
-## Example
-**_use-save-button_**
-```html
-<vue-editor
-  :use-save-button="false">
-</vue-editor>
-```
-
-
-
-## Example
-**_button-text_**
-
-```html
-<vue-editor
-  button-text="Custom Save Message">
-</vue-editor>
-```
-
-
-
 ## How do I get the html content from the text editor?
 
-_There are 2 different scenarios we need to address._
-
-
-
-### 1. Using the default Save Button
-
-When the button is clicked, the '**_save-content_**' event is emitted with the current contents of the editor.
-
-You need to create a method that runs when this event is emitted and pass a parameter to this method. This parameter holds the editor contents.
-
-**Note:** The default save button has a class of _save-button_ which you can target for styling the button.
-
-```html
-<template>
-  <div id="app">
-    <h1>Write Your Message and save it!</h1>
-    <vue-editor
-      @save-content="handleSavingContent">
-    </vue-editor>
-  </div>
-</template>
-
-<script>
-  import { VueEditor } from 'vue2-editor'
-
-  export default {
-    components: {
-      VueEditor
-    },
-
-    methods: {
-      handleSavingContent: function (contentsToBeSaved) {
-        console.log(contentsToBeSaved)
-      }
-    }  
-  }
-</script>
-<style>
-  .save-button {
-    color: #fff;
-    padding: .5em 1em;
-    background-color: rgba(53, 73, 94, 0.85);
-    text-decoration: none;
-    border-radius: 2px;
-    cursor: pointer;
-    font-weight: 900;
-    transition: background-color .2s ease;
-    margin: 1em 0;
-    float: right;
-  }
-
-  .save-button:hover {
-      background-color: #35495e;
-  }
-</style>
-```
-
-
-
-### 2. Using your own button
-
-The event '**_editor-updated_**' is emitted when the text inside the editor changes. The current editor contents are sent with this event.
-
-You need to create a method that runs when this event is emitted.
-
-EX:
-
-```html
-<template>
-  <div id="app">
-
-    <vue-editor
-      :use-save-button="false"
-      @editor-updated="handleUpdatedContent">
-    </vue-editor>
-
-    <button type="button" name="save-content"
-      @click="saveTheContent">
-      Our Own Button
-    </button>
-
-  </div>
-</template>
-
-<script>
-  import { VueEditor } from 'vue2-editor'
-
-  export default {
-    data: function () {
-      return {
-        htmlFromEditor: null
-      }
-    },
-
-    components: {
-      VueEditor
-    },
-
-    methods: {
-      handleUpdatedContent: function (value) {
-        this.htmlFromEditor = value
-      },
-
-      saveTheContent: function () {
-        // Do whatever you want
-        console.log(this.htmlFromEditor)
-      }
-    }
-  }
-</script>
-```
-
+The property set in v-model will be automatically updated whenever a change happens.
 
 
 ## Example using several configuration options
@@ -284,22 +149,21 @@ EX:
     </button>
 
     <vue-editor
-      :editor-content="htmlForEditor"
+      v-model="htmlForEditor"
       :show-preview="true"
       @editor-updated="handleUpdatedContent"
-      @save-content="handleSavingContent"
-      button-text="Save Your Content">
+      @save-content="handleSavingContent">
     </vue-editor>
   </div>
 </template>
 
 <script>
-  import { VueEditor } from 'vue2-editor'
+  import VueEditor from 'vue2-editor'
 
   export default {
     data: function () {
       return {
-        htmlForEditor: null  
+        htmlForEditor: null
       }
     },
 
@@ -319,7 +183,7 @@ EX:
       setEditorContent: function () {
         this.htmlForEditor = '<h1>Html For Editor</h1>'
       }
-    }  
+    }
   }
 </script>
 ```
