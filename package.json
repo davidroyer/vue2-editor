@@ -15,7 +15,7 @@
     "url": "https://github.com/davidroyer/vue2-editor"
   },
   "licenses": "MIT",
-  "main": "./dist/index.js",
+  "main": "./src/VueEditor.vue",
   "scripts": {
     "dev": "webpack-dev-server --config ./webpack.config.dev.js --hot --inline",
     "build": "rm -rf ./dist && webpack --config ./webpack.config.js"

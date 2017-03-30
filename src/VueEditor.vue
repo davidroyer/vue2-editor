@@ -3,11 +3,6 @@
 
       <div ref="quillContainer" id="quill-container"></div>
 
-      <button v-if="useSaveButton" class="save-button"
-        @click="saveContent">
-        {{ buttonText ? buttonText : 'Save Content' }}
-      </button>
-
       <div v-if="showPreview" ref="livePreview" class="ql-editor"></div>
 
   </div>
@@ -16,8 +11,8 @@
 <script>
 import Quill from 'quill'
 
-require('../node_modules/quill/dist/quill.core.css')
-require('../node_modules/quill/dist/quill.snow.css')
+require('quill/dist/quill.core.css')
+require('quill/dist/quill.snow.css')
 
 var defaultToolbar = [
   ['bold', 'italic', 'underline', 'strike'],
@@ -38,7 +33,7 @@ var defaultToolbar = [
 export default {
   name: 'vue-editor',
   props: {
-    editorContent: String,
+    value: String,
     placeholder: String,
     buttonText: String,
     editorToolbar: Array,
@@ -85,13 +80,13 @@ export default {
 
       vm.quill.on('text-change', function() {
         vm.$refs.livePreview.innerHTML = vm.editor.innerHTML
-        vm.$emit('editor-updated', vm.editor.innerHTML)
+        vm.$emit('input', vm.editor.innerHTML)
       });
 
     } else {
 
       vm.quill.on('text-change', function() {
-        vm.$emit('editor-updated', vm.editor.innerHTML)
+        vm.$emit('input', vm.editor.innerHTML)
       });
 
     }
@@ -101,17 +96,10 @@ export default {
     editorContent: function () {
       this.editor.innerHTML = this.editorContent
     }
-  },
-
-  methods: {
-    saveContent: function (value) {
-      this.$emit('save-content', this.editor.innerHTML)
-    }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 #quill-container {
