@@ -10,7 +10,7 @@ import 'quill/dist/quill.snow.css'
 
 var defaultToolbar = [
   ['bold', 'italic', 'underline', 'strike'],
-  ['blockquote', 'code-block'],
+  ['blockquote', 'code-block', 'image'],
 
   [{ 'list': 'ordered'}, { 'list': 'bullet' }],
 

@@ -8,10 +8,17 @@
 
 <!-- ## Demo --> <!-- [fiddle](https://jsfiddle.net/su9zv0w9/1/) -->
 
- # Install
+# Install
+_You can use Yarn or NPM_
 
 ```bash
 $ npm install --save vue2-editor
+```
+
+**OR**
+
+```bash
+yarn add vue2-editor
 ```
 
 # Use
@@ -26,13 +33,13 @@ Name           | Type   | Default                                            | D
 -------------- | ------ | -------------------------------------------------- | ----------------------------------------------------------------------
 v-model        | String | -                                                  | Set v-model to the the content or data property you wish to bind it to
 placeholder    | String | -                                                  | Placeholder text for the editor
-editor-toolbar | Array  | ** _Too long for table. See toolbar example below_ | Use a custom toolbar
+disabled | Boolean | false | Set to true to disable editor
+editorToolbar | Array  | ** _Too long for table. See toolbar example below_ | Use a custom toolbar
 
 <!-- ## Events Name | Description ---------------- | ----------- editor-updated | Emitted when the editor contents change save-content | Emitted when the default save button is clicked -->
 
- # Example
-
-**Basic Example**
+## Example
+**_Basic Setup_**
 
 ```html
 <template>
@@ -49,7 +56,7 @@ editor-toolbar | Array  | ** _Too long for table. See toolbar example below_ | U
    },
 
    export default {
-     data: function() {
+     data() {
        return {
          content: '<h1>Some initial content</h1>'  
        }
@@ -58,9 +65,9 @@ editor-toolbar | Array  | ** _Too long for table. See toolbar example below_ | U
  </script>
 ```
 
-# Example
+## Example
 
-**Set contents after page load**
+**_Set Contents After Page Load_**
 
 ```html
 <template>
@@ -73,12 +80,12 @@ editor-toolbar | Array  | ** _Too long for table. See toolbar example below_ | U
 <script>
   import { VueEditor } from 'vue2-editor'
 
-  components: {
-    VueEditor
-  },
-
   export default {
-    data: function() {
+    components: {
+      VueEditor
+    },
+
+    data() {
       return {
         htmlForEditor: null  
       }
@@ -93,14 +100,13 @@ editor-toolbar | Array  | ** _Too long for table. See toolbar example below_ | U
 </script>
 ```
 
-# Example
-
-**_editor-toolbar_**
+## Example
+**_Custom Toolbar_**
 
 ```html
 <template>
   <div id="app">
-    <vue-editor v-model="content" :editor-toolbar="customToolbar"></vue-editor>
+    <vue-editor v-model="content" :editorToolbar="customToolbar"></vue-editor>
   </div>
 </template>
 
@@ -112,7 +118,7 @@ editor-toolbar | Array  | ** _Too long for table. See toolbar example below_ | U
       VueEditor
     },
 
-    data: function () {
+    data() {
       return {
         content: '<h1>Html For Editor</h1>',
         customToolbar: [
@@ -126,12 +132,9 @@ editor-toolbar | Array  | ** _Too long for table. See toolbar example below_ | U
 </script>
 ```
 
-# How do I get the html content from the text editor?
 
-_There are 2 different scenarios we need to address._
-
-# Saving the content
-
+### Example
+**_Saving the Content_**
 ```html
 <template>
   <div id="app">
@@ -155,8 +158,8 @@ _There are 2 different scenarios we need to address._
     },
 
     methods: {
-      handleSavingContent: function () {
-        // This is where you would save it to your database or send it via ajax
+      handleSavingContent: function() {
+        // You have the content to save
         console.log(this.content)
       }
     }  
@@ -164,7 +167,8 @@ _There are 2 different scenarios we need to address._
 </script>
 ```
 
-# Use a live preview
+## Example
+**_Use a Live Preview_**
 
 ```html
 <template>
@@ -182,19 +186,13 @@ _There are 2 different scenarios we need to address._
   },
 
   export default {
-    data: function() {
+    data() {
       return {
-        content: 'Initial Content'  
+        content: '<h1>Initial Content</h1>'  
       }
     }
   }
 </script>
-```
-
-# Install
-
-```bash
-yarn add vue2-editor
 ```
 
 # Usage
