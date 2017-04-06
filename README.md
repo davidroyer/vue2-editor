@@ -65,14 +65,8 @@ editor-toolbar | Array  | ** _Too long for table. See toolbar example below_ | U
 ```html
 <template>
   <div id="app">
-    <button type="button"
-      @click="setEditorContent">
-      Set Editor Contents
-    </button>
-
-    <vue-editor
-      v-model="htmlForEditor">
-    </vue-editor>
+    <button @click="setEditorContent">Set Editor Contents</button>
+    <vue-editor v-model="htmlForEditor"></vue-editor>
   </div>
 </template>
 
@@ -106,10 +100,7 @@ editor-toolbar | Array  | ** _Too long for table. See toolbar example below_ | U
 ```html
 <template>
   <div id="app">
-    <vue-editor
-      v-model="content"
-      :editor-toolbar="customToolbar">
-    </vue-editor>
+    <vue-editor v-model="content" :editor-toolbar="customToolbar"></vue-editor>
   </div>
 </template>
 

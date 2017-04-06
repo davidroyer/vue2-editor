@@ -5,7 +5,6 @@
 </template>
 <script>
 import Quill from 'quill'
-var icons = Quill.import('ui/icons');
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 
