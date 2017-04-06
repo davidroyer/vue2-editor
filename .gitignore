@@ -4,3 +4,10 @@ demo/
 .npmignore
 .DS_Store
 npm-debug.log
+
+*.log
+.DS_Store
+
+# produced by vbuild
+dist
+dist-example
