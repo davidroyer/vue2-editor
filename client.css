@@ -1,1 +1,1 @@
-.flexWrapper{display:flex}.editorWrapper{flex-basis:50%}.quillWrapper{position:relative;z-index:99999}.preview{flex-basis:50%;background:#f9f9f9;padding:.5em 3em}#quill-container{height:400px}
+#preview{background:#f6f6f6;border-left:3px solid gray;padding:2em;margin-left:1em}@media (min-width:601px){#preview{width:47%}}#quill-container{height:400px}
