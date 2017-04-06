@@ -1,13 +1,13 @@
 <template>
   <div id="app">
     <h1>Vue2Editor 2.0 (In Development)</h1>
-    <!-- <vue-editor></vue-editor> -->
+    <button @click="setEditor">Set Editor</button>
     <div class="flexWrapper">
       <div class="editorWrapper">
         <vue-editor v-model="editorContent"></vue-editor>
         <button @click="saveContent">Save</button>
       </div>
-      <div class="preview" v-html="editorContent"></div>
+      <div class="preview" v-if="showPreview" v-html="editorContent"></div>
     </div>
 
   </div>
@@ -15,7 +15,7 @@
 
 <script>
   import {VueEditor} from '../src/index.js'
-  // import Vue2Editor from '../src/Vue2Editor.vue'
+
   export default {
     components: {
       VueEditor,
@@ -23,11 +23,16 @@
     },
     data() {
       return {
-        editorContent: '<h1>Content</h1>'
+        editorContent: '<h1>Starting Content</h1>',
+        showPreview: false
       }
     },
 
     methods: {
+      setEditor() {
+        this.editorContent = 'Set programatically!'
+      },
+
       saveContent() {
         console.log(this.editorContent);
       }

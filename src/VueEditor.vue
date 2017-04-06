@@ -1,9 +1,6 @@
 <template>
 <div id="quillWrapper">
-  <div ref="quillContainer" id="quill-container" :value="value"></div>
-
-  <div v-if="showPreview" ref="livePreview" class="ql-editor"></div>
-
+  <div ref="quillContainer" id="quill-container"></div>
 </div>
 </template>
 <script>
@@ -11,7 +8,7 @@ import Quill from 'quill'
 var icons = Quill.import('ui/icons');
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
-// require('./icons/icons.js')
+require('./icons/icons.js')
 // icons['bold'] =
 //   `<svg fill="#2d2d2d" height="36" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">
 //     <path d="M15.6 10.79c.97-.67 1.65-1.77 1.65-2.79 0-2.26-1.75-4-4-4H7v14h7.04c2.09 0 3.71-1.7 3.71-3.79 0-1.52-.86-2.82-2.15-3.42zM10 6.5h3c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-3v-3zm3.5 9H10v-3h3.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5z"/>
@@ -39,23 +36,9 @@ var defaultToolbar = [
 export default {
   name: 'vue-editor',
   props: {
-    editorContent: String,
     value: String,
     placeholder: String,
-    buttonText: String,
     editorToolbar: Array,
-    useSaveButton: {
-      type: Boolean,
-      default () {
-        return true
-      }
-    },
-    showPreview: {
-      type: Boolean,
-      default () {
-        return false
-      }
-    }
   },
 
   data: function() {
@@ -67,48 +50,47 @@ export default {
   },
 
   mounted: function() {
-    const vm = this
-
-    vm.quill = new Quill(vm.$refs.quillContainer, {
-      modules: {
-        toolbar: this.toolbar
-      },
-      placeholder: this.placeholder ? this.placeholder : '',
-      theme: 'snow'
-    });
-
-    vm.editor = document.querySelector('.ql-editor')
-
-    if (vm.value) {
-      vm.editor.innerHTML = vm.value
-    }
-
-    if (vm.$refs.livePreview !== undefined || false) {
-
-      vm.quill.on('text-change', function() {
-        vm.$refs.livePreview.innerHTML = vm.editor.innerHTML
-        vm.$emit('input', vm.editor.innerHTML)
-      });
-
-    } else {
-
-      vm.quill.on('text-change', function() {
-        vm.$emit('input', vm.editor.innerHTML)
-          // vm.$emit('editor-updated', vm.editor.innerHTML)
-      });
-
-    }
+    this.initializeVue2Editor()
+    this.handleUpdatedEditor()
   },
 
   watch: {
-    editorContent: function() {
-      this.editor.innerHTML = this.value
+    value (val) {
+      if (val !=  this.editor.innerHTML && !this.quill.hasFocus()) {
+        this.editor.innerHTML = val
+      }
     }
   },
 
   methods: {
-    saveContent: function(value) {
-      this.$emit('save-content', this.editor.innerHTML)
+    initializeVue2Editor() {
+      this.setQuillElement()
+      this.setEditorElement()
+      this.checkForInitialContent()
+    },
+
+    setQuillElement() {
+      this.quill = new Quill(this.$refs.quillContainer, {
+        modules: {
+          toolbar: this.toolbar
+        },
+        placeholder: this.placeholder ? this.placeholder : '',
+        theme: 'snow'
+      })
+    },
+
+    setEditorElement() {
+      this.editor = document.querySelector('.ql-editor')
+    },
+
+    checkForInitialContent() {
+      this.editor.innerHTML = this.value || ''
+    },
+
+    handleUpdatedEditor() {
+      this.quill.on('text-change', () => {
+        this.$emit('input', this.editor.innerHTML)
+      })
     }
   }
 }
@@ -120,7 +102,7 @@ export default {
   height: 400px;
 }
 
-/*svg {
+.ql-formats svg {
   position: absolute;
   left: 0;
   top: 0;
@@ -130,7 +112,7 @@ export default {
   fill: #4d4d4d;
 }
 
-button {
+.ql-formats button {
   position: relative;
   transition: all .2s ease;
   border-radius: 3px;
@@ -139,18 +121,15 @@ button {
   width: 31px !important;
 }
 
-button.ql-active {
-
-  background: #5b5b5b !important;
+.ql-formats button.ql-active {
 }
 
 .ql-active svg {
-
-    fill: #06c;
+  fill: #06c;
 }
 
 .ql-snow .ql-picker-options .ql-picker-item {
   position: relative;
   width: 100% !important;
-}*/
+}
 </style>

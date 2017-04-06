@@ -1,5 +1,14 @@
-import VueEditor from './VueEditor'
+/**
+ * Vue2-Editor
+ */
+import VueEditor from './VueEditor.vue'
 
-export {
-  VueEditor
+const Vue2Editor = {
+  VueEditor,
+  install: function(Vue) {
+    Vue.component(VueEditor.name, VueEditor)
+  }
 }
+
+export default Vue2Editor
+export { VueEditor }
