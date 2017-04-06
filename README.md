@@ -1,4 +1,4 @@
-# Vue2-Editor 2.0 (In Development)
+# Vue2-Editor 2.0
 
 ![Vue2Editor-Centered](https://www.dropbox.com/s/7com4d32zct44nc/Vue2Editor-Centered.png?raw=1) HTML Editor using Vue.js 2.0 and Quilljs
 

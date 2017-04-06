@@ -11,7 +11,7 @@
     <button class="btn btn-primary" @click="toggleDisabled">Toggle Disabled</button>
     <div class="columns">
       <div class="editorWrapper column col-6 col-sm-12">
-        <vue-editor :disabled="editorIsDisabled" v-model="editorContent"></vue-editor>
+        <vue-editor v-model="editorContent"></vue-editor>
         <!-- <vue-editor v-model="editorContent" :editorToolbar="customToolbar"></vue-editor> -->
         <button class="btn btn-primary" @click="saveContent(editorContent)">Save</button>
       </div>
