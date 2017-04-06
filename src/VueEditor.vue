@@ -30,6 +30,12 @@ export default {
   props: {
     value: String,
     placeholder: String,
+    disabled: {
+      type: Boolean,
+      default () {
+        return false
+      }
+    },
     editorToolbar: Array,
   },
 
@@ -51,6 +57,9 @@ export default {
       if (val !=  this.editor.innerHTML && !this.quill.hasFocus()) {
         this.editor.innerHTML = val
       }
+    },
+    disabled(status) {
+      this.quill.enable(status);
     }
   },
 
