@@ -2,19 +2,19 @@
   <div id="app">
     <div class="container grid-960">
       <h1>Vue2Editor 2.0 (In Development)</h1>
-      <vue-editor
+      <!-- <vue-editor
         v-model="content"
         :editor-toolbar="customToolbar">
-      </vue-editor>
-        <button class="btn btn-primary" @click="saveContent(content)">Save</button>
-      <!-- <button class="btn btn-primary" @click="setEditor">Set Editor</button>
+      </vue-editor> -->
+        <!-- <button class="btn btn-primary" @click="saveContent(content)">Save</button> -->
+      <button class="btn btn-primary" @click="setEditor">Set Editor</button>
       <div class="containers">
         <div class="editorWrapper column col-6 col-sm-12">
           <vue-editor v-model="editorContent"></vue-editor>
-          <button class="btn btn-primary" @click="saveContent">Save</button>
+          <button class="btn btn-primary" @click="saveContent(editorContent)">Save</button>
         </div>
         <div class="column col-6 col-sm-12 preview" v-if="showPreview" v-html="editorContent"></div>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>

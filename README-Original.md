@@ -212,59 +212,43 @@ _There are 2 different scenarios we need to address._
   }
 </script>
 ```
+## Install
 
-
-
-## Example using several configuration options
-
-```html
-<template>
-  <div id="app">
-    <button type="button"
-      @click="setEditorContent">
-      Set Editor Content
-    </button>
-
-    <vue-editor
-      :editor-content="htmlForEditor"
-      :show-preview="true"
-      @editor-updated="handleUpdatedContent"
-      @save-content="handleSavingContent"
-      button-text="Save Your Content">
-    </vue-editor>
-  </div>
-</template>
-
-<script>
-  import { VueEditor } from 'vue2-editor'
-
-  export default {
-    data: function () {
-      return {
-        htmlForEditor: null  
-      }
-    },
-
-    components: {
-      VueEditor
-    },
-
-    methods: {
-      handleSavingContent: function (value) {
-        console.log(value)
-      },
-
-      handleUpdatedContent: function (value) {
-        console.log(value);
-      },
-
-      setEditorContent: function () {
-        this.htmlForEditor = '<h1>Html For Editor</h1>'
-      }
-    }  
-  }
-</script>
+```bash
+yarn add vue2-editor
 ```
+
+## Usage
+
+```js
+import Vue2Editor from 'vue2-editor'
+
+//... your code
+```
+
+## Folder structure
+
+- `src/`: Source files for this component
+  - `Vue2Editor.vue` The component itself
+- `example/`: Example for demonstrating this component
+  - `index.js`: Entry for the example
+  - `App.vue`: The root component which we use to load this component
+- `vbuild.example.js`: Config file for your example
+- `vbuild.component.js`: Config file for your component
+- `package.json`: App manifest
+- `.editorconfig`: Ensure consistent editor behaivor
+- `.gitignore`: Ignore files we don't need to push
+
+## Development
+
+- `yarn example`: Run example in development mode
+- `yarn deploy`: Deploy example to gh-pages
+- `yarn build:cjs`: Build component in commonjs format
+- `yarn build:umd`: Build component in umd format
+- `yarn build`: Build component in both format
+- `yarn lint`: Run eslint
+
+Check out your npm scripts, it's using [vbuild](https://github.com/egoist/vbuild) under the hood.
 
 # License
 
