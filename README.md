@@ -22,7 +22,7 @@ yarn add vue2-editor
 # Usage
 
 ```javascript
-import Vue2Editor from 'vue2-editor'
+import {VueEditor} from 'vue2-editor'
 
 //... your code
 ```
