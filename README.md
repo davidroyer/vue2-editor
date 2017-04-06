@@ -1,53 +1,41 @@
-## Vue2-Editor 2.0 (In Development)
+# Vue2-Editor 2.0 (In Development)
 
- ![Vue2Editor-Centered](https://www.dropbox.com/s/7com4d32zct44nc/Vue2Editor-Centered.png?raw=1)
-HTML Editor using Vue.js 2.0 and Quilljs
+![Vue2Editor-Centered](https://www.dropbox.com/s/7com4d32zct44nc/Vue2Editor-Centered.png?raw=1) HTML Editor using Vue.js 2.0 and Quilljs
 
 [Vue.js](https://vuejs.org)
 
 [Quill](http://quilljs.com/)
 
-<!-- ## Demo -->
+<!-- ## Demo --> <!-- [fiddle](https://jsfiddle.net/su9zv0w9/1/) -->
 
-<!-- [fiddle](https://jsfiddle.net/su9zv0w9/1/) -->
-
-## Install
+ # Install
 
 ```bash
 $ npm install --save vue2-editor
 ```
 
+# Use
 
-
-## Use
-
-```js
+```javascript
 import { VueEditor } from 'vue2-editor'
 ```
 
+# Props
 
+Name           | Type   | Default                                            | Description
+-------------- | ------ | -------------------------------------------------- | ----------------------------------------------------------------------
+v-model        | String | -                                                  | Set v-model to the the content or data property you wish to bind it to
+placeholder    | String | -                                                  | Placeholder text for the editor
+editor-toolbar | Array  | ** _Too long for table. See toolbar example below_ | Use a custom toolbar
 
-## Props
+<!-- ## Events Name | Description ---------------- | ----------- editor-updated | Emitted when the editor contents change save-content | Emitted when the default save button is clicked -->
 
-Name | Type | Default | Description
----- | ---- | ------- | -----------
-v-model | String | - | Set v-model to the the content or data property you wish to bind it to
-placeholder | String | - | Placeholder text for the editor
-editor-toolbar | Array | ** _Too long for table. See toolbar example below_  | Use a custom toolbar
+ # Example
 
+**Basic Example**
 
-<!-- ## Events
-
-Name             | Description
----------------- | -----------
-editor-updated   | Emitted when the editor contents change
-save-content     | Emitted when the default save button is clicked
- -->
-
- ## Example
- **Basic Example**
- ```html
- <template>
+```html
+<template>
    <div id="app">
      <vue-editor v-model="content"></vue-editor>
    </div>
@@ -68,10 +56,12 @@ save-content     | Emitted when the default save button is clicked
      }
    }
  </script>
- ```
+```
 
-## Example
+# Example
+
 **Set contents after page load**
+
 ```html
 <template>
   <div id="app">
@@ -109,8 +99,8 @@ save-content     | Emitted when the default save button is clicked
 </script>
 ```
 
+# Example
 
-## Example
 **_editor-toolbar_**
 
 ```html
@@ -145,13 +135,11 @@ save-content     | Emitted when the default save button is clicked
 </script>
 ```
 
-## How do I get the html content from the text editor?
+# How do I get the html content from the text editor?
 
 _There are 2 different scenarios we need to address._
 
-
-
-## Saving the content
+# Saving the content
 
 ```html
 <template>
@@ -185,8 +173,7 @@ _There are 2 different scenarios we need to address._
 </script>
 ```
 
-
-## Use a live preview
+# Use a live preview
 
 ```html
 <template>
@@ -212,34 +199,39 @@ _There are 2 different scenarios we need to address._
   }
 </script>
 ```
-## Install
+
+# Install
 
 ```bash
 yarn add vue2-editor
 ```
 
-## Usage
+# Usage
 
-```js
+```javascript
 import Vue2Editor from 'vue2-editor'
 
 //... your code
 ```
 
-## Folder structure
+# Folder structure
 
 - `src/`: Source files for this component
+
   - `Vue2Editor.vue` The component itself
+
 - `example/`: Example for demonstrating this component
+
   - `index.js`: Entry for the example
   - `App.vue`: The root component which we use to load this component
+
 - `vbuild.example.js`: Config file for your example
 - `vbuild.component.js`: Config file for your component
 - `package.json`: App manifest
 - `.editorconfig`: Ensure consistent editor behaivor
 - `.gitignore`: Ignore files we don't need to push
 
-## Development
+# Development
 
 - `yarn example`: Run example in development mode
 - `yarn deploy`: Deploy example to gh-pages
