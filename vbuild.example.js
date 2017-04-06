@@ -13,9 +13,8 @@ module.exports = {
     js: '[name].js',
     css: '[name].css'
   },
-  // publicPath: "",
-  // path
   html: {
     title: 'Vue2-Editor'
-  }
+  },
+  copy: true
 }

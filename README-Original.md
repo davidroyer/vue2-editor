@@ -31,23 +31,47 @@ import { VueEditor } from 'vue2-editor'
 
 Name | Type | Default | Description
 ---- | ---- | ------- | -----------
+v-model | String | - | Set v-model to the the content or data property you wish to bind it to
 placeholder | String | - | Placeholder text for the editor
-editor-content | String | null | Set the the content of the editor
-use-save-button | Boolean | True | Set to false to use your own button to save editor content
-button-text | String | Save Content | Set the button's text
 editor-toolbar | Array | ** _Too long for table. See toolbar example below_  | Use a custom toolbar
-show-preview | Boolean | False | Set to true to get live preview
 
-## Events
+
+<!-- ## Events
 
 Name             | Description
 ---------------- | -----------
 editor-updated   | Emitted when the editor contents change
 save-content     | Emitted when the default save button is clicked
+ -->
 
+ ## Example
+ **Basic Example**
+ ```html
+ <template>
+   <div id="app">
+     <vue-editor v-model="content"></vue-editor>
+   </div>
+ </template>
+
+ <script>
+   import { VueEditor } from 'vue2-editor'
+
+   components: {
+     VueEditor
+   },
+
+   export default {
+     data: function() {
+       return {
+         content: '<h1>Some initial content</h1>'  
+       }
+     }
+   }
+ </script>
+ ```
 
 ## Example
-**_editor-content_**
+**Set contents after page load**
 ```html
 <template>
   <div id="app">
@@ -57,7 +81,7 @@ save-content     | Emitted when the default save button is clicked
     </button>
 
     <vue-editor
-      :editor-content="htmlForEditor">
+      v-model="htmlForEditor">
     </vue-editor>
   </div>
 </template>
@@ -65,39 +89,25 @@ save-content     | Emitted when the default save button is clicked
 <script>
   import { VueEditor } from 'vue2-editor'
 
+  components: {
+    VueEditor
+  },
+
   export default {
-    data: function () {
+    data: function() {
       return {
         htmlForEditor: null  
       }
     },
 
-    components: {
-      VueEditor
-    },
-
     methods: {
-      setEditorContent: function () {
+      setEditorContent: function() {
         this.htmlForEditor = '<h1>Html For Editor</h1>'
       }
     }
   }
 </script>
 ```
-
-
-
-
-## Example
-**_show-preview_**
-
-```html
-<vue-editor
-  :show-preview="true">
-</vue-editor>
-```
-
-
 
 
 ## Example
@@ -107,6 +117,7 @@ save-content     | Emitted when the default save button is clicked
 <template>
   <div id="app">
     <vue-editor
+      v-model="content"
       :editor-toolbar="customToolbar">
     </vue-editor>
   </div>
@@ -116,46 +127,23 @@ save-content     | Emitted when the default save button is clicked
   import { VueEditor } from 'vue2-editor'
 
   export default {
+    components: {
+      VueEditor
+    },
+
     data: function () {
       return {
+        content: '<h1>Html For Editor</h1>',
         customToolbar: [
             ['bold', 'italic', 'underline'],
             [{ 'list': 'ordered'}, { 'list': 'bullet' }],
             ['image', 'code-block']
           ]
       }
-    },
-
-    components: {
-      VueEditor
     }
   }
 </script>
 ```
-
-
-
-
-## Example
-**_use-save-button_**
-```html
-<vue-editor
-  :use-save-button="false">
-</vue-editor>
-```
-
-
-
-## Example
-**_button-text_**
-
-```html
-<vue-editor
-  button-text="Custom Save Message">
-</vue-editor>
-```
-
-
 
 ## How do I get the html content from the text editor?
 
@@ -163,21 +151,13 @@ _There are 2 different scenarios we need to address._
 
 
 
-### 1. Using the default Save Button
-
-When the button is clicked, the '**_save-content_**' event is emitted with the current contents of the editor.
-
-You need to create a method that runs when this event is emitted and pass a parameter to this method. This parameter holds the editor contents.
-
-**Note:** The default save button has a class of _save-button_ which you can target for styling the button.
+## Saving the content
 
 ```html
 <template>
   <div id="app">
-    <h1>Write Your Message and save it!</h1>
-    <vue-editor
-      @save-content="handleSavingContent">
-    </vue-editor>
+    <button @click="saveContent"></button>
+    <vue-editor v-model="content"></vue-editor>
   </div>
 </template>
 
@@ -189,82 +169,44 @@ You need to create a method that runs when this event is emitted and pass a para
       VueEditor
     },
 
+    data () {
+      return {
+        content: '<h3>Initial Content</h3>'
+      }
+    },
+
     methods: {
-      handleSavingContent: function (contentsToBeSaved) {
-        console.log(contentsToBeSaved)
+      handleSavingContent: function () {
+        // This is where you would save it to your database or send it via ajax
+        console.log(this.content)
       }
     }  
   }
 </script>
-<style>
-  .save-button {
-    color: #fff;
-    padding: .5em 1em;
-    background-color: rgba(53, 73, 94, 0.85);
-    text-decoration: none;
-    border-radius: 2px;
-    cursor: pointer;
-    font-weight: 900;
-    transition: background-color .2s ease;
-    margin: 1em 0;
-    float: right;
-  }
-
-  .save-button:hover {
-      background-color: #35495e;
-  }
-</style>
 ```
 
 
-
-### 2. Using your own button
-
-The event '**_editor-updated_**' is emitted when the text inside the editor changes. The current editor contents are sent with this event.
-
-You need to create a method that runs when this event is emitted.
-
-EX:
+## Use a live preview
 
 ```html
 <template>
   <div id="app">
-
-    <vue-editor
-      :use-save-button="false"
-      @editor-updated=handleUpdatedContent>
-    </vue-editor>
-
-    <button type="button" name="save-content"
-      @click="saveTheContent">
-      Our Own Button
-    </button>
-
+    <vue-editor v-model="content"></vue-editor>
+    <div v-html="content"></div>
   </div>
 </template>
 
 <script>
   import { VueEditor } from 'vue2-editor'
 
+  components: {
+    VueEditor
+  },
+
   export default {
-    data: function () {
+    data: function() {
       return {
-        htmlFromEditor: null
-      }
-    },
-
-    components: {
-      VueEditor
-    },
-
-    methods: {
-      handleUpdatedContent: function (value) {
-        this.htmlFromEditor = value
-      },
-
-      saveTheContent: function () {
-        // Do whatever you want
-        console.log(this.htmlFromEditor)
+        content: 'Initial Content'  
       }
     }
   }

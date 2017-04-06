@@ -3,9 +3,9 @@
   "description": "HTML editor using Vue.js 2.0 and Quill.js, an open source editor&#34;",
   "version": "0.0.0",
   "repository": {},
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "files": [
-    "src"
+    "dist"
   ],
   "scripts": {
     "test": "echo lol",
@@ -18,12 +18,13 @@
   },
   "devDependencies": {
     "gh-pages": "^0.12.0",
+    "node-sass": "^4.5.2",
+    "sass-loader": "^6.0.3",
+    "spectre.css": "^0.2.12",
     "vbuild": "^6.0.0"
   },
   "license": "MIT",
   "dependencies": {
-    "node-sass": "^4.5.2",
-    "quill": "^1.2.3",
-    "sass-loader": "^6.0.3"
+    "quill": "^1.2.3"
   }
 }

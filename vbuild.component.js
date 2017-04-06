@@ -8,7 +8,7 @@ module.exports = {
   extract: false,
   filename: {
     js: 'index.js',
-    css: 'vue2-editor.css'
+    // css: 'vue2Editor.css'
   },
   // this will not copy ./static/** to ./dist/**
   copy: false
