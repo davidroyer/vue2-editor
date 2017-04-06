@@ -14,17 +14,17 @@ _You can use Yarn or NPM_
 ```bash
 $ npm install --save vue2-editor
 ```
-
 **OR**
-
 ```bash
 yarn add vue2-editor
 ```
 
-# Use
+# Usage
 
 ```javascript
-import { VueEditor } from 'vue2-editor'
+import Vue2Editor from 'vue2-editor'
+
+//... your code
 ```
 
 # Props
@@ -195,13 +195,6 @@ editorToolbar | Array  | ** _Too long for table. See toolbar example below_ | Us
 </script>
 ```
 
-# Usage
-
-```javascript
-import Vue2Editor from 'vue2-editor'
-
-//... your code
-```
 
 # Folder structure
 
