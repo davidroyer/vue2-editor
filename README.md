@@ -51,12 +51,13 @@ editorToolbar | Array  | ** _Too long for table. See toolbar example below_ | Us
  <script>
    import { VueEditor } from 'vue2-editor'
 
-   components: {
-     VueEditor
-   },
-
    export default {
-     data() {
+  
+   components: {
+      VueEditor
+   },
+   
+   data() {
        return {
          content: '<h1>Some initial content</h1>'  
        }
