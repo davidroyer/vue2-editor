@@ -22,7 +22,7 @@ yarn add vue2-editor
 # Usage
 
 ```javascript
-import {VueEditor} from 'vue2-editor'
+import { VueEditor } from 'vue2-editor'
 
 //... your code
 ```
@@ -52,11 +52,11 @@ editorToolbar | Array  | ** _Too long for table. See toolbar example below_ | Us
    import { VueEditor } from 'vue2-editor'
 
    export default {
-  
+
    components: {
       VueEditor
    },
-   
+
    data() {
        return {
          content: '<h1>Some initial content</h1>'  
