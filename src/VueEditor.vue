@@ -1,6 +1,6 @@
 <template>
-<div id="quillWrapper">
-  <div ref="quillContainer" id="quill-container"></div>
+<div class="quillWrapper">
+  <div ref="quillContainer" :id="id"></div>
 </div>
 </template>
 <script>
@@ -28,13 +28,12 @@ export default {
   name: 'vue-editor',
   props: {
     value: String,
-    placeholder: String,
-    disabled: {
-      type: Boolean,
-      default () {
-        return false
-      }
+    id: {
+      type: String,
+      default: 'quill-container'
     },
+    placeholder: String,
+    disabled: Boolean,
     editorToolbar: Array,
   },
 
@@ -49,6 +48,7 @@ export default {
   mounted() {
     this.initializeVue2Editor()
     this.handleUpdatedEditor()
+    this.checkForDisabled()
   },
 
   watch: {
@@ -58,7 +58,7 @@ export default {
       }
     },
     disabled(status) {
-      this.quill.enable(status);
+      this.quill.enable(!status);
     }
   },
 
@@ -75,12 +75,13 @@ export default {
           toolbar: this.toolbar
         },
         placeholder: this.placeholder ? this.placeholder : '',
-        theme: 'snow'
+        theme: 'snow',
+        readOnly: this.disabled ? this.disabled : false,
       })
     },
 
     setEditorElement() {
-      this.editor = document.querySelector('.ql-editor')
+      this.editor = document.querySelector(`#${this.id} .ql-editor`)
     },
 
     checkForInitialContent() {

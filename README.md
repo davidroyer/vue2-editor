@@ -31,6 +31,7 @@ import { VueEditor } from 'vue2-editor'
 
 Name           | Type   | Default                                            | Description
 -------------- | ------ | -------------------------------------------------- | ----------------------------------------------------------------------
+id | String | quill-container | Set the id (necessary if multiple editors in the same view)
 v-model        | String | -                                                  | Set v-model to the the content or data property you wish to bind it to
 placeholder    | String | -                                                  | Placeholder text for the editor
 disabled | Boolean | false | Set to true to disable editor
@@ -100,6 +101,44 @@ editorToolbar | Array  | ** _Too long for table. See toolbar example below_ | Us
   }
 </script>
 ```
+
+## Example
+
+**_Using Multiple Editors_**
+
+```html
+<template>
+  <div id="app">
+    <button @click="setEditorContent">Set Editor Contents</button>
+    <vue-editor id="editor1" v-model="editor1Content"></vue-editor>
+    <vue-editor id="editor2" v-model="editor2Content"></vue-editor>
+  </div>
+</template>
+
+<script>
+  import { VueEditor } from 'vue2-editor'
+
+  export default {
+    components: {
+      VueEditor
+    },
+
+    data() {
+      return {
+        editor1Content: '<h1>Editor 1 Starting Content</h1>',
+        editor2Content: '<h1>Editor 2 Starting Content</h1>',
+      }
+    }
+  }
+</script>
+
+<style>
+  #editor1, #editor2 {
+    height: 350px;
+  }
+</style>
+```
+
 
 ## Example
 **_Custom Toolbar_**
