@@ -109,7 +109,6 @@ editorToolbar | Array  | ** _Too long for table. See toolbar example below_ | Us
 ```html
 <template>
   <div id="app">
-    <button @click="setEditorContent">Set Editor Contents</button>
     <vue-editor id="editor1" v-model="editor1Content"></vue-editor>
     <vue-editor id="editor2" v-model="editor2Content"></vue-editor>
   </div>
