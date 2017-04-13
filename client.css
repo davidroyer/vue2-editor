@@ -1,1 +1,1 @@
-#preview{background:#f6f6f6;border-left:3px solid gray;padding:2em;margin-left:1em}@media (min-width:601px){#preview{width:47%}}#quill-container{height:400px}
+body{padding:2em 1em}.flexWrapper{display:flex;justify-content:space-between;margin:2em 0;flex-flow:row wrap}.flexWrapper .blogLabel{flex-basis:100%;font-weight:700;font-size:1.75em;line-height:1.75;margin-bottom:.25em;margin-top:1em}.flexWrapper>*{flex-basis:48%}#content,#summary{height:350px}.title{text-align:center;font-weight:600;border-bottom:2px solid #3f51b5}#quill-container{height:400px}
