@@ -34,7 +34,7 @@ export default {
     },
     placeholder: String,
     disabled: Boolean,
-    editorToolbar: Array,
+    editorToolbar: [Array, Object],
   },
 
   data() {
