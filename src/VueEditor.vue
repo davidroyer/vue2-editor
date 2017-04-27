@@ -107,6 +107,7 @@ export default {
 }
 
 .ql-toolbar {
-  border-bottom: 1px solid #ccc;
+  border: none !important;
+  border-bottom: 1px solid #ccc !important;
 }
 </style>
