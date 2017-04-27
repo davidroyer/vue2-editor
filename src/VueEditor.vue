@@ -97,7 +97,5 @@ export default {
 </script>
 
 <style>
-  #quill-container {
-    height: 400px;
-  }
+
 </style>
