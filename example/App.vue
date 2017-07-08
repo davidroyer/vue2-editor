@@ -11,7 +11,7 @@
     <!-- <button class="btn btn-primary" @click="toggleDisabled">Toggle Disabled</button> -->
     <div class="columns">
       <div class="editorWrapper column col-6 col-sm-12">
-        <vue-editor id="editor1" @imageAdded="handleImageAdded" :functionProp="sendUrlToEditor" v-model="editor1Content" :disabled="editor1IsDisabled"></vue-editor>
+        <vue-editor id="editor1" @imageAdded="handleImageAdded" useCustomImageHandler v-model="editor1Content" :disabled="editor1IsDisabled"></vue-editor>
         <button class="btn btn-primary" @click="saveContent(editor1Content)">Save</button>
         <button class="btn btn-primary" @click="toggleDisabledForEditor1">Toggle Disabled</button>
         <button class="btn btn-primary" @click="setEditor1">Set Editor</button>
