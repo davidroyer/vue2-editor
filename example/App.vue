@@ -11,7 +11,7 @@
     <!-- <button class="btn btn-primary" @click="toggleDisabled">Toggle Disabled</button> -->
     <div class="columns">
       <div class="editorWrapper column col-6 col-sm-12">
-        <vue-editor id="editor1" v-model="editor1Content" :disabled="editor1IsDisabled"></vue-editor>
+        <vue-editor id="editor1" @imageAdded="handleImageAdded" :functionProp="sendUrlToEditor" v-model="editor1Content" :disabled="editor1IsDisabled"></vue-editor>
         <button class="btn btn-primary" @click="saveContent(editor1Content)">Save</button>
         <button class="btn btn-primary" @click="toggleDisabledForEditor1">Toggle Disabled</button>
         <button class="btn btn-primary" @click="setEditor1">Set Editor</button>
@@ -30,10 +30,12 @@
 </template>
 
 <script>
+const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dkrcloudinary/upload'
+const UPLOAD_PRESET = 'ptvbj5nu'
 import {
   VueEditor
 } from '../src/index.js'
-
+import axios from 'axios'
 export default {
   components: {
     VueEditor,
@@ -57,7 +59,9 @@ export default {
       ]
     }
   },
+  created() {
 
+  },
   methods: {
     setEditor1(editor) {
       this.editor1Content = 'Set Editor 1 Content'
@@ -77,8 +81,57 @@ export default {
     },
     toggleDisabledForEditor2() {
       this.editor2IsDisabled = !this.editor2IsDisabled
-    }
+    },
+    sendUrlToEditor() {
+      console.log('worked');
+    },
+    handleImageAdded(file, Editor, cursorLocation) {
+      console.log('Using Method in Parent');
 
+      var formData = new FormData();
+      formData.append('file', file)
+      formData.append('upload_preset', UPLOAD_PRESET)
+
+      axios({
+        url: CLOUDINARY_URL,
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        data: formData
+      })
+      .then((result) => {
+        let url = result.data.url
+        Editor.insertEmbed(cursorLocation, 'image', url);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+
+    },
+    uploadImage(file) {
+      var formData = new FormData();
+      formData.append('file', file)
+      formData.append('upload_preset', UPLOAD_PRESET)
+
+      axios({
+        url: CLOUDINARY_URL,
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        data: formData
+      })
+      .then((result) => {
+        let url = result.data.url
+        console.log(url);
+        // var range = this.quill.getSelection();
+        // this.quill.insertEmbed(range.index, 'image', url, Quill.sources.API);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
   }
 }
 </script>
