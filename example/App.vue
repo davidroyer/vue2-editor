@@ -109,7 +109,7 @@ export default {
       })
 
     },
-    uploadImage(file) {
+    uploadImage(file, Editor, cursorLocation) {
       var formData = new FormData();
       formData.append('file', file)
       formData.append('upload_preset', UPLOAD_PRESET)
@@ -124,9 +124,7 @@ export default {
       })
       .then((result) => {
         let url = result.data.url
-        console.log(url);
-        // var range = this.quill.getSelection();
-        // this.quill.insertEmbed(range.index, 'image', url, Quill.sources.API);
+        Editor.insertEmbed(cursorLocation, 'image', url);
       })
       .catch((err) => {
         console.log(err);
