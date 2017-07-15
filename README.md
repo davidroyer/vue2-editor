@@ -32,7 +32,7 @@ import { VueEditor } from 'vue2-editor'
 Name           | Type   | Default                                            | Description
 -------------- | ------ | -------------------------------------------------- | ----------------------------------------------------------------------
 id | String | quill-container | Set the id (necessary if multiple editors in the same view)
-v-model        | String | -                                                  | Set v-model to the the content or data property you wish to bind it to
+v-model        | String | -                                                  | Set v-model to the the content or data property you wish to bind it to                                              | Handle image uploading instead of using default conversion to data URL's 
 useCustomImageHandler | Boolean | false |
 placeholder    | String | -                                                  | Placeholder text for the editor
 disabled | Boolean | false | Set to true to disable editor
@@ -73,7 +73,7 @@ onImageAdded | Emitted when useCustomImageHandler is true and and photo is being
 
 ## Example
 
-**_Upload image to server and use returned url instead of data64_**
+**_Upload image to server and use returned url instead of data URL_**
 If you choose to use the custom image handler, an event is emitted when a a photo is selected.
 You can see below that 3 parameters are passed.
 1. It passes the file to be handled however you need
@@ -85,7 +85,7 @@ You can see below that 3 parameters are passed.
   <div id="app">
     <vue-editor id="editor"
       useCustomImageHandler
-      @imageAdded="handleImageAdded"  v-model="htmlForEditor">
+      @imageAdded="handleImageAdded" v-model="htmlForEditor">
     </vue-editor>
   </div>
 </template>
@@ -106,7 +106,7 @@ You can see below that 3 parameters are passed.
 
     methods: {
       handleImageAdded: function(file, Editor, cursorLocation) {
-        
+
       }
     }
   }
