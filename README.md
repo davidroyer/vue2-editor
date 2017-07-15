@@ -33,11 +33,15 @@ Name           | Type   | Default                                            | D
 -------------- | ------ | -------------------------------------------------- | ----------------------------------------------------------------------
 id | String | quill-container | Set the id (necessary if multiple editors in the same view)
 v-model        | String | -                                                  | Set v-model to the the content or data property you wish to bind it to
+useCustomImageHandler | Boolean | false |
 placeholder    | String | -                                                  | Placeholder text for the editor
 disabled | Boolean | false | Set to true to disable editor
 editorToolbar | Array  | ** _Too long for table. See toolbar example below_ | Use a custom toolbar
 
-<!-- ## Events Name | Description ---------------- | ----------- editor-updated | Emitted when the editor contents change save-content | Emitted when the default save button is clicked -->
+# Events
+Name | Description ---------------- | -----------
+onImageAdded | Emitted when useCustomImageHandler is true and and photo is being added to the editor
+<!-- Emitted when the default save button is clicked -->
 
 ## Example
 **_Basic Setup_**
@@ -65,6 +69,48 @@ editorToolbar | Array  | ** _Too long for table. See toolbar example below_ | Us
      }
    }
  </script>
+```
+
+## Example
+
+**_Upload image to server and use returned url instead of data64_**
+If you choose to use the custom image handler, an event is emitted when a a photo is selected.
+You can see below that 3 parameters are passed.
+1. It passes the file to be handled however you need
+2. The Editor instance
+4. The cursor position at the time of upload so the image can be inserted at the correct position on success
+
+```html
+<template>
+  <div id="app">
+    <vue-editor id="editor"
+      useCustomImageHandler
+      @imageAdded="handleImageAdded"  v-model="htmlForEditor">
+    </vue-editor>
+  </div>
+</template>
+
+<script>
+  import { VueEditor } from 'vue2-editor'
+
+  export default {
+    components: {
+      VueEditor
+    },
+
+    data() {
+      return {
+        htmlForEditor: ''  
+      }
+    },
+
+    methods: {
+      handleImageAdded: function(file, Editor, cursorLocation) {
+        
+      }
+    }
+  }
+</script>
 ```
 
 ## Example

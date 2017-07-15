@@ -30,6 +30,8 @@
 </template>
 
 <script>
+
+const CLIENT_ID = '993793b1d8d3e2e'
 const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dkrcloudinary/upload'
 const UPLOAD_PRESET = 'ptvbj5nu'
 import {
@@ -86,39 +88,76 @@ export default {
       console.log('worked');
     },
     handleImageAdded(file, Editor, cursorLocation) {
+
       console.log('Using Method in Parent');
 
       var formData = new FormData();
-      formData.append('file', file)
-      formData.append('upload_preset', UPLOAD_PRESET)
+      formData.append('image', file)
+
+
+
 
       axios({
-        url: CLOUDINARY_URL,
+        url: 'https://api.imgur.com/3/image',
         method: 'POST',
         headers:{
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Authorization': 'Client-ID ' + CLIENT_ID
         },
         data: formData
       })
       .then((result) => {
-        let url = result.data.url
+        console.log(result);
+        let url = result.data.data.link
         Editor.insertEmbed(cursorLocation, 'image', url);
       })
       .catch((err) => {
         console.log(err);
       })
+      // axios({
+      //   url: CLOUDINARY_URL,
+      //   method: 'POST',
+      //   headers:{
+      //     'Content-Type': 'application/x-www-form-urlencoded'
+      //   },
+      //   data: formData
+      // })
+      // .then((result) => {
+      //   let url = result.data.url
+      //   Editor.insertEmbed(cursorLocation, 'image', url);
+      // })
+      // .catch((err) => {
+      //   console.log(err);
+      // })
 
     },
     uploadImage(file, Editor, cursorLocation) {
       var formData = new FormData();
-      formData.append('file', file)
-      formData.append('upload_preset', UPLOAD_PRESET)
+      // formData.append('file', file)
+      // formData.append('upload_preset', UPLOAD_PRESET)
+      //
+      //
+
+      // var settings = {
+      //   "async": true,
+      //   "crossDomain": true,
+      //   "url": "https://api.imgur.com/3/image",
+      //   "method": "POST",
+      //   "headers": {
+      //     "authorization":
+      //   },
+      //   "processData": false,
+      //   "contentType": false,
+      //   "mimeType": "multipart/form-data",
+      //   "data": formData
+      // }
+
 
       axios({
-        url: CLOUDINARY_URL,
+        url: 'https://api.imgur.com/3/image',
         method: 'POST',
         headers:{
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'authorization': 'Client-ID' + CLIENT_ID
         },
         data: formData
       })
@@ -129,6 +168,23 @@ export default {
       .catch((err) => {
         console.log(err);
       })
+
+      //
+      // axios({
+      //   url: CLOUDINARY_URL,
+      //   method: 'POST',
+      //   headers:{
+      //     'Content-Type': 'application/x-www-form-urlencoded'
+      //   },
+      //   data: formData
+      // })
+      // .then((result) => {
+      //   let url = result.data.url
+      //   Editor.insertEmbed(cursorLocation, 'image', url);
+      // })
+      // .catch((err) => {
+      //   console.log(err);
+      // })
     }
   }
 }
