@@ -32,15 +32,16 @@ import { VueEditor } from 'vue2-editor'
 Name           | Type   | Default                                            | Description
 -------------- | ------ | -------------------------------------------------- | ----------------------------------------------------------------------
 id | String | quill-container | Set the id (necessary if multiple editors in the same view)
-v-model        | String | -                                                  | Set v-model to the the content or data property you wish to bind it to                                              | Handle image uploading instead of using default conversion to data URL's 
-useCustomImageHandler | Boolean | false |
+v-model | String | - | Set v-model to the the content or data property you wish to bind it to
+useCustomImageHandler | Boolean | false | Handle image uploading instead of using default conversion to Base64
 placeholder    | String | -                                                  | Placeholder text for the editor
 disabled | Boolean | false | Set to true to disable editor
 editorToolbar | Array  | ** _Too long for table. See toolbar example below_ | Use a custom toolbar
 
 # Events
-Name | Description ---------------- | -----------
-onImageAdded | Emitted when useCustomImageHandler is true and and photo is being added to the editor
+Name           | Parameters   | Description
+-------------- | ------------ | ----------------------------------------------------------------------
+imageAdded   | file, Editor, cursorLocation |  Emitted when useCustomImageHandler is true and and photo is being added to the editor
 <!-- Emitted when the default save button is clicked -->
 
 ## Example
@@ -92,7 +93,7 @@ You can see below that 3 parameters are passed.
 
 <script>
   import { VueEditor } from 'vue2-editor'
-
+  import axios from 'axios'
   export default {
     components: {
       VueEditor
@@ -106,7 +107,25 @@ You can see below that 3 parameters are passed.
 
     methods: {
       handleImageAdded: function(file, Editor, cursorLocation) {
+        // An example of using FormData
+        // NOTE: Your key could be different such as:
+        // formData.append('file', file)
 
+        var formData = new FormData();
+        formData.append('image', file)
+
+        axios({
+          url: 'https://fakeapi.yoursite.com/images',
+          method: 'POST',
+          data: formData
+        })
+        .then((result) => {
+          let url = result.data.url // Get url from response
+          Editor.insertEmbed(cursorLocation, 'image', url);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
       }
     }
   }
