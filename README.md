@@ -1,6 +1,6 @@
-# Vue2-Editor 2.0
+# Vue2-Editor
 
-![Vue2Editor-Centered](https://www.dropbox.com/s/7com4d32zct44nc/Vue2Editor-Centered.png?raw=1) HTML Editor using Vue.js 2.0 and Quilljs
+![Vue2Editor-Centered](https://www.dropbox.com/s/7com4d32zct44nc/Vue2Editor-Centered.png?raw=1) HTML Editor using Vue.js and Quilljs
 
 [Vue.js](https://vuejs.org)
 
@@ -32,12 +32,17 @@ import { VueEditor } from 'vue2-editor'
 Name           | Type   | Default                                            | Description
 -------------- | ------ | -------------------------------------------------- | ----------------------------------------------------------------------
 id | String | quill-container | Set the id (necessary if multiple editors in the same view)
-v-model        | String | -                                                  | Set v-model to the the content or data property you wish to bind it to
+v-model | String | - | Set v-model to the the content or data property you wish to bind it to
+useCustomImageHandler | Boolean | false | Handle image uploading instead of using default conversion to Base64
 placeholder    | String | -                                                  | Placeholder text for the editor
 disabled | Boolean | false | Set to true to disable editor
 editorToolbar | Array  | ** _Too long for table. See toolbar example below_ | Use a custom toolbar
 
-<!-- ## Events Name | Description ---------------- | ----------- editor-updated | Emitted when the editor contents change save-content | Emitted when the default save button is clicked -->
+# Events
+Name           | Parameters   | Description
+-------------- | ------------ | ----------------------------------------------------------------------
+imageAdded   | file, Editor, cursorLocation |  Emitted when useCustomImageHandler is true and photo is being added to the editor
+<!-- Emitted when the default save button is clicked -->
 
 ## Example
 **_Basic Setup_**
@@ -65,6 +70,68 @@ editorToolbar | Array  | ** _Too long for table. See toolbar example below_ | Us
      }
    }
  </script>
+```
+
+## Example
+
+**_Upload image to server and use returned url instead of data URL_**
+If you choose to use the custom image handler, an event is emitted when a a photo is selected.
+You can see below that 3 parameters are passed.
+1. It passes the file to be handled however you need
+2. The Editor instance
+4. The cursor position at the time of upload so the image can be inserted at the correct position on success
+
+**NOTE** In addition to this example, I have created a [new example repo](https://github.com/davidroyer/vue2editor-images) demonstrating this new feature with an actual server. 
+
+```html
+<template>
+  <div id="app">
+    <vue-editor id="editor"
+      useCustomImageHandler
+      @imageAdded="handleImageAdded" v-model="htmlForEditor">
+    </vue-editor>
+  </div>
+</template>
+
+<script>
+  import { VueEditor } from 'vue2-editor'
+  import axios from 'axios'
+  export default {
+    components: {
+      VueEditor
+    },
+
+    data() {
+      return {
+        htmlForEditor: ''  
+      }
+    },
+
+    methods: {
+      handleImageAdded: function(file, Editor, cursorLocation) {
+        // An example of using FormData
+        // NOTE: Your key could be different such as:
+        // formData.append('file', file)
+
+        var formData = new FormData();
+        formData.append('image', file)
+
+        axios({
+          url: 'https://fakeapi.yoursite.com/images',
+          method: 'POST',
+          data: formData
+        })
+        .then((result) => {
+          let url = result.data.url // Get url from response
+          Editor.insertEmbed(cursorLocation, 'image', url);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+      }
+    }
+  }
+</script>
 ```
 
 ## Example

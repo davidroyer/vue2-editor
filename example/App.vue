@@ -1,39 +1,26 @@
 <template>
 <div id="app">
   <div class="container grid-960">
-    <h1>Vue2Editor 2.0 (In Development)</h1>
-    <!-- <vue-editor
-        v-model="content"
-        :editor-toolbar="customToolbar">
-      </vue-editor> -->
-    <!-- <button class="btn btn-primary" @click="saveContent(content)">Save</button> -->
-    <!-- <button class="btn btn-primary" @click="setEditor">Set Editor</button> -->
-    <!-- <button class="btn btn-primary" @click="toggleDisabled">Toggle Disabled</button> -->
+    <h1>Vue2Editor - Upload Images Example </h1>
     <div class="columns">
       <div class="editorWrapper column col-6 col-sm-12">
-        <vue-editor id="editor1" v-model="editor1Content" :disabled="editor1IsDisabled"></vue-editor>
+        <vue-editor id="editor1" @imageAdded="handleImageAdded" useCustomImageHandler v-model="editor1Content"></vue-editor>
         <button class="btn btn-primary" @click="saveContent(editor1Content)">Save</button>
-        <button class="btn btn-primary" @click="toggleDisabledForEditor1">Toggle Disabled</button>
-        <button class="btn btn-primary" @click="setEditor1">Set Editor</button>
-
-        <vue-editor id="editor2" v-model="editor2Content" :disabled="editor2IsDisabled"></vue-editor>
-        <button class="btn btn-primary" @click="saveContent(editor2Content)">Save</button>
-        <button class="btn btn-primary" @click="toggleDisabledForEditor2">Toggle Disabled</button>
-        <button class="btn btn-primary" @click="setEditor2">Set Editor</button>
-
-        <!-- <vue-editor v-model="editorContent" :editorToolbar="customToolbar"></vue-editor> -->
       </div>
-      <!-- <div id="preview" class="column col-6 col-sm-12" v-if="showPreview" v-html="editorContent"></div> -->
     </div>
   </div>
 </div>
 </template>
 
 <script>
+
+const CLIENT_ID = '993793b1d8d3e2e'
+const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dkrcloudinary/upload'
+const UPLOAD_PRESET = 'ptvbj5nu'
 import {
   VueEditor
 } from '../src/index.js'
-
+import axios from 'axios'
 export default {
   components: {
     VueEditor,
@@ -57,7 +44,9 @@ export default {
       ]
     }
   },
+  created() {
 
+  },
   methods: {
     setEditor1(editor) {
       this.editor1Content = 'Set Editor 1 Content'
@@ -77,8 +66,109 @@ export default {
     },
     toggleDisabledForEditor2() {
       this.editor2IsDisabled = !this.editor2IsDisabled
-    }
+    },
+    sendUrlToEditor() {
+      console.log('worked');
+    },
+    handleImageAdded(file, Editor, cursorLocation) {
 
+      console.log('Using Method in Parent');
+
+      var formData = new FormData();
+      formData.append('image', file)
+
+
+
+
+      axios({
+        url: 'https://api.imgur.com/3/image',
+        method: 'POST',
+        headers:{
+          'Authorization': 'Client-ID ' + CLIENT_ID
+        },
+        data: formData
+      })
+      .then((result) => {
+        console.log(result);
+        let url = result.data.data.link
+        Editor.insertEmbed(cursorLocation, 'image', url);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      // axios({
+      //   url: CLOUDINARY_URL,
+      //   method: 'POST',
+      //   headers:{
+      //     'Content-Type': 'application/x-www-form-urlencoded'
+      //   },
+      //   data: formData
+      // })
+      // .then((result) => {
+      //   let url = result.data.url
+      //   Editor.insertEmbed(cursorLocation, 'image', url);
+      // })
+      // .catch((err) => {
+      //   console.log(err);
+      // })
+
+    },
+    uploadImage(file, Editor, cursorLocation) {
+      var formData = new FormData();
+      // formData.append('file', file)
+      // formData.append('upload_preset', UPLOAD_PRESET)
+      //
+      //
+
+      // var settings = {
+      //   "async": true,
+      //   "crossDomain": true,
+      //   "url": "https://api.imgur.com/3/image",
+      //   "method": "POST",
+      //   "headers": {
+      //     "authorization":
+      //   },
+      //   "processData": false,
+      //   "contentType": false,
+      //   "mimeType": "multipart/form-data",
+      //   "data": formData
+      // }
+
+
+      axios({
+        url: 'https://api.imgur.com/3/image',
+        method: 'POST',
+        headers:{
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'authorization': 'Client-ID' + CLIENT_ID
+        },
+        data: formData
+      })
+      .then((result) => {
+        let url = result.data.url
+        Editor.insertEmbed(cursorLocation, 'image', url);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+
+      //
+      // axios({
+      //   url: CLOUDINARY_URL,
+      //   method: 'POST',
+      //   headers:{
+      //     'Content-Type': 'application/x-www-form-urlencoded'
+      //   },
+      //   data: formData
+      // })
+      // .then((result) => {
+      //   let url = result.data.url
+      //   Editor.insertEmbed(cursorLocation, 'image', url);
+      // })
+      // .catch((err) => {
+      //   console.log(err);
+      // })
+    }
   }
 }
 </script>

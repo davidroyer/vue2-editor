@@ -11,3 +11,5 @@ npm-debug.log
 # produced by vbuild
 dist
 dist-example
+
+example/cloudinary.vue

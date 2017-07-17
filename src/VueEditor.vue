@@ -1,8 +1,10 @@
 <template>
 <div class="quillWrapper">
   <div ref="quillContainer" :id="id"></div>
+  <input v-if="useCustomImageHandler" @change="emitImageInfo($event)" ref="fileInput" id="file-upload" type="file" style="display:none;">
 </div>
 </template>
+
 <script>
 import Quill from 'quill'
 import 'quill/dist/quill.core.css'
@@ -35,13 +37,17 @@ export default {
     placeholder: String,
     disabled: Boolean,
     editorToolbar: Array,
+    useCustomImageHandler: {
+      type: Boolean,
+      default: false
+    }
   },
 
   data() {
     return {
       quill: null,
       editor: null,
-      toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar
+      toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar,
     }
   },
 
@@ -77,6 +83,7 @@ export default {
         theme: 'snow',
         readOnly: this.disabled ? this.disabled : false,
       })
+      this.checkForCustomImageHandler()
     },
 
     setEditorElement() {
@@ -87,10 +94,31 @@ export default {
       this.editor.innerHTML = this.value || ''
     },
 
+    checkForCustomImageHandler() {
+      this.useCustomImageHandler === true ? this.setupCustomImageHandler() : ''
+    },
+
+    setupCustomImageHandler() {
+      let toolbar = this.quill.getModule('toolbar');
+      toolbar.addHandler('image', this.customImageHandler);
+    },
+
     handleUpdatedEditor() {
       this.quill.on('text-change', () => {
         this.$emit('input', this.editor.innerHTML)
       })
+    },
+
+    customImageHandler(image, callback) {
+      this.$refs.fileInput.click();
+    },
+
+    emitImageInfo($event) {
+      let file = $event.target.files[0]
+      let Editor = this.quill
+      let range = Editor.getSelection();
+      let cursorLocation = range.index
+      this.$emit('imageAdded', file, Editor, cursorLocation)
     }
   }
 }
