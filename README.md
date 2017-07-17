@@ -75,13 +75,14 @@ imageAdded   | file, Editor, cursorLocation |  Emitted when useCustomImageHandle
 ## Example
 
 **_Upload image to server and use returned url instead of data URL_**
+
 If you choose to use the custom image handler, an event is emitted when a a photo is selected.
 You can see below that 3 parameters are passed.
 1. It passes the file to be handled however you need
 2. The Editor instance
 4. The cursor position at the time of upload so the image can be inserted at the correct position on success
 
-**NOTE** In addition to this example, I have created a [new example repo](https://github.com/davidroyer/vue2editor-images) demonstrating this new feature with an actual server. 
+**NOTE** In addition to this example, I have created a [new example repo](https://github.com/davidroyer/vue2editor-images) demonstrating this new feature with an actual server.
 
 ```html
 <template>
