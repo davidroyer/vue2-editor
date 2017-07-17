@@ -125,7 +125,17 @@ export default {
 </script>
 
 <style>
-  #quill-container {
-    height: 400px;
-  }
+.quillWrapper {
+  overflow-x: auto; 
+  border: 1px solid #ccc;
+}
+
+#quill-container {
+  border: none;
+}
+
+.ql-toolbar {
+  border: none !important;
+  border-bottom: 1px solid #ccc !important;
+}
 </style>
