@@ -41,7 +41,7 @@ editorToolbar | Array  | ** _Too long for table. See toolbar example below_ | Us
 # Events
 Name           | Parameters   | Description
 -------------- | ------------ | ----------------------------------------------------------------------
-imageAdded   | file, Editor, cursorLocation |  Emitted when useCustomImageHandler is true and and photo is being added to the editor
+imageAdded   | file, Editor, cursorLocation |  Emitted when useCustomImageHandler is true and photo is being added to the editor
 <!-- Emitted when the default save button is clicked -->
 
 ## Example
@@ -80,6 +80,8 @@ You can see below that 3 parameters are passed.
 1. It passes the file to be handled however you need
 2. The Editor instance
 4. The cursor position at the time of upload so the image can be inserted at the correct position on success
+
+**NOTE** In addition to this example, I have created a [new example repo](https://github.com/davidroyer/vue2editor-images) demonstrating this new feature with an actual server. 
 
 ```html
 <template>
