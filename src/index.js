@@ -5,7 +5,7 @@ import VueEditor from './VueEditor.vue'
 
 const Vue2Editor = {
   VueEditor,
-  install: function(Vue) {
+  install(Vue) {
     Vue.component(VueEditor.name, VueEditor)
   }
 }
