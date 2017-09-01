@@ -15,15 +15,15 @@
 <script>
 
 const CLIENT_ID = '993793b1d8d3e2e'
-const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dkrcloudinary/upload'
-const UPLOAD_PRESET = 'ptvbj5nu'
+// const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dkrcloudinary/upload'
+// const UPLOAD_PRESET = 'ptvbj5nu'
 import {
   VueEditor
 } from '../src/index.js'
 import axios from 'axios'
 export default {
   components: {
-    VueEditor,
+    VueEditor
   },
   data() {
     return {
@@ -36,9 +36,9 @@ export default {
       customToolbar: [
         ['bold', 'italic', 'underline'],
         [{
-          'list': 'ordered'
+          list: 'ordered'
         }, {
-          'list': 'bullet'
+          list: 'bullet'
         }],
         ['image', 'code-block']
       ]
@@ -57,8 +57,8 @@ export default {
     },
 
     saveContent(content) {
-      console.log(content);
-      // console.log(this.editorContent);
+      console.log(content)
+      // console.log(this.editorContent)
     },
 
     toggleDisabledForEditor1() {
@@ -68,33 +68,27 @@ export default {
       this.editor2IsDisabled = !this.editor2IsDisabled
     },
     sendUrlToEditor() {
-      console.log('worked');
+      console.log('worked')
     },
     handleImageAdded(file, Editor, cursorLocation) {
+      console.log('Using Method in Parent')
 
-      console.log('Using Method in Parent');
-
-      var formData = new FormData();
+      const formData = new FormData()
       formData.append('image', file)
-
-
-
 
       axios({
         url: 'https://api.imgur.com/3/image',
         method: 'POST',
-        headers:{
-          'Authorization': 'Client-ID ' + CLIENT_ID
-        },
+        headers: { Authorization: 'Client-ID ' + CLIENT_ID },
         data: formData
       })
-      .then((result) => {
-        console.log(result);
-        let url = result.data.data.link
-        Editor.insertEmbed(cursorLocation, 'image', url);
+      .then(result => {
+        console.log(result)
+        const url = result.data.data.link
+        Editor.insertEmbed(cursorLocation, 'image', url)
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(err => {
+        console.log(err)
       })
       // axios({
       //   url: CLOUDINARY_URL,
@@ -111,10 +105,9 @@ export default {
       // .catch((err) => {
       //   console.log(err);
       // })
-
     },
     uploadImage(file, Editor, cursorLocation) {
-      var formData = new FormData();
+      const formData = new FormData()
       // formData.append('file', file)
       // formData.append('upload_preset', UPLOAD_PRESET)
       //
@@ -134,25 +127,23 @@ export default {
       //   "data": formData
       // }
 
-
       axios({
         url: 'https://api.imgur.com/3/image',
         method: 'POST',
-        headers:{
+        headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
-          'authorization': 'Client-ID' + CLIENT_ID
+          authorization: 'Client-ID' + CLIENT_ID
         },
         data: formData
       })
-      .then((result) => {
-        let url = result.data.url
-        Editor.insertEmbed(cursorLocation, 'image', url);
+      .then(result => {
+        const url = result.data.url
+        Editor.insertEmbed(cursorLocation, 'image', url)
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(err => {
+        console.log(err)
       })
 
-      //
       // axios({
       //   url: CLOUDINARY_URL,
       //   method: 'POST',

@@ -10,18 +10,18 @@ import Quill from 'quill'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 
-var defaultToolbar = [
+const defaultToolbar = [
   ['bold', 'italic', 'underline', 'strike'],
   ['blockquote', 'code-block', 'image'],
 
-  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+  [{ list: 'ordered' }, { list: 'bullet' }],
 
-  [{ 'indent': '-1'}, { 'indent': '+1' }],
-  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+  [{ indent: '-1' }, { indent: '+1' }],
+  [{ header: [1, 2, 3, 4, 5, 6, false] }],
 
-  [{ 'color': [] }, { 'background': [] }],
-  [{ 'font': [] }],
-  [{ 'align': [] }],
+  [{ color: [] }, { background: [] }],
+  [{ font: [] }],
+  [{ align: [] }],
 
   ['clean']
 ]
@@ -47,7 +47,7 @@ export default {
     return {
       quill: null,
       editor: null,
-      toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar,
+      toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar
     }
   },
 
@@ -57,13 +57,13 @@ export default {
   },
 
   watch: {
-    value (val) {
-      if (val !=  this.editor.innerHTML && !this.quill.hasFocus()) {
+    value(val) {
+      if (val !== this.editor.innerHTML && !this.quill.hasFocus()) {
         this.editor.innerHTML = val
       }
     },
     disabled(status) {
-      this.quill.enable(!status);
+      this.quill.enable(!status)
     }
   },
 
@@ -81,7 +81,7 @@ export default {
         },
         placeholder: this.placeholder ? this.placeholder : '',
         theme: 'snow',
-        readOnly: this.disabled ? this.disabled : false,
+        readOnly: this.disabled ? this.disabled : false
       })
       this.checkForCustomImageHandler()
     },
@@ -95,12 +95,14 @@ export default {
     },
 
     checkForCustomImageHandler() {
-      this.useCustomImageHandler === true ? this.setupCustomImageHandler() : ''
+      if (this.useCustomImageHandler === true) {
+        this.setupCustomImageHandler()
+      }
     },
 
     setupCustomImageHandler() {
-      let toolbar = this.quill.getModule('toolbar');
-      toolbar.addHandler('image', this.customImageHandler);
+      const toolbar = this.quill.getModule('toolbar')
+      toolbar.addHandler('image', this.customImageHandler)
     },
 
     handleUpdatedEditor() {
@@ -110,14 +112,14 @@ export default {
     },
 
     customImageHandler(image, callback) {
-      this.$refs.fileInput.click();
+      this.$refs.fileInput.click()
     },
 
     emitImageInfo($event) {
-      let file = $event.target.files[0]
-      let Editor = this.quill
-      let range = Editor.getSelection();
-      let cursorLocation = range.index
+      const file = $event.target.files[0]
+      const Editor = this.quill
+      const range = Editor.getSelection()
+      const cursorLocation = range.index
       this.$emit('imageAdded', file, Editor, cursorLocation)
     }
   }
