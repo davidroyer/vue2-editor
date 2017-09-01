@@ -1,7 +1,7 @@
 <template>
 <div class="quillWrapper">
   <div ref="quillContainer" :id="id"></div>
-  <input v-if="useCustomImageHandler" @change="emitImageInfo($event)" ref="fileInput" id="file-upload" type="file" style="display:none;">
+  <input v-if="useCustomImageHandler" @change="emitImageInfo($event)" ref="fileInput" id="file-upload" type="file" :maxLength="maxLength" style="display:none;">
 </div>
 </template>
 
@@ -36,6 +36,10 @@ export default {
     },
     placeholder: String,
     disabled: Boolean,
+    maxLength: {
+      type: Number,
+      default: -1,
+    },
     editorToolbar: Array,
     useCustomImageHandler: {
       type: Boolean,
