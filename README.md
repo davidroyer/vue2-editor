@@ -36,6 +36,7 @@ v-model | String | - | Set v-model to the the content or data property you wish 
 useCustomImageHandler | Boolean | false | Handle image uploading instead of using default conversion to Base64
 placeholder    | String | -                                                  | Placeholder text for the editor
 disabled | Boolean | false | Set to true to disable editor
+maxLength | Number | -1 | Set to max character limit for the editor
 editorToolbar | Array  | ** _Too long for table. See toolbar example below_ | Use a custom toolbar
 
 # Events
