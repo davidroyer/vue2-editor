@@ -40,6 +40,10 @@ export default {
     useCustomImageHandler: {
       type: Boolean,
       default: false
+    },
+    useCustomFormatHandler: {
+      type: Object,
+      default: {}
     }
   },
 
@@ -75,6 +79,8 @@ export default {
     },
 
     setQuillElement() {
+      this.checkForCustomFormatsHandler()
+
       this.quill = new Quill(this.$refs.quillContainer, {
         modules: {
           toolbar: this.toolbar
@@ -98,9 +104,44 @@ export default {
       this.useCustomImageHandler === true ? this.setupCustomImageHandler() : ''
     },
 
+    checkForCustomFormatsHandler() {
+      typeof this.useCustomFormatHandler === 'object' ? this.setupCustomFormatHandler() : ''
+    },
+
     setupCustomImageHandler() {
       let toolbar = this.quill.getModule('toolbar');
       toolbar.addHandler('image', this.customImageHandler);
+    },
+
+    setupCustomFormatHandler() {
+      const allowedBotls = [
+        'blockquote',
+        'bold',
+        'code',
+        'header',
+        'image',
+        'italic',
+        'list',
+        'mention',
+        'script',
+        'strike',
+        'underline',
+        'video'
+      ];
+
+      const formats = Object.keys(this.useCustomFormatHandler);
+
+      formats.map((format) => {
+        if (!allowedBotls.includes(format)) {
+          throw new Error(`Format "${format}" is not supported. Supported formats are: ${allowedBotls.join(', ')}`);
+        }
+
+        const tagName = this.useCustomFormatHandler[format];
+        const bolt = Quill.import(`formats/${format}`);
+
+        bolt.tagName = tagName;
+        Quill.register(bolt, true);
+      });
     },
 
     handleUpdatedEditor() {
