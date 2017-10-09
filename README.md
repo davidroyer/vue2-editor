@@ -37,6 +37,8 @@ useCustomImageHandler | Boolean | false | Handle image uploading instead of usin
 placeholder    | String | -                                                  | Placeholder text for the editor
 disabled | Boolean | false | Set to true to disable editor
 editorToolbar | Array  | ** _Too long for table. See toolbar example below_ | Use a custom toolbar
+useCustomFormatHandler | Object  | e.g. {'bold': 'b'} | Change html tag
+
 
 # Events
 Name           | Parameters   | Description
