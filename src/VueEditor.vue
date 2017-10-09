@@ -43,7 +43,7 @@ export default {
     },
     useCustomFormatHandler: {
       type: Object,
-      default: {}
+      default: () => {}
     }
   },
 
@@ -164,9 +164,3 @@ export default {
   }
 }
 </script>
-
-<style>
-  #quill-container {
-    height: 400px;
-  }
-</style>
