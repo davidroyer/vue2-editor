@@ -4,7 +4,7 @@
     <h1>Vue2Editor - Upload Images Example </h1>
     <div class="columns">
       <div class="editorWrapper column col-6 col-sm-12">
-        <vue-editor id="editor1" @imageAdded="handleImageAdded" useCustomImageHandler v-model="editor1Content"></vue-editor>
+        <vue-editor id="editor1" @imageAdded="handleImageAdded" useCustomImageHandler :useCustomFormatHandler="{'bold': 'b'}" v-model="editor1Content"></vue-editor>
         <button class="btn btn-primary" @click="saveContent(editor1Content)">Save</button>
       </div>
     </div>
