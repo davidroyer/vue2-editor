@@ -14,7 +14,7 @@ var defaultToolbar = [
   ['bold', 'italic', 'underline', 'strike'],
   ['blockquote', 'code-block', 'image'],
 
-  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
 
   [{ 'indent': '-1'}, { 'indent': '+1' }],
   [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
@@ -125,7 +125,10 @@ export default {
 </script>
 
 <style>
-  #quill-container {
-    height: 400px;
+  .ql-container {
+    min-height: 200px;
+  }
+  .ql-editor {
+    font-size: 16px;
   }
 </style>
