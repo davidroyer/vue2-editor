@@ -131,4 +131,12 @@ export default {
   .ql-editor {
     font-size: 16px;
   }
+  .quillWrapper .ql-editor ul[data-checked=true] > li::before, .quillWrapper .ql-editor ul[data-checked=false] > li::before {
+    font-size: 1.35em;
+    vertical-align: baseline;
+    bottom: -0.065em;
+    font-weight: 900;
+    color: #222;
+  }
+
 </style>
