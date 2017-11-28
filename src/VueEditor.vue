@@ -91,7 +91,7 @@ export default {
         readOnly: this.disabled ? this.disabled : false,
       };
       if (Object.keys(this.editorOptions).length > 0 && this.editorOptions.constructor === Object) {
-        if (typeof this.editorOptions.modules.toolbar !== 'undefined') {
+        if (this.editorOptions.modules && typeof this.editorOptions.modules.toolbar !== 'undefined') {
           // We don't want to merge default toolbar with provided toolbar.
           delete quillOptions.modules.toolbar;
         }
