@@ -7,6 +7,7 @@
 
 <script>
 import Quill from 'quill'
+import merge from 'lodash.merge'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 
@@ -40,6 +41,12 @@ export default {
     useCustomImageHandler: {
       type: Boolean,
       default: false
+    },
+    editorOptions: {
+      type: Object,
+      default: function () {
+        return {};
+      }
     }
   },
 
@@ -75,14 +82,23 @@ export default {
     },
 
     setQuillElement() {
-      this.quill = new Quill(this.$refs.quillContainer, {
+      let quillOptions = {
         modules: {
           toolbar: this.toolbar
         },
         placeholder: this.placeholder ? this.placeholder : '',
         theme: 'snow',
         readOnly: this.disabled ? this.disabled : false,
-      })
+      };
+      if (Object.keys(this.editorOptions).length > 0 && this.editorOptions.constructor === Object) {
+        if (typeof this.editorOptions.modules.toolbar !== 'undefined') {
+          // We don't want to merge default toolbar with provided toolbar.
+          delete quillOptions.modules.toolbar;
+        }
+        merge(quillOptions, this.editorOptions);
+      }
+      this.quill = new Quill(this.$refs.quillContainer, quillOptions)
+
       this.checkForCustomImageHandler()
     },
 
