@@ -171,12 +171,14 @@ export default {
   }
 
   .quillWrapper .ql-snow.ql-toolbar .ql-formats {
-    /* margin-bottom: 10px; */
+    display: inline-flex;
   }
 
   .quillWrapper .ql-snow.ql-toolbar button {
-    /* width: 22px; */
-    /* height: 22px; */
+    padding: 3px 7px;
+    width: 25px !important;
+    float: none !important;
+    margin: 1px 2px;
   }
   .quillWrapper .ql-editor ul[data-checked="true"] > li::before,
   .quillWrapper .ql-editor ul[data-checked="false"] > li::before {
