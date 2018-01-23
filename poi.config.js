@@ -4,9 +4,9 @@ module.exports = {
 	html: {
 		title: 'Vue2Editor'
 	},
-	filename: {
-		js: 'vue2editor.js',
-		css: 'vue2editor.css'
-	},
+	// filename: {
+	// 	js: 'vue2editor.js',
+	// 	css: 'vue2editor.css'
+	// },
 	extractCSS: true
 };

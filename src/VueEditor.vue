@@ -8,7 +8,7 @@
 <script>
 import Quill from 'quill'
 import merge from 'lodash.merge'
-
+// import icons from './icons'
 var defaultToolbar = [
   ['bold', 'italic', 'underline', 'strike'],
   ['blockquote', 'code-block', 'image'],
