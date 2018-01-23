@@ -2,6 +2,22 @@
 # yarn lockfile v1
 
 
+"@fortawesome/fontawesome-common-types@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.1.1.tgz#28c78607ffd2d246abfcc09bacd28490952280af"
+
+"@fortawesome/fontawesome-free-solid@^5.0.4":
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free-solid/-/fontawesome-free-solid-5.0.4.tgz#6f4eef5a624b086aec359aa7e41c0eb3dd4e44c5"
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.1.1"
+
+"@fortawesome/fontawesome@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome/-/fontawesome-1.1.2.tgz#ddc83c2a747ebd83eb5970eaebfb257aa41c8bb4"
+  dependencies:
+    "@fortawesome/fontawesome-common-types" "^0.1.1"
+
 abbrev@1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.0.tgz#d0554c2256636e2f56e7c2e5ad183f859428d81f"
@@ -2668,6 +2684,10 @@ inquirer@^0.12.0:
     string-width "^1.0.1"
     strip-ansi "^3.0.0"
     through "^2.3.6"
+
+install@^0.10.4:
+  version "0.10.4"
+  resolved "https://registry.yarnpkg.com/install/-/install-0.10.4.tgz#9cb09115768b93a582d1450a6ba3f275975b49aa"
 
 installed-by-yarn-globally@^0.1.2:
   version "0.1.2"
