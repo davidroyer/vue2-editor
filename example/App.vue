@@ -5,7 +5,7 @@
 
     <div class="columns">
       <div class="editorWrapper column col-9 col-sm-12">
-        <vue-editor id="editor1" @imageAdded="handleImageAdded" useCustomImageHandler v-model="editor1Content"></vue-editor>
+        <vue-editor boldToolbar id="editor1" @imageAdded="handleImageAdded" useCustomImageHandler v-model="editor1Content"></vue-editor>
         <button class="btn btn-primary" @click="saveContent(editor1Content)">Save</button>
       </div>
     </div>
@@ -40,15 +40,13 @@ const CLIENT_ID = '993793b1d8d3e2e'
 const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dkrcloudinary/upload'
 const UPLOAD_PRESET = 'ptvbj5nu'
 import {
-  VueEditor,
-  Icon
+  VueEditor
 } from '../src/index.js'
 // import Vue2Editor from '../src/index.js'
 import axios from 'axios'
 export default {
   components: {
-    VueEditor,
-    Icon
+    VueEditor
   },
   data() {
     return {

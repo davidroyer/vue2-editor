@@ -10,7 +10,9 @@ import Quill from 'quill'
 import merge from 'lodash.merge'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
-import icons from './icons'
+import {icons, buildToolbar} from './icons'
+
+
 var defaultToolbar = [
   [{ 'header': [false, 1, 2, 3, 4, 5, 6] }],
     // { 'font': [] },
@@ -37,6 +39,10 @@ export default {
     placeholder: String,
     disabled: Boolean,
     editorToolbar: Array,
+    boldToolbar: {
+      type: Boolean,
+      default: false
+    },
     useCustomImageHandler: {
       type: Boolean,
       default: false
@@ -75,6 +81,7 @@ export default {
 
   methods: {
     initializeVue2Editor() {
+      this.checkForUsingNewToolbar()
       this.setQuillElement()
       this.setEditorElement()
       this.checkForInitialContent()
@@ -111,6 +118,10 @@ export default {
 
     checkForCustomImageHandler() {
       this.useCustomImageHandler === true ? this.setupCustomImageHandler() : ''
+    },
+
+    checkForUsingNewToolbar() {
+      this.boldToolbar === true ? buildToolbar(icons) : ''
     },
 
     setupCustomImageHandler() {
@@ -286,5 +297,30 @@ export default {
     position: relative;
     height: 19px;
   }
+/* New */
+.ql-toolbar svg {
+  height: 16px !important;
+}
+.ql-toolbar path {
+  fill: rgba(46, 46, 46, 0.90);
+}
+.ql-clean svg {
+  height: 18px !important;
+}
 
+.ql-underline svg {
+  top: 1px;
+  position: relative;
+  height: 17px !important;
+}
+.ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button {
+  width: 24px !important;
+}
+
+.ql-image svg {
+  height: 20px !important;
+  left: 3px;
+  position: relative;
+  top: -1px;
+}
 </style>
