@@ -19,7 +19,8 @@ const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dkrcloudinary/upload'
 const UPLOAD_PRESET = 'ptvbj5nu'
 import {
   VueEditor
-} from '../src/index.js'
+} from '../dist/vue-2-editor.js'
+
 import axios from 'axios'
 export default {
   components: {
