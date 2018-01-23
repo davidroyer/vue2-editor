@@ -24,7 +24,8 @@ var defaultToolbar = [
   [{ 'indent': '-1'}, { 'indent': '+1' }],
 
   [{ 'color': [] }, { 'background': [] }],
-  [{ 'align': ''}, { 'align': 'center' }, { 'align': 'right' }],
+  // [{ 'align': ''}, { 'align': 'center' }, { 'align': 'right' }],
+  [{ 'align': ''}, {}],
   ['clean']
 ]
 
@@ -302,7 +303,7 @@ export default {
   height: 16px !important;
 }
 .ql-toolbar path {
-  fill: rgba(46, 46, 46, 0.90);
+  fill: rgba(46, 46, 46, 0.80);
 }
 .ql-clean svg {
   height: 18px !important;
@@ -322,5 +323,11 @@ export default {
   left: 3px;
   position: relative;
   top: -1px;
+}
+
+.ql-color-picker svg {
+  height: 21px !important;
+  position: relative;
+  top: -2px;
 }
 </style>

@@ -14,28 +14,7 @@
 </template>
 
 <script>
-import fontawesome from '@fortawesome/fontawesome'
 
-import {
-  faBold,
-  faItalic,
-  faList,
-  faListUl,
-  faCode,
-  faUnderline,
-  faIndent,
-  faOutdent,
-  faFlag,
-  faSquare,
-  faPlus
-} from '@fortawesome/fontawesome-free-solid'
-
-const faPlusIcon = fontawesome.icon(faPlus)
-
-const test = fontawesome.icon(faFlag, { transform: { size: 20 } }).html[0]
-const testhtml = fontawesome.icon(faFlag, { transform: { size: 20 } })
-console.log(testhtml);
-console.log(test);
 const CLIENT_ID = '993793b1d8d3e2e'
 const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dkrcloudinary/upload'
 const UPLOAD_PRESET = 'ptvbj5nu'
@@ -50,20 +29,20 @@ export default {
   },
   data() {
     return {
-      icons: {
-        faBold,
-        faItalic,
-        faList,
-        faListUl,
-        faCode,
-        faUnderline,
-        faIndent,
-        faOutdent,
-        faFlag,
-        faSquare
-      },
-      svgHtml: test,
-      iconPlus: faPlusIcon,
+      // icons: {
+      //   faBold,
+      //   faItalic,
+      //   faList,
+      //   faListUl,
+      //   faCode,
+      //   faUnderline,
+      //   faIndent,
+      //   faOutdent,
+      //   faFlag,
+      //   faSquare
+      // },
+      // svgHtml: test,
+      // iconPlus: faPlusIcon,
       editor1Content: '<h1>Editor 1 Starting Content</h1>',
       editor2Content: '<h1>Editor 2 Starting Content</h1>',
       showPreview: true,
