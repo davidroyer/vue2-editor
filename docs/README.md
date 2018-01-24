@@ -27,10 +27,6 @@ import { VueEditor } from 'vue2-editor'
 
 // Advanced Use - Hook into Quill's API for Custom Functionality
 import { VueEditor, Quill } from 'vue2-editor'
-
-// Vue Plugin Style - Globally available for use
-import Vue2Editor from 'vue2-editor'
-Vue.use(Vue2Editor)
 ```
 
 # Props
