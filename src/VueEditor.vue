@@ -8,7 +8,7 @@
 <script>
 import Quill from 'quill'
 import merge from 'lodash.merge'
-// import icons from './assets/icons'
+import icons from './assets/icons'
 var defaultToolbar = [
   ['bold', 'italic', 'underline', 'strike'],
   ['blockquote', 'code-block', 'image'],
@@ -80,7 +80,6 @@ export default {
 
   methods: {
     initializeVue2Editor() {
-      this.registerModules()
       this.setQuillElement()
       this.setEditorElement()
       this.checkForInitialContent()
@@ -148,3 +147,4 @@ export default {
 <style src="quill/dist/quill.core.css"></style>
 <style src="quill/dist/quill.snow.css"></style>
 <style src="./assets/vue2-editor.css"></style>
+<style src="./assets/md-toolbar.css"></style>

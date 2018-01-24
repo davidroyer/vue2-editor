@@ -45,9 +45,9 @@ Name           | Parameters   | Description
 imageAdded   | file, Editor, cursorLocation |  Emitted when useCustomImageHandler is true and photo is being added to the editor
 <!-- Emitted when the default save button is clicked -->
 
-## Examples
+# Examples
 
-### Example - Basic Setup
+## Example - Basic Setup
 
 ```html
 <template>
@@ -74,7 +74,7 @@ imageAdded   | file, Editor, cursorLocation |  Emitted when useCustomImageHandle
  </script>
 ```
 
-### Example - Custom Image Handler
+## Example - Custom Image Handler
 
 If you choose to use the custom image handler, an event is emitted when a a photo is selected.
 You can see below that 3 parameters are passed.
@@ -135,7 +135,40 @@ You can see below that 3 parameters are passed.
 </script>
 ```
 
-### Example - Set Contents After Page Load
+## Example - Custom Fonts...
+```html
+<template>
+  <div id="app">
+    <button @click="setEditorContent">Set Editor Contents</button>
+    <vue-editor v-model="htmlForEditor"></vue-editor>
+  </div>
+</template>
+
+<script>
+  import { VueEditor } from 'vue2-editor'
+
+  export default {
+    components: {
+      VueEditor
+    },
+
+    data() {
+      return {
+        htmlForEditor: null  
+      }
+    },
+
+    methods: {
+      setEditorContent: function() {
+        this.htmlForEditor = '<h1>Html For Editor</h1>'
+      }
+    }
+  }
+</script>
+```
+
+
+## Example - Set Contents After Page Load
 
 ```html
 <template>
@@ -168,7 +201,7 @@ You can see below that 3 parameters are passed.
 </script>
 ```
 
-### Example - Using Multiple Editors
+## Example - Using Multiple Editors
 
 ```html
 <template>
@@ -203,7 +236,7 @@ You can see below that 3 parameters are passed.
 ```
 
 
-### Example - Custom Toolbar
+## Example - Custom Toolbar
 
 ```html
 <template>
@@ -235,7 +268,7 @@ You can see below that 3 parameters are passed.
 ```
 
 
-### Example - Saving The Content
+## Example - Saving The Content
 ```html
 <template>
   <div id="app">
@@ -268,7 +301,7 @@ You can see below that 3 parameters are passed.
 </script>
 ```
 
-### Example - Use a Live Preview
+## Example - Use a Live Preview
 
 ```html
 <template>
@@ -312,15 +345,13 @@ V2E now exports Quill to assist in this process.
 
 <script>
   import { VueEditor, Quill } from 'vue2-editor'
-
   import { ImageDrop } from 'quill-image-drop-module'
   Quill.register('modules/imageDrop', ImageDrop)
 
-  components: {
-    VueEditor
-  },
-
   export default {
+    components: {
+      VueEditor
+    },    
     data() {
       return {
         content: '<h1>Initial Content</h1>'  

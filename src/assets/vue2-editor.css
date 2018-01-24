@@ -11,9 +11,9 @@
     padding-bottom: 4px;
 }
 
-.quillWrapper .ql-snow.ql-toolbar button {
-  margin: 1px;
-}
+/* .quillWrapper .ql-snow.ql-toolbar button {
+  margin: 1px 4px;
+} */
 
 .quillWrapper .ql-snow.ql-toolbar .ql-formats {
   margin-bottom: 10px;
