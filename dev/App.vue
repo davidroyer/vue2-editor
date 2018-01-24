@@ -25,7 +25,6 @@ import {
 } from '../src/index.js'
 import axios from 'axios'
 import { ImageDrop } from 'quill-image-drop-module'
-Quill.register(Font, true);
 Quill.register('modules/imageDrop', ImageDrop)
 
 
