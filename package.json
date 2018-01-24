@@ -20,10 +20,11 @@
   ],
   "scripts": {
     "dev": "poi dev/index.js",
+    "docs": "docsify serve ./docs",
     "test": "echo lol",
     "lint": "poi --eslint",
-    "build": "poi build ./src/index.js --library Vue2Editor --no-clear",
-    "build2": "poi build ./src/index.js --filename vue2-editor.js --library Vue2Editor  --no-clear"
+    "build": "poi build ./src/index.js --library Vue2Editor",
+    "build2": "poi build ./src/index.js --library Vue2Editor --filename.js vue2-editor.js --filename.css vue2-editor.css"
   },
   "devDependencies": {
     "axios": "^0.16.2",
