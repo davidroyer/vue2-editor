@@ -40,6 +40,12 @@ export default {
       type: Boolean,
       default: false
     },
+    customModules: {
+      type: Array,
+      default: function () {
+        return [];
+      }
+    },
     editorOptions: {
       type: Object,
       default: function () {
@@ -74,6 +80,7 @@ export default {
 
   methods: {
     initializeVue2Editor() {
+      this.registerModules()
       this.setQuillElement()
       this.setEditorElement()
       this.checkForInitialContent()

@@ -1,7 +1,10 @@
 /**
  * Vue2-Editor
  */
+
 import VueEditor from './VueEditor.vue'
+import vQuill from 'quill'
+const Quill = window.Quill || vQuill
 
 const Vue2Editor = {
   VueEditor,
@@ -11,4 +14,4 @@ const Vue2Editor = {
 }
 
 export default Vue2Editor
-export { VueEditor }
+export { VueEditor, Quill }

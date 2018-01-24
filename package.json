@@ -30,6 +30,8 @@
     "axios": "^0.16.2",
     "gh-pages": "^0.12.0",
     "node-sass": "^4.7.2",
+    "quill-image-drop-module": "^1.0.3",
+    "quill-image-resize-module": "^3.0.0",
     "sass-loader": "^6.0.6",
     "spectre.css": "^0.2.12"
   },
