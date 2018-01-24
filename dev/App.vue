@@ -4,7 +4,12 @@
     <h1>Vue2Editor - Upload Images Example </h1>
     <div class="columns">
       <div class="editorWrapper column col-6 col-sm-12">
-        <vue-editor :editorOptions="editorSettings" id="editor1" v-model="editor1Content"></vue-editor>
+        <vue-editor
+          id="editor1"
+          :editorOptions="editorSettings"
+          v-model="editor1Content">
+        </vue-editor>
+          <!--  -->
         <button class="btn btn-primary" @click="saveContent(editor1Content)">Save</button>
       </div>
     </div>
@@ -19,11 +24,10 @@ import {
   Quill
 } from '../src/index.js'
 import axios from 'axios'
-
 import { ImageDrop } from 'quill-image-drop-module'
+Quill.register(Font, true);
 Quill.register('modules/imageDrop', ImageDrop)
-// import ImageResize from 'quill-image-resize-module'
-// Quill.register('modules/imageResize', ImageResize);
+
 
 export default {
   components: {
@@ -45,6 +49,7 @@ export default {
             userOnly: false
           },
           imageDrop: true
+          // imageResize: true
         }
       },
       customToolbar: [

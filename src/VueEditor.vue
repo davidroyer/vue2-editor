@@ -8,7 +8,7 @@
 <script>
 import Quill from 'quill'
 import merge from 'lodash.merge'
-import icons from './assets/icons'
+// import icons from './assets/icons'
 var defaultToolbar = [
   ['bold', 'italic', 'underline', 'strike'],
   ['blockquote', 'code-block', 'image'],
@@ -40,16 +40,16 @@ export default {
       type: Boolean,
       default: false
     },
-    customModules: {
-      type: Array,
-      default: function () {
-        return [];
-      }
-    },
     editorOptions: {
       type: Object,
       default: function () {
         return {};
+      }
+    },
+    editorModules: {
+      type: Array,
+      default: function () {
+        return [];
       }
     }
   },
@@ -59,6 +59,9 @@ export default {
       quill: null,
       editor: null,
       toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar,
+      modules: {
+          toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar
+      }
     }
   },
 
@@ -94,13 +97,8 @@ export default {
         theme: 'snow',
         readOnly: this.disabled ? this.disabled : false,
       };
-      if (Object.keys(this.editorOptions).length > 0 && this.editorOptions.constructor === Object) {
-        if (this.editorOptions.modules && typeof this.editorOptions.modules.toolbar !== 'undefined') {
-          // We don't want to merge default toolbar with provided toolbar.
-          delete quillOptions.modules.toolbar;
-        }
-        merge(quillOptions, this.editorOptions);
-      }
+
+      this.prepareEditorOptions(quillOptions)
       this.quill = new Quill(this.$refs.quillContainer, quillOptions)
 
       this.checkForCustomImageHandler()
@@ -108,6 +106,17 @@ export default {
 
     setEditorElement() {
       this.editor = document.querySelector(`#${this.id} .ql-editor`)
+    },
+
+    prepareEditorOptions(quillOptions) {
+
+      if (Object.keys(this.editorOptions).length > 0 && this.editorOptions.constructor === Object) {
+        if (this.editorOptions.modules && typeof this.editorOptions.modules.toolbar !== 'undefined') {
+          // We don't want to merge default toolbar with provided toolbar.
+          delete quillOptions.modules.toolbar;
+        }
+        merge(quillOptions, this.editorOptions);
+      }
     },
 
     checkForInitialContent() {
@@ -147,4 +156,4 @@ export default {
 <style src="quill/dist/quill.core.css"></style>
 <style src="quill/dist/quill.snow.css"></style>
 <style src="./assets/vue2-editor.css"></style>
-<style src="./assets/md-toolbar.css"></style>
+<!-- <style src="./assets/md-toolbar.css"></style> -->

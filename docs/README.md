@@ -22,9 +22,15 @@ yarn add vue2-editor
 # Usage
 
 ```javascript
+// Basic Use - Covers most scenarios
 import { VueEditor } from 'vue2-editor'
 
-//... your code
+// Advanced Use - Hook into Quill's API for Custom Functionality
+import { VueEditor, Quill } from 'vue2-editor'
+
+// Vue Plugin Style - Globally available for use
+import Vue2Editor from 'vue2-editor'
+Vue.use(Vue2Editor)
 ```
 
 # Props
@@ -37,7 +43,7 @@ useCustomImageHandler | Boolean | false | Handle image uploading instead of usin
 placeholder    | String | -                                                  | Placeholder text for the editor
 disabled | Boolean | false | Set to true to disable editor
 editorToolbar | Array  | ** _Too long for table. See toolbar example below_ | Use a custom toolbar
-editorOptions | Array  | ** _Too long for table. See toolbar example below_ | Offers object for merging into default config (add formats, custom Quill modules, ect)
+editorOptions | Array  | - | Offers object for merging into default config (add formats, custom Quill modules, ect)
 
 # Events
 Name           | Parameters   | Description
@@ -134,39 +140,6 @@ You can see below that 3 parameters are passed.
   }
 </script>
 ```
-
-## Example - Custom Fonts...
-```html
-<template>
-  <div id="app">
-    <button @click="setEditorContent">Set Editor Contents</button>
-    <vue-editor v-model="htmlForEditor"></vue-editor>
-  </div>
-</template>
-
-<script>
-  import { VueEditor } from 'vue2-editor'
-
-  export default {
-    components: {
-      VueEditor
-    },
-
-    data() {
-      return {
-        htmlForEditor: null  
-      }
-    },
-
-    methods: {
-      setEditorContent: function() {
-        this.htmlForEditor = '<h1>Html For Editor</h1>'
-      }
-    }
-  }
-</script>
-```
-
 
 ## Example - Set Contents After Page Load
 
@@ -366,31 +339,16 @@ V2E now exports Quill to assist in this process.
 </script>
 ```
 
-# Folder structure
-
-- `src/`: Source files for this component
-  - `index.js` Installation as Vue Plugin
-  - `Vue2Editor.vue` The component itself
-
-- `dev/`: Example for demonstrating this component
-  - `index.js`: Entry for the example
-  - `App.vue`: The root component which we use to load this component
-
-- `package.json`: App manifest
-- `.editorconfig`: Ensure consistent editor behaivor
-- `.gitignore`: Ignore files we don't need to push
-
 # Development
 
 Vue2Editor now uses Poi.js for development and building
 
 - `yarn dev`: Run example in development mode
-- `yarn deploy`: Deploy example to gh-pages
+- `yarn docs`: Development for Docs
 - `yarn build`: Build component in both format
 - `yarn lint`: Run eslint
 
 Check out your npm scripts, it's using [Poi](https://github.com/egoist/poi) under the hood.
-
 # License
 
 MIT

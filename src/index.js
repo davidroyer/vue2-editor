@@ -3,8 +3,8 @@
  */
 
 import VueEditor from './VueEditor.vue'
-import vQuill from 'quill'
-const Quill = window.Quill || vQuill
+import VQuill from 'quill'
+const Quill = window.Quill || VQuill
 
 const Vue2Editor = {
   VueEditor,

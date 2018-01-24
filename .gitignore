@@ -12,4 +12,4 @@ npm-debug.log
 dist
 dist-example
 
-example/cloudinary.vue
+dev/cloudinary.vue
