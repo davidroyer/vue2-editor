@@ -314,14 +314,14 @@ You can see below that 3 parameters are passed.
 
 # Development
 
-- `yarn example`: Run example in development mode
+Vue2Editor now uses Poi.js for development and building
+
+- `yarn dev`: Run example in development mode
 - `yarn deploy`: Deploy example to gh-pages
-- `yarn build:cjs`: Build component in commonjs format
-- `yarn build:umd`: Build component in umd format
 - `yarn build`: Build component in both format
 - `yarn lint`: Run eslint
 
-Check out your npm scripts, it's using [vbuild](https://github.com/egoist/vbuild) under the hood.
+Check out your npm scripts, it's using [Poi](https://github.com/egoist/poi) under the hood.
 
 # License
 
