@@ -14,7 +14,7 @@
     "type": "git",
     "url": "https://github.com/davidroyer/vue2-editor"
   },
-  "main": "dist/index.js",
+  "main": "dist/vue2-editor.js",
   "files": [
     "dist"
   ],
