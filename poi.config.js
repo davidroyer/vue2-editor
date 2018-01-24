@@ -2,11 +2,9 @@ const path = require('path');
 
 module.exports = {
 	entry: path.resolve(__dirname, './dev/index.js'),
-	html: {
-		title: 'Vue2Editor'
-	},
+	vendor: false,
 	filename: {
-		js: 'vue2-editor.js'
-	},
+    js: 'vue2-editor.js'
+  },
 	extractCSS: false
 };

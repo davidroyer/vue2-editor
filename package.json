@@ -22,7 +22,8 @@
     "dev": "poi dev/index.js",
     "test": "echo lol",
     "lint": "poi --eslint",
-    "build": "poi build ./src/index.js --library Vue2Editor --no-clear"
+    "build": "poi build ./src/index.js --library Vue2Editor --no-clear",
+    "build2": "poi build ./src/index.js --filename vue2-editor.js --library Vue2Editor  --no-clear"
   },
   "devDependencies": {
     "axios": "^0.16.2",
