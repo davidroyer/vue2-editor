@@ -9,7 +9,7 @@
 import Quill from 'quill'
 import defaultToolbar from './helpers/toolbar.js'
 import MarkdownShortcuts from './helpers/MarkdownShortcuts'
-// import { ImageDrop } from 'quill-image-drop-module'
+import { ImageDrop } from 'quill-image-drop-module'
 import merge from 'lodash.merge'
 
 export default {
@@ -74,8 +74,8 @@ export default {
       let quillOptions = {
         modules: {
           toolbar: this.toolbar,
-          markdownShortcuts: {}
-          // imageDrop: true
+          markdownShortcuts: {},
+          imageDrop: true
         },
         placeholder: this.placeholder ? this.placeholder : '',
         theme: 'snow',
@@ -98,7 +98,7 @@ export default {
 
     registerModules() {
       Quill.register('modules/markdownShortcuts', MarkdownShortcuts)
-      // Quill.register('modules/imageDrop', ImageDrop)
+      Quill.register('modules/imageDrop', ImageDrop)
     },
 
     prepareEditorOptions(quillOptions) {
