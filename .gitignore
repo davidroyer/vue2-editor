@@ -6,7 +6,7 @@ demo/
 npm-debug.log
 
 *.log
-.DS_Store
+**/**/.DS_Store
 
 # produced by vbuild
 dist

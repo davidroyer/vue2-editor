@@ -1,7 +1,6 @@
 /**
  * Vue2-Editor
  */
-
 import VueEditor from './VueEditor.vue'
 import VQuill from 'quill'
 const Quill = window.Quill || VQuill

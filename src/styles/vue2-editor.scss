@@ -45,3 +45,22 @@
 .quillWrapper .ql-toolbar.ql-snow .ql-formats {
   vertical-align: top;
 }
+
+
+.ql-picker {
+  &.ql-header {
+    position: relative;
+    top: 2px;
+  }
+  &.ql-color-picker {
+    svg {
+      width: 22px !important;
+      height: 22px !important;
+    }
+
+    &.ql-color {
+      position: relative;
+      top: 2px;
+    }
+  }
+}

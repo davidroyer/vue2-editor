@@ -981,10 +981,6 @@ osenv@0:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
 
-parchment@1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/parchment/-/parchment-1.1.1.tgz#e91c178730164dfd0bf4d31c39821f44b6d6ac12"
-
 parchment@^1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/parchment/-/parchment-1.1.3.tgz#c0fd5c2765eb73b30bfe171d6567cb1ae748e9af"
@@ -1096,18 +1092,7 @@ quill-image-resize-module@^3.0.0:
     quill "^1.2.2"
     raw-loader "^0.5.1"
 
-quill@1.3.4:
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/quill/-/quill-1.3.4.tgz#59812332e33f715725e9599aac29413e3543048b"
-  dependencies:
-    clone "^2.1.1"
-    deep-equal "^1.0.1"
-    eventemitter3 "^2.0.3"
-    extend "^3.0.1"
-    parchment "1.1.1"
-    quill-delta "^3.6.2"
-
-quill@^1.2.2:
+quill@^1.2.2, quill@^1.3.5:
   version "1.3.5"
   resolved "https://registry.yarnpkg.com/quill/-/quill-1.3.5.tgz#26fa625fda416c4eae324fb23fd1a506dad5979f"
   dependencies:

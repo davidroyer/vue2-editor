@@ -6,10 +6,11 @@
       <div class="editorWrapper column col-6 col-sm-12">
         <vue-editor
           id="editor1"
+          useCustomImageHandler
+          @imageAdded="handleImageAdded"
           :editorOptions="editorSettings"
           v-model="editor1Content">
         </vue-editor>
-          <!--  -->
         <button class="btn btn-primary" @click="saveContent(editor1Content)">Save</button>
       </div>
     </div>
@@ -24,9 +25,6 @@ import {
   Quill
 } from '../src/index.js'
 import axios from 'axios'
-import { ImageDrop } from 'quill-image-drop-module'
-Quill.register('modules/imageDrop', ImageDrop)
-
 
 export default {
   components: {
@@ -46,9 +44,7 @@ export default {
             delay: 1000,
             maxStack: 50,
             userOnly: false
-          },
-          imageDrop: true
-          // imageResize: true
+          }
         }
       },
       customToolbar: [

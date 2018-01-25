@@ -1,29 +1,16 @@
 <template>
-<div class="quillWrapper">
-  <div ref="quillContainer" :id="id"></div>
-  <input v-if="useCustomImageHandler" @change="emitImageInfo($event)" ref="fileInput" id="file-upload" type="file" style="display:none;">
-</div>
+  <div class="quillWrapper">
+    <div ref="quillContainer" :id="id"></div>
+    <input v-if="useCustomImageHandler" @change="emitImageInfo($event)" ref="fileInput" id="file-upload" type="file" style="display:none;">
+  </div>
 </template>
 
 <script>
 import Quill from 'quill'
+import defaultToolbar from './helpers/toolbar.js'
+import MarkdownShortcuts from './helpers/MarkdownShortcuts'
+// import { ImageDrop } from 'quill-image-drop-module'
 import merge from 'lodash.merge'
-// import icons from './assets/icons'
-var defaultToolbar = [
-  ['bold', 'italic', 'underline', 'strike'],
-  ['blockquote', 'code-block', 'image'],
-
-  [{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }],
-
-  [{ 'indent': '-1'}, { 'indent': '+1' }],
-  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-
-  [{ 'color': [] }, { 'background': [] }],
-  [{ 'font': [] }],
-  [{ 'align': [] }],
-
-  ['clean']
-]
 
 export default {
   name: 'vue-editor',
@@ -45,12 +32,6 @@ export default {
       default: function () {
         return {};
       }
-    },
-    editorModules: {
-      type: Array,
-      default: function () {
-        return [];
-      }
     }
   },
 
@@ -60,7 +41,7 @@ export default {
       editor: null,
       toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar,
       modules: {
-          toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar
+        toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar
       }
     }
   },
@@ -83,6 +64,7 @@ export default {
 
   methods: {
     initializeVue2Editor() {
+      this.registerModules()
       this.setQuillElement()
       this.setEditorElement()
       this.checkForInitialContent()
@@ -91,7 +73,9 @@ export default {
     setQuillElement() {
       let quillOptions = {
         modules: {
-          toolbar: this.toolbar
+          toolbar: this.toolbar,
+          markdownShortcuts: {}
+          // imageDrop: true
         },
         placeholder: this.placeholder ? this.placeholder : '',
         theme: 'snow',
@@ -100,12 +84,21 @@ export default {
 
       this.prepareEditorOptions(quillOptions)
       this.quill = new Quill(this.$refs.quillContainer, quillOptions)
-
       this.checkForCustomImageHandler()
     },
 
     setEditorElement() {
       this.editor = document.querySelector(`#${this.id} .ql-editor`)
+    },
+
+    registerModule(customModule) {
+      Quill.register('modules/' + customModule.alias, customModule.module)
+      self.modules[customModule.alias] = customModule.config
+    },
+
+    registerModules() {
+      Quill.register('modules/markdownShortcuts', MarkdownShortcuts)
+      // Quill.register('modules/imageDrop', ImageDrop)
     },
 
     prepareEditorOptions(quillOptions) {
@@ -153,7 +146,5 @@ export default {
 }
 </script>
 
-<style src="quill/dist/quill.core.css"></style>
 <style src="quill/dist/quill.snow.css"></style>
-<style src="./assets/vue2-editor.css"></style>
-<!-- <style src="./assets/md-toolbar.css"></style> -->
+<style src="./styles/vue2-editor.scss" lang='scss'></style>
