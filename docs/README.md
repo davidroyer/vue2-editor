@@ -336,21 +336,16 @@ V2E now exports Quill to assist in this process.
 
 # Development
 
-Vue2Editor now uses Poi.js for development and building
+Vue2Editor now uses [Poi](https://github.com/egoist/poi) for development
 
 - `yarn dev`: Run example in development mode
 - `yarn docs`: Development for Docs
 - `yarn build`: Build component in both format
 - `yarn lint`: Run eslint
 
-Check out your npm scripts, it's using [Poi](https://github.com/egoist/poi) under the hood.
-<<<<<<< HEAD
-=======
-
 <!-- # Achnoledgements
 Markdown: https://github.com/patleeman/quill-markdown-shortcuts -->
 
->>>>>>> poi
 # License
 
 MIT
