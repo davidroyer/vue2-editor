@@ -345,9 +345,8 @@ Vue2Editor now uses Poi.js for development and building
 
 Check out your npm scripts, it's using [Poi](https://github.com/egoist/poi) under the hood.
 
-# Achnoledgements
-
-Markdown: https://github.com/patleeman/quill-markdown-shortcuts
+<!-- # Achnoledgements
+Markdown: https://github.com/patleeman/quill-markdown-shortcuts -->
 
 # License
 
