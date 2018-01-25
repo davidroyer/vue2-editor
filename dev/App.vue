@@ -12,6 +12,8 @@
           v-model="editor1Content">
         </vue-editor>
         <button class="btn btn-primary" @click="saveContent(editor1Content)">Save</button>
+
+        <div v-html="content"></div>
       </div>
     </div>
   </div>
@@ -32,10 +34,10 @@ export default {
   },
   data() {
     return {
-      editor1Content: '<h1>Editor 1 Starting Content</h1>',
+      editor1Content: '<div class="wrap hero__heading_wrap"> <h1 class="hero__heading">Imagine what you can accomplish.</h1> <h2 class="subheader__title" style="color:#c8c8c8;">Discover what matters.<br> And build your life around it.</h2> <div>Content Inside Div</div> <a href="/online-degrees/#undergraduate-section" class="orange-btn">Undergraduate Degrees</a> <a href="/online-degrees/#graduate-section" class="orange-btn">Graduate Degrees</a></div>',
       editor2Content: '<h1>Editor 2 Starting Content</h1>',
       showPreview: true,
-      content: '<h1>Html For Editor</h1>',
+      content: '<div class="wrap hero__heading_wrap"> <h1 class="hero__heading">Imagine what you can accomplish.</h1> <h2 class="subheader__title" style="color:#c8c8c8;">Discover what matters.<br> And build your life around it.</h2> <div>Content Inside Div</div> <a href="/online-degrees/#undergraduate-section" class="orange-btn">Undergraduate Degrees</a> <a href="/online-degrees/#graduate-section" class="orange-btn">Graduate Degrees</a></div>',
       editor1IsDisabled: false,
       editor2IsDisabled: false,
       editorSettings: {

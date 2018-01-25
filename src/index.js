@@ -12,5 +12,9 @@ const Vue2Editor = {
   }
 }
 
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(Vue2Editor)
+}
+
 export default Vue2Editor
 export { VueEditor, Quill }

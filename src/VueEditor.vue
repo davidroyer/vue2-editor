@@ -35,6 +35,13 @@ export default {
     }
   },
 
+  computed: {
+    filteredInitialContent() {
+      let content = this.value || ''
+      return content.replace(/(<div)/igm, '<p').replace(/<\/div>/igm, '</p>');
+    }
+  },
+
   data() {
     return {
       quill: null,
@@ -76,6 +83,8 @@ export default {
           toolbar: this.toolbar,
           markdownShortcuts: {},
           imageDrop: true
+          // 'link-tooltip': true
+          // NEED TO ADD TITLE ATTRIBUTE FOR THIS TO WORK?
         },
         placeholder: this.placeholder ? this.placeholder : '',
         theme: 'snow',
@@ -112,8 +121,28 @@ export default {
       }
     },
 
+    handleDivTags() {
+      let content = this.value
+      console.log('handleDivTags: ', content);
+      return content.replace(/(<div)/igm, '<p').replace(/<\/div>/igm, '</p>');
+
+      if (content.includes('<div')) {
+        return content.replace(/(<div)/igm, '<p').replace(/<\/div>/igm, '</p>');
+      }
+    },
+
     checkForInitialContent() {
-      this.editor.innerHTML = this.value || ''
+      this.editor.innerHTML = this.filteredInitialContent
+      // console.log('Checking for Initial content:', this.value);
+      // let content = this.value
+      //
+      // if (content.includes('<div')) {
+      //   let newContent = content.replace(/(<div)/igm, '<p').replace(/<\/div>/igm, '</p>');
+      //   console.log('Adjusted Content!', newContent);
+      //   this.editor.innerHTML = newContent
+      // } else {
+      //   this.editor.innerHTML = content || ''
+      // }
     },
 
     checkForCustomImageHandler() {
