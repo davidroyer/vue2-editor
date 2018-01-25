@@ -1,0 +1,41 @@
+svg {
+  width: 24px !important;
+  height: 24px !important;
+  fill: rgba(65, 65, 65, 0.9);
+
+}
+
+button.ql-active svg {
+  fill: white;
+  fill: rgba(97, 97, 97, 0.98) !important;
+}
+
+.quillWrapper .ql-snow.ql-toolbar button {
+  margin: 1px 2px;
+  display: flex;
+  padding: 3px;
+  justify-content: center;
+  align-items: center;
+}
+
+.ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button {
+  display: flex;
+  padding: 3px;
+  margin: 1px 3px !important;
+  justify-content: center;
+  width: 30px !important;
+  height: 30px !important;
+  border-radius: 3px;
+}
+
+.ql-toolbar button.ql-active {
+  background: rgba(85, 85, 97, 0.9) !important;
+  background: rgba(203, 201, 201, 0.9) !important;
+}
+
+.quillWrapper .ql-toolbar {
+  padding-bottom: 4px;
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+}

@@ -2,6 +2,7 @@
 
 ![Vue2Editor-Centered](https://www.dropbox.com/s/7com4d32zct44nc/Vue2Editor-Centered.png?raw=1) HTML Editor using Vue.js and Quilljs
 
+
 [Vue.js](https://vuejs.org)
 
 [Quill](http://quilljs.com/)
@@ -22,9 +23,11 @@ yarn add vue2-editor
 # Usage
 
 ```javascript
+// Basic Use - Covers most scenarios
 import { VueEditor } from 'vue2-editor'
 
-//... your code
+// Advanced Use - Hook into Quill's API for Custom Functionality
+import { VueEditor, Quill } from 'vue2-editor'
 ```
 
 # Props
@@ -37,6 +40,7 @@ useCustomImageHandler | Boolean | false | Handle image uploading instead of usin
 placeholder    | String | -                                                  | Placeholder text for the editor
 disabled | Boolean | false | Set to true to disable editor
 editorToolbar | Array  | ** _Too long for table. See toolbar example below_ | Use a custom toolbar
+editorOptions | Array  | - | Offers object for merging into default config (add formats, custom Quill modules, ect)
 
 # Events
 Name           | Parameters   | Description
@@ -44,8 +48,9 @@ Name           | Parameters   | Description
 imageAdded   | file, Editor, cursorLocation |  Emitted when useCustomImageHandler is true and photo is being added to the editor
 <!-- Emitted when the default save button is clicked -->
 
-## Example
-**_Basic Setup_**
+# Examples
+
+## Example - Basic Setup
 
 ```html
 <template>
@@ -72,9 +77,7 @@ imageAdded   | file, Editor, cursorLocation |  Emitted when useCustomImageHandle
  </script>
 ```
 
-## Example
-
-**_Upload image to server and use returned url instead of data URL_**
+## Example - Custom Image Handler
 
 If you choose to use the custom image handler, an event is emitted when a a photo is selected.
 You can see below that 3 parameters are passed.
@@ -82,7 +85,7 @@ You can see below that 3 parameters are passed.
 2. The Editor instance
 4. The cursor position at the time of upload so the image can be inserted at the correct position on success
 
-**NOTE** In addition to this example, I have created a [new example repo](https://github.com/davidroyer/vue2editor-images) demonstrating this new feature with an actual server.
+**NOTE** In addition to this example, I have created a [ example repo](https://github.com/davidroyer/vue2editor-images) demonstrating this new feature with an actual server.
 
 ```html
 <template>
@@ -135,9 +138,7 @@ You can see below that 3 parameters are passed.
 </script>
 ```
 
-## Example
-
-**_Set Contents After Page Load_**
+## Example - Set Contents After Page Load
 
 ```html
 <template>
@@ -170,9 +171,7 @@ You can see below that 3 parameters are passed.
 </script>
 ```
 
-## Example
-
-**_Using Multiple Editors_**
+## Example - Using Multiple Editors
 
 ```html
 <template>
@@ -207,8 +206,7 @@ You can see below that 3 parameters are passed.
 ```
 
 
-## Example
-**_Custom Toolbar_**
+## Example - Custom Toolbar
 
 ```html
 <template>
@@ -240,8 +238,7 @@ You can see below that 3 parameters are passed.
 ```
 
 
-### Example
-**_Saving the Content_**
+## Example - Saving The Content
 ```html
 <template>
   <div id="app">
@@ -274,8 +271,7 @@ You can see below that 3 parameters are passed.
 </script>
 ```
 
-## Example
-**_Use a Live Preview_**
+## Example - Use a Live Preview
 
 ```html
 <template>
@@ -302,34 +298,57 @@ You can see below that 3 parameters are passed.
 </script>
 ```
 
+## How To Use Custom Quill Modules
+V2E now exports Quill to assist in this process.
 
-# Folder structure
+1. When importing VueEditor, also import Quill.
+2. Import your custom module
+3. Register that custom module via the imported Quill
+4. Add the necessary configuration to the `editorOptions` object
 
-- `src/`: Source files for this component
+```html
+<template>
+  <div id="app">
+    <vue-editor :editorOptions="editorSettings"></vue-editor>
+  </div>
+</template>
 
-  - `Vue2Editor.vue` The component itself
+<script>
+  import { VueEditor, Quill } from 'vue2-editor'
+  import { ImageDrop } from 'quill-image-drop-module'
+  Quill.register('modules/imageDrop', ImageDrop)
 
-- `example/`: Example for demonstrating this component
-
-  - `index.js`: Entry for the example
-  - `App.vue`: The root component which we use to load this component
-
-- `vbuild.example.js`: Config file for your example
-- `vbuild.component.js`: Config file for your component
-- `package.json`: App manifest
-- `.editorconfig`: Ensure consistent editor behaivor
-- `.gitignore`: Ignore files we don't need to push
+  export default {
+    components: {
+      VueEditor
+    },    
+    data() {
+      return {
+        content: '<h1>Initial Content</h1>'  
+      }
+    },
+    editorSettings: {
+      modules: {
+        imageDrop: true
+      }
+    }
+  }
+</script>
+```
 
 # Development
 
-- `yarn example`: Run example in development mode
-- `yarn deploy`: Deploy example to gh-pages
-- `yarn build:cjs`: Build component in commonjs format
-- `yarn build:umd`: Build component in umd format
+Vue2Editor now uses Poi.js for development and building
+
+- `yarn dev`: Run example in development mode
+- `yarn docs`: Development for Docs
 - `yarn build`: Build component in both format
 - `yarn lint`: Run eslint
 
-Check out your npm scripts, it's using [vbuild](https://github.com/egoist/vbuild) under the hood.
+Check out your npm scripts, it's using [Poi](https://github.com/egoist/poi) under the hood.
+
+<!-- # Achnoledgements
+Markdown: https://github.com/patleeman/quill-markdown-shortcuts -->
 
 # License
 

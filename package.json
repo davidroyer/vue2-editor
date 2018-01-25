@@ -1,6 +1,6 @@
 {
   "name": "vue2-editor",
-  "version": "2.3.2",
+  "version": "2.3.3",
   "description": "HTML editor using Vue.js 2, and Quill.js, an open source editor",
   "keywords": [
     "vue",
@@ -14,30 +14,30 @@
     "type": "git",
     "url": "https://github.com/davidroyer/vue2-editor"
   },
-  "main": "dist/index.js",
+  "main": "dist/vue2-editor.js",
   "files": [
     "dist"
   ],
   "scripts": {
+    "dev": "poi dev/index.js",
+    "docs": "docsify serve ./docs",
     "test": "echo lol",
-    "lint": "vbuild -c vbuild.example.js --eslint",
-    "build": "npm run build:cjs && npm run build:umd",
-    "build:cjs": "vbuild -c vbuild.component.js --format cjs",
-    "build:umd": "vbuild -c vbuild.component.js --format umd",
-    "example": "vbuild -c vbuild.example.js -d",
-    "deploy": "vbuild -c vbuild.example.js && gh-pages -d dist-example"
+    "lint": "poi --eslint",
+    "build": "poi build ./src/index.js --library Vue2Editor",
+    "build2": "poi build ./src/index.js --library Vue2Editor --filename.js vue2-editor.js --filename.css vue2-editor.css"
   },
   "devDependencies": {
+    "axios": "^0.16.2",
     "gh-pages": "^0.12.0",
-    "node-sass": "^4.5.2",
-    "sass-loader": "^6.0.3",
-    "spectre.css": "^0.2.12",
-    "vbuild": "^6.0.0"
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6",
+    "spectre.css": "^0.2.12"
   },
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.16.2",
-    "quill": "1.3.4",
-    "lodash.merge": "^4.6.0"
+    "lodash.merge": "^4.6.0",
+    "quill": "^1.3.5",
+    "quill-image-drop-module": "^1.0.3",
+    "quill-image-resize-module": "^3.0.0"
   }
 }
