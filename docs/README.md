@@ -1,4 +1,4 @@
-# Vue2-Editor
+# Vue2Editor
 HTML Editor using Vue.js and Quilljs
 
 [Vue.js](https://vuejs.org)

@@ -1,11 +1,7 @@
-# Vue2-Editor
+# Vue2Editor
+View [Documenation](https://davidroyer.github.io/vue2-editor/#/) for Vue2Editor
 
-![Vue2Editor-Centered](https://www.dropbox.com/s/7com4d32zct44nc/Vue2Editor-Centered.png?raw=1) HTML Editor using Vue.js and Quilljs
-
-
-[Vue.js](https://vuejs.org)
-
-[Quill](http://quilljs.com/)
+![Vue2Editor-Centered](https://www.dropbox.com/s/7com4d32zct44nc/Vue2Editor-Centered.png?raw=1) HTML Editor using [Vue.js](https://vuejs.org) and [Quill](http://quilljs.com/)
 
 <!-- ## Demo --> <!-- [fiddle](https://jsfiddle.net/su9zv0w9/1/) -->
 
@@ -299,7 +295,7 @@ You can see below that 3 parameters are passed.
 ```
 
 ## How To Use Custom Quill Modules
-V2E now exports Quill to assist in this process.
+Vue2Editor now exports Quill to assist in this process.
 
 1. When importing VueEditor, also import Quill.
 2. Import your custom module
