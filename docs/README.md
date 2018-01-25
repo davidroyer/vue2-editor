@@ -297,7 +297,7 @@ You can see below that 3 parameters are passed.
 ```
 
 ## How To Use Custom Quill Modules
-V2E now exports Quill to assist in this process.
+Vue2Editor now exports Quill to assist in this process.
 
 1. When importing VueEditor, also import Quill.
 2. Import your custom module
