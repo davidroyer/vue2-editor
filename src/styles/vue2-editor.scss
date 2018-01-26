@@ -48,7 +48,7 @@
 
 
 .ql-picker {
-  &.ql-header {
+  &:not(.ql-background) {
     position: relative;
     top: 2px;
   }
@@ -56,11 +56,6 @@
     svg {
       width: 22px !important;
       height: 22px !important;
-    }
-
-    &.ql-color {
-      position: relative;
-      top: 2px;
     }
   }
 }

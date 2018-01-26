@@ -7,5 +7,5 @@ module.exports = {
     js: 'vue2-editor.js'
   },
 	extractCSS: false,
-	transformModules: ['quill-image-drop-module','quill-image-resize-module']
+	transformModules: ['quill-image-drop-module']
 };

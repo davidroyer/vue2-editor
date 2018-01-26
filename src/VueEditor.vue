@@ -83,8 +83,6 @@ export default {
           toolbar: this.toolbar,
           markdownShortcuts: {},
           imageDrop: true
-          // 'link-tooltip': true
-          // NEED TO ADD TITLE ATTRIBUTE FOR THIS TO WORK?
         },
         placeholder: this.placeholder ? this.placeholder : '',
         theme: 'snow',
@@ -111,7 +109,6 @@ export default {
     },
 
     prepareEditorOptions(quillOptions) {
-
       if (Object.keys(this.editorOptions).length > 0 && this.editorOptions.constructor === Object) {
         if (this.editorOptions.modules && typeof this.editorOptions.modules.toolbar !== 'undefined') {
           // We don't want to merge default toolbar with provided toolbar.
@@ -121,28 +118,8 @@ export default {
       }
     },
 
-    handleDivTags() {
-      let content = this.value
-      console.log('handleDivTags: ', content);
-      return content.replace(/(<div)/igm, '<p').replace(/<\/div>/igm, '</p>');
-
-      if (content.includes('<div')) {
-        return content.replace(/(<div)/igm, '<p').replace(/<\/div>/igm, '</p>');
-      }
-    },
-
     checkForInitialContent() {
       this.editor.innerHTML = this.filteredInitialContent
-      // console.log('Checking for Initial content:', this.value);
-      // let content = this.value
-      //
-      // if (content.includes('<div')) {
-      //   let newContent = content.replace(/(<div)/igm, '<p').replace(/<\/div>/igm, '</p>');
-      //   console.log('Adjusted Content!', newContent);
-      //   this.editor.innerHTML = newContent
-      // } else {
-      //   this.editor.innerHTML = content || ''
-      // }
     },
 
     checkForCustomImageHandler() {
