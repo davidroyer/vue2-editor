@@ -26,6 +26,9 @@ import {
   VueEditor,
   Quill
 } from '../src/index.js'
+// import ImageResize from 'quill-image-resize-module'
+// Quill.register('modules/imageResize', ImageResize)
+
 import axios from 'axios'
 
 export default {
