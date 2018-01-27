@@ -37,6 +37,7 @@ v-model | String | - | Set v-model to the the content or data property you wish 
 useCustomImageHandler | Boolean | false | Handle image uploading instead of using default conversion to Base64
 placeholder    | String | -                                                  | Placeholder text for the editor
 disabled | Boolean | false | Set to true to disable editor
+customModules | Array  | - | Declare Quill modules to register | Use a custom toolbar
 editorToolbar | Array  | ** _Too long for table. See toolbar example below_ | Use a custom toolbar
 editorOptions | Array  | - | Offers object for merging into default config (add formats, custom Quill modules, ect)
 
@@ -297,8 +298,12 @@ You can see below that 3 parameters are passed.
 ```
 
 ## How To Use Custom Quill Modules
-Vue2Editor now exports Quill to assist in this process.
+There are 2 ways of using custom modules with Vue2Editor. This is partly because there have been cases in which errors are thrown when importing and attempting to declare custom modules, and partly because I believe it actually separates the concerns nicely.
 
+
+### Custom Modules Implementation - Version 1
+
+Vue2Editor now exports Quill to assist in this process.
 1. When importing VueEditor, also import Quill.
 2. Import your custom module
 3. Register that custom module via the imported Quill
@@ -307,14 +312,19 @@ Vue2Editor now exports Quill to assist in this process.
 ```html
 <template>
   <div id="app">
-    <vue-editor :editorOptions="editorSettings"></vue-editor>
+    <vue-editor
+      :editorOptions="editorSettings"
+      v-model="content">
   </div>
 </template>
 
 <script>
   import { VueEditor, Quill } from 'vue2-editor'
   import { ImageDrop } from 'quill-image-drop-module'
+  import ImageResize from 'quill-image-resize-module'
+
   Quill.register('modules/imageDrop', ImageDrop)
+  Quill.register('modules/imageDrop', ImageResize)
 
   export default {
     components: {
@@ -327,12 +337,60 @@ Vue2Editor now exports Quill to assist in this process.
     },
     editorSettings: {
       modules: {
-        imageDrop: true
+        imageDrop: true,
+        imageResize: {}
       }
     }
   }
 </script>
 ```
+
+### Custom Modules Implementation - Version 2
+
+1. Import your custom modules
+2. Use the `customModules` prop to declare an array of module(s).
+3. Add the necessary configuration in the `editorOptions` object under modules as seen below
+
+```html
+<template>
+  <div id="app">
+    <vue-editor
+      :customModules="customModulesForEditor"
+      :editorOptions="editorSettings"
+      v-model="content">
+    </vue-editor>
+  </div>
+</template>
+
+<script>
+  import { VueEditor } from 'vue2-editor'
+  import { ImageDrop } from 'quill-image-drop-module'
+  import ImageResize from 'quill-image-resize-module'
+
+  export default {
+    components: {
+      VueEditor
+    },    
+    data() {
+      return {
+        content: '<h1>Initial Content</h1>'  
+      }
+    },
+    customModulesForEditor: [
+      { alias: 'imageDrop', module: ImageDrop },
+      { alias: 'imageResize', module: ImageResize }
+    ],
+    editorSettings: {
+      modules: {
+        imageDrop: true,
+        imageResize: {}
+      }
+    }
+  }
+</script>
+```
+
+---
 
 # Development
 
