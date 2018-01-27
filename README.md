@@ -168,6 +168,7 @@ You can see below that 3 parameters are passed.
 </script>
 ```
 
+
 ## Example - Using Multiple Editors
 
 ```html
@@ -299,13 +300,14 @@ You can see below that 3 parameters are passed.
 There are 2 ways of using custom modules with Vue2Editor. This is partly because there have been cases in which errors are thrown when importing and attempting to declare custom modules, and partly because I believe it actually separates the concerns nicely.
 
 
-### Custom Modules Implementation - Version 1
+### Version 1 - Custom Modules Implementation
 
 Vue2Editor now exports Quill to assist in this process.
 1. When importing VueEditor, also import Quill.
-2. Import your custom module
-3. Register that custom module via the imported Quill
+2. Import your custom modules
+3. Register the custom modules with Quill
 4. Add the necessary configuration to the `editorOptions` object
+
 
 ```html
 <template>
@@ -343,11 +345,11 @@ Vue2Editor now exports Quill to assist in this process.
 </script>
 ```
 
-### Custom Modules Implementation - Version 2
+### Version 2 - Custom Modules Implementation
 
 1. Import your custom modules
 2. Use the `customModules` prop to declare an array of module(s).
-3. Add the necessary configuration in the `editorOptions` object under modules as seen below
+3. Add the necessary configuration for those modules in the `editorOptions` object under modules as seen below
 
 ```html
 <template>
