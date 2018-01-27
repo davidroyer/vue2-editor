@@ -298,12 +298,10 @@ You can see below that 3 parameters are passed.
 ```
 
 ## How To Use Custom Quill Modules
-There are 2 ways of using custom modules with Vue2Editor. This is partly because there have been cases in which errors are thrown when importing and attempting to declare custom modules, and partly because I believe it actually separates the concerns nicely.
+There are 2 ways of using custom modules with Vue2Editor.
 
+### Version 1 - ***Import and Register Yourself***
 
-### Version 1 - Custom Modules Implementation
-
-Vue2Editor now exports Quill to assist in this process.
 1. When importing VueEditor, also import Quill.
 2. Import your custom modules
 3. Register the custom modules with Quill
@@ -325,7 +323,7 @@ Vue2Editor now exports Quill to assist in this process.
   import ImageResize from 'quill-image-resize-module'
 
   Quill.register('modules/imageDrop', ImageDrop)
-  Quill.register('modules/imageDrop', ImageResize)
+  Quill.register('modules/imageResize', ImageResize)
 
   export default {
     components: {
@@ -346,7 +344,8 @@ Vue2Editor now exports Quill to assist in this process.
 </script>
 ```
 
-### Version 2 - Custom Modules Implementation
+### Version 2 - ***You Import Then Let Vue2Editor Register Them***
+***(Recommended way)***
 
 1. Import your custom modules
 2. Use the `customModules` prop to declare an array of module(s).
