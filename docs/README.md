@@ -344,7 +344,7 @@ There are 2 ways of using custom modules with Vue2Editor.
 </script>
 ```
 
-### Version 2 - ***You Import Then Let Vue2Editor Register Them***
+### Version 2 - ***You Import*** | ***Vue2Editor Registers***
 ***(Recommended way)***
 
 1. Import your custom modules

@@ -345,7 +345,7 @@ Vue2Editor now exports Quill to assist in this process.
 </script>
 ```
 
-### Version 2 - ***You Import Then Let Vue2Editor Register Them***
+### Version 2 - ***You Import*** | ***Vue2Editor Registers***
 ***(Recommended way)***
 
 1. Import your custom modules
