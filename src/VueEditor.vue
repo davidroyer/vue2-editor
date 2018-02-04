@@ -158,12 +158,18 @@ export default {
     },
 
     emitImageInfo($event) {
+      const resetUploader = function() {
+        var uploader = document.getElementById('file-upload');
+        uploader.value = '';
+      }
+      
       let file = $event.target.files[0]
       let Editor = this.quill
       let range = Editor.getSelection();
       let cursorLocation = range.index
-      this.$emit('imageAdded', file, Editor, cursorLocation)
+      this.$emit('imageAdded', file, Editor, cursorLocation, resetUploader)
     }
+
   }
 }
 </script>
