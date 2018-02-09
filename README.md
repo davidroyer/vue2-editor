@@ -409,19 +409,3 @@ Markdown: https://github.com/patleeman/quill-markdown-shortcuts -->
 # License
 
 MIT
-
-# Development
-
-Vue2Editor now uses [Poi](https://github.com/egoist/poi) for development
-
-- `yarn dev`: Run example in development mode
-- `yarn docs`: Development for Docs
-- `yarn build`: Build component in both format
-- `yarn lint`: Run eslint
-
-<!-- # Achnoledgements
-Markdown: https://github.com/patleeman/quill-markdown-shortcuts -->
-
-# License
-
-MIT
