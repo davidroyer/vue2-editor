@@ -6,11 +6,16 @@
 </template>
 
 <script>
-import VQuill from 'quill'
+import Vue from 'vue'
 import defaultToolbar from './helpers/toolbar.js'
 import MarkdownShortcuts from './helpers/MarkdownShortcuts'
 import merge from 'lodash.merge'
-const Quill = window.Quill || VQuill
+
+let VQuill;
+if (!Vue.prototype.$isServer) {
+  VQuill = require('quill')
+}
+
 
 export default {
   name: 'vue-editor',
@@ -60,6 +65,7 @@ export default {
   },
 
   mounted() {
+    window.Quill = window.Quill || VQuill
     this.initializeVue2Editor()
     this.handleUpdatedEditor()
   },
@@ -162,7 +168,7 @@ export default {
         var uploader = document.getElementById('file-upload');
         uploader.value = '';
       }
-      
+
       let file = $event.target.files[0]
       let Editor = this.quill
       let range = Editor.getSelection();
