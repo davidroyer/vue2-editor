@@ -135,7 +135,10 @@ export default {
     },
 
     checkForInitialContent() {
-      this.editor.innerHTML = this.filteredInitialContent
+      if (this.value) {
+        this.editor.innerHTML = this.filteredInitialContent
+      }
+      //
     },
 
     checkForCustomImageHandler() {
@@ -149,7 +152,9 @@ export default {
 
     handleUpdatedEditor() {
       this.quill.on('text-change', () => {
-        this.$emit('input', this.editor.innerHTML)
+        let editorContent = this.editor.innerHTML
+        if ( editorContent === '<p><br></p>' ) editorContent = ''
+        this.$emit('input', editorContent)
       })
     },
 
@@ -162,7 +167,7 @@ export default {
         var uploader = document.getElementById('file-upload');
         uploader.value = '';
       }
-      
+
       let file = $event.target.files[0]
       let Editor = this.quill
       let range = Editor.getSelection();

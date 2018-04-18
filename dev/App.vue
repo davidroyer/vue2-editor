@@ -9,9 +9,9 @@
           useCustomImageHandler
           @imageAdded="handleImageAdded"
           :editorOptions="editorSettings"
-          v-model="editor1Content">
+          v-model="editor2Content">
         </vue-editor>
-        <button class="btn btn-primary" @click="saveContent(editor1Content)">Save</button>
+        <button class="btn btn-primary" @click="saveContent(editor2Content)">Save</button>
 
         <div v-html="content"></div>
       </div>
@@ -28,7 +28,7 @@ import {
 } from '../src/index.js'
 // import ImageResize from 'quill-image-resize-module'
 // Quill.register('modules/imageResize', ImageResize)
-
+const CLIENT_ID = '993793b1d8d3e2e'
 import axios from 'axios'
 
 export default {
@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       editor1Content: '<div class="wrap hero__heading_wrap"> <h1 class="hero__heading">Imagine what you can accomplish.</h1> <h2 class="subheader__title" style="color:#c8c8c8;">Discover what matters.<br> And build your life around it.</h2> <div>Content Inside Div</div> <a href="/online-degrees/#undergraduate-section" class="orange-btn">Undergraduate Degrees</a> <a href="/online-degrees/#graduate-section" class="orange-btn">Graduate Degrees</a></div>',
-      editor2Content: '<h1>Editor 2 Starting Content</h1>',
+      editor2Content: '',
       showPreview: true,
       content: '<div class="wrap hero__heading_wrap"> <h1 class="hero__heading">Imagine what you can accomplish.</h1> <h2 class="subheader__title" style="color:#c8c8c8;">Discover what matters.<br> And build your life around it.</h2> <div>Content Inside Div</div> <a href="/online-degrees/#undergraduate-section" class="orange-btn">Undergraduate Degrees</a> <a href="/online-degrees/#graduate-section" class="orange-btn">Graduate Degrees</a></div>',
       editor1IsDisabled: false,
@@ -92,13 +92,13 @@ export default {
     handleImageAdded(file, Editor, cursorLocation) {
 
       console.log('Using Method in Parent');
+      //
+      // var formData = new FormData();
+      // formData.append('image', file)
+      //
 
-      var formData = new FormData();
-      formData.append('image', file)
-
-
-
-
+      alert('We have an image!')
+      return;
       axios({
         url: 'https://api.imgur.com/3/image',
         method: 'POST',

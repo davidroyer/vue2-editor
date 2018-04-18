@@ -1,6 +1,6 @@
 {
   "name": "vue2-editor",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "description": "HTML editor using Vue.js 2, and Quill.js, an open source editor",
   "keywords": [
     "vue",
