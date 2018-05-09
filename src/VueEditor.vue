@@ -113,7 +113,7 @@ export default {
     },
 
     registerBuiltInModules() {
-      Quill.register('modules/markdownShortcuts', MarkdownShortcuts)
+      Quill.register('modules/markdownShortcuts', MarkdownShortcuts, true)
     },
 
     registerCustomModules() {
