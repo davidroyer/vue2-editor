@@ -5,7 +5,7 @@
     <div class="columns">
       <div class="editorWrapper column col-6 col-sm-12">
         <vue-editor
-          id="editor1"
+
           useCustomImageHandler
           @imageAdded="handleImageAdded"
           :editorOptions="editorSettings"

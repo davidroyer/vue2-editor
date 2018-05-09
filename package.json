@@ -1,6 +1,6 @@
 {
   "name": "vue2-editor",
-  "version": "2.4.3",
+  "version": "2.4.4",
   "description": "HTML editor using Vue.js 2, and Quill.js, an open source editor",
   "keywords": [
     "vue",
@@ -36,7 +36,7 @@
   "license": "MIT",
   "dependencies": {
     "lodash.merge": "^4.6.0",
-    "quill": "^1.3.5",
+    "quill": "^1.3.6",
     "quill-image-drop-module": "^1.0.3",
     "quill-image-resize-module": "^3.0.0"
   }
