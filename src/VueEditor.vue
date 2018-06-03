@@ -26,7 +26,7 @@ export default {
     editorToolbar: Array,
     enableMarkdownShortcuts: {
       type: Boolean,
-      default: true
+      default: false
     },
     editorOptions: {
       type: Object,
