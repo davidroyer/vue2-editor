@@ -24,6 +24,10 @@ export default {
     disabled: Boolean,
     customModules: Array,
     editorToolbar: Array,
+    enableMarkdownShortcuts: {
+      type: Boolean,
+      default: true
+    },
     editorOptions: {
       type: Object,
       default: function () {
@@ -113,7 +117,9 @@ export default {
     },
 
     registerBuiltInModules() {
-      Quill.register('modules/markdownShortcuts', MarkdownShortcuts, true)
+      if (this.enableMarkdownShortcuts) {
+        Quill.register('modules/markdownShortcuts', MarkdownShortcuts, true)
+      }
     },
 
     registerCustomModules() {
