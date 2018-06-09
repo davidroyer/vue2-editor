@@ -64,10 +64,15 @@ export default {
     this.handleUpdatedEditor()
   },
 
+  beforeDestroy() {
+    this.quill = null
+    delete this.quill
+  },
+
   watch: {
     value (val) {
-      if (val !=  this.editor.innerHTML && !this.quill.hasFocus()) {
-        this.editor.innerHTML = val
+      if (val !=  this.quill.root.innerHTML && !this.quill.hasFocus()) {
+        this.quill.root.innerHTML = val
       }
     },
     disabled(status) {
@@ -79,10 +84,19 @@ export default {
     initializeVue2Editor() {
       this.prepareModules()
       this.setQuillElement()
-      this.setEditorElement()
       this.handleDynamicStyles()
       this.checkForInitialContent()
       this.checkForCustomImageHandler()
+
+      this.quill.on('selection-change', range => {
+        this.$emit('selection-change', range)
+        if (!range) {
+          this.$emit('blur', this.quill)
+        } else {
+          this.$emit('focus', this.quill)
+        }
+      });
+
     },
 
     setQuillElement() {
@@ -98,12 +112,12 @@ export default {
     },
 
     setEditorElement() {
-      this.editor = document.querySelector(`#${this.id} .ql-editor`)
+      // this.editor = document.querySelector(`#${this.id} .ql-editor`)
     },
 
     handleDynamicStyles() {
       if ( this.imageResizeActive ) {
-        this.editor.classList.add('imageResizeActive');
+        this.quill.root.classList.add('imageResizeActive');
       }
     },
 
@@ -136,7 +150,7 @@ export default {
 
     checkForInitialContent() {
       if (this.value) {
-        this.editor.innerHTML = this.filteredInitialContent
+        this.quill.root.innerHTML = this.filteredInitialContent
       }
       //
     },
@@ -152,7 +166,7 @@ export default {
 
     handleUpdatedEditor() {
       this.quill.on('text-change', () => {
-        let editorContent = this.editor.innerHTML
+        let editorContent = this.quill.root.innerHTML
         if ( editorContent === '<p><br></p>' ) editorContent = ''
         this.$emit('input', editorContent)
       })

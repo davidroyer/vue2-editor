@@ -4,16 +4,19 @@
     <h1>Vue2Editor - Upload Images Example </h1>
     <div class="columns">
       <div class="editorWrapper column col-6 col-sm-12">
+        <button @click.prevent="focusEditor">Focus Editor</button>
         <vue-editor
-
-          useCustomImageHandler
+          @focus="onEditorFocus"
+          @blur="onEditorBlur"
+          @selection-change="onSelectionChange"
+          ref="editor"
           @imageAdded="handleImageAdded"
           :editorOptions="editorSettings"
           v-model="editor2Content">
         </vue-editor>
         <button class="btn btn-primary" @click="saveContent(editor2Content)">Save</button>
 
-        <div v-html="content"></div>
+        <div v-html="editor2Content"></div>
       </div>
     </div>
   </div>
@@ -22,14 +25,12 @@
 
 <script>
 
-import {
-  VueEditor,
-  Quill
-} from '../src/index.js'
-// import ImageResize from 'quill-image-resize-module'
-// Quill.register('modules/imageResize', ImageResize)
-const CLIENT_ID = '993793b1d8d3e2e'
+import { VueEditor, Quill } from '../src/index.js'
 import axios from 'axios'
+import { ImageDrop } from 'quill-image-drop-module'
+
+const CLIENT_ID = '993793b1d8d3e2e'
+Quill.register('modules/imageDrop', ImageDrop)
 
 export default {
   components: {
@@ -37,21 +38,26 @@ export default {
   },
   data() {
     return {
-      editor1Content: '<div class="wrap hero__heading_wrap"> <h1 class="hero__heading">Imagine what you can accomplish.</h1> <h2 class="subheader__title" style="color:#c8c8c8;">Discover what matters.<br> And build your life around it.</h2> <div>Content Inside Div</div> <a href="/online-degrees/#undergraduate-section" class="orange-btn">Undergraduate Degrees</a> <a href="/online-degrees/#graduate-section" class="orange-btn">Graduate Degrees</a></div>',
-      editor2Content: '',
+      editor1Content: '<h2>Editor 1 Starting content</h2>',
+      editor2Content: '<h2>Editor 2 Starting content</h2>',
       showPreview: true,
-      content: '<div class="wrap hero__heading_wrap"> <h1 class="hero__heading">Imagine what you can accomplish.</h1> <h2 class="subheader__title" style="color:#c8c8c8;">Discover what matters.<br> And build your life around it.</h2> <div>Content Inside Div</div> <a href="/online-degrees/#undergraduate-section" class="orange-btn">Undergraduate Degrees</a> <a href="/online-degrees/#graduate-section" class="orange-btn">Graduate Degrees</a></div>',
       editor1IsDisabled: false,
       editor2IsDisabled: false,
       editorSettings: {
         modules: {
-          history: {
-            delay: 1000,
-            maxStack: 50,
-            userOnly: false
-          }
+          imageDrop: true,
+          // imageResize: {}
         }
       },
+      // editorSettings: {
+      //   modules: {
+      //     history: {
+      //       delay: 1000,
+      //       maxStack: 50,
+      //       userOnly: false
+      //     }
+      //   }
+      // },
       customToolbar: [
         ['bold', 'italic', 'underline'],
         [{
@@ -67,6 +73,31 @@ export default {
 
   },
   methods: {
+    focusEditor() {
+      this.$refs.editor.quill.focus();
+    },
+
+    onSelectionChange(range) {
+      console.log('selection change!', range);
+    },
+
+    onEditorBlur(quill) {
+      console.log('editor blur!', quill)
+    },
+
+    onEditorFocus(quill) {
+      console.log('editor focus!', quill)
+    },
+
+    onEditorReady(quill) {
+      console.log('editor ready!', quill)
+    },
+
+    onEditorChange({ quill, html, text }) {
+      console.log('editor change!', quill, html, text)
+      // this.content = html
+    },
+
     setEditor1(editor) {
       this.editor1Content = 'Set Editor 1 Content'
     },
