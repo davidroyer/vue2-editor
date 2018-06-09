@@ -1,5 +1,5 @@
 # Vue2Editor
-View [Documenation](https://davidroyer.github.io/vue2-editor/#/) for Vue2Editor
+View [Documenation](https://www.vue2editor.com/) for Vue2Editor
 
 ![Vue2Editor-Centered](https://www.dropbox.com/s/7com4d32zct44nc/Vue2Editor-Centered.png?raw=1) HTML Editor using [Vue.js](https://vuejs.org) and [Quill](http://quilljs.com/)
 
