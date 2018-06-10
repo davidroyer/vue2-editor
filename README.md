@@ -1,7 +1,7 @@
 # Vue2Editor
 
-<p align="center"> 
-  <a href="https://www.vue2editor.com/"><h2>View Documenation for Vue2Editor</h2></a> 
+<p align="center">
+  <a href="https://www.vue2editor.com/"><h2>View Documenation for Vue2Editor</h2></a>
 </p>
 <br></br>
 
@@ -337,13 +337,13 @@ Vue2Editor now exports Quill to assist in this process.
     },    
     data() {
       return {
-        content: '<h1>Initial Content</h1>'  
-      }
-    },
-    editorSettings: {
-      modules: {
-        imageDrop: true,
-        imageResize: {}
+        content: '<h1>Initial Content</h1>',
+        editorSettings: {
+          modules: {
+            imageDrop: true,
+            imageResize: {}
+          }
+        }        
       }
     }
   }
@@ -379,17 +379,17 @@ Vue2Editor now exports Quill to assist in this process.
     },    
     data() {
       return {
-        content: '<h1>Initial Content</h1>'  
-      }
-    },
-    customModulesForEditor: [
-      { alias: 'imageDrop', module: ImageDrop },
-      { alias: 'imageResize', module: ImageResize }
-    ],
-    editorSettings: {
-      modules: {
-        imageDrop: true,
-        imageResize: {}
+        content: '<h1>Initial Content</h1>',
+        customModulesForEditor: [
+          { alias: 'imageDrop', module: ImageDrop },
+          { alias: 'imageResize', module: ImageResize }
+        ],
+        editorSettings: {
+          modules: {
+            imageDrop: true,
+            imageResize: {}
+          }
+        }        
       }
     }
   }

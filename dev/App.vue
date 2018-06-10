@@ -25,12 +25,16 @@
 
 <script>
 
-import { VueEditor, Quill } from '../src/index.js'
+// import { VueEditor, Quill } from '../src/index.js'
+import { VueEditor, Quill } from '../dist/vue2-editor.js'
+
 import axios from 'axios'
-import { ImageDrop } from 'quill-image-drop-module'
+// import ImageResize from 'quill-image-resize-module';
+// import { ImageDrop } from 'quill-image-drop-module'
 
 const CLIENT_ID = '993793b1d8d3e2e'
-Quill.register('modules/imageDrop', ImageDrop)
+// Quill.register('modules/imageDrop', ImageDrop)
+// Quill.register('modules/imageResize', ImageResize)
 
 export default {
   components: {
@@ -43,11 +47,15 @@ export default {
       showPreview: true,
       editor1IsDisabled: false,
       editor2IsDisabled: false,
+      // customModulesForEditor: [
+      //   { alias: 'imageDrop', module: ImageDrop },
+      //   { alias: 'imageResize', module: ImageResize }
+      // ],
       editorSettings: {
-        modules: {
-          imageDrop: true,
-          // imageResize: {}
-        }
+        // modules: {
+        //   imageDrop: true,
+        //   imageResize: {}
+        // }
       },
       // editorSettings: {
       //   modules: {
