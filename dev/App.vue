@@ -25,8 +25,8 @@
 
 <script>
 
-// import { VueEditor, Quill } from '../src/index.js'
-import { VueEditor, Quill } from '../dist/vue2-editor.js'
+import { VueEditor, Quill } from '../src/index.js'
+// import { VueEditor, Quill } from '../dist/vue2-editor.js'
 
 import axios from 'axios'
 // import ImageResize from 'quill-image-resize-module';
@@ -79,6 +79,9 @@ export default {
   },
   created() {
 
+  },
+  mounted() {
+    alert('worked from dev!')
   },
   methods: {
     focusEditor() {
