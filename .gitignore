@@ -9,8 +9,8 @@ npm-debug.log
 **/**/.DS_Store
 
 # produced by vbuild
-dist
-dist-example
+#dist
+#dist-example
 
 dev/cloudinary.vue
 dev/Backup-App.vue
