@@ -9,9 +9,10 @@
             v-model="content"
             ref="myQuillEditor"
             :options="editorOption"
-            @blur="onEditorBlur($event)"
-            @focus="onEditorFocus($event)"
-            @ready="onEditorReady($event)">
+            @blur="onEditorBlur"
+            @focus="onEditorFocus"
+            @ready="onEditorReady"
+            @selection-change="onSelectionChange">
           </vue-editor>
         </div>
       </div>
@@ -25,21 +26,23 @@ import { VueEditor, Quill } from "../../src/index.js";
 
 export default {
   components: { VueEditor },
+  
   data: () => ({
     editorOption: {
       bounds: "#editor-boundary",
       modules: {
-        toolbar: [
-          ["bold", "italic", "underline", "strike"],
-          ["blockquote", "code-block"],
-          [{ header: 1 }, { header: 2 }],
-          [{ list: "ordered" }, { list: "bullet" }]
-        ]
+        // toolbar: [
+        //   ["bold", "italic", "underline", "strike"],
+        //   ["blockquote", "code-block"],
+        //   [{ header: 1 }, { header: 2 }],
+        //   [{ list: "ordered" }, { list: "bullet" }]
+        // ]
       },
       placeholder: "Custom placeholder text here ..."
     },
     content: "<h1>Starting content</h1>"
   }),
+
   methods: {
     onEditorBlur(quill) {
       console.log("editor blur!", quill);
@@ -54,13 +57,8 @@ export default {
       console.log("editor change!", quill, html, text);
       this.content = html;
     },
-    addAnswer: function(event) {
-      // Add new empty answer
-      this.answers.push("");
-    },
-    removeAnswer: function(index) {
-      // Remove answer at index
-      this.answers.splice(index, 1);
+    onSelectionChange(range, oldRange, source) {
+      console.log("Selection change!", range);
     }
   }
 };
