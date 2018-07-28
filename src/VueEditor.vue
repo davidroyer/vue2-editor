@@ -14,12 +14,6 @@ import { objectAssignPolyfillHandler } from "./helpers/polyfills.js";
 export default {
   name: "VueEditor",
 
-  data: () => ({
-    quill: null,
-    config: {},
-    defaultOptions
-  }),
-
   props: {
     deltaContent: String,
     value: String,
@@ -38,6 +32,12 @@ export default {
       default: () => ({})
     }
   },
+
+  data: () => ({
+    quill: null,
+    config: {},
+    defaultOptions
+  }),
 
   mounted() {
     this.registerPrototypes();
