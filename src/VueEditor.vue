@@ -10,7 +10,6 @@ import _Quill from "quill";
 import defaultOptions from "./helpers/default-options";
 import { objectAssignPolyfillHandler } from "./helpers/polyfills";
 import { configSettingsMerger } from "./helpers/config-settings-merger";
-import merge from "lodash.merge";
 
 const Quill = window.Quill || _Quill;
 
@@ -38,7 +37,6 @@ export default {
   }),
 
   mounted() {
-    console.log(this.config);
     configSettingsMerger(this.defaultOptions, this.options);
     this.registerPrototypes();
     this.initialize();
