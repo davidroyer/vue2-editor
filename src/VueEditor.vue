@@ -62,7 +62,6 @@ export default {
   mounted() {
     this.initializeVue2Editor()
     this.handleUpdatedEditor()
-    alert('worked!')
   },
 
   beforeDestroy() {
