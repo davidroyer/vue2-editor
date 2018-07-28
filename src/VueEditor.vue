@@ -1,199 +1,180 @@
 <template>
-  <div class="quillWrapper">
-    <div ref="quillContainer" :id="id"></div>
-    <input v-if="useCustomImageHandler" @change="emitImageInfo($event)" ref="fileInput" id="file-upload" type="file" style="display:none;">
-  </div>
+<div class="quill-editor">
+  <pre>{{content}}</pre>
+  <slot name="toolbar"></slot>
+  <div id="editor" ref="editor" @keyup.delete="handleDelete"></div>
+</div>
 </template>
 
 <script>
-import VQuill from 'quill'
-import defaultToolbar from './helpers/toolbar.js'
-import MarkdownShortcuts from './helpers/MarkdownShortcuts'
-import merge from 'lodash.merge'
-const Quill = window.Quill || VQuill
-
-export default {
-  name: 'vue-editor',
-  props: {
-    value: String,
-    id: {
-      type: String,
-      default: 'quill-container'
-    },
-    placeholder: String,
-    disabled: Boolean,
-    customModules: Array,
-    editorToolbar: Array,
-    editorOptions: {
-      type: Object,
-      default: function () {
-        return {};
+import VQuill from "quill";
+const Quill = window.Quill || VQuill;
+import { defaultOptions } from "./helpers/defaults";
+if (typeof Object.assign != "function") {
+  Object.defineProperty(Object, "assign", {
+    value(target, varArgs) {
+      if (target == null) {
+        throw new TypeError("Cannot convert undefined or null to object");
       }
+      const to = Object(target);
+      for (let index = 1; index < arguments.length; index++) {
+        const nextSource = arguments[index];
+        if (nextSource != null) {
+          for (const nextKey in nextSource) {
+            if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+              to[nextKey] = nextSource[nextKey];
+            }
+          }
+        }
+      }
+      return to;
     },
-    useCustomImageHandler: {
-      type: Boolean,
-      default: false
-    },
-  },
-
-  computed: {
-    filteredInitialContent() {
-      let content = this.value || ''
-      return content.replace(/(<div)/igm, '<p').replace(/<\/div>/igm, '</p>');
-    },
-
-    imageResizeActive() {
-      return this.quill.options.modules.imageResize !== undefined ? true : false
-    }
-  },
-
+    writable: true,
+    configurable: true
+  });
+}
+export default {
+  name: "VueEditor",
   data() {
     return {
       quill: null,
-      editor: null,
-      editorConfig: {},
-      modules: {
-        toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar,
-        markdownShortcuts: {}
-      }
+      _options: {},
+      content: "",
+      defaultOptions
+    };
+  },
+  props: {
+    editorContent: String,
+    value: String,
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    options: {
+      type: Object,
+      required: false,
+      default: () => ({})
+    },
+    globalOptions: {
+      type: Object,
+      required: false,
+      default: () => ({})
     }
   },
-
   mounted() {
-    this.initializeVue2Editor()
-    this.handleUpdatedEditor()
-    alert('worked!')
+    this.initialize();
   },
-
   beforeDestroy() {
-    // this.quill = null
-    // delete this.quill
+    this.quill = null;
+    delete this.quill;
   },
-
-  watch: {
-    value (val) {
-      if (val !=  this.quill.root.innerHTML && !this.quill.hasFocus()) {
-        this.quill.root.innerHTML = val
-      }
-    },
-    disabled(status) {
-      this.quill.enable(!status);
-    }
-  },
-
   methods: {
-    initializeVue2Editor() {
-      this.prepareModules()
-      this.setQuillElement()
-      this.handleDynamicStyles()
-      this.checkForInitialContent()
-      this.checkForCustomImageHandler()
+    // Init Quill instance
+    initialize() {
+      if (this.$el) {
+        // Options
+        this._options = Object.assign(
+          {},
+          this.defaultOptions,
+          this.globalOptions,
+          this.options
+        );
+        // Instance
+        this.quill = new Quill(this.$refs.editor, this._options);
 
+        this.quill.enable(false);
 
-      this.quill.on('selection-change', range => {
-        this.$emit('selection-change', range)
-        if (!range) {
-          this.$emit('blur', this.quill)
-        } else {
-          this.$emit('focus', this.quill)
+        // Set editor content
+
+        if (this.value) {
+          this.quill.pasteHTML(this.value);
+          this.quill.root.innerHTML = this.value;
         }
-      });
-
-    },
-
-    setQuillElement() {
-      let editorConfig = {
-        debug: false,
-        modules: this.modules,
-        placeholder: this.placeholder ? this.placeholder : '',
-        theme: 'snow',
-        readOnly: this.disabled ? this.disabled : false,
-      };
-      this.prepareEditorConfig(editorConfig)
-      this.quill = new Quill(this.$refs.quillContainer, editorConfig)
-    },
-
-    setEditorElement() {
-      // this.editor = document.querySelector(`#${this.id} .ql-editor`)
-    },
-
-    handleDynamicStyles() {
-      if ( this.imageResizeActive ) {
-        this.quill.root.classList.add('imageResizeActive');
-      }
-    },
-
-    prepareModules() {
-      this.registerBuiltInModules()
-      this.registerCustomModules()
-    },
-
-    registerBuiltInModules() {
-      Quill.register('modules/markdownShortcuts', MarkdownShortcuts, true)
-    },
-
-    registerCustomModules() {
-      if ( this.customModules !== undefined ) {
-        this.customModules.forEach(customModule => {
-          Quill.register('modules/' + customModule.alias, customModule.module)
-        })
-      }
-    },
-
-    prepareEditorConfig(editorConfig) {
-      if (Object.keys(this.editorOptions).length > 0 && this.editorOptions.constructor === Object) {
-        if (this.editorOptions.modules && typeof this.editorOptions.modules.toolbar !== 'undefined') {
-        // We don't want to merge default toolbar with provided toolbar.
-          delete editorConfig.modules.toolbar;
+        // Disabled editor
+        if (!this.disabled) {
+          this.quill.enable(true);
         }
-        merge(editorConfig, this.editorOptions);
+        // Mark model as touched if editor lost focus
+        this.quill.on("selection-change", range => {
+          if (!range) {
+            this.$emit("blur", this.quill);
+          } else {
+            this.$emit("focus", this.quill);
+          }
+        });
+        // Update model if text changes
+        this.quill.on("text-change", (delta, oldDelta, source) => {
+          console.log(this.$refs.editor);
+          let html = this.$refs.editor.children[0].innerHTML;
+
+          const quill = this.quill;
+          const text = this.quill.getText();
+
+          if (html === "<p><br></p>") html = "";
+          this.content = html;
+          console.log("this.content", this.content);
+          console.log("this", this);
+          console.log("this.quill", this.quill);
+          this.$emit("input", this.content);
+          this.$emit("change", {
+            html,
+            text,
+            quill
+          });
+        });
+        // Emit ready event
+        this.$emit("ready", this.quill);
       }
     },
 
-    checkForInitialContent() {
-      if (this.value) {
-        this.quill.root.innerHTML = this.filteredInitialContent
+    handleDelete() {
+      const blockquoteButton = document.querySelector(".ql-blockquote");
+      const isEmptyBlockQuote =
+        this.value === "<blockquote><br></blockquote>" ? true : false;
+      if (
+        blockquoteButton.classList.contains("ql-active") &&
+        isEmptyBlockQuote
+      ) {
+        setTimeout(() => {
+          blockquoteButton.click();
+        }, 250);
       }
-      //
-    },
-
-    checkForCustomImageHandler() {
-      this.useCustomImageHandler === true ? this.setupCustomImageHandler() : ''
-    },
-
-    setupCustomImageHandler() {
-      let toolbar = this.quill.getModule('toolbar');
-      toolbar.addHandler('image', this.customImageHandler);
-    },
-
-    handleUpdatedEditor() {
-      this.quill.on('text-change', () => {
-        let editorContent = this.quill.root.innerHTML
-        if ( editorContent === '<p><br></p>' ) editorContent = ''
-        this.$emit('input', editorContent)
-      })
-    },
-
-    customImageHandler(image, callback) {
-      this.$refs.fileInput.click();
-    },
-
-    emitImageInfo($event) {
-      const resetUploader = function() {
-        var uploader = document.getElementById('file-upload');
-        uploader.value = '';
-      }
-
-      let file = $event.target.files[0]
-      let Editor = this.quill
-      let range = Editor.getSelection();
-      let cursorLocation = range.index
-      this.$emit('imageAdded', file, Editor, cursorLocation, resetUploader)
     }
-
+  },
+  watch: {
+    // Watch content change
+    content(newVal, oldVal) {
+      if (this.quill) {
+        if (newVal && newVal !== this.content) {
+          this.content = newVal;
+          this.quill.pasteHTML(newVal);
+        } else if (!newVal) {
+          this.quill.setText("");
+        }
+      }
+    },
+    // Watch content change
+    value(newVal, oldVal) {
+      if (this.quill) {
+        if (newVal && newVal !== this.content) {
+          this.content = newVal;
+          this.quill.pasteHTML(newVal);
+        } else if (!newVal) {
+          this.quill.setText("");
+        }
+      }
+    },
+    // Watch disabled change
+    disabled(newVal, oldVal) {
+      if (this.quill) {
+        this.quill.enable(!newVal);
+      }
+    }
   }
-}
+};
 </script>
 
-<style src="quill/dist/quill.snow.css"></style>
-<style src="./styles/vue2-editor.scss" lang='scss'></style>
+<style src="quill/dist/quill.snow.css">
+</style>
+<style src="./styles/vue2-editor.scss" lang='scss'>
+</style>
