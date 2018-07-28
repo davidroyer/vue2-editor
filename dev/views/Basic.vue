@@ -22,11 +22,10 @@
 
 <script>
 import { VueEditor, Quill } from "../../src/index.js";
-// import { VueEditor, Quill } from "../../dist/vue2-editor.js";
 
 export default {
   components: { VueEditor },
-  
+
   data: () => ({
     editorOption: {
       bounds: "#editor-boundary",

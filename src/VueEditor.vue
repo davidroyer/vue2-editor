@@ -7,9 +7,12 @@
 
 <script>
 import _Quill from "quill";
-const Quill = window.Quill || _Quill;
 import defaultOptions from "./helpers/default-options";
-import { objectAssignPolyfillHandler } from "./helpers/polyfills.js";
+import { objectAssignPolyfillHandler } from "./helpers/polyfills";
+import { configSettingsMerger } from "./helpers/config-settings-merger";
+import merge from "lodash.merge";
+
+const Quill = window.Quill || _Quill;
 
 export default {
   name: "VueEditor",
@@ -25,11 +28,6 @@ export default {
       type: Object,
       required: false,
       default: () => ({})
-    },
-    globalOptions: {
-      type: Object,
-      required: false,
-      default: () => ({})
     }
   },
 
@@ -40,6 +38,8 @@ export default {
   }),
 
   mounted() {
+    console.log(this.config);
+    configSettingsMerger(this.defaultOptions, this.options);
     this.registerPrototypes();
     this.initialize();
   },
@@ -47,13 +47,7 @@ export default {
   methods: {
     initialize() {
       if (this.$el) {
-        this.config = Object.assign(
-          {},
-          this.defaultOptions,
-          this.globalOptions,
-          this.options
-        );
-
+        this.config = Object.assign({}, this.options);
         this.quill = new Quill(this.$refs.editor, this.config);
         this.handleInitialContent();
         this.registerEditorEventListeners();
@@ -71,7 +65,7 @@ export default {
     },
 
     registerEditorEventListeners() {
-      this.quill.on('text-change', this.handleTextChange)
+      this.quill.on("text-change", this.handleTextChange);
       this.quill.on("selection-change", this.handleSelectionChange);
       this.listenForEditorEvent("text-change");
       this.listenForEditorEvent("selection-change");
@@ -85,7 +79,7 @@ export default {
     },
 
     handleInitialContent() {
-      if (this.value) this.quill.root.innerHTML = this.value;  // Set initial editor content
+      if (this.value) this.quill.root.innerHTML = this.value; // Set initial editor content
     },
 
     handleSelectionChange(range, oldRange) {
@@ -94,7 +88,8 @@ export default {
     },
 
     handleTextChange() {
-      let editorContent = this.quill.getHTML() === "<p><br></p>" ? "" : this.quill.getHTML();
+      let editorContent =
+        this.quill.getHTML() === "<p><br></p>" ? "" : this.quill.getHTML();
       this.$emit("input", editorContent);
     }
   },
