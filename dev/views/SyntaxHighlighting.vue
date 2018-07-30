@@ -6,8 +6,9 @@
       <div class="columns">
         <div id="editor-boundary" class="editorWrapper column col-6 col-sm-12">
           <vue-editor
-            v-model="content"
             ref="editor"
+            v-model="content"
+            useMarkdownShortcuts
             :editor-options="editorSettings">
           </vue-editor>
         </div>
