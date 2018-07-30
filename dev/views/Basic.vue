@@ -10,8 +10,11 @@
           <vue-editor
             v-model="content"
             ref="editor"
-            :options="editorOptions"
+            :editor-toolbar="toolbarSettings"
+            :editor-options="editorSettings"
+            useMarkdownShortcuts
             :disabled="editorIsDisabled"
+            placeholder="First custom placeholder"
             @blur="onEditorBlur"
             @focus="onEditorFocus"
             @ready="onEditorReady"
@@ -30,17 +33,13 @@ export default {
   components: { VueEditor },
 
   data: () => ({
-    editorOptions: {
-      modules: {
-        // toolbar: [
-        //   ["bold", "italic", "underline", "strike"],
-        //   ["blockquote", "code-block"],
-        //   [{ header: 1 }, { header: 2 }],
-        //   [{ list: "ordered" }, { list: "bullet" }]
-        // ]
-      },
-      placeholder: "Custom placeholder text here ..."
-    },
+    toolbarSettings: [
+      ["bold", "italic", "underline", "strike"],
+      ["blockquote", "code-block"],
+      [{ header: 1 }, { header: 2 }],
+      [{ list: "ordered" }, { list: "bullet" }]
+    ],
+    editorSettings: {},
     editorIsDisabled: false,
     content: ""
   }),

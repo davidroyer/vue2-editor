@@ -9,7 +9,7 @@
           <vue-editor
             v-model="content"
             ref="myQuillEditor"
-            :options="editorOptions"
+            :editor-options="editorOptions"
             :disabled="editorIsDisabled"
             @blur="onEditorBlur"
             @focus="onEditorFocus"

@@ -10,20 +10,23 @@
 import _Quill from "quill";
 import defaultToolbar from "./helpers/default-toolbar";
 import merge from "lodash.merge";
-import { objectAssignPolyfillHandler } from "./helpers/polyfills";
+import oldApi from "./helpers/old-api";
+import MarkdownShortcuts from "./helpers/markdown-shortcuts";
 
 const Quill = window.Quill || _Quill;
-objectAssignPolyfillHandler();
 
 export default {
   name: "VueEditor",
-
+  mixins: [oldApi],
   props: {
     id: {
       type: String,
       default: "quill-container"
     },
-    deltaContent: String,
+    placeholder: {
+      type: String,
+      default: ""
+    },
     value: {
       type: String,
       default: ""
@@ -31,12 +34,17 @@ export default {
     disabled: {
       type: Boolean
     },
-    options: {
+    editorToolbar: Array,
+    editorOptions: {
       type: Object,
       required: false,
       default: () => ({})
     },
     useCustomImageHandler: {
+      type: Boolean,
+      default: false
+    },
+    useMarkdownShortcuts: {
       type: Boolean,
       default: false
     }
@@ -47,12 +55,13 @@ export default {
   }),
 
   mounted() {
+    this.registerCustomModules(Quill);
     this.registerPrototypes();
-    this.initialize();
+    this.initializeEditor();
   },
 
   methods: {
-    initialize() {
+    initializeEditor() {
       this.setupQuillEditor();
       this.checkForCustomImageHandler();
       this.handleInitialContent();
@@ -64,28 +73,32 @@ export default {
       let editorConfig = {
         debug: false,
         modules: {
-          toolbar: defaultToolbar
+          toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar,
+          markdownShortcuts: this.useMarkdownShortcuts ? {} : null
         },
         theme: "snow",
+        placeholder: this.placeholder ? this.placeholder : "",
         readOnly: this.disabled ? this.disabled : false
       };
+
+      if (this.useMarkdownShortcuts) this.registerMarkdownModule();
       this.prepareEditorConfig(editorConfig);
       this.quill = new Quill(this.$refs.quillContainer, editorConfig);
     },
 
     prepareEditorConfig(editorConfig) {
       if (
-        Object.keys(this.options).length > 0 &&
-        this.options.constructor === Object
+        Object.keys(this.editorOptions).length > 0 &&
+        this.editorOptions.constructor === Object
       ) {
         if (
-          this.options.modules &&
-          typeof this.options.modules.toolbar !== "undefined"
+          this.editorOptions.modules &&
+          typeof this.editorOptions.modules.toolbar !== "undefined"
         ) {
           // We don't want to merge default toolbar with provided toolbar.
           delete editorConfig.modules.toolbar;
         }
-        merge(editorConfig, this.options);
+        merge(editorConfig, this.editorOptions);
       }
     },
     registerPrototypes() {
@@ -103,6 +116,10 @@ export default {
       this.listenForEditorEvent("text-change");
       this.listenForEditorEvent("selection-change");
       this.listenForEditorEvent("editor-change");
+    },
+
+    registerMarkdownModule() {
+      Quill.register("modules/markdownShortcuts", MarkdownShortcuts, true);
     },
 
     listenForEditorEvent(type) {

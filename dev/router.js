@@ -3,7 +3,7 @@ import Router from "vue-router";
 import Basic from "./views/Basic.vue";
 import SyntaxHighlighting from "./views/SyntaxHighlighting.vue";
 import Dashboard from "./views/Dashboard.vue";
-import CustomModules from "./views/CustomModules.vue";
+import Modules from "./views/Modules.vue";
 import Images from "./views/Images.vue";
 
 Vue.use(Router);
@@ -21,9 +21,9 @@ export default new Router({
       component: Basic
     },
     {
-      path: "/custom-modules",
-      name: "custom-modules",
-      component: CustomModules
+      path: "/modules",
+      name: "modules",
+      component: Modules
     },
     {
       path: "/images",

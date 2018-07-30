@@ -7,12 +7,8 @@
         <div id="editor-boundary" class="editorWrapper column col-6 col-sm-12">
           <vue-editor
             v-model="content"
-            ref="myQuillEditor"
-            :options="editorOption"
-            @blur="onEditorBlur"
-            @focus="onEditorFocus"
-            @ready="onEditorReady"
-            @selection-change="onSelectionChange">
+            :custom-modules="customModules"
+            :editor-options="editorSettings">
           </vue-editor>
         </div>
       </div>
@@ -23,14 +19,14 @@
 <script>
 import { VueEditor, Quill } from "../../src/index.js";
 import { ImageDrop } from "quill-image-drop-module";
-Quill.register("modules/imageDrop", ImageDrop);
+// Quill.register("modules/imageDrop", ImageDrop);
 
 export default {
   components: { VueEditor },
 
   data: () => ({
-    editorOption: {
-      bounds: "#editor-boundary",
+    customModules: [{ alias: "imageDrop", module: ImageDrop }],
+    editorSettings: {
       modules: {
         imageDrop: true
       }

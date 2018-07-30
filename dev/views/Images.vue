@@ -19,11 +19,8 @@
 
 <script>
 import { VueEditor, Quill } from "../../src/index.js";
-// import { ImageDrop } from "quill-image-drop-module";
 import axios from "axios";
 const CLIENT_ID = "993793b1d8d3e2e";
-
-// Quill.register("modules/imageDrop", ImageDrop);
 
 export default {
   components: { VueEditor },
@@ -31,9 +28,6 @@ export default {
   data: () => ({
     editorOption: {
       bounds: "#editor-boundary",
-      modules: {
-        // imageDrop: true
-      },
       placeholder: "Custom placeholder text here ..."
     },
     content: "<h1>Starting content</h1>"

@@ -8,7 +8,7 @@
           <vue-editor
             v-model="content"
             ref="editor"
-            :options="editorOption">
+            :editor-options="editorSettings">
           </vue-editor>
         </div>
       </div>
@@ -19,16 +19,15 @@
 <script>
 import hljs from "highlight.js";
 import "highlight.js/styles/monokai-sublime.css";
-
 import { VueEditor, Quill } from "../../src/index.js";
 
 export default {
   components: { VueEditor },
 
   data: () => ({
-    editorOption: {
+    editorSettings: {
       modules: {
-        toolbar: [["code-block"]], // Include button in toolbar
+        toolbar: [["code-block"]],
         syntax: {
           highlight: text => hljs.highlightAuto(text).value
         }
@@ -36,25 +35,6 @@ export default {
       placeholder: "Custom placeholder text here ..."
     },
     content: ""
-  }),
-
-  methods: {
-    onEditorBlur(quill) {
-      console.log("editor blur!", quill);
-    },
-    onEditorFocus(quill) {
-      console.log("editor focus!", quill);
-    },
-    onEditorReady(quill) {
-      console.log("editor ready!", quill);
-    },
-    onEditorChange({ quill, html, text }) {
-      console.log("editor change!", quill, html, text);
-      this.content = html;
-    },
-    onSelectionChange(range, oldRange, source) {
-      console.log("Selection change!", range);
-    }
-  }
+  })
 };
 </script>
