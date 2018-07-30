@@ -72,18 +72,25 @@ export default {
     setupQuillEditor() {
       let editorConfig = {
         debug: false,
-        modules: {
-          toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar,
-          markdownShortcuts: this.useMarkdownShortcuts ? {} : null
-        },
+        modules: this.setModules(),
         theme: "snow",
         placeholder: this.placeholder ? this.placeholder : "",
         readOnly: this.disabled ? this.disabled : false
       };
 
-      if (this.useMarkdownShortcuts) this.registerMarkdownModule();
       this.prepareEditorConfig(editorConfig);
       this.quill = new Quill(this.$refs.quillContainer, editorConfig);
+    },
+
+    setModules() {
+      let modules = {
+        toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar
+      };
+      if (this.useMarkdownShortcuts) {
+        Quill.register("modules/markdownShortcuts", MarkdownShortcuts, true);
+        modules["markdownShortcuts"] = {};
+      }
+      return modules;
     },
 
     prepareEditorConfig(editorConfig) {
@@ -101,6 +108,7 @@ export default {
         merge(editorConfig, this.editorOptions);
       }
     },
+
     registerPrototypes() {
       Quill.prototype.getHTML = function() {
         return this.container.querySelector(".ql-editor").innerHTML;
@@ -116,10 +124,6 @@ export default {
       this.listenForEditorEvent("text-change");
       this.listenForEditorEvent("selection-change");
       this.listenForEditorEvent("editor-change");
-    },
-
-    registerMarkdownModule() {
-      Quill.register("modules/markdownShortcuts", MarkdownShortcuts, true);
     },
 
     listenForEditorEvent(type) {

@@ -12,7 +12,6 @@
             ref="editor"
             :editor-toolbar="toolbarSettings"
             :editor-options="editorSettings"
-            useMarkdownShortcuts
             :disabled="editorIsDisabled"
             placeholder="First custom placeholder"
             @blur="onEditorBlur"
