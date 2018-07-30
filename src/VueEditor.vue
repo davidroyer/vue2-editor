@@ -1,25 +1,33 @@
 <template>
-  <div class="quill-editor">
+  <div class="quillWrapper">
     <slot name="toolbar"></slot>
-    <div ref="editor"></div>
-    <input v-if="useCustomImageHandler" @change="emitImageInfo($event)" ref="fileInput" id="file-upload" type="file" style="display:none;">
+    <div :id="id" ref="quillContainer"></div>
+    <input v-if="useCustomImageHandler" @change="emitImageInfo($event)" ref="fileInput" id="file-upload" type="file" accept="image/*" style="display:none;">
   </div>
 </template>
 
 <script>
 import _Quill from "quill";
-import defaultOptions from "./helpers/default-options";
+import defaultToolbar from "./helpers/default-toolbar";
+import merge from "lodash.merge";
 import { objectAssignPolyfillHandler } from "./helpers/polyfills";
-import { configSettingsMerger } from "./helpers/config-settings-merger";
 
 const Quill = window.Quill || _Quill;
+objectAssignPolyfillHandler();
 
 export default {
   name: "VueEditor",
 
   props: {
+    id: {
+      type: String,
+      default: "quill-container"
+    },
     deltaContent: String,
-    value: String,
+    value: {
+      type: String,
+      default: ""
+    },
     disabled: {
       type: Boolean
     },
@@ -35,9 +43,7 @@ export default {
   },
 
   data: () => ({
-    quill: null,
-    config: {},
-    defaultOptions
+    quill: null
   }),
 
   mounted() {
@@ -47,16 +53,41 @@ export default {
 
   methods: {
     initialize() {
-      if (this.$el) {
-        this.config = configSettingsMerger(this.defaultOptions, this.options);
-        this.quill = new Quill(this.$refs.editor, this.config);
-        this.checkForCustomImageHandler();
-        this.handleInitialContent();
-        this.registerEditorEventListeners();
-        this.$emit("ready", this.quill);
-      }
+      this.setupQuillEditor();
+      this.checkForCustomImageHandler();
+      this.handleInitialContent();
+      this.registerEditorEventListeners();
+      this.$emit("ready", this.quill);
     },
 
+    setupQuillEditor() {
+      let editorConfig = {
+        debug: false,
+        modules: {
+          toolbar: defaultToolbar
+        },
+        theme: "snow",
+        readOnly: this.disabled ? this.disabled : false
+      };
+      this.prepareEditorConfig(editorConfig);
+      this.quill = new Quill(this.$refs.quillContainer, editorConfig);
+    },
+
+    prepareEditorConfig(editorConfig) {
+      if (
+        Object.keys(this.options).length > 0 &&
+        this.options.constructor === Object
+      ) {
+        if (
+          this.options.modules &&
+          typeof this.options.modules.toolbar !== "undefined"
+        ) {
+          // We don't want to merge default toolbar with provided toolbar.
+          delete editorConfig.modules.toolbar;
+        }
+        merge(editorConfig, this.options);
+      }
+    },
     registerPrototypes() {
       Quill.prototype.getHTML = function() {
         return this.container.querySelector(".ql-editor").innerHTML;
@@ -81,9 +112,6 @@ export default {
     },
 
     handleInitialContent() {
-      if (this.disabled) this.quill.disable();
-      else this.quill.enable();
-
       if (this.value) this.quill.root.innerHTML = this.value; // Set initial editor content
     },
 

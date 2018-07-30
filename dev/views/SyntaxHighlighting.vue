@@ -7,13 +7,8 @@
         <div id="editor-boundary" class="editorWrapper column col-6 col-sm-12">
           <vue-editor
             v-model="content"
-            ref="myQuillEditor"
-            :options="editorOption"
-            useCustomImageHandler
-            @blur="onEditorBlur"
-            @focus="onEditorFocus"
-            @ready="onEditorReady"
-            @selection-change="onSelectionChange">
+            ref="editor"
+            :options="editorOption">
           </vue-editor>
         </div>
       </div>
@@ -33,7 +28,7 @@ export default {
   data: () => ({
     editorOption: {
       modules: {
-        // toolbar: [["code-block"]], // Include button in toolbar
+        toolbar: [["code-block"]], // Include button in toolbar
         syntax: {
           highlight: text => hljs.highlightAuto(text).value
         }
