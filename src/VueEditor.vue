@@ -2,6 +2,7 @@
   <div class="quill-editor">
     <slot name="toolbar"></slot>
     <div ref="editor"></div>
+    <input v-if="useCustomImageHandler" @change="emitImageInfo($event)" ref="fileInput" id="file-upload" type="file" style="display:none;">
   </div>
 </template>
 
@@ -20,13 +21,16 @@ export default {
     deltaContent: String,
     value: String,
     disabled: {
-      type: Boolean,
-      default: false
+      type: Boolean
     },
     options: {
       type: Object,
       required: false,
       default: () => ({})
+    },
+    useCustomImageHandler: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -37,7 +41,6 @@ export default {
   }),
 
   mounted() {
-    configSettingsMerger(this.defaultOptions, this.options);
     this.registerPrototypes();
     this.initialize();
   },
@@ -45,8 +48,9 @@ export default {
   methods: {
     initialize() {
       if (this.$el) {
-        this.config = Object.assign({}, this.options);
+        this.config = configSettingsMerger(this.defaultOptions, this.options);
         this.quill = new Quill(this.$refs.editor, this.config);
+        this.checkForCustomImageHandler();
         this.handleInitialContent();
         this.registerEditorEventListeners();
         this.$emit("ready", this.quill);
@@ -77,6 +81,9 @@ export default {
     },
 
     handleInitialContent() {
+      if (this.disabled) this.quill.disable();
+      else this.quill.enable();
+
       if (this.value) this.quill.root.innerHTML = this.value; // Set initial editor content
     },
 
@@ -89,6 +96,31 @@ export default {
       let editorContent =
         this.quill.getHTML() === "<p><br></p>" ? "" : this.quill.getHTML();
       this.$emit("input", editorContent);
+    },
+
+    checkForCustomImageHandler() {
+      this.useCustomImageHandler === true ? this.setupCustomImageHandler() : "";
+    },
+
+    setupCustomImageHandler() {
+      let toolbar = this.quill.getModule("toolbar");
+      toolbar.addHandler("image", this.customImageHandler);
+    },
+
+    customImageHandler(image, callback) {
+      this.$refs.fileInput.click();
+    },
+
+    emitImageInfo($event) {
+      const resetUploader = function() {
+        var uploader = document.getElementById("file-upload");
+        uploader.value = "";
+      };
+      let file = $event.target.files[0];
+      let Editor = this.quill;
+      let range = Editor.getSelection();
+      let cursorLocation = range.index;
+      this.$emit("imageAdded", file, Editor, cursorLocation, resetUploader);
     }
   },
 
@@ -99,7 +131,7 @@ export default {
       }
     },
     disabled(status) {
-      if (this.quill) this.quill.enable(!status);
+      this.quill.enable(!status);
     }
   },
 

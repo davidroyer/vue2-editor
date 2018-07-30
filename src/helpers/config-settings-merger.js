@@ -1,17 +1,17 @@
 import merge from "lodash.merge";
 
-export function configSettingsMerger(defaultOptions, customizedOptions) {
+export function configSettingsMerger(defaultOptions, userOptions) {
   if (
-    Object.keys(customizedOptions).length > 0 &&
-    customizedOptions.constructor === Object
+    Object.keys(userOptions).length > 0 &&
+    userOptions.constructor === Object
   ) {
     if (
-      customizedOptions.modules &&
-      typeof customizedOptions.modules.toolbar !== "undefined"
+      userOptions.modules &&
+      typeof userOptions.modules.toolbar !== "undefined"
     ) {
       // We don't want to merge default toolbar with provided toolbar.
       delete defaultOptions.modules.toolbar;
     }
-    merge(customizedOptions, defaultOptions);
+    return merge(defaultOptions, userOptions);
   }
 }

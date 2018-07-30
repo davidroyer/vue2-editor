@@ -1,16 +1,15 @@
 <template>
   <div class="basic">
-    <h1>Basic Example</h1>
+    <h1>Syntax Highlighting Example</h1>
 
     <div class="container grid-960">
       <div class="columns">
-        <button @click="editorIsDisabled = !editorIsDisabled">Toggle</button>
         <div id="editor-boundary" class="editorWrapper column col-6 col-sm-12">
           <vue-editor
             v-model="content"
-            :options="editorOptions"
             ref="myQuillEditor"
-            :disabled="editorIsDisabled"
+            :options="editorOption"
+            useCustomImageHandler
             @blur="onEditorBlur"
             @focus="onEditorFocus"
             @ready="onEditorReady"
@@ -23,24 +22,24 @@
 </template>
 
 <script>
+import hljs from "highlight.js";
+import "highlight.js/styles/monokai-sublime.css";
+
 import { VueEditor, Quill } from "../../src/index.js";
 
 export default {
   components: { VueEditor },
 
   data: () => ({
-    editorOptions: {
-      // modules: {
-      //   // toolbar: [
-      //   //   ["bold", "italic", "underline", "strike"],
-      //   //   ["blockquote", "code-block"],
-      //   //   [{ header: 1 }, { header: 2 }],
-      //   //   [{ list: "ordered" }, { list: "bullet" }]
-      //   // ]
-      // },
-      placeholder: "newww placeholder text here ..."
+    editorOption: {
+      modules: {
+        // toolbar: [["code-block"]], // Include button in toolbar
+        syntax: {
+          highlight: text => hljs.highlightAuto(text).value
+        }
+      },
+      placeholder: "Custom placeholder text here ..."
     },
-    editorIsDisabled: false,
     content: ""
   }),
 

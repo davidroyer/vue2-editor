@@ -19,6 +19,5 @@ export default {
       ["link", "image", "video"]
     ]
   },
-  placeholder: "Insert text here ...",
   readOnly: false
 };

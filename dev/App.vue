@@ -3,7 +3,9 @@
       <nav>
         <router-link to="/">Dashboard</router-link>
         <router-link to="/basic">Basic Example</router-link>
-        <router-link to="/customized">Customized Example</router-link>
+        <router-link to="/custom-modules">Custom Modules</router-link>
+        <router-link to="/images">Images Example</router-link>
+        <router-link to="/syntax-highlighting">Syntax Highlighting Example</router-link>
       </nav>
     <router-view/>
   </div>
