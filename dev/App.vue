@@ -12,18 +12,6 @@
 
 </template>
 <style>
-/*.flexWrapper {
-        display: flex;
-  }
-  .editorWrapper {
-      flex-basis: 50%;
-  }
-  .quillWrapper {
-    position: relative;
-    z-index: 99999;
-  }
-  */
-
 #preview {
   background: #f6f6f6;
   border-left: 3px solid gray;
