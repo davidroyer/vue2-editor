@@ -19,19 +19,29 @@
     "dist"
   ],
   "scripts": {
+    "commit": "git-cz",
+    "commit:add": "git add . && git-cz",
     "dev": "poi dev/index.js",
     "docs": "docsify serve ./docs",
+    "docs:build": "npx vuedoc.md ./src/components/*.vue --output docs/components/",
+    "doc:comp": "npx vuedoc.md --section API --output ./README.md ./src/VueEditor.vue",
     "test": "echo lol",
     "lint": "poi --eslint",
-    "build": "poi build ./src/index.js --library Vue2Editor"
+    "build": "poi build ./src/index.js --library Vue2Editor",
+    "release": "release-it",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
   },
   "devDependencies": {
     "axios": "^0.16.2",
+    "commitizen": "^2.10.1",
+    "conventional-changelog-cli": "^2.0.1",
+    "cz-conventional-changelog": "^2.1.0",
     "gh-pages": "^0.12.0",
     "node-sass": "^4.7.2",
     "poi": "^9.6.13",
     "quill-image-drop-module": "^1.0.3",
     "quill-image-resize-module": "^3.0.0",
+    "release-it": "^7.4.8",
     "sass-loader": "^6.0.6",
     "spectre.css": "^0.2.12"
   },
@@ -39,5 +49,10 @@
   "dependencies": {
     "lodash.merge": "^4.6.0",
     "quill": "^1.3.6"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
