@@ -28,8 +28,7 @@
     "test": "echo lol",
     "lint": "poi --eslint",
     "build": "poi build ./src/index.js --library Vue2Editor",
-    "release": "release-it",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+    "release": "release-it"
   },
   "devDependencies": {
     "axios": "^0.16.2",
