@@ -1,3 +1,8 @@
+<a name="2.6.3"></a>
+## [2.6.3](https://github.com/davidroyer/vue2-editor/compare/2.6.2...2.6.3) (2018-08-04)
+
+
+
 <a name="2.6.2"></a>
 ## [2.6.2](https://github.com/davidroyer/vue2-editor/compare/2.4.2...2.6.2) (2018-08-04)
 
