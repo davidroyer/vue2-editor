@@ -41,7 +41,7 @@ placeholder    | String | -                                                  | P
 disabled | Boolean | false | Set to true to disable editor
 customModules | Array  | - | Declare Quill modules to register | Use a custom toolbar
 editorToolbar | Array  | ** _Too long for table. See toolbar example below_ | Use a custom toolbar
-editorOptions | Array  | - | Offers object for merging into default config (add formats, custom Quill modules, ect)
+editorOptions | Object  | - | Offers object for merging into default config (add formats, custom Quill modules, ect)
 
 # Events
 Name           | Parameters   | Description
