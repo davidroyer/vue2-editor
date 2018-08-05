@@ -10,12 +10,15 @@
 <!-- ## Demo --> <!-- [fiddle](https://jsfiddle.net/su9zv0w9/1/) -->
 
 # Install
+
 _You can use Yarn or NPM_
 
 ```bash
 $ npm install --save vue2-editor
 ```
+
 **OR**
+
 ```bash
 yarn add vue2-editor
 ```
@@ -24,30 +27,34 @@ yarn add vue2-editor
 
 ```javascript
 // Basic Use - Covers most scenarios
-import { VueEditor } from 'vue2-editor'
+import { VueEditor } from "vue2-editor";
 
 // Advanced Use - Hook into Quill's API for Custom Functionality
-import { VueEditor, Quill } from 'vue2-editor'
+import { VueEditor, Quill } from "vue2-editor";
 ```
 
 # Props
 
-Name           | Type   | Default                                            | Description
--------------- | ------ | -------------------------------------------------- | ----------------------------------------------------------------------
-id | String | quill-container | Set the id (necessary if multiple editors in the same view)
-v-model | String | - | Set v-model to the the content or data property you wish to bind it to
-useCustomImageHandler | Boolean | false | Handle image uploading instead of using default conversion to Base64
-placeholder    | String | -                                                  | Placeholder text for the editor
-disabled | Boolean | false | Set to true to disable editor
-customModules | Array  | - | Declare Quill modules to register | Use a custom toolbar
-editorToolbar | Array  | ** _Too long for table. See toolbar example below_ | Use a custom toolbar
-editorOptions | Object  | - | Offers object for merging into default config (add formats, custom Quill modules, ect)
+| Name                  | Type    | Default                                              | Description                                                                            |
+| --------------------- | ------- | ---------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| id                    | String  | quill-container                                      | Set the id (necessary if multiple editors in the same view)                            |
+| v-model               | String  | -                                                    | Set v-model to the the content or data property you wish to bind it to                 |
+| useCustomImageHandler | Boolean | false                                                | Handle image uploading instead of using default conversion to Base64                   |
+| placeholder           | String  | -                                                    | Placeholder text for the editor                                                        |
+| disabled              | Boolean | false                                                | Set to true to disable editor                                                          |
+| customModules         | Array   | -                                                    | Declare Quill modules to register                                                      | Use a custom toolbar |
+| editorToolbar         | Array   | \*\* _Too long for table. See toolbar example below_ | Use a custom toolbar                                                                   |
+| editorOptions         | Object  | -                                                    | Offers object for merging into default config (add formats, custom Quill modules, ect) |
 
-# Events
-Name           | Parameters   | Description
--------------- | ------------ | ----------------------------------------------------------------------
-imageAdded   | file, Editor, cursorLocation |  Emitted when useCustomImageHandler is true and photo is being added to the editor
-<!-- Emitted when the default save button is clicked -->
+## Events
+
+| Name             | Parameters                   | Description                                                                         |
+| ---------------- | ---------------------------- | ----------------------------------------------------------------------------------- |
+| focus            | quill                        | Emitted on `focus` event                                                            |
+| blur             | quill                        | Emitted on `blur` event                                                             |
+| selection-change | range, oldRange, source      | Emitted on Quill's `selection-change` event                                         |
+| text-change      | delta, oldDelta, source      | Emitted on Quill's `text-change` event                                              |
+| imageAdded       | file, Editor, cursorLocation | Emitted when `useCustomImageHandler` is true and photo is being added to the editor |
 
 # Examples
 
@@ -71,7 +78,7 @@ imageAdded   | file, Editor, cursorLocation |  Emitted when useCustomImageHandle
 
    data() {
        return {
-         content: '<h1>Some initial content</h1>'  
+         content: '<h1>Some initial content</h1>'
        }
      }
    }
@@ -82,9 +89,10 @@ imageAdded   | file, Editor, cursorLocation |  Emitted when useCustomImageHandle
 
 If you choose to use the custom image handler, an event is emitted when a a photo is selected.
 You can see below that 3 parameters are passed.
-1. It passes the file to be handled however you need
-2. The Editor instance
-4. The cursor position at the time of upload so the image can be inserted at the correct position on success
+
+1.  It passes the file to be handled however you need
+2.  The Editor instance
+3.  The cursor position at the time of upload so the image can be inserted at the correct position on success
 
 **NOTE** In addition to this example, I have created a [ example repo](https://github.com/davidroyer/vue2editor-images) demonstrating this new feature with an actual server.
 
@@ -108,7 +116,7 @@ You can see below that 3 parameters are passed.
 
     data() {
       return {
-        htmlForEditor: ''  
+        htmlForEditor: ''
       }
     },
 
@@ -160,7 +168,7 @@ You can see below that 3 parameters are passed.
 
     data() {
       return {
-        htmlForEditor: null  
+        htmlForEditor: null
       }
     },
 
@@ -172,7 +180,6 @@ You can see below that 3 parameters are passed.
   }
 </script>
 ```
-
 
 ## Example - Using Multiple Editors
 
@@ -208,7 +215,6 @@ You can see below that 3 parameters are passed.
 </style>
 ```
 
-
 ## Example - Custom Toolbar
 
 ```html
@@ -240,8 +246,8 @@ You can see below that 3 parameters are passed.
 </script>
 ```
 
-
 ## Example - Saving The Content
+
 ```html
 <template>
   <div id="app">
@@ -269,7 +275,7 @@ You can see below that 3 parameters are passed.
         // You have the content to save
         console.log(this.content)
       }
-    }  
+    }
   }
 </script>
 ```
@@ -294,7 +300,7 @@ You can see below that 3 parameters are passed.
   export default {
     data() {
       return {
-        content: '<h1>Initial Content</h1>'  
+        content: '<h1>Initial Content</h1>'
       }
     }
   }
@@ -302,17 +308,17 @@ You can see below that 3 parameters are passed.
 ```
 
 ## How To Use Custom Quill Modules
+
 There are 2 ways of using custom modules with Vue2Editor. This is partly because there have been cases in which errors are thrown when importing and attempting to declare custom modules, and partly because I believe it actually separates the concerns nicely.
 
-
-### Version 1 - ***Import and Register Yourself***
+### Version 1 - **_Import and Register Yourself_**
 
 Vue2Editor now exports Quill to assist in this process.
-1. When importing VueEditor, also import Quill.
-2. Import your custom modules
-3. Register the custom modules with Quill
-4. Add the necessary configuration to the `editorOptions` object
 
+1.  When importing VueEditor, also import Quill.
+2.  Import your custom modules
+3.  Register the custom modules with Quill
+4.  Add the necessary configuration to the `editorOptions` object
 
 ```html
 <template>
@@ -334,7 +340,7 @@ Vue2Editor now exports Quill to assist in this process.
   export default {
     components: {
       VueEditor
-    },    
+    },
     data() {
       return {
         content: '<h1>Initial Content</h1>',
@@ -343,19 +349,20 @@ Vue2Editor now exports Quill to assist in this process.
             imageDrop: true,
             imageResize: {}
           }
-        }        
+        }
       }
     }
   }
 </script>
 ```
 
-### Version 2 - ***You Import | Vue2Editor Registers***
-***(Recommended way)***
+### Version 2 - **_You Import | Vue2Editor Registers_**
 
-1. Import your custom modules
-2. Use the `customModules` prop to declare an array of module(s).
-3. Add the necessary configuration for those modules in the `editorOptions` object under modules as seen below
+**_(Recommended way)_**
+
+1.  Import your custom modules
+2.  Use the `customModules` prop to declare an array of module(s).
+3.  Add the necessary configuration for those modules in the `editorOptions` object under modules as seen below
 
 ```html
 <template>
@@ -376,7 +383,7 @@ Vue2Editor now exports Quill to assist in this process.
   export default {
     components: {
       VueEditor
-    },    
+    },
     data() {
       return {
         content: '<h1>Initial Content</h1>',
@@ -389,7 +396,7 @@ Vue2Editor now exports Quill to assist in this process.
             imageDrop: true,
             imageResize: {}
           }
-        }        
+        }
       }
     }
   }
