@@ -251,7 +251,7 @@ You can see below that 3 parameters are passed.
 ```html
 <template>
   <div id="app">
-    <button @click="saveContent"></button>
+    <button @click="handleSavingContent"></button>
     <vue-editor v-model="content"></vue-editor>
   </div>
 </template>
