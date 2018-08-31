@@ -34,7 +34,7 @@ export default {
     disabled: {
       type: Boolean
     },
-    editorToolbar: Array,
+    editorToolbar: [Array, Object],
     editorOptions: {
       type: Object,
       required: false,
