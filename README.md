@@ -1,7 +1,7 @@
 # Vue2Editor
 
 <p align="center">
-  <a href="https://www.vue2editor.com/"><h2>View Documenation for Vue2Editor</h2></a>
+  <a href="https://www.vue2editor.com/"><h2>View Documentation for Vue2Editor</h2></a>
 </p>
 <br></br>
 
