@@ -20,7 +20,8 @@
   },
   "main": "dist/vue2-editor.js",
   "files": [
-    "dist"
+    "dist",
+    "nuxt"
   ],
   "scripts": {
     "commit": "git-cz",
