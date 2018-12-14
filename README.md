@@ -33,6 +33,16 @@ import { VueEditor } from "vue2-editor";
 import { VueEditor, Quill } from "vue2-editor";
 ```
 
+## Nuxt module
+
+Add `vue2-editor/nuxt` to modules section of `nuxt.config.js`
+
+```javascript
+{
+  modules: ['vue2-editor/nuxt']
+}
+```
+
 # Props
 
 | Name                  | Type    | Default                                              | Description                                                                            |
