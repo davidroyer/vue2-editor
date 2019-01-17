@@ -33,7 +33,7 @@ import { VueEditor } from "vue2-editor";
 import { VueEditor, Quill } from "vue2-editor";
 ```
 
-## Nuxt module
+## Nuxt.js
 
 Add `vue2-editor/nuxt` to modules section of `nuxt.config.js`
 
