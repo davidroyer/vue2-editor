@@ -55,6 +55,7 @@ import { VueEditor, Quill } from "vue2-editor";
 | selection-change | range, oldRange, source      | Emitted on Quill's `selection-change` event                                         |
 | text-change      | delta, oldDelta, source      | Emitted on Quill's `text-change` event                                              |
 | imageAdded       | file, Editor, cursorLocation | Emitted when `useCustomImageHandler` is true and photo is being added to the editor |
+| ready            | quill                        | Emitted when `Quill` is ready to use
 
 # Examples
 
