@@ -10,7 +10,7 @@ module.exports = {
     fileName({ format }, defaultFileName) {
       if (format === "esm") return "vue2-editor.esm.js";
       if (format === "umd") return "vue2-editor.js";
-      if (format === "cjs") return "vue2-editor.cjs.js";
+      if (format === "cjs") return "vue2-editor.common.js";
       return defaultFileName;
     },
     sourceMapExcludeSources: true

@@ -19,7 +19,7 @@
     "type": "git",
     "url": "https://github.com/davidroyer/vue2-editor.git"
   },
-  "main": "dist/vue2-editor.cjs.js",
+  "main": "dist/vue2-editor.common.js",
   "module": "dist/vue2-editor.esm.js",
   "unpkg": "dist/vue2-editor.js",
   "browser": {
