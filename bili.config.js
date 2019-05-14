@@ -1,13 +1,3 @@
-// module.exports = {
-//   banner: true,
-//   format: ["cjs", "umd-min"],
-//   exports: "named",
-//   css: true,
-//   plugins: ["vue"],
-//   vue: { css: true },
-//   outDir: "lib-dist"
-// };
-
 module.exports = {
   banner: true,
 
