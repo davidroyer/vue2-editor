@@ -1,19 +1,25 @@
-.idea/
-node_modules/
-demo/
-.npmignore
 .DS_Store
-npm-debug.log
+node_modules
+# /dist
 
-*.log
-**/**/.DS_Store
+# local env files
+.env.local
+.env.*.local
 
-# produced by vbuild
-dist
-dist-example
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-dev/cloudinary.vue
-dev/Backup-App.vue
-NOTES.md
+# Editor directories and files
+.idea
+# .vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-.BACKUP
+# Backups
+# .BACKUP
+.STORAGE

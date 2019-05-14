@@ -1,5 +1,6 @@
 {
   "name": "vue2-editor",
+  "productName": "Vue2Editor",
   "version": "2.6.6",
   "private": false,
   "author": {
@@ -17,46 +18,45 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/davidroyer/vue2-editor.git"
+  },  
+  "main": "dist/vue2-editor.cjs.js",
+  "module": "dist/vue2-editor.esm.js",
+  "unpkg": "dist/vue2-editor.js",
+  "browser": {
+    "./sfc": "src/components/Vue2Editor.vue"
   },
-  "main": "dist/vue2-editor.js",
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "commit": "git-cz",
-    "commit:add": "git add . && git-cz",
-    "dev": "poi dev/index.js",
-    "docs": "docsify serve ./docs",
-    "docs:build": "npx vuedoc.md ./src/components/*.vue --output docs/components/",
-    "doc:comp": "npx vuedoc.md --section API --output ./README.md ./src/VueEditor.vue",
-    "test": "echo lol",
-    "lint": "poi --eslint",
-    "build": "poi build ./src/index.js --library Vue2Editor",
-    "release": "release-it"
+    "dev": "vue-cli-service serve ./dev",
+    "build": "yarn bili",
+    "lint": "vue-cli-service lint",
+    "release": "standard-version && git push --follow-tags"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
-    "axios": "^0.16.2",
-    "commitizen": "^2.10.1",
-    "conventional-changelog-cli": "^2.0.1",
-    "cz-conventional-changelog": "^2.1.0",
-    "gh-pages": "^0.12.0",
-    "node-sass": "^4.7.2",
-    "poi": "^9.6.13",
-    "quill-image-drop-module": "^1.0.3",
-    "quill-image-resize-module": "^3.0.0",
-    "release-it": "^7.4.8",
-    "sass-loader": "^6.0.6",
-    "spectre.css": "^0.2.12"
+    "@commitlint/cli": "^7.6.1",
+    "@commitlint/config-conventional": "^7.6.0",
+    "@vue/cli-plugin-babel": "^3.7.0",
+    "@vue/cli-plugin-eslint": "^3.7.0",
+    "@vue/cli-service": "^3.7.0",
+    "@vue/eslint-config-prettier": "^4.0.1",
+    "babel-eslint": "^10.0.1",
+    "bili": "^4.7.4",
+    "eslint": "^5.16.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "quill": "^1.3.6",
+    "rollup-plugin-alias": "^1.5.1",
+    "rollup-plugin-vue": "^5.0.0",
+    "sass": "^1.18.0",
+    "sass-loader": "^7.1.0",
+    "standard-version": "^6.0.1",
+    "vue-template-compiler": "^2.5.21"
   },
-  "license": "MIT",
-  "dependencies": {
-    "lodash.merge": "^4.6.0",
+  "peerDependencies": {
     "quill": "^1.3.6"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"

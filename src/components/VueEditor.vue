@@ -2,16 +2,24 @@
   <div class="quillWrapper">
     <slot name="toolbar"></slot>
     <div :id="id" ref="quillContainer"></div>
-    <input v-if="useCustomImageHandler" @change="emitImageInfo($event)" ref="fileInput" id="file-upload" type="file" accept="image/*" style="display:none;">
+    <input
+      v-if="useCustomImageHandler"
+      id="file-upload"
+      ref="fileInput"
+      type="file"
+      accept="image/*"
+      style="display:none;"
+      @change="emitImageInfo($event)"
+    />
   </div>
 </template>
 
 <script>
 import _Quill from "quill";
-import defaultToolbar from "./helpers/default-toolbar";
-import merge from "lodash.merge";
-import oldApi from "./helpers/old-api";
-import MarkdownShortcuts from "./helpers/markdown-shortcuts";
+import defaultToolbar from "@/helpers/default-toolbar";
+import merge from "lodash/merge";
+import oldApi from "@/helpers/old-api";
+import MarkdownShortcuts from "@/helpers/markdown-shortcuts";
 
 const Quill = window.Quill || _Quill;
 
@@ -34,7 +42,10 @@ export default {
     disabled: {
       type: Boolean
     },
-    editorToolbar: Array,
+    editorToolbar: {
+      type: Array,
+      default: () => []
+    },
     editorOptions: {
       type: Object,
       required: false,
@@ -54,10 +65,26 @@ export default {
     quill: null
   }),
 
+  watch: {
+    value(val) {
+      if (val != this.quill.root.innerHTML && !this.quill.hasFocus()) {
+        this.quill.root.innerHTML = val;
+      }
+    },
+    disabled(status) {
+      this.quill.enable(!status);
+    }
+  },
+
   mounted() {
     this.registerCustomModules(Quill);
     this.registerPrototypes();
     this.initializeEditor();
+  },
+
+  beforeDestroy() {
+    this.quill = null;
+    delete this.quill;
   },
 
   methods: {
@@ -84,7 +111,7 @@ export default {
 
     setModules() {
       let modules = {
-        toolbar: this.editorToolbar ? this.editorToolbar : defaultToolbar
+        toolbar: this.editorToolbar.length ? this.editorToolbar : defaultToolbar
       };
       if (this.useMarkdownShortcuts) {
         Quill.register("modules/markdownShortcuts", MarkdownShortcuts, true);
@@ -171,27 +198,9 @@ export default {
       let cursorLocation = range.index;
       this.$emit("imageAdded", file, Editor, cursorLocation, resetUploader);
     }
-  },
-
-  watch: {
-    value(val) {
-      if (val != this.quill.root.innerHTML && !this.quill.hasFocus()) {
-        this.quill.root.innerHTML = val;
-      }
-    },
-    disabled(status) {
-      this.quill.enable(!status);
-    }
-  },
-
-  beforeDestroy() {
-    this.quill = null;
-    delete this.quill;
   }
 };
 </script>
 
-<style src="quill/dist/quill.snow.css">
-</style>
-<style src="./styles/vue2-editor.scss" lang='scss'>
-</style>
+<style src="quill/dist/quill.snow.css"></style>
+<style src="../assets/vue2-editor.scss" lang="scss"></style>
