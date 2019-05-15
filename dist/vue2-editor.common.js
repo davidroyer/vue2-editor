@@ -1,5 +1,5 @@
 /*!
- * vue2-editor v2.7.0-alpha.2
+ * vue2-editor v2.7.0-alpha.3
  * (c) David Royer <droyer01@gmail.com>
  */
 'use strict';
