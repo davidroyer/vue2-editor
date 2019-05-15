@@ -67,6 +67,8 @@ import { VueEditor, Quill } from "vue2-editor";
 
 # Examples
 
+# test
+
 ## Example - Basic Setup
 
 ```html
