@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "lodash": "^4.17.11",
+    "quill": "^1.3.6",
     "vue": "^2.6.10"
   },
   "devDependencies": {
@@ -48,7 +49,6 @@
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-vue": "^5.0.0",
-    "quill": "^1.3.6",
     "rollup-plugin-alias": "^1.5.1",
     "rollup-plugin-vue": "^5.0.0",
     "sass": "^1.18.0",
@@ -56,9 +56,7 @@
     "standard-version": "^6.0.1",
     "vue-template-compiler": "^2.5.21"
   },
-  "peerDependencies": {
-    "quill": "^1.3.6"
-  },
+  "peerDependencies": {},
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

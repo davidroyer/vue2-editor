@@ -1,5 +1,5 @@
 /*!
- * vue2-editor v2.7.0-alpha.0
+ * vue2-editor v2.7.0-alpha.1
  * (c) David Royer <droyer01@gmail.com>
  */
 import Quill$2 from 'quill';
