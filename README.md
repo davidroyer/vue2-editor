@@ -1,7 +1,13 @@
 # Vue2Editor
 
+> An easy-to-use but yet powerful and customizable rich text editor powered by Quill.js and Vue.js
+
+[📖 **Release Notes**](./CHANGELOG.md)
+
 <p align="center">
-  <a href="https://www.vue2editor.com/"><h2>View Documenation for Vue2Editor</h2></a>
+  <a href="https://www.vue2editor.com/">
+  <h2>View Docs</h2>
+  </a>
 </p>
 <br></br>
 
