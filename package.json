@@ -62,6 +62,12 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
+  "files": [
+    "dist/vue2-editor.common.js",
+    "dist/vue2-editor.umd.js",
+    "dist/vue2-editor.esm.js",
+    "src"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/davidroyer/vue2-editor.git"
