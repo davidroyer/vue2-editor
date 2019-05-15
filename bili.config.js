@@ -3,7 +3,7 @@ module.exports = {
   input: "src/lib.js",
   output: {
     moduleName: "Vue2Editor",
-    extractCSS: false,
+    // extractCSS: false,
     format: ["esm", "umd", "cjs"],
     fileName({ format }, defaultFileName) {
       if (format === "esm") return "vue2-editor.esm.js";
