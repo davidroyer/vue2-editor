@@ -1,7 +1,7 @@
 {
   "name": "vue2-editor",
   "productName": "Vue2Editor",
-  "version": "2.7.0-alpha.0",
+  "version": "2.7.0-alpha.1",
   "private": false,
   "author": {
     "name": "David Royer",
@@ -29,8 +29,8 @@
     "dev": "vue-cli-service serve ./dev",
     "build": "yarn bili",
     "lint": "vue-cli-service lint",
-    "release": "standard-version && git push --follow-tags",
-    "release:alpha": "standard-version && git push --follow-tags origin dev && npm publish --tag alpha"
+    "release": "standard-version && git push --follow-tags && npm publish",
+    "release:alpha": "standard-version --prerelease alpha && git push --follow-tags origin dev && npm publish --tag alpha"
   },
   "dependencies": {
     "lodash": "^4.17.11",
@@ -62,5 +62,8 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "eslintIgnore": ["/dist", "/node_modules"]
+  "eslintIgnore": [
+    "/dist",
+    "/node_modules"
+  ]
 }
