@@ -14,6 +14,9 @@ module.exports = {
     sourceMapExcludeSources: true
   },
   // externals: ["quill"],
+  babel: {
+    minimal: true
+  },
 
   plugins: {
     vue: true,
