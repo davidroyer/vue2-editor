@@ -1,8 +1,6 @@
 module.exports = {
   banner: true,
-
   input: "src/lib.js",
-
   output: {
     moduleName: "Vue2Editor",
     extractCSS: false,
@@ -15,10 +13,7 @@ module.exports = {
     },
     sourceMapExcludeSources: true
   },
-
-  babel: {
-    minimal: true
-  },
+  // externals: ["quill"],
 
   plugins: {
     vue: true,

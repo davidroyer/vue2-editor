@@ -29,7 +29,8 @@
     "dev": "vue-cli-service serve ./dev",
     "build": "yarn bili",
     "lint": "vue-cli-service lint",
-    "release": "standard-version && git push --follow-tags"
+    "release": "standard-version && git push --follow-tags",
+    "release:alpha": "standard-version && git push --follow-tags origin dev && npm publish --tag alpha"
   },
   "dependencies": {
     "lodash": "^4.17.11",
@@ -60,5 +61,6 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
-  }
+  },
+  "eslintIgnore": ["/dist", "/node_modules"]
 }

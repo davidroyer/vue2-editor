@@ -165,7 +165,7 @@ function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance");
 }
 
-var BlockEmbed = Quill$2.import("blots/block/embed");
+var BlockEmbed = Quill$2["import"]("blots/block/embed");
 
 var HorizontalRule =
 /*#__PURE__*/
@@ -227,7 +227,7 @@ function () {
       pattern: /^(#){1,6}\s/g,
       action: function action(text, selection, pattern) {
         var match = pattern.exec(text);
-        if (!match) { return; }
+        if (!match) return;
         var size = match[0].length; // Need to defer this action https://github.com/quilljs/quill/issues/1134
 
         setTimeout(function () {
@@ -266,7 +266,7 @@ function () {
         var annotatedText = match[0];
         var matchedText = match[1];
         var startIndex = lineStart + match.index;
-        if (text.match(/^([*_ \n]+)$/g)) { return; }
+        if (text.match(/^([*_ \n]+)$/g)) return;
         setTimeout(function () {
           _this.quill.deleteText(startIndex, annotatedText.length);
 
@@ -286,7 +286,7 @@ function () {
         var annotatedText = match[0];
         var matchedText = match[1];
         var startIndex = lineStart + match.index;
-        if (text.match(/^([*_ \n]+)$/g)) { return; }
+        if (text.match(/^([*_ \n]+)$/g)) return;
         setTimeout(function () {
           _this.quill.deleteText(startIndex, annotatedText.length);
 
@@ -305,7 +305,7 @@ function () {
         var annotatedText = match[0];
         var matchedText = match[1];
         var startIndex = lineStart + match.index;
-        if (text.match(/^([*_ \n]+)$/g)) { return; }
+        if (text.match(/^([*_ \n]+)$/g)) return;
         setTimeout(function () {
           _this.quill.deleteText(startIndex, annotatedText.length);
 
@@ -324,7 +324,7 @@ function () {
         var annotatedText = match[0];
         var matchedText = match[1];
         var startIndex = lineStart + match.index;
-        if (text.match(/^([*_ \n]+)$/g)) { return; }
+        if (text.match(/^([*_ \n]+)$/g)) return;
         setTimeout(function () {
           _this.quill.deleteText(startIndex, annotatedText.length);
 
@@ -343,7 +343,7 @@ function () {
         var annotatedText = match[0];
         var matchedText = match[1];
         var startIndex = lineStart + match.index;
-        if (text.match(/^([*_ \n]+)$/g)) { return; }
+        if (text.match(/^([*_ \n]+)$/g)) return;
         setTimeout(function () {
           _this.quill.deleteText(startIndex, annotatedText.length);
 
@@ -441,7 +441,7 @@ function () {
     key: "onSpace",
     value: function onSpace() {
       var selection = this.quill.getSelection();
-      if (!selection) { return; }
+      if (!selection) return;
 
       var _this$quill$getLine = this.quill.getLine(selection.index),
           _this$quill$getLine2 = _slicedToArray(_this$quill$getLine, 2),
@@ -473,8 +473,8 @@ function () {
           _iteratorError = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion && _iterator.return != null) {
-              _iterator.return();
+            if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+              _iterator["return"]();
             }
           } finally {
             if (_didIteratorError) {
@@ -488,7 +488,7 @@ function () {
     key: "onEnter",
     value: function onEnter() {
       var selection = this.quill.getSelection();
-      if (!selection) { return; }
+      if (!selection) return;
 
       var _this$quill$getLine3 = this.quill.getLine(selection.index),
           _this$quill$getLine4 = _slicedToArray(_this$quill$getLine3, 2),
@@ -520,8 +520,8 @@ function () {
           _iteratorError2 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-              _iterator2.return();
+            if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
+              _iterator2["return"]();
             }
           } finally {
             if (_didIteratorError2) {
@@ -544,39 +544,39 @@ var script = {
   props: {
     id: {
       type: String,
-      default: "quill-container"
+      "default": "quill-container"
     },
     placeholder: {
       type: String,
-      default: ""
+      "default": ""
     },
     value: {
       type: String,
-      default: ""
+      "default": ""
     },
     disabled: {
       type: Boolean
     },
     editorToolbar: {
       type: Array,
-      default: function _default() {
+      "default": function _default() {
         return [];
       }
     },
     editorOptions: {
       type: Object,
       required: false,
-      default: function _default() {
+      "default": function _default() {
         return {};
       }
     },
     useCustomImageHandler: {
       type: Boolean,
-      default: false
+      "default": false
     },
     useMarkdownShortcuts: {
       type: Boolean,
-      default: false
+      "default": false
     }
   },
   data: function data() {
@@ -664,20 +664,18 @@ var script = {
       var _this = this;
 
       this.quill.on(type, function () {
-        var arguments$1 = arguments;
-
         for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-          args[_key] = arguments$1[_key];
+          args[_key] = arguments[_key];
         }
 
         _this.$emit.apply(_this, [type].concat(args));
       });
     },
     handleInitialContent: function handleInitialContent() {
-      if (this.value) { this.quill.root.innerHTML = this.value; } // Set initial editor content
+      if (this.value) this.quill.root.innerHTML = this.value; // Set initial editor content
     },
     handleSelectionChange: function handleSelectionChange(range, oldRange) {
-      if (!range && oldRange) { this.$emit("blur", this.quill); }else if (range && !oldRange) { this.$emit("focus", this.quill); }
+      if (!range && oldRange) this.$emit("blur", this.quill);else if (range && !oldRange) this.$emit("focus", this.quill);
     },
     handleTextChange: function handleTextChange() {
       var editorContent = this.quill.getHTML() === "<p><br></p>" ? "" : this.quill.getHTML();
@@ -776,7 +774,7 @@ var VueEditor = __vue_normalize__({
 var Quill$1 = window.Quill || Quill$2; // Declare install function executed by Vue.use()
 
 function install(Vue) {
-  if (install.installed) { return; }
+  if (install.installed) return;
   install.installed = true;
   Vue.component("VueEditor", VueEditor);
 } // Create module definition for Vue.use()
