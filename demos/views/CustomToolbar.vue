@@ -5,11 +5,7 @@
     <div class="container grid-960">
       <div class="columns">
         <div id="editor-boundary" class="editorWrapper column col-6 col-sm-12">
-          <vue-editor
-            ref="editor"
-            v-model="content"
-            :editor-toolbar="toolbarSettings"
-          >
+          <vue-editor ref="editor" v-model="content" :editor-toolbar="toolbar">
           </vue-editor>
 
           <vue-editor
@@ -41,8 +37,6 @@ export default {
       placeholder: "Custom placeholder text here ..."
     },
     content: "<h1>Starting content</h1>"
-  }),
-
-  methods: {}
+  })
 };
 </script>

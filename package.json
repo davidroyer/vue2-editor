@@ -10,7 +10,7 @@
   "scripts": {
     "build": "yarn bili",
     "lint": "vue-cli-service lint",
-    "dev": "vue-cli-service serve demos",
+    "dev": "vue-cli-service serve ./demos",
     "release": "standard-version && git push --follow-tags && npm publish",
     "release:alpha": "standard-version --prerelease alpha && git push --follow-tags origin dev && npm publish --tag alpha"
   },
