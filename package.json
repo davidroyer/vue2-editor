@@ -22,6 +22,7 @@
   "unpkg": "dist/vue2-editor.js",
   "dependencies": {
     "lodash": "^4.17.11",
+    "quill": "^1.3.6",
     "vue": "^2.6.10"
   },
   "devDependencies": {
