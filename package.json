@@ -23,7 +23,7 @@
   "module": "dist/vue2-editor.esm.js",
   "unpkg": "dist/vue2-editor.js",
   "browser": {
-    "./sfc": "src/components/Vue2Editor.vue"
+    "./sfc": "src/components/VueEditor.vue"
   },
   "scripts": {
     "dev": "vue-cli-service serve ./dev",
