@@ -12,7 +12,8 @@
     "lint": "vue-cli-service lint",
     "dev": "vue-cli-service serve ./demos",
     "release": "standard-version && git push --follow-tags && npm publish",
-    "release:alpha": "standard-version --prerelease alpha && git push --follow-tags origin dev && npm publish --tag alpha"
+    "release:alpha": "standard-version --prerelease alpha && git push --follow-tags origin dev && npm publish --tag alpha",
+    "vbuild:lib": "vue-cli-service build --target lib --name Vue2Editor ./src/lib.js"
   },
   "main": "dist/vue2-editor.common.js",
   "module": "dist/vue2-editor.esm.js",
