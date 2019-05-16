@@ -2,9 +2,15 @@
  * vue2-editor v2.7.0-alpha.6
  * (c) David Royer <droyer01@gmail.com>
  */
-import Quill$2 from 'quill';
-import merge from 'lodash/merge';
-import __vue_normalize__ from 'vue-runtime-helpers/dist/normalize-component.js';
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var Quill$2 = _interopDefault(require('quill'));
+var merge = _interopDefault(require('lodash/merge'));
+var __vue_normalize__ = _interopDefault(require('vue-runtime-helpers/dist/normalize-component.js'));
 
 var defaultToolbar = [[{
   header: [false, 1, 2, 3, 4, 5, 6]
@@ -785,5 +791,7 @@ if (GlobalVue) {
   GlobalVue.use(Vue2Editor);
 } // To allow use as module (npm/webpack/etc.) export component
 
-export default Vue2Editor;
-export { Quill$1 as Quill, VueEditor, install };
+exports.Quill = Quill$1;
+exports.VueEditor = VueEditor;
+exports.default = Vue2Editor;
+exports.install = install;

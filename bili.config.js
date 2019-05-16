@@ -1,31 +1,19 @@
-// module.exports = {
-//   banner: true,
-//   format: ["cjs", "umd-min"],
-//   exports: "named",
-//   css: true,
-//   plugins: ["vue"],
-//   vue: { css: true },
-//   outDir: "lib-dist"
-// };
-
 module.exports = {
   banner: true,
-
   input: "src/lib.js",
-
   output: {
     moduleName: "Vue2Editor",
-    extractCSS: false,
+    // extractCSS: false,
     format: ["esm", "umd", "cjs"],
     fileName({ format }, defaultFileName) {
       if (format === "esm") return "vue2-editor.esm.js";
       if (format === "umd") return "vue2-editor.js";
-      if (format === "cjs") return "vue2-editor.cjs.js";
+      if (format === "cjs") return "vue2-editor.common.js";
       return defaultFileName;
     },
     sourceMapExcludeSources: true
   },
-
+  // externals: ["quill"],
   babel: {
     minimal: true
   },

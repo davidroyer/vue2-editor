@@ -1,38 +1,28 @@
 {
   "name": "vue2-editor",
-  "productName": "Vue2Editor",
-  "version": "2.7.0-alpha.0",
+  "version": "2.7.0-alpha.7",
   "private": false,
+  "description": "HTML editor using Vue.js 2, and Quill.js, an open source editor",
   "author": {
     "name": "David Royer",
     "email": "droyer01@gmail.com"
   },
-  "description": "HTML editor using Vue.js 2, and Quill.js, an open source editor",
-  "keywords": [
-    "vue",
-    "vue-component",
-    "quill",
-    "html editor",
-    "text editor"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/davidroyer/vue2-editor.git"
+  "scripts": {
+    "build": "yarn bili",
+    "lint": "vue-cli-service lint",
+    "dev": "vue-cli-service serve ./demos",
+    "release": "standard-version && git push --follow-tags && npm publish",
+    "release:alpha": "standard-version --prerelease alpha && git push --follow-tags origin dev && npm publish --tag alpha"
   },
-  "main": "dist/vue2-editor.cjs.js",
+  "main": "dist/vue2-editor.common.js",
   "module": "dist/vue2-editor.esm.js",
-  "unpkg": "dist/vue2-editor.js",
   "browser": {
     "./sfc": "src/components/VueEditor.vue"
   },
-  "scripts": {
-    "dev": "vue-cli-service serve ./dev",
-    "build": "yarn bili",
-    "lint": "vue-cli-service lint",
-    "release": "standard-version && git push --follow-tags"
-  },
+  "unpkg": "dist/vue2-editor.js",
   "dependencies": {
     "lodash": "^4.17.11",
+    "quill": "^1.3.6",
     "vue": "^2.6.10"
   },
   "devDependencies": {
@@ -47,18 +37,38 @@
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-vue": "^5.0.0",
-    "quill": "^1.3.6",
     "rollup-plugin-alias": "^1.5.1",
     "rollup-plugin-vue": "^5.0.0",
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
     "standard-version": "^6.0.1",
+    "vue-router": "^3.0.6",
     "vue-template-compiler": "^2.5.21"
   },
-  "peerDependencies": {
-    "quill": "^1.3.6"
-  },
+  "peerDependencies": {},
+  "eslintIgnore": [
+    "/dist",
+    "/node_modules"
+  ],
+  "keywords": [
+    "vue",
+    "vue-component",
+    "quill",
+    "html editor",
+    "text editor"
+  ],
+  "productName": "Vue2Editor",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "dist/vue2-editor.common.js",
+    "dist/vue2-editor.umd.js",
+    "dist/vue2-editor.esm.js",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidroyer/vue2-editor.git"
   }
 }

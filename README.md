@@ -1,13 +1,22 @@
 # Vue2Editor
 
+> An easy-to-use but yet powerful and customizable rich text editor powered by Quill.js and Vue.js
+
 <p align="center">
-  <a href="https://www.vue2editor.com/"><h2>View Documenation for Vue2Editor</h2></a>
+  <a href="https://www.vue2editor.com/">
+  <h2>View Docs</h2>
+  </a>
 </p>
-<br></br>
 
-![Vue2Editor-Centered](https://www.dropbox.com/s/7com4d32zct44nc/Vue2Editor-Centered.png?raw=1) HTML Editor using [Vue.js](https://vuejs.org) and [Quill](http://quilljs.com/)
+![Vue2Editor-Centered](https://www.dropbox.com/s/7com4d32zct44nc/Vue2Editor-Centered.png?raw=1)
 
-<!-- ## Demo --> <!-- [fiddle](https://jsfiddle.net/su9zv0w9/1/) -->
+[📖 **Release Notes**](./CHANGELOG.md)
+
+<!-- HTML Editor using [Vue.js](https://vuejs.org) and [Quill](http://quilljs.com/) -->
+
+<!-- ## Demo -->
+
+<!-- [fiddle](https://jsfiddle.net/su9zv0w9/1/) -->
 
 # Install
 
@@ -57,6 +66,8 @@ import { VueEditor, Quill } from "vue2-editor";
 | imageAdded       | file, Editor, cursorLocation | Emitted when `useCustomImageHandler` is true and photo is being added to the editor |
 
 # Examples
+
+# test
 
 ## Example - Basic Setup
 
