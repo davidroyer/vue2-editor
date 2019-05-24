@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0-alpha.13](https://github.com/davidroyer/vue2-editor/compare/v2.7.0-alpha.12...v2.7.0-alpha.13) (2019-05-24)
+
+
+### Bug Fixes
+
+* **scripts:** removes unused config option ([09b303e](https://github.com/davidroyer/vue2-editor/commit/09b303e))
+
+
+
 ## [2.7.0-alpha.12](https://github.com/davidroyer/vue2-editor/compare/v2.7.0-alpha.11...v2.7.0-alpha.12) (2019-05-24)
 
 
