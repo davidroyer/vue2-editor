@@ -13,10 +13,10 @@
     "dev": "vue-cli-service serve ./demos",
     "release": "standard-version && git push --follow-tags && npm publish",
     "release:alpha": "standard-version --prerelease alpha && git push --follow-tags origin dev && npm publish --tag alpha",
-    "vbuild:lib": "vue-cli-service build --target lib --name Vue2Editor ./src/lib.js"
+    "vbuild:lib": "vue-cli-service build --target lib --name vue2-editor ./src/lib.js"
   },
-  "main": "dist/Vue2Editor.common.js",
-  "unpkg": "dist/Vue2Editor.umd.min.js",
+  "main": "dist/vue2-editor.common.js",
+  "unpkg": "dist/vue2-editor.umd.min.js",
   "dependencies": {
     "lodash": "^4.17.11",
     "quill": "^1.3.6",
@@ -59,9 +59,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "files": [
-    "dist/vue2-editor.common.js",
-    "dist/vue2-editor.umd.js",
-    "dist/vue2-editor.esm.js",
+    "dist",
     "src"
   ],
   "repository": {
