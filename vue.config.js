@@ -5,7 +5,7 @@ module.exports = {
   configureWebpack: {
     // entry: "./src/lib.js",
     output: {
-      libraryExport: "default",
+      // libraryExport: "default",
       filename: "vue2-editor",
       // libraryTarget: "window",
       library: "Vue2Editor"
