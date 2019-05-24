@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { VueEditor, Quill } from "../../dist/Vue2Editor.umd.min.js";
+import { VueEditor, Quill } from "../../dist/vue2-editor.umd.min.js";
 console.log("TCL: VueEditor", VueEditor);
 console.log("TCL: Quill", Quill);
 
