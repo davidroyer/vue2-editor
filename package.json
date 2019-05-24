@@ -14,7 +14,7 @@
     "release": "standard-version && git push --follow-tags && npm publish",
     "release:alpha": "standard-version --prerelease alpha && git push --follow-tags origin dev && npm publish --tag alpha",
     "vbuild:config": "vue-cli-service build --target lib ./src/lib.js",
-    "vbuild": "vue-cli-service build --target lib --name Vue2Editor --filename vue2-editor --no-genHTML ./src/lib.js",
+    "vbuild": "vue-cli-service build --target lib --name Vue2Editor --filename vue2-editor ./src/lib.js",
     "postvbuild": "rm dist/demo.html",
     "postvbuild:config": "rm dist/demo.html"
   },
