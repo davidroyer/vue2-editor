@@ -5,6 +5,7 @@
       <router-link to="/">Dashboard</router-link>
       <router-link to="/basic">Basic Example</router-link>
       <router-link to="/customized">Customized</router-link>
+      <router-link to="/custom-modules">Custom Modules</router-link>
       <router-link to="/custom-toolbar">Custom Toolbar</router-link>
     </nav>
     <router-view />
