@@ -1,16 +1,20 @@
+const webpack = require("webpack");
+const isDev = process.env.NODE_ENV === "development";
+const buildingDemos = process.env.BUILD_TYPE === "demos";
+
 module.exports = {
   css: {
     extract: false
   },
-  configureWebpack: {
-    // entry: "./src/lib.js",
-    output: {
-      // libraryExport: "default",
-      filename: "vue2-editor",
-      // libraryTarget: "window",
-      library: "Vue2Editor"
+  outputDir: buildingDemos ? "public-demos" : "dist",
+  configureWebpack: config => {
+    if (isDev || buildingDemos) {
+      config.plugins.push(
+        new webpack.ProvidePlugin({
+          "window.Quill": "quill/dist/quill.js",
+          Quill: "quill/dist/quill.js"
+        })
+      );
     }
   }
 };
-
-// genHTML: false,

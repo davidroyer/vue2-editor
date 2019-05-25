@@ -8,15 +8,13 @@
     "email": "droyer01@gmail.com"
   },
   "scripts": {
-    "build": "yarn bili",
+    "build:plugin": "vue-cli-service build --target lib --name Vue2Editor --filename vue2-editor ./src/plugin.js",
+    "build:demos": "BUILD_TYPE=demos vue-cli-service build ./demos --no-clean --outputDir v2e-demos",
     "lint": "vue-cli-service lint",
     "dev": "vue-cli-service serve ./demos",
+    "postbuild:plugin": "rm dist/demo.html",
     "release": "standard-version && git push --follow-tags && npm publish",
-    "release:alpha": "standard-version --prerelease alpha && git push --follow-tags origin dev && npm publish --tag alpha",
-    "vbuild:config": "vue-cli-service build --target lib ./src/lib.js",
-    "vbuild": "vue-cli-service build --target lib --name Vue2Editor --filename vue2-editor ./src/lib.js",
-    "postvbuild": "rm dist/demo.html",
-    "postvbuild:config": "rm dist/demo.html"
+    "release:alpha": "standard-version --prerelease alpha && git push --follow-tags origin dev && npm publish --tag alpha"
   },
   "main": "dist/vue2-editor.common.js",
   "unpkg": "dist/vue2-editor.umd.min.js",
@@ -37,6 +35,9 @@
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-vue": "^5.0.0",
+    "highlight.js": "^9.15.6",
+    "quill-image-drop-module": "^1.0.3",
+    "quill-image-resize-module": "^3.0.0",
     "rollup-plugin-alias": "^1.5.1",
     "rollup-plugin-vue": "^5.0.0",
     "sass": "^1.18.0",

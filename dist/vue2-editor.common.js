@@ -1102,52 +1102,6 @@ module.exports = baseIsNative;
 
 /***/ }),
 
-/***/ "34e9":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return install; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Quill; });
-/* harmony import */ var _components_VueEditor_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("9372");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "b", function() { return _components_VueEditor_vue__WEBPACK_IMPORTED_MODULE_0__["a"]; });
-
-/* harmony import */ var quill__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("9339");
-/* harmony import */ var quill__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(quill__WEBPACK_IMPORTED_MODULE_1__);
-// Import vue component
-
-
-var Quill = window.Quill || quill__WEBPACK_IMPORTED_MODULE_1___default.a; // Declare install function executed by Vue.use()
-
-function install(Vue) {
-  if (install.installed) return;
-  install.installed = true;
-  Vue.component("VueEditor", _components_VueEditor_vue__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"]);
-} // Create module definition for Vue.use()
-
-var Vue2Editor = {
-  VueEditor: _components_VueEditor_vue__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"],
-  install: install
-}; // Auto-install when vue is found (eg. in browser via <script> tag)
-
-var GlobalVue = null;
-
-if (typeof window !== "undefined") {
-  GlobalVue = window.Vue;
-} else if (typeof global !== "undefined") {
-  GlobalVue = global.Vue;
-}
-
-if (GlobalVue) {
-  GlobalVue.use(Vue2Editor);
-} // To allow use as module (npm/webpack/etc.) export component
-
-
-/* harmony default export */ __webpack_exports__["c"] = (Vue2Editor);
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("c8ba")))
-
-/***/ }),
-
 /***/ "3698":
 /***/ (function(module, exports) {
 
@@ -14295,7 +14249,7 @@ module.exports = __webpack_require__(63);
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"42649fc4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueEditor.vue?vue&type=template&id=464d8f32&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"76109844-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueEditor.vue?vue&type=template&id=464d8f32&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"quillWrapper"},[_vm._t("toolbar"),_c('div',{ref:"quillContainer",attrs:{"id":_vm.id}}),(_vm.useCustomImageHandler)?_c('input',{ref:"fileInput",staticStyle:{"display":"none"},attrs:{"id":"file-upload","type":"file","accept":"image/*"},on:{"change":function($event){return _vm.emitImageInfo($event)}}}):_vm._e()],2)}
 var staticRenderFns = []
 
@@ -18084,16 +18038,16 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// EXTERNAL MODULE: ./src/lib.js
-var lib = __webpack_require__("34e9");
+// EXTERNAL MODULE: ./src/plugin.js
+var src_plugin = __webpack_require__("fe83");
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
-/* concated harmony reexport install */__webpack_require__.d(__webpack_exports__, "install", function() { return lib["d" /* install */]; });
-/* concated harmony reexport VueEditor */__webpack_require__.d(__webpack_exports__, "VueEditor", function() { return lib["b" /* VueEditor */]; });
-/* concated harmony reexport Quill */__webpack_require__.d(__webpack_exports__, "Quill", function() { return lib["a" /* Quill */]; });
+/* concated harmony reexport install */__webpack_require__.d(__webpack_exports__, "install", function() { return src_plugin["d" /* install */]; });
+/* concated harmony reexport VueEditor */__webpack_require__.d(__webpack_exports__, "VueEditor", function() { return src_plugin["b" /* VueEditor */]; });
+/* concated harmony reexport Quill */__webpack_require__.d(__webpack_exports__, "Quill", function() { return src_plugin["a" /* Quill */]; });
 
 
-/* harmony default export */ var entry_lib = __webpack_exports__["default"] = (lib["c" /* default */]);
+/* harmony default export */ var entry_lib = __webpack_exports__["default"] = (src_plugin["c" /* default */]);
 
 
 
@@ -18119,6 +18073,52 @@ function listCacheHas(key) {
 
 module.exports = listCacheHas;
 
+
+/***/ }),
+
+/***/ "fe83":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return install; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Quill; });
+/* harmony import */ var _components_VueEditor_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("9372");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "b", function() { return _components_VueEditor_vue__WEBPACK_IMPORTED_MODULE_0__["a"]; });
+
+/* harmony import */ var quill__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("9339");
+/* harmony import */ var quill__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(quill__WEBPACK_IMPORTED_MODULE_1__);
+// Import vue component
+
+
+var Quill = window.Quill || quill__WEBPACK_IMPORTED_MODULE_1___default.a; // Declare install function executed by Vue.use()
+
+function install(Vue) {
+  if (install.installed) return;
+  install.installed = true;
+  Vue.component("VueEditor", _components_VueEditor_vue__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"]);
+} // Create module definition for Vue.use()
+
+var Vue2Editor = {
+  VueEditor: _components_VueEditor_vue__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"],
+  install: install
+}; // Auto-install when vue is found (eg. in browser via <script> tag)
+
+var GlobalVue = null;
+
+if (typeof window !== "undefined") {
+  GlobalVue = window.Vue;
+} else if (typeof global !== "undefined") {
+  GlobalVue = global.Vue;
+}
+
+if (GlobalVue) {
+  GlobalVue.use(Vue2Editor);
+} // To allow use as module (npm/webpack/etc.) export component
+
+
+/* harmony default export */ __webpack_exports__["c"] = (Vue2Editor);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__("c8ba")))
 
 /***/ })
 
