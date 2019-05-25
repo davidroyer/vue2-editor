@@ -1,6 +1,6 @@
 module.exports = {
   banner: true,
-  input: "src/lib.js",
+  input: "src/plugin.js",
   output: {
     moduleName: "Vue2Editor",
     // extractCSS: false,
