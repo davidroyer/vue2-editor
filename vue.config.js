@@ -16,5 +16,11 @@ module.exports = {
         })
       );
     }
+  },
+
+  chainWebpack: config => {
+    config.externals({
+      quill: "quill"
+    });
   }
 };
