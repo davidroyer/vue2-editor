@@ -14249,7 +14249,7 @@ module.exports = __webpack_require__(63);
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"500b762c-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueEditor.vue?vue&type=template&id=464d8f32&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"53a3bf90-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueEditor.vue?vue&type=template&id=464d8f32&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"quillWrapper"},[_vm._t("toolbar"),_c('div',{ref:"quillContainer",attrs:{"id":_vm.id}}),(_vm.useCustomImageHandler)?_c('input',{ref:"fileInput",staticStyle:{"display":"none"},attrs:{"id":"file-upload","type":"file","accept":"image/*"},on:{"change":function($event){return _vm.emitImageInfo($event)}}}):_vm._e()],2)}
 var staticRenderFns = []
 
@@ -14338,7 +14338,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
-var BlockEmbed = quill_default.a["import"]("blots/block/embed");
+var BlockEmbed = quill_default.a.import("blots/block/embed");
 
 var HorizontalRule =
 /*#__PURE__*/
@@ -14646,8 +14646,8 @@ function () {
           _iteratorError = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion && _iterator["return"] != null) {
-              _iterator["return"]();
+            if (!_iteratorNormalCompletion && _iterator.return != null) {
+              _iterator.return();
             }
           } finally {
             if (_didIteratorError) {
@@ -14693,8 +14693,8 @@ function () {
           _iteratorError2 = err;
         } finally {
           try {
-            if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
-              _iterator2["return"]();
+            if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+              _iterator2.return();
             }
           } finally {
             if (_didIteratorError2) {
@@ -14711,7 +14711,7 @@ function () {
 
 
 /* harmony default export */ var markdown_shortcuts = (markdown_shortcuts_MarkdownShortcuts);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/@vue/cli-plugin-babel/node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueEditor.vue?vue&type=script&lang=js&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueEditor.vue?vue&type=script&lang=js&
 //
 //
 //
@@ -14740,39 +14740,39 @@ var Quill = window.Quill || quill_default.a;
   props: {
     id: {
       type: String,
-      "default": "quill-container"
+      default: "quill-container"
     },
     placeholder: {
       type: String,
-      "default": ""
+      default: ""
     },
     value: {
       type: String,
-      "default": ""
+      default: ""
     },
     disabled: {
       type: Boolean
     },
     editorToolbar: {
       type: Array,
-      "default": function _default() {
+      default: function _default() {
         return [];
       }
     },
     editorOptions: {
       type: Object,
       required: false,
-      "default": function _default() {
+      default: function _default() {
         return {};
       }
     },
     useCustomImageHandler: {
       type: Boolean,
-      "default": false
+      default: false
     },
     useMarkdownShortcuts: {
       type: Boolean,
-      "default": false
+      default: false
     }
   },
   data: function data() {
