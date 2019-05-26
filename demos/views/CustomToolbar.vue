@@ -5,15 +5,11 @@
     <div class="container grid-960">
       <div class="columns">
         <div id="editor-boundary" class="editorWrapper column col-6 col-sm-12">
-          <vue-editor ref="editor" v-model="content" :editor-toolbar="toolbar">
-          </vue-editor>
-
           <vue-editor
             ref="editor"
             v-model="content"
-            :editor-options="editorSettings"
-          >
-          </vue-editor>
+            :editor-toolbar="toolbar"
+          />
         </div>
       </div>
     </div>
