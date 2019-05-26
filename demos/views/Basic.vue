@@ -10,6 +10,7 @@
           <vue-editor
             ref="editor"
             v-model="content"
+            use-markdown-shortcuts
             :editor-toolbar="toolbarSettings"
             :editor-options="editorSettings"
             :disabled="editorIsDisabled"
@@ -26,7 +27,7 @@
 </template>
 
 <script>
-import { VueEditor, Quill } from "../../dist/vue2-editor.umd.min.js";
+import { VueEditor, Quill } from "../../dist/vue2-editor.common.js";
 console.log("TCL: VueEditor", VueEditor);
 console.log("TCL: Quill", Quill);
 

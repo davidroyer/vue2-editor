@@ -1,37 +1,9 @@
-import Quill from "quill";
-let BlockEmbed = Quill.import("blots/block/embed");
-class HorizontalRule extends BlockEmbed {}
-HorizontalRule.blotName = "hr";
-HorizontalRule.tagName = "hr";
-Quill.register("formats/horizontal", HorizontalRule);
-
-// Quill.js Plugin - Markdown Shortcuts
-// This is a module for the Quill.js WYSIWYG editor (https://quilljs.com/)
-// which converts text entered as markdown to rich text.
-//
-// v0.0.5
-//
-// Author: Patrick Lee (me@patricklee.nyc)
-//
-// (c) Copyright 2017 Patrick Lee (me@patricklee.nyc).
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
-//
+// import Quill from "quill";
+// let BlockEmbed = Quill.import("blots/block/embed");
+// class HorizontalRule extends BlockEmbed {}
+// HorizontalRule.blotName = "hr";
+// HorizontalRule.tagName = "hr";
+// Quill.register("formats/horizontal", HorizontalRule);
 
 class MarkdownShortcuts {
   constructor(quill, options) {
@@ -175,25 +147,29 @@ class MarkdownShortcuts {
           }, 0);
         }
       },
-      {
-        name: "hr",
-        pattern: /^([-*]\s?){3}/g,
-        action: (text, selection) => {
-          const startIndex = selection.index - text.length;
-          setTimeout(() => {
-            this.quill.deleteText(startIndex, text.length);
+      // {
+      //   name: "hr",
+      //   pattern: /^([-*]\s?){3}/g,
+      //   action: (text, selection) => {
+      //     const startIndex = selection.index - text.length;
+      //     setTimeout(() => {
+      //       this.quill.deleteText(startIndex, text.length);
 
-            this.quill.insertEmbed(
-              startIndex + 1,
-              "hr",
-              true,
-              Quill.sources.USER
-            );
-            this.quill.insertText(startIndex + 2, "\n", Quill.sources.SILENT);
-            this.quill.setSelection(startIndex + 2, Quill.sources.SILENT);
-          }, 0);
-        }
-      },
+      //       this.quill.insertEmbed(
+      //         startIndex + 1,
+      //         "hr",
+      //         true,
+      //         this.quill.sources.USER
+      //       );
+      //       this.quill.insertText(
+      //         startIndex + 2,
+      //         "\n",
+      //         this.quill.sources.SILENT
+      //       );
+      //       this.quill.setSelection(startIndex + 2, this.quill.sources.SILENT);
+      //     }, 0);
+      //   }
+      // },
       {
         name: "asterisk-ul",
         pattern: /^(\*|\+)\s$/g,

@@ -9,6 +9,7 @@
           <vue-editor
             ref="myQuillEditor"
             v-model="content"
+            use-markdown-shortcuts
             :editor-options="editorOptions"
             :disabled="editorIsDisabled"
             @blur="onEditorBlur"

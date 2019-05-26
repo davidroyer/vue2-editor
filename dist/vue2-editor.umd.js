@@ -2524,12 +2524,12 @@ module.exports = overArg;
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"09f7b270-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueEditor.vue?vue&type=template&id=6a2a30a9&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"9dde17a0-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueEditor.vue?vue&type=template&id=464d8f32&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"quillWrapper"},[_vm._t("toolbar"),_c('div',{ref:"quillContainer",attrs:{"id":_vm.id}}),(_vm.useCustomImageHandler)?_c('input',{ref:"fileInput",staticStyle:{"display":"none"},attrs:{"id":"file-upload","type":"file","accept":"image/*"},on:{"change":function($event){return _vm.emitImageInfo($event)}}}):_vm._e()],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/VueEditor.vue?vue&type=template&id=6a2a30a9&
+// CONCATENATED MODULE: ./src/components/VueEditor.vue?vue&type=template&id=464d8f32&
 
 // EXTERNAL MODULE: external "quill"
 var external_quill_ = __webpack_require__("6c81");
@@ -2585,6 +2585,361 @@ var merge_default = /*#__PURE__*/__webpack_require__.n(merge);
     }
   }
 });
+// CONCATENATED MODULE: ./src/helpers/markdown-shortcuts.js
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+// import Quill from "quill";
+// let BlockEmbed = Quill.import("blots/block/embed");
+// class HorizontalRule extends BlockEmbed {}
+// HorizontalRule.blotName = "hr";
+// HorizontalRule.tagName = "hr";
+// Quill.register("formats/horizontal", HorizontalRule);
+var MarkdownShortcuts =
+/*#__PURE__*/
+function () {
+  function MarkdownShortcuts(quill, options) {
+    var _this = this;
+
+    _classCallCheck(this, MarkdownShortcuts);
+
+    this.quill = quill;
+    this.options = options;
+    this.ignoreTags = ["PRE"];
+    this.matches = [{
+      name: "header",
+      pattern: /^(#){1,6}\s/g,
+      action: function action(text, selection, pattern) {
+        var match = pattern.exec(text);
+        if (!match) return;
+        var size = match[0].length; // Need to defer this action https://github.com/quilljs/quill/issues/1134
+
+        setTimeout(function () {
+          _this.quill.formatLine(selection.index, 0, "header", size - 1);
+
+          _this.quill.deleteText(selection.index - size, size);
+        }, 0);
+      }
+    }, {
+      name: "blockquote",
+      pattern: /^(>)\s/g,
+      action: function action(text, selection) {
+        // Need to defer this action https://github.com/quilljs/quill/issues/1134
+        setTimeout(function () {
+          _this.quill.formatLine(selection.index, 1, "blockquote", true);
+
+          _this.quill.deleteText(selection.index - 2, 2);
+        }, 0);
+      }
+    }, {
+      name: "code-block",
+      pattern: /^`{3}(?:\s|\n)/g,
+      action: function action(text, selection) {
+        // Need to defer this action https://github.com/quilljs/quill/issues/1134
+        setTimeout(function () {
+          _this.quill.formatLine(selection.index, 1, "code-block", true);
+
+          _this.quill.deleteText(selection.index - 4, 4);
+        }, 0);
+      }
+    }, {
+      name: "bolditalic",
+      pattern: /(?:\*|_){3}(.+?)(?:\*|_){3}/g,
+      action: function action(text, selection, pattern, lineStart) {
+        var match = pattern.exec(text);
+        var annotatedText = match[0];
+        var matchedText = match[1];
+        var startIndex = lineStart + match.index;
+        if (text.match(/^([*_ \n]+)$/g)) return;
+        setTimeout(function () {
+          _this.quill.deleteText(startIndex, annotatedText.length);
+
+          _this.quill.insertText(startIndex, matchedText, {
+            bold: true,
+            italic: true
+          });
+
+          _this.quill.format("bold", false);
+        }, 0);
+      }
+    }, {
+      name: "bold",
+      pattern: /(?:\*|_){2}(.+?)(?:\*|_){2}/g,
+      action: function action(text, selection, pattern, lineStart) {
+        var match = pattern.exec(text);
+        var annotatedText = match[0];
+        var matchedText = match[1];
+        var startIndex = lineStart + match.index;
+        if (text.match(/^([*_ \n]+)$/g)) return;
+        setTimeout(function () {
+          _this.quill.deleteText(startIndex, annotatedText.length);
+
+          _this.quill.insertText(startIndex, matchedText, {
+            bold: true
+          });
+
+          _this.quill.format("bold", false);
+        }, 0);
+      }
+    }, {
+      name: "italic",
+      pattern: /(?:\*|_){1}(.+?)(?:\*|_){1}/g,
+      action: function action(text, selection, pattern, lineStart) {
+        var match = pattern.exec(text);
+        var annotatedText = match[0];
+        var matchedText = match[1];
+        var startIndex = lineStart + match.index;
+        if (text.match(/^([*_ \n]+)$/g)) return;
+        setTimeout(function () {
+          _this.quill.deleteText(startIndex, annotatedText.length);
+
+          _this.quill.insertText(startIndex, matchedText, {
+            italic: true
+          });
+
+          _this.quill.format("italic", false);
+        }, 0);
+      }
+    }, {
+      name: "strikethrough",
+      pattern: /(?:~~)(.+?)(?:~~)/g,
+      action: function action(text, selection, pattern, lineStart) {
+        var match = pattern.exec(text);
+        var annotatedText = match[0];
+        var matchedText = match[1];
+        var startIndex = lineStart + match.index;
+        if (text.match(/^([*_ \n]+)$/g)) return;
+        setTimeout(function () {
+          _this.quill.deleteText(startIndex, annotatedText.length);
+
+          _this.quill.insertText(startIndex, matchedText, {
+            strike: true
+          });
+
+          _this.quill.format("strike", false);
+        }, 0);
+      }
+    }, {
+      name: "code",
+      pattern: /(?:`)(.+?)(?:`)/g,
+      action: function action(text, selection, pattern, lineStart) {
+        var match = pattern.exec(text);
+        var annotatedText = match[0];
+        var matchedText = match[1];
+        var startIndex = lineStart + match.index;
+        if (text.match(/^([*_ \n]+)$/g)) return;
+        setTimeout(function () {
+          _this.quill.deleteText(startIndex, annotatedText.length);
+
+          _this.quill.insertText(startIndex, matchedText, {
+            code: true
+          });
+
+          _this.quill.format("code", false);
+
+          _this.quill.insertText(_this.quill.getSelection(), " ");
+        }, 0);
+      }
+    }, // {
+    //   name: "hr",
+    //   pattern: /^([-*]\s?){3}/g,
+    //   action: (text, selection) => {
+    //     const startIndex = selection.index - text.length;
+    //     setTimeout(() => {
+    //       this.quill.deleteText(startIndex, text.length);
+    //       this.quill.insertEmbed(
+    //         startIndex + 1,
+    //         "hr",
+    //         true,
+    //         this.quill.sources.USER
+    //       );
+    //       this.quill.insertText(
+    //         startIndex + 2,
+    //         "\n",
+    //         this.quill.sources.SILENT
+    //       );
+    //       this.quill.setSelection(startIndex + 2, this.quill.sources.SILENT);
+    //     }, 0);
+    //   }
+    // },
+    {
+      name: "asterisk-ul",
+      pattern: /^(\*|\+)\s$/g,
+      action: function action(text, selection, pattern) {
+        setTimeout(function () {
+          _this.quill.formatLine(selection.index, 1, "list", "unordered");
+
+          _this.quill.deleteText(selection.index - 2, 2);
+        }, 0);
+      }
+    }, {
+      name: "image",
+      pattern: /(?:!\[(.+?)\])(?:\((.+?)\))/g,
+      action: function action(text, selection, pattern) {
+        var startIndex = text.search(pattern);
+        var matchedText = text.match(pattern)[0]; // const hrefText = text.match(/(?:!\[(.*?)\])/g)[0]
+
+        var hrefLink = text.match(/(?:\((.*?)\))/g)[0];
+        var start = selection.index - matchedText.length - 1;
+
+        if (startIndex !== -1) {
+          setTimeout(function () {
+            _this.quill.deleteText(start, matchedText.length);
+
+            _this.quill.insertEmbed(start, "image", hrefLink.slice(1, hrefLink.length - 1));
+          }, 0);
+        }
+      }
+    }, {
+      name: "link",
+      pattern: /(?:\[(.+?)\])(?:\((.+?)\))/g,
+      action: function action(text, selection, pattern) {
+        var startIndex = text.search(pattern);
+        var matchedText = text.match(pattern)[0];
+        var hrefText = text.match(/(?:\[(.*?)\])/g)[0];
+        var hrefLink = text.match(/(?:\((.*?)\))/g)[0];
+        var start = selection.index - matchedText.length - 1;
+
+        if (startIndex !== -1) {
+          setTimeout(function () {
+            _this.quill.deleteText(start, matchedText.length);
+
+            _this.quill.insertText(start, hrefText.slice(1, hrefText.length - 1), "link", hrefLink.slice(1, hrefLink.length - 1));
+          }, 0);
+        }
+      }
+    }]; // Handler that looks for insert deltas that match specific characters
+
+    this.quill.on("text-change", function (delta, oldContents, source) {
+      for (var i = 0; i < delta.ops.length; i++) {
+        if (delta.ops[i].hasOwnProperty("insert")) {
+          if (delta.ops[i].insert === " ") {
+            _this.onSpace();
+          } else if (delta.ops[i].insert === "\n") {
+            _this.onEnter();
+          }
+        }
+      }
+    });
+  }
+
+  _createClass(MarkdownShortcuts, [{
+    key: "isValid",
+    value: function isValid(text, tagName) {
+      return typeof text !== "undefined" && text && this.ignoreTags.indexOf(tagName) === -1;
+    }
+  }, {
+    key: "onSpace",
+    value: function onSpace() {
+      var selection = this.quill.getSelection();
+      if (!selection) return;
+
+      var _this$quill$getLine = this.quill.getLine(selection.index),
+          _this$quill$getLine2 = _slicedToArray(_this$quill$getLine, 2),
+          line = _this$quill$getLine2[0],
+          offset = _this$quill$getLine2[1];
+
+      var text = line.domNode.textContent;
+      var lineStart = selection.index - offset;
+
+      if (this.isValid(text, line.domNode.tagName)) {
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = this.matches[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var match = _step.value;
+            var matchedText = text.match(match.pattern);
+
+            if (matchedText) {
+              // We need to replace only matched text not the whole line
+              console.log("matched:", match.name, text);
+              match.action(text, selection, match.pattern, lineStart);
+              return;
+            }
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return != null) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+      }
+    }
+  }, {
+    key: "onEnter",
+    value: function onEnter() {
+      var selection = this.quill.getSelection();
+      if (!selection) return;
+
+      var _this$quill$getLine3 = this.quill.getLine(selection.index),
+          _this$quill$getLine4 = _slicedToArray(_this$quill$getLine3, 2),
+          line = _this$quill$getLine4[0],
+          offset = _this$quill$getLine4[1];
+
+      var text = line.domNode.textContent + " ";
+      var lineStart = selection.index - offset;
+      selection.length = selection.index++;
+
+      if (this.isValid(text, line.domNode.tagName)) {
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
+
+        try {
+          for (var _iterator2 = this.matches[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+            var match = _step2.value;
+            var matchedText = text.match(match.pattern);
+
+            if (matchedText) {
+              console.log("matched", match.name, text);
+              match.action(text, selection, match.pattern, lineStart);
+              return;
+            }
+          }
+        } catch (err) {
+          _didIteratorError2 = true;
+          _iteratorError2 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+              _iterator2.return();
+            }
+          } finally {
+            if (_didIteratorError2) {
+              throw _iteratorError2;
+            }
+          }
+        }
+      }
+    }
+  }]);
+
+  return MarkdownShortcuts;
+}(); // module.exports = MarkdownShortcuts;
+
+
+/* harmony default export */ var markdown_shortcuts = (MarkdownShortcuts);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/@vue/cli-plugin-babel/node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/VueEditor.vue?vue&type=script&lang=js&
 //
 //
@@ -2605,7 +2960,7 @@ var merge_default = /*#__PURE__*/__webpack_require__.n(merge);
 
 
 
- // import MarkdownShortcuts from "@/helpers/markdown-shortcuts";
+
 
 var Quill = window.Quill || external_quill_default.a;
 /* harmony default export */ var VueEditorvue_type_script_lang_js_ = ({
@@ -2642,11 +2997,11 @@ var Quill = window.Quill || external_quill_default.a;
     },
     useCustomImageHandler: {
       type: Boolean,
-      default: false // useMarkdownShortcuts: {
-      //   type: Boolean,
-      //   default: false
-      // }
-
+      default: false
+    },
+    useMarkdownShortcuts: {
+      type: Boolean,
+      default: false
     }
   },
   data: function data() {
@@ -2695,10 +3050,12 @@ var Quill = window.Quill || external_quill_default.a;
     setModules: function setModules() {
       var modules = {
         toolbar: this.editorToolbar.length ? this.editorToolbar : default_toolbar
-      }; // if (this.useMarkdownShortcuts) {
-      //   Quill.register("modules/markdownShortcuts", MarkdownShortcuts, true);
-      //   modules["markdownShortcuts"] = {};
-      // }
+      };
+
+      if (this.useMarkdownShortcuts) {
+        Quill.register("modules/markdownShortcuts", markdown_shortcuts, true);
+        modules["markdownShortcuts"] = {};
+      }
 
       return modules;
     },

@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 const isDev = process.env.NODE_ENV === "development";
 const buildingDemos = process.env.BUILD_TYPE === "demos";
+const buildingPlugin = process.env.NODE_ENV === "production" && !buildingDemos;
 const buildDirectory = buildingDemos ? "public-demos" : "dist";
 
 module.exports = {
@@ -22,7 +23,7 @@ module.exports = {
   },
 
   chainWebpack: config => {
-    if (!buildingDemos) {
+    if (buildingPlugin) {
       config.externals({
         quill: "quill"
       });
