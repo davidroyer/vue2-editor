@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/davidroyer/vue2-editor/compare/v2.7.0-alpha.21...v2.7.0) (2019-05-26)
+
+
+
 ## [2.7.0-alpha.21](https://github.com/davidroyer/vue2-editor/compare/v2.7.0-alpha.20...v2.7.0-alpha.21) (2019-05-26)
 
 
