@@ -19,7 +19,7 @@ import _Quill from "quill";
 import defaultToolbar from "@/helpers/default-toolbar";
 import merge from "lodash/merge";
 import oldApi from "@/helpers/old-api";
-import MarkdownShortcuts from "@/helpers/markdown-shortcuts";
+// import MarkdownShortcuts from "@/helpers/markdown-shortcuts";
 
 const Quill = window.Quill || _Quill;
 
@@ -54,11 +54,11 @@ export default {
     useCustomImageHandler: {
       type: Boolean,
       default: false
-    },
-    useMarkdownShortcuts: {
-      type: Boolean,
-      default: false
     }
+    // useMarkdownShortcuts: {
+    //   type: Boolean,
+    //   default: false
+    // }
   },
 
   data: () => ({
@@ -113,10 +113,10 @@ export default {
       let modules = {
         toolbar: this.editorToolbar.length ? this.editorToolbar : defaultToolbar
       };
-      if (this.useMarkdownShortcuts) {
-        Quill.register("modules/markdownShortcuts", MarkdownShortcuts, true);
-        modules["markdownShortcuts"] = {};
-      }
+      // if (this.useMarkdownShortcuts) {
+      //   Quill.register("modules/markdownShortcuts", MarkdownShortcuts, true);
+      //   modules["markdownShortcuts"] = {};
+      // }
       return modules;
     },
 
