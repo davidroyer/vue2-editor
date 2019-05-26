@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build:plugin": "vue-cli-service build --target lib --name Vue2Editor --filename vue2-editor ./src/plugin.js",
-    "build:demos": "BUILD_TYPE=demos vue-cli-service build ./demos --no-clean --outputDir v2e-demos",
+    "build:demos": "BUILD_TYPE=demos vue-cli-service build ./demos --no-clean",
     "lint": "vue-cli-service lint",
     "dev": "vue-cli-service serve ./demos",
     "postbuild:plugin": "rm dist/demo.html",
