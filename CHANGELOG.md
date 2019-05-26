@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0-alpha.21](https://github.com/davidroyer/vue2-editor/compare/v2.7.0-alpha.20...v2.7.0-alpha.21) (2019-05-26)
+
+
+### Bug Fixes
+
+* removes wrong cli option for \`build:demos\`' ([ece166c](https://github.com/davidroyer/vue2-editor/commit/ece166c))
+* **demos:** removes ex. with 2 duplicate editors ([5948223](https://github.com/davidroyer/vue2-editor/commit/5948223))
+
+
+
 ## [2.7.0-alpha.20](https://github.com/davidroyer/vue2-editor/compare/v2.7.0-alpha.19...v2.7.0-alpha.20) (2019-05-26)
 
 
