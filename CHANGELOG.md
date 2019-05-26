@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0-alpha.16](https://github.com/davidroyer/vue2-editor/compare/v2.7.0-alpha.15...v2.7.0-alpha.16) (2019-05-26)
+
+
+### Bug Fixes
+
+* reduces bundle size ([bf1b8b8](https://github.com/davidroyer/vue2-editor/commit/bf1b8b8))
+
+
+
 ## [2.7.0-alpha.15](https://github.com/davidroyer/vue2-editor/compare/v2.7.0-alpha.14...v2.7.0-alpha.15) (2019-05-26)
 
 
