@@ -23,3 +23,5 @@ yarn-error.log*
 # Backups
 .BACKUP
 .STORAGE
+
+public-demos
