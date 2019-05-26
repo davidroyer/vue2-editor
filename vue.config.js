@@ -1,12 +1,15 @@
 const webpack = require("webpack");
 const isDev = process.env.NODE_ENV === "development";
 const buildingDemos = process.env.BUILD_TYPE === "demos";
+const buildDirectory = buildingDemos ? "public-demos" : "dist";
 
 module.exports = {
   css: {
     extract: false
   },
-  outputDir: buildingDemos ? "public-demos" : "dist",
+
+  outputDir: buildDirectory,
+
   configureWebpack: config => {
     if (isDev || buildingDemos) {
       config.plugins.push(
@@ -19,8 +22,10 @@ module.exports = {
   },
 
   chainWebpack: config => {
-    config.externals({
-      quill: "quill"
-    });
+    if (!buildingDemos) {
+      config.externals({
+        quill: "quill"
+      });
+    }
   }
 };
