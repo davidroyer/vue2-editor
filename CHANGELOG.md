@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0-alpha.15](https://github.com/davidroyer/vue2-editor/compare/v2.7.0-alpha.14...v2.7.0-alpha.15) (2019-05-26)
+
+
+### Bug Fixes
+
+* **package.json:** removes src from files property ([108f1be](https://github.com/davidroyer/vue2-editor/commit/108f1be))
+
+
+
 ## [2.7.0-alpha.14](https://github.com/davidroyer/vue2-editor/compare/v2.7.1-alpha.0...v2.7.0-alpha.14) (2019-05-26)
 
 
