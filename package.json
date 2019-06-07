@@ -18,10 +18,16 @@
     "docs:build": "vue-cli-service docs --mode build",
     "docs:serve": "vue-cli-service docs --mode serve",
     "postbuild:plugin": "rm dist/demo.html",
-    "release": "standard-version && git push --follow-tags && npm publish",
-    "release:alpha": "standard-version --prerelease alpha && git push --follow-tags origin dev && npm publish --tag alpha",
+    "release": "standard-version",
+    "release:alpha": "standard-version --prerelease alpha",
     "start": "vue-cli-service serve"
   },
+  "standard-version": {
+    "scripts": {
+      "postbump": "yarn vue-cli-service build && git add dist && git commit -m 'chore: new build'",
+      "posttag": "git push --follow-tags && npm publish --tag alpha"
+    }
+  },  
   "main": "dist/vue2-editor.common.js",
   "module": "dist/vue2-editor.esm.js",
   "unpkg": "dist/vue2-editor.umd.min.js",
