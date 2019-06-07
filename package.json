@@ -1,27 +1,43 @@
 {
   "name": "vue2-editor",
-  "version": "2.7.0-alpha.21",
-  "private": false,
+  "version": "2.7.2",
   "description": "HTML editor using Vue.js 2, and Quill.js, an open source editor",
   "author": {
     "name": "David Royer",
     "email": "droyer01@gmail.com"
   },
   "scripts": {
-    "build:plugin": "vue-cli-service build --target lib --name Vue2Editor --filename vue2-editor ./src/plugin.js",
-    "build:demos": "BUILD_TYPE=demos vue-cli-service build ./demos --no-clean",
     "lint": "vue-cli-service lint",
+    "build": "vue-cli-service build",
+    "build:demos": "BUILD_TYPE=demos vue-cli-service build ./demos --no-clean",
+    "build:plugin": "vue-cli-service build --target lib --name Vue2Editor --filename vue2-editor ./src/plugin.js",
+    "demo": "vue-cli-service demo",
     "dev": "vue-cli-service serve ./demos",
+    "dev:vp": "vue-cli-service serve",
+    "docs": "npm run docs:serve",
+    "docs:build": "vue-cli-service docs --mode build",
+    "docs:serve": "vue-cli-service docs --mode serve",
     "postbuild:plugin": "rm dist/demo.html",
+    "prepublish": "vue-cli-service lint && vue-cli-service docs --mode build && vue-cli-service build",
     "release": "standard-version && git push --follow-tags && npm publish",
-    "release:alpha": "standard-version --prerelease alpha && git push --follow-tags origin dev && npm publish --tag alpha"
+    "release:alpha": "standard-version --prerelease alpha && git push --follow-tags origin dev && npm publish --tag alpha",
+    "start": "vue-cli-service serve"
   },
   "main": "dist/vue2-editor.common.js",
+  "module": "dist/vue2-editor.esm.js",
   "unpkg": "dist/vue2-editor.umd.min.js",
+  "files": [
+    "dist",
+    "dist/vue2-editor.common.js",
+    "dist/vue2-editor.umd.min.js",
+    "dist/vue2-editor.umd.js",
+    "dist/vue2-editor.esm.js",
+    "src"
+  ],
   "dependencies": {
     "lodash": "^4.17.11",
     "quill": "^1.3.6",
-    "vue": "^2.6.10"
+    "vue-cli-plugin-vp": "davidroyer/vue-cli-plugin-vp"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.6.1",
@@ -35,19 +51,23 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-vue": "^5.0.0",
     "highlight.js": "^9.15.6",
+    "node-sass": "^4.12.0",
     "quill-image-drop-module": "^1.0.3",
     "quill-image-resize-module": "^3.0.0",
-    "sass": "^1.18.0",
+    "sass": "^1.21.0",
     "sass-loader": "^7.1.0",
     "standard-version": "^6.0.1",
+    "vue": "^2.6.10",
     "vue-router": "^3.0.6",
     "vue-template-compiler": "^2.5.21"
   },
   "peerDependencies": {},
   "eslintIgnore": [
     "/dist",
-    "/node_modules"
+    "/node_modules",
+    "/demo"
   ],
+  "jsdelivr": "dist/vue2-editor.umd.min.js",
   "keywords": [
     "vue",
     "vue-component",
@@ -59,11 +79,9 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "files": [
-    "dist"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/davidroyer/vue2-editor.git"
-  }
+  },
+  "sideeffects": false
 }

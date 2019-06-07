@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
-// import Quill from "quill";
-// let BlockEmbed = Quill.import("blots/block/embed");
-// class HorizontalRule extends BlockEmbed {}
-// HorizontalRule.blotName = "hr";
-// HorizontalRule.tagName = "hr";
-// Quill.register("formats/horizontal", HorizontalRule);
+import Quill from "quill";
+let BlockEmbed = Quill.import("blots/block/embed");
+class HorizontalRule extends BlockEmbed {}
+HorizontalRule.blotName = "hr";
+HorizontalRule.tagName = "hr";
+Quill.register("formats/horizontal", HorizontalRule);
 
 class MarkdownShortcuts {
   constructor(quill, options) {
@@ -30,7 +30,7 @@ class MarkdownShortcuts {
       {
         name: "blockquote",
         pattern: /^(>)\s/g,
-        action: (text, selection) => {
+        action: (_text, selection) => {
           // Need to defer this action https://github.com/quilljs/quill/issues/1134
           setTimeout(() => {
             this.quill.formatLine(selection.index, 1, "blockquote", true);
@@ -41,7 +41,7 @@ class MarkdownShortcuts {
       {
         name: "code-block",
         pattern: /^`{3}(?:\s|\n)/g,
-        action: (text, selection) => {
+        action: (_text, selection) => {
           // Need to defer this action https://github.com/quilljs/quill/issues/1134
           setTimeout(() => {
             this.quill.formatLine(selection.index, 1, "code-block", true);
@@ -52,7 +52,7 @@ class MarkdownShortcuts {
       {
         name: "bolditalic",
         pattern: /(?:\*|_){3}(.+?)(?:\*|_){3}/g,
-        action: (text, selection, pattern, lineStart) => {
+        action: (text, _selection, pattern, lineStart) => {
           let match = pattern.exec(text);
 
           const annotatedText = match[0];
@@ -74,7 +74,7 @@ class MarkdownShortcuts {
       {
         name: "bold",
         pattern: /(?:\*|_){2}(.+?)(?:\*|_){2}/g,
-        action: (text, selection, pattern, lineStart) => {
+        action: (text, _selection, pattern, lineStart) => {
           let match = pattern.exec(text);
 
           const annotatedText = match[0];
@@ -93,7 +93,7 @@ class MarkdownShortcuts {
       {
         name: "italic",
         pattern: /(?:\*|_){1}(.+?)(?:\*|_){1}/g,
-        action: (text, selection, pattern, lineStart) => {
+        action: (text, _selection, pattern, lineStart) => {
           let match = pattern.exec(text);
 
           const annotatedText = match[0];
@@ -112,7 +112,7 @@ class MarkdownShortcuts {
       {
         name: "strikethrough",
         pattern: /(?:~~)(.+?)(?:~~)/g,
-        action: (text, selection, pattern, lineStart) => {
+        action: (text, _selection, pattern, lineStart) => {
           let match = pattern.exec(text);
 
           const annotatedText = match[0];
@@ -131,7 +131,7 @@ class MarkdownShortcuts {
       {
         name: "code",
         pattern: /(?:`)(.+?)(?:`)/g,
-        action: (text, selection, pattern, lineStart) => {
+        action: (text, _selection, pattern, lineStart) => {
           let match = pattern.exec(text);
 
           const annotatedText = match[0];
@@ -148,33 +148,29 @@ class MarkdownShortcuts {
           }, 0);
         }
       },
-      // {
-      //   name: "hr",
-      //   pattern: /^([-*]\s?){3}/g,
-      //   action: (text, selection) => {
-      //     const startIndex = selection.index - text.length;
-      //     setTimeout(() => {
-      //       this.quill.deleteText(startIndex, text.length);
+      {
+        name: "hr",
+        pattern: /^([-*]\s?){3}/g,
+        action: (text, selection) => {
+          const startIndex = selection.index - text.length;
+          setTimeout(() => {
+            this.quill.deleteText(startIndex, text.length);
 
-      //       this.quill.insertEmbed(
-      //         startIndex + 1,
-      //         "hr",
-      //         true,
-      //         this.quill.sources.USER
-      //       );
-      //       this.quill.insertText(
-      //         startIndex + 2,
-      //         "\n",
-      //         this.quill.sources.SILENT
-      //       );
-      //       this.quill.setSelection(startIndex + 2, this.quill.sources.SILENT);
-      //     }, 0);
-      //   }
-      // },
+            this.quill.insertEmbed(
+              startIndex + 1,
+              "hr",
+              true,
+              Quill.sources.USER
+            );
+            this.quill.insertText(startIndex + 2, "\n", Quill.sources.SILENT);
+            this.quill.setSelection(startIndex + 2, Quill.sources.SILENT);
+          }, 0);
+        }
+      },
       {
         name: "asterisk-ul",
         pattern: /^(\*|\+)\s$/g,
-        action: (text, selection, pattern) => {
+        action: (_text, selection, _pattern) => {
           setTimeout(() => {
             this.quill.formatLine(selection.index, 1, "list", "unordered");
             this.quill.deleteText(selection.index - 2, 2);
@@ -227,7 +223,7 @@ class MarkdownShortcuts {
     ];
 
     // Handler that looks for insert deltas that match specific characters
-    this.quill.on("text-change", (delta, oldContents, source) => {
+    this.quill.on("text-change", (delta, _oldContents, _source) => {
       for (let i = 0; i < delta.ops.length; i++) {
         if (delta.ops[i].hasOwnProperty("insert")) {
           if (delta.ops[i].insert === " ") {

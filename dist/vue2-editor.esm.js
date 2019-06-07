@@ -3,13 +3,8 @@
  * (c) 2019 David Royer
  * Released under the undefined License.
  */
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var Quill = _interopDefault(require('quill'));
+import Quill from 'quill';
+export { default as Quill } from 'quill';
 
 var defaultToolbar = [[{
   header: [false, 1, 2, 3, 4, 5, 6]
@@ -924,7 +919,5 @@ if (GlobalVue) {
 }
 /*************************************************/
 
-exports.Quill = Quill;
-exports.VueEditor = VueEditor;
-exports.default = VPlugin;
-exports.install = install;
+export default VPlugin;
+export { VueEditor, install };

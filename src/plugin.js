@@ -1,32 +1,21 @@
-// Import vue component
-import VueEditor from "./components/VueEditor.vue";
-import _Quill from "quill";
-const Quill = window.Quill || _Quill;
+/*
+ * NOTE:
+ *   This file is plugin stub for main.js
+ */
 
-// Declare install function executed by Vue.use()
-export function install(Vue) {
-  if (install.installed) return;
-  install.installed = true;
-  Vue.component("VueEditor", VueEditor);
-}
+import Vue from "vue";
+import plugin from "./index";
+console.log("TCL: plugin", plugin);
+import { VueEditor, Quill, version } from "./index";
+console.log("TCL: version", version);
+console.log("TCL: Quill", Quill);
+console.log("TCL: VueEditor", VueEditor);
 
-// Create module definition for Vue.use()
-const Vue2Editor = {
-  VueEditor,
-  install
-};
+Vue.use(plugin);
 
-// Auto-install when vue is found (eg. in browser via <script> tag)
-let GlobalVue = null;
-if (typeof window !== "undefined") {
-  GlobalVue = window.Vue;
-} else if (typeof global !== "undefined") {
-  GlobalVue = global.Vue;
-}
-if (GlobalVue) {
-  GlobalVue.use(Vue2Editor);
-}
-
-// To allow use as module (npm/webpack/etc.) export component
-export default Vue2Editor;
-export { VueEditor, Quill };
+/*
+ * NOTE:
+ *   If you want Vue instance of main.js to import something in your plugin as a Vue option,
+ *   you need to export it here.
+ */
+// export default plugin
