@@ -1,6 +1,6 @@
 {
   "name": "vue2-editor",
-  "version": "2.8.0-alpha.0",
+  "version": "2.8.0-alpha.1",
   "description": "HTML editor using Vue.js 2, and Quill.js, an open source editor",
   "author": {
     "name": "David Royer",
@@ -18,7 +18,6 @@
     "docs:build": "vue-cli-service docs --mode build",
     "docs:serve": "vue-cli-service docs --mode serve",
     "postbuild:plugin": "rm dist/demo.html",
-    "prepublish": "vue-cli-service lint && vue-cli-service docs --mode build && vue-cli-service build",
     "release": "standard-version && git push --follow-tags && npm publish",
     "release:alpha": "standard-version --prerelease alpha && git push --follow-tags origin dev && npm publish --tag alpha",
     "start": "vue-cli-service serve"
