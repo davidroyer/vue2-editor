@@ -26,7 +26,46 @@
     "scripts": {
       "postbump": "yarn vue-cli-service build && git add dist && git commit -m 'chore: new build'",
       "posttag": "git push --follow-tags && npm publish --tag alpha"
-    }
+    },
+    "types": [
+      {
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "chore",
+        "hidden": true
+      },
+      {
+        "type": "docs",
+        "hidden": false,
+        "section": "Documentation"
+      },
+      {
+        "type": "imp",
+        "section": "Improvements"
+      },
+      {
+        "type": "style",
+        "hidden": true
+      },
+      {
+        "type": "refactor",
+        "section": "Refactoring"
+      },
+      {
+        "type": "perf",
+        "hidden": true
+      },
+      {
+        "type": "test",
+        "hidden": true
+      }
+    ]
   },
   "main": "dist/vue2-editor.common.js",
   "module": "dist/vue2-editor.esm.js",
@@ -41,8 +80,7 @@
   ],
   "dependencies": {
     "lodash": "^4.17.11",
-    "quill": "^1.3.6",
-    "vue-cli-plugin-vp": "davidroyer/vue-cli-plugin-vp"
+    "quill": "^1.3.6"
   },
   "devDependencies": {
     "@commitlint/cli": "^7.6.1",
@@ -63,6 +101,7 @@
     "sass-loader": "^7.1.0",
     "standard-version": "^6.0.1",
     "vue": "^2.6.10",
+    "vue-cli-plugin-vplugin": "davidroyer/vue-cli-plugin-vplugin",
     "vue-router": "^3.0.6",
     "vue-template-compiler": "^2.5.21"
   },
