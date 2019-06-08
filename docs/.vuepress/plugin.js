@@ -1,7 +1,7 @@
-const { version } = require('../../package.json')
+const { version } = require("../../package.json");
 
 module.exports = (/*options, ctx*/) => ({
-  async enhanceAppFiles () {
+  async enhanceAppFiles() {
     const code = `export default ({ Vue }) => {
   Vue.mixin({
     computed: {
@@ -10,10 +10,12 @@ module.exports = (/*options, ctx*/) => ({
       } 
     }
   })
-}`
-    return [{
-      name: 'vuepress-plugin-vue-cli-plugin-p11n',
-      content: code
-    }]
+}`;
+    return [
+      {
+        name: "vuepress-plugin-vue-cli-plugin-p11n",
+        content: code
+      }
+    ];
   }
-})
+});
