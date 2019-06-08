@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.8.0-alpha.4](https://github.com/davidroyer/vue2-editor/compare/v2.8.0-alpha.3...v2.8.0-alpha.4) (2019-06-08)
+
+
+
 ## [2.8.0-alpha.3](https://github.com/davidroyer/vue2-editor/compare/v2.8.0-alpha.2...v2.8.0-alpha.3) (2019-06-08)
 
 
