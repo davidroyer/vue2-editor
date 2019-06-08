@@ -70,7 +70,8 @@
   "eslintIgnore": [
     "/dist",
     "/node_modules",
-    "/demo"
+    "/demo",
+    "!.vuepress"
   ],
   "jsdelivr": "dist/vue2-editor.umd.min.js",
   "keywords": [
