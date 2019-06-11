@@ -29,6 +29,17 @@ module.exports = {
     require("./plugin.js"),
     "live",
     [
+      "demo-code",
+      {
+        onlineBtns: {
+          codepen: false,
+          jsfiddle: false,
+          codesandbox: false
+        }
+      }
+    ],
+
+    [
       "@vuepress/google-analytics",
       {
         ga: "UA-12345678-9"

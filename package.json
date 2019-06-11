@@ -107,6 +107,7 @@
     "vue-cli-plugin-vplugin": "davidroyer/vue-cli-plugin-vplugin",
     "vue-router": "^3.0.6",
     "vue-template-compiler": "^2.5.21",
+    "vuepress-plugin-demo-code": "^0.3.5",
     "vuepress-plugin-live": "^1.1.0"
   },
   "peerDependencies": {},

@@ -4,6 +4,28 @@
 
 # Examples
 
+::: demo
+<template>
+   <div id="app">
+     <vue-editor v-model="content"></vue-editor>
+   </div>
+ </template>
+
+ <script>
+
+export default {
+  components: {
+  },
+
+  data() {
+    return {
+      content: "<h1>Some initial content</h1>"
+    };
+  }
+};
+</script>
+:::
+
 ## Basic Setup
 
 ```vue
@@ -163,7 +185,7 @@ export default {
 
 ## Custom Toolbar
 
-```vue
+::: demo
 <template>
   <div id="app">
     <vue-editor v-model="content" :editorToolbar="customToolbar"></vue-editor>
@@ -171,11 +193,11 @@ export default {
 </template>
 
 <script>
-import { VueEditor } from "vue2-editor";
+// import { VueEditor } from "vue2-editor";
 
 export default {
   components: {
-    VueEditor
+    // VueEditor
   },
 
   data() {
@@ -190,7 +212,7 @@ export default {
   }
 };
 </script>
-```
+:::
 
 ## Saving The Content
 
@@ -267,7 +289,6 @@ new webpack.ProvidePlugin({
 	'Quill': 'quill/dist/quill.js',
 }),
 ```
-
 :::
 
 ### Version 1 - **_Import and Register Yourself_**
@@ -276,10 +297,10 @@ new webpack.ProvidePlugin({
 
 Vue2Editor now exports Quill to assist in this process.
 
-1.  When importing VueEditor, also import Quill.
-2.  Import your custom modules
-3.  Register the custom modules with Quill
-4.  Add the necessary configuration to the `editorOptions` object
+1. When importing VueEditor, also import Quill.
+2. Import your custom modules
+3. Register the custom modules with Quill
+4. Add the necessary configuration to the `editorOptions` object
 
 ```vue
 <template>
