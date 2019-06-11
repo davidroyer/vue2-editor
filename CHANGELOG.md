@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.8.0-alpha.5](https://github.com/davidroyer/vue2-editor/compare/v2.8.0-alpha.4...v2.8.0-alpha.5) (2019-06-11)
+
+
+### Documentation
+
+* :pencil: fixes docs ([5746f2c](https://github.com/davidroyer/vue2-editor/commit/5746f2c))
+* begins to bring in current content ([be246c0](https://github.com/davidroyer/vue2-editor/commit/be246c0))
+
+
+
 ## [2.8.0-alpha.4](https://github.com/davidroyer/vue2-editor/compare/v2.8.0-alpha.3...v2.8.0-alpha.4) (2019-06-08)
 
 
