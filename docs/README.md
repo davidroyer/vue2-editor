@@ -1,10 +1,14 @@
-# Introduction
-
-`Vue2Editor` plugin is plugin for [Vue.js](http://vuejs.org).
-Features include:
-
-- Feature1
-- Feature2
-- ...
-
-[Get started](./started/) or play with the [demo](https://github.com/David Royer/vue2-editor/tree/dev/demo) (see [`README.md`](https://github.com/David Royer/vue2-editor/) to run them).
+---
+home: true
+heroImage: /hero-home.png
+actionText: Get Started →
+actionLink: /started/
+features:
+  - title: Easy To Use
+    details: Simple setup so you can get started quickly
+  - title: Quality Foundation
+    details: Built on top of Vue.js & Quill.js
+  - title: Customizable
+    details: Offers the options you need for more complex scenarios
+footer: MIT Licensed | Copyright © 2016-present David Royer
+---

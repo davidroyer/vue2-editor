@@ -6,13 +6,11 @@
 
 <script>
 let VueEditor;
-if (typeof window !== "undefined") {
-  console.log("GOT WINDOW");
-  console.log("TCL: window", window);
 
+if (typeof window !== "undefined") {
   VueEditor = window.Vue2Editor.VueEditor;
 }
-// const VueEditor = window.Vue2Editor.VueEditor;
+
 export default {
   components: { VueEditor },
   data() {
