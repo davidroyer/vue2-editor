@@ -76,8 +76,7 @@
     "dist/vue2-editor.common.js",
     "dist/vue2-editor.umd.min.js",
     "dist/vue2-editor.umd.js",
-    "dist/vue2-editor.esm.js",
-    "src"
+    "dist/vue2-editor.esm.js"
   ],
   "dependencies": {
     "lodash": "^4.17.11",
