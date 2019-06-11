@@ -5,7 +5,7 @@ dist/*.gz
 dist/*.map
 coverage
 docs/.vuepress/dist
-
+dist
 # local env files
 .env.local
 .env.*.local
