@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.8.0-alpha.6](https://github.com/davidroyer/vue2-editor/compare/v2.8.0-alpha.5...v2.8.0-alpha.6) (2019-06-11)
+
+
+### Refactoring
+
+* removes `src` from files property ([7d7f350](https://github.com/davidroyer/vue2-editor/commit/7d7f350))
+
+
+
 ## [2.8.0-alpha.5](https://github.com/davidroyer/vue2-editor/compare/v2.8.0-alpha.4...v2.8.0-alpha.5) (2019-06-11)
 
 
