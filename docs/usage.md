@@ -3,8 +3,21 @@
 ## Basic Example
 
 <ClientOnly>
-<basic-example />
+<BasicExample />
 </ClientOnly>
+
+```vue live
+<BasicExample />
+<pre>{{editorContent}}</pre>
+```
+
+### Testing `Vue.use`
+
+```vue live
+<VueEditor v-model="editorContent" />
+<pre>{{editorContent}}</pre>
+
+```
 
 <!-- ## Customized Example
 

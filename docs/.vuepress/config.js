@@ -13,7 +13,7 @@ module.exports = {
       {
         src: "https://unpkg.com/quill"
       }
-    ],    
+    ],
     [
       "script",
       {
@@ -21,7 +21,7 @@ module.exports = {
       }
     ]
   ],
-  plugins: [require("./plugin.js")],
+  plugins: [require("./plugin.js"), "live"],
   locales: {
     "/": {
       lang: "en-US",

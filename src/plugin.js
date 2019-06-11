@@ -5,11 +5,11 @@
 
 import Vue from "vue";
 import plugin from "./index";
+const { Quill, version } = plugin;
+
 console.log("TCL: plugin", plugin);
-import { VueEditor, Quill, version } from "./index";
 console.log("TCL: version", version);
 console.log("TCL: Quill", Quill);
-console.log("TCL: VueEditor", VueEditor);
 
 Vue.use(plugin);
 
