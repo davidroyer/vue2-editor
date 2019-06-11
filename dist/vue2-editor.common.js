@@ -1,5 +1,5 @@
 /*!
- * vue2-editor v2.8.0-alpha.5 
+ * vue2-editor v2.8.0-alpha.6 
  * (c) 2019 David Royer
  * Released under the undefined License.
  */
@@ -893,7 +893,7 @@ var __vue_staticRenderFns__ = [];
     undefined
   );
 
-var version = "2.8.0-alpha.5"; // Declare install function executed by Vue.use()
+var version = "2.8.0-alpha.6"; // Declare install function executed by Vue.use()
 
 function install(Vue) {
   if (install.installed) return;
