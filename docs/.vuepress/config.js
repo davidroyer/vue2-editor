@@ -4,14 +4,18 @@ console.log("TCL: version", version);
 
 module.exports = {
   head: [
-    // [
-    //   "link",
-    //   {
-    //     rel: "stylesheet",
-    //     type: "text/css",
-    //     href: "https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css"
-    //   }
-    // ],
+    [
+      "script",
+      {
+        src: "https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"
+      }
+    ],
+    [
+      "script",
+      {
+        src: "https://cdn.jsdelivr.net/npm/@babel/standalone/babel.min.js"
+      }
+    ],
     [
       "script",
       {
@@ -28,16 +32,17 @@ module.exports = {
   plugins: [
     require("./plugin.js"),
     "live",
-    [
-      "demo-code",
-      {
-        onlineBtns: {
-          codepen: false,
-          jsfiddle: false,
-          codesandbox: false
-        }
-      }
-    ],
+    "demo-block",
+    // [
+    //   "demo-code",
+    //   {
+    //     onlineBtns: {
+    //       codepen: false,
+    //       jsfiddle: false,
+    //       codesandbox: false
+    //     }
+    //   }
+    // ],
 
     [
       "@vuepress/google-analytics",

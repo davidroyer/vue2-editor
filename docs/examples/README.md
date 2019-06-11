@@ -4,53 +4,30 @@
 
 # Examples
 
-::: demo
-<template>
-   <div id="app">
-     <vue-editor v-model="content"></vue-editor>
-   </div>
- </template>
-
- <script>
-
-export default {
-  components: {
-  },
-
-  data() {
-    return {
-      content: "<h1>Some initial content</h1>"
-    };
-  }
-};
-</script>
-:::
 
 ## Basic Setup
 
-```vue
+::: demo
+``` html
 <template>
-   <div id="app">
-     <vue-editor v-model="content"></vue-editor>
-   </div>
- </template>
+  <div id="app">
+    <vue-editor v-model="content"></vue-editor>
+  </div>
+</template>
 
- <script>
-import { VueEditor } from "vue2-editor";
+<script>
+  export default {
+    components: {},
 
-export default {
-  components: {
-    VueEditor
-  },
-
-  data() {
-    return {
-      content: "<h1>Some initial content</h1>"
-    };
-  }
-};
+    data() {
+      return {
+        content: "<h1>Some initial content</h1>"
+      };
+    }
+  };
 </script>
 ```
+:::
 
 ## Custom Image Handler
 
@@ -63,13 +40,10 @@ You can see below that 3 parameters are passed.
 
 **NOTE** In addition to this example, I have created a [ example repo](https://github.com/davidroyer/vue2editor-images) demonstrating this new feature with an actual server.
 
-``` vue
+```vue
 <template>
   <div id="app">
-    <vue-editor id="editor"
-      useCustomImageHandler
-      @imageAdded="handleImageAdded" v-model="htmlForEditor">
-    </vue-editor>
+    <vue-editor id="editor" useCustomImageHandler @imageAdded="handleImageAdded" v-model="htmlForEditor"> </vue-editor>
   </div>
 </template>
 
@@ -186,6 +160,7 @@ export default {
 ## Custom Toolbar
 
 ::: demo
+``` html
 <template>
   <div id="app">
     <vue-editor v-model="content" :editorToolbar="customToolbar"></vue-editor>
@@ -212,6 +187,7 @@ export default {
   }
 };
 </script>
+```
 :::
 
 ## Saving The Content
@@ -259,19 +235,19 @@ export default {
 </template>
 
 <script>
-  import { VueEditor } from 'vue2-editor'
+import { VueEditor } from 'vue2-editor'
 
-  components: {
-    VueEditor
-  },
+components: {
+  VueEditor
+},
 
-  export default {
-    data() {
-      return {
-        content: '<h1>Initial Content</h1>'  
-      }
+export default {
+  data() {
+    return {
+      content: '<h1>Initial Content</h1>'
     }
   }
+}
 </script>
 ```
 
@@ -289,6 +265,7 @@ new webpack.ProvidePlugin({
 	'Quill': 'quill/dist/quill.js',
 }),
 ```
+
 :::
 
 ### Version 1 - **_Import and Register Yourself_**
@@ -305,10 +282,7 @@ Vue2Editor now exports Quill to assist in this process.
 ```vue
 <template>
   <div id="app">
-    <vue-editor
-      :editorOptions="editorSettings"
-      v-model="content">
-    </vue-editor>
+    <vue-editor :editorOptions="editorSettings" v-model="content"> </vue-editor>
   </div>
 </template>
 
@@ -348,11 +322,7 @@ export default {
 ```vue
 <template>
   <div id="app">
-    <vue-editor
-      :customModules="customModulesForEditor"
-      :editorOptions="editorSettings"
-      v-model="content">
-    </vue-editor>
+    <vue-editor :customModules="customModulesForEditor" :editorOptions="editorSettings" v-model="content"> </vue-editor>
   </div>
 </template>
 
@@ -391,10 +361,7 @@ Give the editor instance a `ref` property
 ```vue
 <template>
   <button @click.prevent="focusEditor">Focus Editor</button>
-  <vue-editor
-    ref="editor"
-    v-model="editor2Content">
-  </vue-editor>
+  <vue-editor ref="editor" v-model="editor2Content"> </vue-editor>
 </template>
 
 <script type="text/javascript">
@@ -416,7 +383,8 @@ export default {
     @focus="onEditorFocus"
     @blur="onEditorBlur"
     @selection-change="onSelectionChange"
-    v-model="editor2Content">
+    v-model="editor2Content"
+  >
   </vue-editor>
 </template>
 
