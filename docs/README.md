@@ -2,7 +2,7 @@
 home: true
 heroImage: /hero-home.png
 actionText: Get Started →
-actionLink: /started/
+actionLink: /guide/
 features:
   - title: Easy To Use
     details: Simple setup so you can get started quickly

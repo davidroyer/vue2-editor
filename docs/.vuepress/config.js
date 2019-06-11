@@ -25,14 +25,22 @@ module.exports = {
       }
     ]
   ],
-  plugins: [require("./plugin.js"), "live"],
+  plugins: [
+    require("./plugin.js"),
+    "live",
+    [
+      "@vuepress/google-analytics",
+      {
+        ga: "UA-12345678-9"
+      }
+    ]
+  ],
   locales: {
     "/": {
       lang: "en-US",
       title: "Vue2Editor",
       description:
-        "Your Vue.js editor for rich text editing built with Vue.js and Quill.js",
-      ga: "UA-56060335-4"
+        "Your Vue.js editor for rich text editing built with Vue.js and Quill.js"
     }
   },
   themeConfig: {
@@ -49,7 +57,9 @@ module.exports = {
             link: "https://github.com/davidroyer/vue2-editor/releases"
           }
         ],
-        sidebar: ["/installation.md", "/started.md", "/usage.md"]
+        // sidebar: ["/installation.md", "/started.md", "/usage.md"]
+        sidebar: ["/guide/", "/examples/"]
+        // sidebar: 'auto'
       }
     }
   },
