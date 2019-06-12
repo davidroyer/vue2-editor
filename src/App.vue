@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <h1>Welcome to Your Plugin in Vue.js</h1>
-    <p>add: 1 + 1 = {{ $add(1, 1) }}</p>
+    <h1>Welcome to Your Plugin in Vue.jss</h1>
+
     <!-- <Editor v-model="content" @text-change="handleTextChange" /> -->
     <vue-editor
       v-model="content"
@@ -55,7 +55,7 @@
       v-model="content"
       use-markdown-shortcuts
       :editor-options="editorOptions"
-    /> -->
+    />-->
   </div>
 </template>
 
