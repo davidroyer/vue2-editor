@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.8.0-alpha.7](https://github.com/davidroyer/vue2-editor/compare/v2.8.0-alpha.6...v2.8.0-alpha.7) (2019-06-12)
+
+
+### Bug Fixes
+
+* fixes analytics ([3dd8b8d](https://github.com/davidroyer/vue2-editor/commit/3dd8b8d))
+* **build:** removes `dist` from `.gitignore` ([c8747c6](https://github.com/davidroyer/vue2-editor/commit/c8747c6))
+
+
+### Documentation
+
+* fixes assets error ([7411501](https://github.com/davidroyer/vue2-editor/commit/7411501))
+* fixes styles ([4e97781](https://github.com/davidroyer/vue2-editor/commit/4e97781))
+* removes unwanted text ([c5b6ced](https://github.com/davidroyer/vue2-editor/commit/c5b6ced))
+* testing demo-code and snippets ([a42b0a0](https://github.com/davidroyer/vue2-editor/commit/a42b0a0))
+* updates docs to current version ([69e470d](https://github.com/davidroyer/vue2-editor/commit/69e470d))
+
+
+
 ## [2.8.0-alpha.6](https://github.com/davidroyer/vue2-editor/compare/v2.8.0-alpha.5...v2.8.0-alpha.6) (2019-06-11)
 
 
