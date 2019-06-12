@@ -244,34 +244,4 @@ Give the editor instance a `ref` property
 
 ## Listening For Events
 
-<!-- <<< @/docs/.vuepress/code-examples/source/event-listening.vue -->
-
-```vue
-<template>
-  <vue-editor
-    @focus="onEditorFocus"
-    @blur="onEditorBlur"
-    @selection-change="onSelectionChange"
-    v-model="editor2Content"
-  >
-  </vue-editor>
-</template>
-
-<script type="text/javascript">
-export default {
-  methods: {
-    onEditorBlur(quill) {
-      console.log("editor blur!", quill);
-    },
-
-    onEditorFocus(quill) {
-      console.log("editor focus!", quill);
-    },
-
-    onSelectionChange(range) {
-      console.log("selection change!", range);
-    }
-  }
-};
-</script>
-```
+<<< @/docs/.vuepress/code-examples/source/event-listening.vue
