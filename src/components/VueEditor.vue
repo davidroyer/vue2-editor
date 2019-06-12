@@ -15,13 +15,11 @@
 </template>
 
 <script>
-import _Quill from "quill";
+import Quill from "quill";
 import defaultToolbar from "@/helpers/default-toolbar";
-import merge from "lodash/merge";
 import oldApi from "@/helpers/old-api";
+import mergeDeep from "@/helpers/merge-deep";
 import MarkdownShortcuts from "@/helpers/markdown-shortcuts";
-
-const Quill = window.Quill || _Quill;
 
 export default {
   name: "VueEditor",
@@ -64,7 +62,7 @@ export default {
   data: () => ({
     quill: null
   }),
-
+  // quill: null,
   watch: {
     value(val) {
       if (val != this.quill.root.innerHTML && !this.quill.hasFocus()) {
@@ -132,7 +130,8 @@ export default {
           // We don't want to merge default toolbar with provided toolbar.
           delete editorConfig.modules.toolbar;
         }
-        merge(editorConfig, this.editorOptions);
+
+        mergeDeep(editorConfig, this.editorOptions);
       }
     },
 

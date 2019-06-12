@@ -31,3 +31,5 @@ var fullToolbar = [
   [{ direction: "rtl" }],
   ["clean"]
 ];
+
+export default fullToolbar;

@@ -22,8 +22,8 @@
 
 _You can use Yarn or NPM_
 
-```bash
-$ npm install --save vue2-editor
+``` bash
+npm install vue2-editor
 ```
 
 **OR**
@@ -66,8 +66,6 @@ import { VueEditor, Quill } from "vue2-editor";
 | imageAdded       | file, Editor, cursorLocation | Emitted when `useCustomImageHandler` is true and photo is being added to the editor |
 
 # Examples
-
-# test
 
 ## Example - Basic Setup
 
