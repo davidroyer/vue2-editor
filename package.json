@@ -1,6 +1,6 @@
 {
   "name": "vue2-editor",
-  "version": "2.8.0",
+  "version": "2.8.0-alpha.8",
   "description": "HTML editor using Vue.js 2, and Quill.js, an open source editor",
   "author": {
     "name": "David Royer",
@@ -20,8 +20,8 @@
   },
   "standard-version": {
     "scripts": {
-      "postbump": "yarn vue-cli-service build && git add dist && git commit -m 'chore: new build'",
-      "posttag": "git push --follow-tags && npm publish --tag"
+      "postbump": "yarn build && git add dist && git commit -m 'chore: new build'",
+      "posttag": "git push --follow-tags && npm publish"
     },
     "types": [
       {
