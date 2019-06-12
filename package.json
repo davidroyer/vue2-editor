@@ -10,19 +10,13 @@
   "scripts": {
     "lint": "vue-cli-service lint",
     "build": "vue-cli-service build",
-    "build:demos": "BUILD_TYPE=demos vue-cli-service build ./demos --no-clean",
-    "build:plugin": "vue-cli-service build --target lib --name Vue2Editor --filename vue2-editor ./src/plugin.js",
     "demo": "vue-cli-service demo",
-    "dev": "vue-cli-service serve ./demos",
-    "dev:vp": "vue-cli-service serve",
-    "docs": "npm run docs:serve",
+    "dev": "vue-cli-service serve",
+    "docs": "vue-cli-service docs --mode serve",
     "docs:build": "vue-cli-service docs --mode build",
-    "docs:serve": "vue-cli-service docs --mode serve",
     "docs:preview": "http-server docs/.vuepress/dist",
-    "postbuild:plugin": "rm dist/demo.html",
     "release": "standard-version",
-    "release:alpha": "standard-version --prerelease alpha",
-    "start": "vue-cli-service serve"
+    "release:alpha": "standard-version --prerelease alpha"
   },
   "standard-version": {
     "scripts": {
