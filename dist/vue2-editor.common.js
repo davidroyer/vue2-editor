@@ -1,5 +1,5 @@
 /*!
- * vue2-editor v2.8.0-alpha.8 
+ * vue2-editor v2.8.0 
  * (c) 2019 David Royer
  * Released under the MIT License.
  */
@@ -893,22 +893,18 @@ var __vue_staticRenderFns__ = [];
     undefined
   );
 
-var version = "2.8.0-alpha.8"; // Declare install function executed by Vue.use()
+var version = "2.8.0"; // Declare install function executed by Vue.use()
 
 function install(Vue) {
   if (install.installed) return;
   install.installed = true;
-
-  Vue.prototype.$add = function (a, b) {
-    return a + b;
-  };
-
   Vue.component("VueEditor", VueEditor);
 }
 var VPlugin = {
   install: install,
   version: version,
-  Quill: Quill
+  Quill: Quill,
+  VueEditor: VueEditor
 }; // Auto-install when vue is found (eg. in browser via <script> tag)
 
 var GlobalVue = null;
