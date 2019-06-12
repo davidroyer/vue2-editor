@@ -7,7 +7,7 @@
 
 ## Basic Setup
 
-``` html
+``` vue
 <template>
   <div id="app">
     <vue-editor v-model="content"></vue-editor>
@@ -38,7 +38,7 @@ You can see below that 3 parameters are passed.
 
 **NOTE** In addition to this example, I have created a [ example repo](https://github.com/davidroyer/vue2editor-images) demonstrating this new feature with an actual server.
 
-```vue
+``` vue
 <template>
   <div id="app">
     <vue-editor id="editor" useCustomImageHandler @imageAdded="handleImageAdded" v-model="htmlForEditor"> </vue-editor>
@@ -157,7 +157,7 @@ export default {
 
 ## Custom Toolbar
 
-``` html
+``` vue
 <template>
   <div id="app">
     <vue-editor v-model="content" :editorToolbar="customToolbar"></vue-editor>
