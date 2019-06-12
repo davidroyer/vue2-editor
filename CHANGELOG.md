@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.8.0-alpha.9](https://github.com/davidroyer/vue2-editor/compare/v2.8.0-alpha.8...v2.8.0-alpha.9) (2019-06-12)
+
+
+### Documentation
+
+* :pencil: moving examples to be imported ([6a49a96](https://github.com/davidroyer/vue2-editor/commit/6a49a96))
+* clean up `config.js` ([a02efbf](https://github.com/davidroyer/vue2-editor/commit/a02efbf))
+* removes unused declarations ([60f1845](https://github.com/davidroyer/vue2-editor/commit/60f1845))
+
+
+
 ## [2.8.0-alpha.8](https://github.com/davidroyer/vue2-editor/compare/v2.8.0-alpha.7...v2.8.0-alpha.8) (2019-06-12)
 
 
