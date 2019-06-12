@@ -23,7 +23,7 @@
 _You can use Yarn or NPM_
 
 ```bash
-$ npm install vue2-editor
+$ npm install --save vue2-editor
 ```
 
 **OR**
