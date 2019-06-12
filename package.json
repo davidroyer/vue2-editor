@@ -6,6 +6,7 @@
     "name": "David Royer",
     "email": "droyer01@gmail.com"
   },
+  "license": "MIT",
   "scripts": {
     "lint": "vue-cli-service lint",
     "build": "vue-cli-service build",
