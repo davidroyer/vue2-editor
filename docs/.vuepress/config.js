@@ -1,14 +1,14 @@
-const path = require("path");
+// const path = require("path");
 const { version } = require("../../package.json");
 
 module.exports = {
   head: [
-    [
-      "script",
-      {
-        src: "https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"
-      }
-    ],
+    // [
+    //   "script",
+    //   {
+    //     src: "https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"
+    //   }
+    // ],
     [
       "script",
       {
@@ -30,9 +30,8 @@ module.exports = {
   ],
   plugins: [
     require("./plugin.js"),
-    "live",
-    "demo-block",
-
+    // "live",
+    // "demo-block",
     [
       "@vuepress/google-analytics",
       {
@@ -62,24 +61,8 @@ module.exports = {
             link: "https://github.com/davidroyer/vue2-editor/releases"
           }
         ],
-        // sidebar: ["/installation.md", "/started.md", "/usage.md"]
         sidebar: ["/guide/", "/examples/"]
-        // sidebar: 'auto'
-      }
-    }
-  },
-
-  /**
-   * Allows the use of using aliases in files for easier importing
-   */
-  configureWebpack: {
-    resolve: {
-      alias: {
-        "@root": path.resolve(__dirname, "../../"),
-        "@src": path.resolve(__dirname, "../../src"),
-        "@mixins": path.resolve(__dirname, "../../src/mixins"),
-        "@utils": path.resolve(__dirname, "../../utils"),
-        "@images": "./../images"
+        // sidebar: ["/guide/", "/examples/", "/playground.md"]
       }
     }
   }

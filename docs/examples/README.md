@@ -4,28 +4,10 @@
 
 # Examples
 
-
 ## Basic Setup
 
-``` vue
-<template>
-  <div id="app">
-    <vue-editor v-model="content"></vue-editor>
-  </div>
-</template>
-
-<script>
-  export default {
-    components: {},
-
-    data() {
-      return {
-        content: "<h1>Some initial content</h1>"
-      };
-    }
-  };
-</script>
-```
+<<< @/docs/.vuepress/code-examples/source/basic.vue
+<hr class="spacer" style="margin: 1em 0 1.75em !important; opacity: 0;"/>
 
 ## Custom Image Handler
 
@@ -87,40 +69,16 @@ export default {
 </script>
 ```
 
+<hr class="spacer" style="margin: 1em 0 1.75em !important; opacity: 0;"/>
+
 ## Set Contents After Page Load
 
-```vue
-<template>
-  <div id="app">
-    <button @click="setEditorContent">Set Editor Contents</button>
-    <vue-editor v-model="htmlForEditor"></vue-editor>
-  </div>
-</template>
-
-<script>
-import { VueEditor } from "vue2-editor";
-
-export default {
-  components: {
-    VueEditor
-  },
-
-  data() {
-    return {
-      htmlForEditor: null
-    };
-  },
-
-  methods: {
-    setEditorContent: function() {
-      this.htmlForEditor = "<h1>Html For Editor</h1>";
-    }
-  }
-};
-</script>
-```
+<<< @/docs/.vuepress/code-examples/source/set-contents.vue
+<hr class="spacer" style="margin: 1em 0 1.75em !important; opacity: 0;"/>
 
 ## Using Multiple Editors
+
+<!-- <<< @/docs/.vuepress/code-examples/source/multiple-editors.vue -->
 
 ```vue
 <template>
@@ -157,95 +115,18 @@ export default {
 
 ## Custom Toolbar
 
-``` vue
-<template>
-  <div id="app">
-    <vue-editor v-model="content" :editorToolbar="customToolbar"></vue-editor>
-  </div>
-</template>
-
-<script>
-import { VueEditor } from "vue2-editor";
-
-export default {
-  components: {
-    VueEditor
-  },
-
-  data() {
-    return {
-      content: "<h1>Html For Editor</h1>",
-      customToolbar: [
-        ["bold", "italic", "underline"],
-        [{ list: "ordered" }, { list: "bullet" }],
-        ["image", "code-block"]
-      ]
-    };
-  }
-};
-</script>
-```
+<<< @/docs/.vuepress/code-examples/source/custom-toolbar.vue
+<hr class="spacer" style="margin: 1em 0 1.75em !important; opacity: 0;"/>
 
 ## Saving The Content
 
-```vue
-<template>
-  <div id="app">
-    <button @click="saveContent"></button>
-    <vue-editor v-model="content"></vue-editor>
-  </div>
-</template>
-
-<script>
-import { VueEditor } from "vue2-editor";
-
-export default {
-  components: {
-    VueEditor
-  },
-
-  data() {
-    return {
-      content: "<h3>Initial Content</h3>"
-    };
-  },
-
-  methods: {
-    handleSavingContent: function() {
-      // You have the content to save
-      console.log(this.content);
-    }
-  }
-};
-</script>
-```
+<<< @/docs/.vuepress/code-examples/source/custom-toolbar.vue
+<hr class="spacer" style="margin: 1em 0 1.75em !important; opacity: 0;"/>
 
 ## Use a Live Preview
 
-```vue
-<template>
-  <div id="app">
-    <vue-editor v-model="content"></vue-editor>
-    <div v-html="content"></div>
-  </div>
-</template>
-
-<script>
-import { VueEditor } from 'vue2-editor'
-
-components: {
-  VueEditor
-},
-
-export default {
-  data() {
-    return {
-      content: '<h1>Initial Content</h1>'
-    }
-  }
-}
-</script>
-```
+<<< @/docs/.vuepress/code-examples/source/live-preview.vue
+<hr class="spacer" style="margin: 1em 0 1.75em !important; opacity: 0;"/>
 
 ## How To Use Custom Quill Modules
 
@@ -308,6 +189,9 @@ export default {
 </script>
 ```
 
+<hr class="spacer" style="margin: 1em 0 1.75em !important; opacity: 0;"/>
+
+
 ### Version 2 - **_You Import | Vue2Editor Registers_**
 
 1.  Import your custom modules
@@ -349,28 +233,18 @@ export default {
 </script>
 ```
 
+<hr class="spacer" style="margin: 1em 0 1.75em !important; opacity: 0;"/>
+
 ## Setting Focus on Editor Programmatically
 
 Give the editor instance a `ref` property
 
-```vue
-<template>
-  <button @click.prevent="focusEditor">Focus Editor</button>
-  <vue-editor ref="editor" v-model="editor2Content"> </vue-editor>
-</template>
-
-<script type="text/javascript">
-export default {
-  methods: {
-    focusEditor() {
-      this.$refs.editor.quill.focus();
-    }
-  }
-};
-</script>
-```
+<<< @/docs/.vuepress/code-examples/source/set-focus.vue
+<hr class="spacer" style="margin: 1em 0 1.75em !important; opacity: 0;"/>
 
 ## Listening For Events
+
+<!-- <<< @/docs/.vuepress/code-examples/source/event-listening.vue -->
 
 ```vue
 <template>
