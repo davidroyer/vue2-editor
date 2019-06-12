@@ -7,7 +7,6 @@
 
 ## Basic Setup
 
-::: demo
 ``` html
 <template>
   <div id="app">
@@ -27,7 +26,6 @@
   };
 </script>
 ```
-:::
 
 ## Custom Image Handler
 
@@ -159,7 +157,6 @@ export default {
 
 ## Custom Toolbar
 
-::: demo
 ``` html
 <template>
   <div id="app">
@@ -168,11 +165,11 @@ export default {
 </template>
 
 <script>
-// import { VueEditor } from "vue2-editor";
+import { VueEditor } from "vue2-editor";
 
 export default {
   components: {
-    // VueEditor
+    VueEditor
   },
 
   data() {
@@ -188,7 +185,6 @@ export default {
 };
 </script>
 ```
-:::
 
 ## Saving The Content
 
@@ -255,7 +251,7 @@ export default {
 
 There are 2 ways of using custom modules with Vue2Editor. This is partly because there have been cases in which errors are thrown when importing and attempting to declare custom modules, and partly because I believe it actually separates the concerns nicely.
 
-::: tip
+::: tip TIP
 _If you have errors when using custom modules,
 try adding this to your webpack config_
 
@@ -265,7 +261,6 @@ new webpack.ProvidePlugin({
 	'Quill': 'quill/dist/quill.js',
 }),
 ```
-
 :::
 
 ### Version 1 - **_Import and Register Yourself_**
