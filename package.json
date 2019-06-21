@@ -10,6 +10,7 @@
   "scripts": {
     "lint": "vue-cli-service lint",
     "build": "vue-cli-service build",
+    "build:modular": "BUILD_TYPE=modular vue-cli-service build",
     "demo": "vue-cli-service demo",
     "dev": "vue-cli-service serve",
     "docs": "vue-cli-service docs --mode serve",
