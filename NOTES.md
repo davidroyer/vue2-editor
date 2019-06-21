@@ -1,6 +1,6 @@
 # Vue2Editor Notes
 
-> Things To Remember
+> Things To Remember And Add To Other Notes file
 
 ## Importing Quill's styles
 
