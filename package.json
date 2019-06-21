@@ -21,7 +21,7 @@
   },
   "standard-version": {
     "scripts": {
-      "postbump": "yarn build && git add dist && git commit -m 'chore: new build'",
+      "postbump": "yarn build:modular && git add dist && git commit -m 'chore: new build'",
       "posttag": "git push --follow-tags && npm publish"
     },
     "types": [
