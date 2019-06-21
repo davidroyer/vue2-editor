@@ -17,7 +17,7 @@
     "docs:build": "vue-cli-service docs --mode build",
     "docs:preview": "http-server docs/.vuepress/dist",
     "release": "standard-version",
-    "release:alpha": "standard-version --prerelease alpha"
+    "release:next": "standard-version --prerelease next"
   },
   "standard-version": {
     "scripts": {
