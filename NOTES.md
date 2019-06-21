@@ -36,3 +36,12 @@ body {
 }
 </style>
 ```
+
+## Releases
+
+If a version has been published within the past 72 hours it can be removed if needed.
+As follows:
+
+``` bash
+npm unpublish vue2-editor@version
+```
