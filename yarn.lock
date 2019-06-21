@@ -11576,10 +11576,10 @@ void-elements@^2.0.1:
   resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
   integrity sha1-wGavtYK7HLQSjWDqkjkulNXp2+w=
 
-vue-cli-plugin-vplugin@^0.1.0-next.0:
-  version "0.1.0-next.2"
-  resolved "https://registry.yarnpkg.com/vue-cli-plugin-vplugin/-/vue-cli-plugin-vplugin-0.1.0-next.2.tgz#70b6a61dc99305b167fbda83a15856b809ea6ad3"
-  integrity sha512-eA6ASkGh7dCPz2fpCpNEAeJq8fqBtW+gHio2XqeVXa6jrVP863Cpgo7GTQnn5jeXdmiB8OPLVd4Nspe2ZBvvFw==
+vue-cli-plugin-vplugin@^0.1.0-next.3:
+  version "0.1.0-next.3"
+  resolved "https://registry.yarnpkg.com/vue-cli-plugin-vplugin/-/vue-cli-plugin-vplugin-0.1.0-next.3.tgz#bedc2fb9f3c7d2418f828cc1e637389b364b7f17"
+  integrity sha512-CgDa16Xnk06U0ip0CWpWpOx+iN9Fe5EUsxmk6D31UXfS6jgOiv/vtKT/+NanLYSQEpbU1iLQ36bk4qeRk/+Sfw==
   dependencies:
     chalk "^2.4.2"
     debug "^4.1.1"
