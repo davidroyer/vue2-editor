@@ -1,0 +1,5 @@
+
+Todo:
+  ☐ Need to fix build so regular builds are including `CSS`
+  ☐ NEED TO UPDATE CSS BUILD SO IT ONLY OUTPUTS YOUR CUSTOM CSS AND THEN THE USER CAN IMPORT QUILL'S STYLES ON THEIR OWN
+  ☐ Possibly change it `import 'vue2-editor/dist/vue2-editor.modular.js'`
