@@ -2,6 +2,8 @@
 
 > Things To Remember And Add To Other Notes file
 
+:thumbsup:
+
 ## Importing Quill's styles
 
 ``` scss
