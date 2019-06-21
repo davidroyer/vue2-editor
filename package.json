@@ -17,12 +17,11 @@
     "docs:build": "vue-cli-service docs --mode build",
     "docs:preview": "http-server docs/.vuepress/dist",
     "release": "standard-version && npm publish",
-    "release:next": "standard-version --prerelease next"
+    "release:next": "standard-version --prerelease next && git push --follow-tags origin dev && npm publish --tag next"
   },
   "standard-version": {
     "scripts": {
-      "postbump": "yarn build && git add dist && git commit -m 'chore: new build'",
-      "posttag": "git push --follow-tags && npm publish"
+      "postbump": "yarn build && git add dist && git commit -m 'chore: new build'"
     },
     "types": [
       {
