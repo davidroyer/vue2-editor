@@ -1,5 +1,5 @@
 /*!
- * vue2-editor v2.9.0-next.5 
+ * vue2-editor v2.9.0-next.6 
  * (c) 2019 David Royer
  * Released under the MIT License.
  */
@@ -837,7 +837,7 @@
       undefined
     );
 
-  var version = "2.9.0-next.5"; // Declare install function executed by Vue.use()
+  var version = "2.9.0-next.6"; // Declare install function executed by Vue.use()
 
   function install(Vue) {
     if (install.installed) return;
