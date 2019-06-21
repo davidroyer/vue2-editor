@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.9.0-next.0](https://github.com/davidroyer/vue2-editor/compare/v2.8.1...v2.9.0-next.0) (2019-06-21)
+
+
+### Documentation
+
+* :pencil: updates another example to import ([2e7fb3a](https://github.com/davidroyer/vue2-editor/commit/2e7fb3a))
+
+
+### Features
+
+* **modular build:** :zap: adds modular build ([75aa89d](https://github.com/davidroyer/vue2-editor/commit/75aa89d))
+
+
+
+## [2.8.0-alpha.9](https://github.com/davidroyer/vue2-editor/compare/v2.8.0-alpha.8...v2.8.0-alpha.9) (2019-06-12)
+
+
+
 ### [2.8.1](https://github.com/davidroyer/vue2-editor/compare/v2.8.0-alpha.8...v2.8.1) (2019-06-12)
 
 
