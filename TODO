@@ -2,6 +2,6 @@
 Todo:
   ✔ Need to fix build so regular builds are including `CSS` @done(19-06-23 00:01)
   
-  ☐ Figure out Rollup CSS - NEED TO UPDATE CSS BUILD SO IT ONLY OUTPUTS YOUR CUSTOM CSS AND THEN THE USER CAN IMPORT QUILL'S STYLES ON THEIR OWN
+  ✔ Figure out Rollup CSS - NEED TO UPDATE CSS BUILD SO IT ONLY OUTPUTS YOUR CUSTOM CSS AND THEN THE USER CAN IMPORT QUILL'S STYLES ON THEIR OWN @done(19-06-23 01:08)
 
   ☐ Change it `import 'vue2-editor/dist/vue2-editor.core.js'`

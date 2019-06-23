@@ -1,12 +1,26 @@
-# Vue2Editor Notes
+# :books: Vue2Editor Notes
 
 > Things To Remember And Add To Other Notes file
 
-:thumbsup:
+## Modular Version
+
+**JavaScript**
+
+``` js
+import { VueEditor } from "vue2-editor/dist/vue2-editor.core.js";
+```
+
+**CSS**
+
+``` css
+@import "~vue2-editor/dist/vue2-editor.css";
+```
+
+<br><hr><br>
 
 ## Importing Quill's styles
 
-``` scss
+``` css
 @import '~quill/dist/quill.core.css';
 @import '~quill/dist/quill.bubble.css';
 @import '~quill/dist/quill.snow.css';
@@ -38,6 +52,8 @@ body {
 }
 </style>
 ```
+
+<br><hr><br>
 
 ## Releases
 
