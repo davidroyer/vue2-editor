@@ -2,6 +2,8 @@
 
 > Things To Remember And Add To Other Notes file
 
+<br>
+
 ## Modular Version
 
 **JavaScript**
@@ -16,7 +18,7 @@ import { VueEditor } from "vue2-editor/dist/vue2-editor.core.js";
 @import "~vue2-editor/dist/vue2-editor.css";
 ```
 
-<br><hr><br>
+<br>
 
 ## Importing Quill's styles
 
@@ -53,7 +55,7 @@ body {
 </style>
 ```
 
-<br><hr><br>
+<br>
 
 ## Releases
 
