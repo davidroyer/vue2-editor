@@ -1,6 +1,6 @@
 {
   "name": "vue2-editor",
-  "version": "2.9.0-next.7",
+  "version": "2.9.0-next.8",
   "description": "HTML editor using Vue.js 2, and Quill.js, an open source editor",
   "author": {
     "name": "David Royer",
