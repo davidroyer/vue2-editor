@@ -17,7 +17,8 @@
     "docs:build": "vue-cli-service docs --mode build",
     "docs:preview": "http-server docs/.vuepress/dist",
     "release": "standard-version && git push --follow-tags && npm publish",
-    "release:next": "standard-version --prerelease next && git push --follow-tags origin dev && npm publish --tag next"
+    "release:next": "standard-version --prerelease next && git push --follow-tags origin dev && npm publish --tag next",
+    "update:vp": "yarn upgrade vue-cli-plugin-vplugin"
   },
   "standard-version": {
     "scripts": {
@@ -98,7 +99,7 @@
     "sass-loader": "^7.1.0",
     "standard-version": "^6.0.1",
     "vue": "^2.6.10",
-    "vue-cli-plugin-vplugin": "next",
+    "vue-cli-plugin-vplugin": "latest",
     "vue-router": "^3.0.6",
     "vue-template-compiler": "^2.5.21",
     "vuepress-plugin-demo-block": "^0.7.2",
