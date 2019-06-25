@@ -8,13 +8,13 @@
 
 **JavaScript**
 
-``` js
+```js
 import { VueEditor } from "vue2-editor/dist/vue2-editor.core.js";
 ```
 
 **CSS**
 
-``` css
+```css
 @import "~vue2-editor/dist/vue2-editor.css";
 ```
 
@@ -22,20 +22,20 @@ import { VueEditor } from "vue2-editor/dist/vue2-editor.core.js";
 
 ## Importing Quill's styles
 
-``` css
-@import '~quill/dist/quill.core.css';
-@import '~quill/dist/quill.bubble.css';
-@import '~quill/dist/quill.snow.css';
+```css
+@import "~quill/dist/quill.core.css";
+@import "~quill/dist/quill.bubble.css";
+@import "~quill/dist/quill.snow.css";
 ```
 
 **Both of these work**
 
-``` js
+```js
 import "vue2-editor/dist/css/vue2-editor.css";
 import "quill/dist/quill.snow.css";
 ```
 
-``` html
+```vue
 <style src="quill/dist/quill.snow.css"></style>
 <!-- OR -->
 <style>
@@ -62,16 +62,17 @@ body {
 If a version has been published within the past 72 hours it can be removed if needed.
 As follows:
 
-``` bash
+```bash
 npm unpublish vue2-editor@version
 ```
 
 <!-- NOTE: Add this to Vue2Editor Docs -->
+
 All of Quill's functionality referenced in their docs is available by providing the `VueEditor` component a `ref` attribute and then accessing `quill` from that reference.
 
 **For example:**
 
-``` html
+```vue
 <template>
   <div>
     <button @click="getEditorText">Get Text</button>
@@ -82,14 +83,14 @@ All of Quill's functionality referenced in their docs is available by providing 
 <script>
 export default {
   data: () => ({
-    content: ''
+    content: ""
   }),
 
   methods: {
     getEditorText() {
-      console.log(this.$refs.vEditor.quill.getText())
+      console.log(this.$refs.vEditor.quill.getText());
     }
   }
-}
+};
 </script>
 ```
