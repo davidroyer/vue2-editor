@@ -61,7 +61,12 @@ module.exports = {
             link: "https://github.com/davidroyer/vue2-editor/releases"
           }
         ],
-        sidebar: ["/guide/", "/examples/"]
+        sidebar: [
+          "/installation.md",
+          "/getting-started.md",
+          "/examples/",
+          "/notes.md"
+        ]
         // sidebar: ["/guide/", "/examples/", "/playground.md"]
       }
     }

@@ -39,8 +39,7 @@
       },
       {
         "type": "docs",
-        "hidden": false,
-        "section": "Documentation"
+        "hidden": true
       },
       {
         "type": "imp",

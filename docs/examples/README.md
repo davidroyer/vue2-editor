@@ -138,8 +138,8 @@ try adding this to your webpack config_
 
 ```js
 new webpack.ProvidePlugin({
-	'window.Quill': 'quill/dist/quill.js',
-	'Quill': 'quill/dist/quill.js',
+  'window.Quill': 'quill/dist/quill.js',
+  'Quill': 'quill/dist/quill.js',
 }),
 ```
 :::

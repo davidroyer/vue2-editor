@@ -51,11 +51,7 @@
         </span>
       </div>
     </vue-editor>
-    <!-- <VueEditor
-      v-model="content"
-      use-markdown-shortcuts
-      :editor-options="editorOptions"
-    />-->
+    <VueEditor ref="vEditor" v-model="content" />
   </div>
 </template>
 
