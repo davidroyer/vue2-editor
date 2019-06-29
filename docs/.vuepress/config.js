@@ -62,7 +62,7 @@ module.exports = {
           }
         ],
         sidebar: [
-          "/installation.md",
+          // "/installation.md",
           "/guide.md",
           "/examples/",
           "/api.md",

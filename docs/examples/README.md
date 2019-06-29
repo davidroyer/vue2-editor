@@ -135,7 +135,7 @@ export default {
 
 ## How To Use Custom Quill Modules
 
-There are 2 ways of using custom modules with Vue2Editor. This is partly because there have been cases in which errors are thrown when importing and attempting to declare custom modules, and partly because I believe it actually separates the concerns nicely.
+There are two ways of using custom modules with Vue2Editor. This is partly because there have been cases in which errors are thrown when importing and attempting to declare custom modules, and partly because I believe it actually separates the concerns nicely.
 
 ::: tip TIP
 _If you have errors when using custom modules,

@@ -6,7 +6,7 @@ All of Quill's functionality referenced in their docs is available by providing 
 
 **For example:**
 
-``` html
+```vue
 <template>
   <div>
     <button @click="getEditorText">Get Text</button>
@@ -17,14 +17,14 @@ All of Quill's functionality referenced in their docs is available by providing 
 <script>
 export default {
   data: () => ({
-    content: ''
+    content: ""
   }),
 
   methods: {
     getEditorText() {
-      console.log(this.$refs.vEditor.quill.getText())
+      console.log(this.$refs.vEditor.quill.getText());
     }
   }
-}
+};
 </script>
 ```

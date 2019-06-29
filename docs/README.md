@@ -2,7 +2,7 @@
 home: true
 heroImage: /hero-home.png
 actionText: Get Started →
-actionLink: /installation.md
+actionLink: /guide.md
 features:
   - title: Easy To Use
     details: Simple setup so you can get started quickly
