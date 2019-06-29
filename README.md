@@ -32,7 +32,7 @@ npm install vue2-editor
 yarn add vue2-editor
 ```
 
-# Usage
+# Usage s
 
 ```javascript
 // Basic Use - Covers most scenarios

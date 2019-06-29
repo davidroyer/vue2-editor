@@ -1,25 +1,4 @@
-# Getting Started
-
-## Usage
-
-```javascript
-// Basic Use - Covers most scenarios
-import { VueEditor } from "vue2-editor";
-
-// Advanced Use - Hook into Quill's API for Custom Functionality
-import { VueEditor, Quill } from "vue2-editor";
-```
-
-## Advanced Control
-
-As of version 2.9, you can use the modarl version which includeds only the JavaScript.
-This allows for more control and customization. Also, this allows for other Quill themes to be used such as Bubble.
-
-## Modular Version
-
-<<< @/docs/.vuepress/snippets/modular.vue
-
-<br>
+# API
 
 ## Props
 

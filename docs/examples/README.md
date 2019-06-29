@@ -7,6 +7,7 @@
 ## Basic Setup
 
 <<< @/docs/.vuepress/code-examples/source/basic.vue
+
 <hr class="spacer" style="margin: 1em 0 1.75em !important; opacity: 0;"/>
 
 ## Custom Image Handler
@@ -20,7 +21,7 @@ You can see below that 3 parameters are passed.
 
 **NOTE** In addition to this example, I have created a [ example repo](https://github.com/davidroyer/vue2editor-images) demonstrating this new feature with an actual server.
 
-``` vue
+```vue
 <template>
   <div id="app">
     <vue-editor id="editor" useCustomImageHandler @imageAdded="handleImageAdded" v-model="htmlForEditor"> </vue-editor>
@@ -74,6 +75,7 @@ export default {
 ## Set Contents After Page Load
 
 <<< @/docs/.vuepress/code-examples/source/set-contents.vue
+
 <hr class="spacer" style="margin: 1em 0 1.75em !important; opacity: 0;"/>
 
 ## Using Multiple Editors
@@ -116,16 +118,19 @@ export default {
 ## Custom Toolbar
 
 <<< @/docs/.vuepress/code-examples/source/custom-toolbar.vue
+
 <hr class="spacer" style="margin: 1em 0 1.75em !important; opacity: 0;"/>
 
 ## Saving The Content
 
 <<< @/docs/.vuepress/code-examples/source/custom-toolbar.vue
+
 <hr class="spacer" style="margin: 1em 0 1.75em !important; opacity: 0;"/>
 
 ## Use a Live Preview
 
 <<< @/docs/.vuepress/code-examples/source/live-preview.vue
+
 <hr class="spacer" style="margin: 1em 0 1.75em !important; opacity: 0;"/>
 
 ## How To Use Custom Quill Modules
@@ -142,6 +147,7 @@ new webpack.ProvidePlugin({
   'Quill': 'quill/dist/quill.js',
 }),
 ```
+
 :::
 
 ### Version 1 - **_Import and Register Yourself_**
@@ -191,7 +197,6 @@ export default {
 
 <hr class="spacer" style="margin: 1em 0 1.75em !important; opacity: 0;"/>
 
-
 ### Version 2 - **_You Import | Vue2Editor Registers_**
 
 1.  Import your custom modules
@@ -240,6 +245,7 @@ export default {
 Give the editor instance a `ref` property
 
 <<< @/docs/.vuepress/code-examples/source/set-focus.vue
+
 <hr class="spacer" style="margin: 1em 0 1.75em !important; opacity: 0;"/>
 
 ## Listening For Events

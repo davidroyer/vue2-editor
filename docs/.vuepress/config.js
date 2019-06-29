@@ -63,8 +63,9 @@ module.exports = {
         ],
         sidebar: [
           "/installation.md",
-          "/getting-started.md",
+          "/guide.md",
           "/examples/",
+          "/api.md",
           "/notes.md"
         ]
         // sidebar: ["/guide/", "/examples/", "/playground.md"]
