@@ -19,7 +19,7 @@ You can see below that 3 parameters are passed.
 2. The Editor instance
 3. The cursor position at the time of upload so the image can be inserted at the correct position on success
 
-**NOTE** In addition to this example, I have created a [ example repo](https://github.com/davidroyer/vue2editor-images) demonstrating this new feature with an actual server.
+**NOTE** In addition to this example, I have created a [example repo](https://github.com/davidroyer/vue2editor-images) demonstrating this new feature with an actual server.
 
 ```vue
 <template>
@@ -199,9 +199,9 @@ export default {
 
 ### Version 2 - **_You Import | Vue2Editor Registers_**
 
-1.  Import your custom modules
-2.  Use the `customModules` prop to declare an array of module(s).
-3.  Add the necessary configuration for those modules in the `editorOptions` object under modules as seen below
+1. Import your custom modules
+2. Use the `customModules` prop to declare an array of module(s).
+3. Add the necessary configuration for those modules in the `editorOptions` object under modules as seen below
 
 ```vue
 <template>
