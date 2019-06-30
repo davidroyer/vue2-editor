@@ -15,11 +15,15 @@
 </template>
 
 <script>
-import Quill from "quill";
+import Vue from "vue";
 import defaultToolbar from "@/helpers/default-toolbar";
 import oldApi from "@/helpers/old-api";
 import mergeDeep from "@/helpers/merge-deep";
 import MarkdownShortcuts from "@/helpers/markdown-shortcuts";
+
+let Quill;
+if (!Vue.prototype.$isServer) Quill = require("quill");
+console.log("Vue.prototype.$isServer: ", Vue.prototype.$isServer);
 
 export default {
   name: "VueEditor",
