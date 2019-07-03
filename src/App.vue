@@ -1,10 +1,7 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <h1>Welcome to Your Plugin in Vue.jss</h1>
-
     <!-- <Editor v-model="content" @text-change="handleTextChange" /> -->
-    <vue-editor
+    <!-- <vue-editor
       v-model="content"
       use-markdown-shortcuts
       :editor-options="editorOptions"
@@ -50,17 +47,12 @@
           <button class="ql-clean"></button>
         </span>
       </div>
-    </vue-editor>
-    <!-- <VueEditor
-      v-model="content"
-      use-markdown-shortcuts
-      :editor-options="editorOptions"
-    />-->
+    </vue-editor> -->
+    <VueEditor ref="vEditor" v-model="content" />
   </div>
 </template>
 
 <script>
-// import { Editor } from "./../dist/v-plugin-demo.esm.js";
 export default {
   // components: { Editor },
   data() {
@@ -76,7 +68,7 @@ export default {
       // ],
       editorOptions: {
         modules: {
-          toolbar: "#my-toolbar"
+          // toolbar: "#my-toolbar"
           // toolbar: [
           //   [{ header: [false, 1, 2, 3, 4, 5, 6] }],
           //   ["bold", "italic", "underline", "strike"], // toggled buttons
@@ -91,7 +83,7 @@ export default {
         },
         placeholder: "newww placeholder text here ..."
       },
-      content: "value"
+      content: "<ul><li>Item One</li><li>Item Two</li></ul>"
     };
   },
 

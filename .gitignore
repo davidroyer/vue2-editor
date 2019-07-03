@@ -2,7 +2,8 @@
 node_modules
 # public
 dist/*.gz
-dist/*.map
+dist/*.gz
+dist/.DS_Store
 coverage
 docs/.vuepress/dist
 # dist

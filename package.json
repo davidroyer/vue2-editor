@@ -1,6 +1,6 @@
 {
   "name": "vue2-editor",
-  "version": "2.8.1",
+  "version": "2.9.0",
   "description": "HTML editor using Vue.js 2, and Quill.js, an open source editor",
   "author": {
     "name": "David Royer",
@@ -9,19 +9,20 @@
   "license": "MIT",
   "scripts": {
     "lint": "vue-cli-service lint",
-    "build": "vue-cli-service build",
+    "build": "BUILD_TYPE=modular vue-cli-service build",
+    "build:modular": "BUILD_TYPE=modular vue-cli-service build",
     "demo": "vue-cli-service demo",
     "dev": "vue-cli-service serve",
     "docs": "vue-cli-service docs --mode serve",
     "docs:build": "vue-cli-service docs --mode build",
     "docs:preview": "http-server docs/.vuepress/dist",
-    "release": "standard-version",
-    "release:alpha": "standard-version --prerelease alpha"
+    "release": "standard-version && git push --follow-tags && npm publish",
+    "release:next": "standard-version --prerelease next && git push --follow-tags origin dev && npm publish --tag next",
+    "update:vp": "yarn upgrade vue-cli-plugin-vplugin"
   },
   "standard-version": {
     "scripts": {
-      "postbump": "yarn build && git add dist && git commit -m 'chore: new build'",
-      "posttag": "git push --follow-tags && npm publish"
+      "postbump": "yarn build && git add dist && git commit -m 'chore: new build'"
     },
     "types": [
       {
@@ -38,8 +39,7 @@
       },
       {
         "type": "docs",
-        "hidden": false,
-        "section": "Documentation"
+        "hidden": true
       },
       {
         "type": "imp",
@@ -98,7 +98,7 @@
     "sass-loader": "^7.1.0",
     "standard-version": "^6.0.1",
     "vue": "^2.6.10",
-    "vue-cli-plugin-vplugin": "davidroyer/vue-cli-plugin-vplugin",
+    "vue-cli-plugin-vplugin": "latest",
     "vue-router": "^3.0.6",
     "vue-template-compiler": "^2.5.21",
     "vuepress-plugin-demo-block": "^0.7.2",

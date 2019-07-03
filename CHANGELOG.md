@@ -2,8 +2,103 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.9.0](https://github.com/davidroyer/vue2-editor/compare/v2.9.0-next.10...v2.9.0) (2019-07-03)
+
+
+
+## [2.9.0-next.10](https://github.com/davidroyer/vue2-editor/compare/v2.9.0-next.9...v2.9.0-next.10) (2019-07-03)
+
+
+
+## [2.9.0-next.9](https://github.com/davidroyer/vue2-editor/compare/v2.9.0-next.8...v2.9.0-next.9) (2019-06-30)
+
+
+
+## [2.9.0-next.8](https://github.com/davidroyer/vue2-editor/compare/v2.9.0-next.7...v2.9.0-next.8) (2019-06-23)
+
+
+### Bug Fixes
+
+* fixes build with update vplugin ([f7c0a23](https://github.com/davidroyer/vue2-editor/commit/f7c0a23))
+
+
+
+## [2.9.0-next.7](https://github.com/davidroyer/vue2-editor/compare/v2.9.0-next.6...v2.9.0-next.7) (2019-06-23)
+
+
+### Refactoring
+
+* **releases:** updates scripts ([ef1aadb](https://github.com/davidroyer/vue2-editor/commit/ef1aadb))
+
+
+
+## [2.9.0-next.6](https://github.com/davidroyer/vue2-editor/compare/v2.9.0-next.5...v2.9.0-next.6) (2019-06-21)
+
+
+
+## [2.9.0-next.5](https://github.com/davidroyer/vue2-editor/compare/v2.9.0-next.4...v2.9.0-next.5) (2019-06-21)
+
+
+### Documentation
+
+* adds to notes ([0ebaf48](https://github.com/davidroyer/vue2-editor/commit/0ebaf48))
+* adds to notes ([86d5244](https://github.com/davidroyer/vue2-editor/commit/86d5244))
+
+
+
+## [2.9.0-next.4](https://github.com/davidroyer/vue2-editor/compare/v2.9.0-next.3...v2.9.0-next.4) (2019-06-21)
+
+
+
+## [2.9.0-next.3](https://github.com/davidroyer/vue2-editor/compare/v2.9.0-next.2...v2.9.0-next.3) (2019-06-21)
+
+
+### Documentation
+
+* **notes:** adds to `NOTES.md` ([d420988](https://github.com/davidroyer/vue2-editor/commit/d420988))
+
+
+
+## [2.9.0-next.2](https://github.com/davidroyer/vue2-editor/compare/v2.9.0-next.1...v2.9.0-next.2) (2019-06-21)
+
+
+### Documentation
+
+* add NOTES and TODO's ([1c43b1c](https://github.com/davidroyer/vue2-editor/commit/1c43b1c))
+
+
+
+## [2.9.0-next.1](https://github.com/davidroyer/vue2-editor/compare/v2.9.0-next.0...v2.9.0-next.1) (2019-06-21)
+
+
+### Bug Fixes
+
+* **build:** updates build compand for modular ([f450a61](https://github.com/davidroyer/vue2-editor/commit/f450a61))
+
+
+
+## [2.9.0-next.0](https://github.com/davidroyer/vue2-editor/compare/v2.8.1...v2.9.0-next.0) (2019-06-21)
+
+
+### Documentation
+
+* :pencil: updates another example to import ([2e7fb3a](https://github.com/davidroyer/vue2-editor/commit/2e7fb3a))
+
+
+### Features
+
+* **modular build:** :zap: adds modular build ([75aa89d](https://github.com/davidroyer/vue2-editor/commit/75aa89d))
+
+
+
+## [2.8.0-alpha.9](https://github.com/davidroyer/vue2-editor/compare/v2.8.0-alpha.8...v2.8.0-alpha.9) (2019-06-12)
+
+
+
 ### [2.8.1](https://github.com/davidroyer/vue2-editor/compare/v2.8.0-alpha.8...v2.8.1) (2019-06-12)
 
+
+## [2.8.0-alpha.9](https://github.com/davidroyer/vue2-editor/compare/v2.8.0-alpha.8...v2.8.0-alpha.9) (2019-06-12)
 
 ### Documentation
 
@@ -11,16 +106,6 @@ All notable changes to this project will be documented in this file. See [standa
 * clean up `config.js` ([a02efbf](https://github.com/davidroyer/vue2-editor/commit/a02efbf))
 * fixes install command code ([3603060](https://github.com/davidroyer/vue2-editor/commit/3603060))
 * removes unused declarations ([60f1845](https://github.com/davidroyer/vue2-editor/commit/60f1845))
-
-
-
-### [2.7.2](https://github.com/davidroyer/vue2-editor/compare/v2.7.1...v2.7.2) (2019-05-26)
-
-
-
-### [2.7.1](https://github.com/davidroyer/vue2-editor/compare/v2.7.0-alpha.21...v2.7.1) (2019-05-26)
-
-
 
 ## [2.8.0-alpha.8](https://github.com/davidroyer/vue2-editor/compare/v2.8.0-alpha.7...v2.8.0-alpha.8) (2019-06-12)
 
