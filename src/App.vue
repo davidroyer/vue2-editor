@@ -1,8 +1,5 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <h1>Welcome to Your Plugin in Vue.jss</h1>
-
     <!-- <Editor v-model="content" @text-change="handleTextChange" /> -->
     <!-- <vue-editor
       v-model="content"
@@ -56,7 +53,6 @@
 </template>
 
 <script>
-// import { Editor } from "./../dist/v-plugin-demo.esm.js";
 export default {
   // components: { Editor },
   data() {
