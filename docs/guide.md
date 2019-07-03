@@ -56,13 +56,15 @@ import { VueEditor } from "vue2-editor";
 import { VueEditor, Quill } from "vue2-editor";
 ```
 
-## Modular Version
+<br>
 
-As of version 2.9, you can use the modarl version which includeds only the JavaScript.
+## Modular Version <Badge text="2.9.0+"/>
+
+As of version 2.9, you can use the modular version which includes only the JavaScript.
 This allows for more control and customization. Also, this allows for other Quill themes to be used such as Bubble.
 
 <<< @/docs/.vuepress/snippets/modular.vue
 
-## Nuxt
+<!-- ## Nuxt
 
-<iframe src="https://codesandbox.io/embed/nuxt-vue2editor-example-pcny9?fontsize=14" title="Nuxt & Vue2Editor Example" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe src="https://codesandbox.io/embed/nuxt-vue2editor-example-pcny9?fontsize=14" title="Nuxt & Vue2Editor Example" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe> -->
