@@ -4,6 +4,15 @@
 
 <br>
 
+## For Nuxt & SSR
+
+Possibly switch to this:
+
+```js
+let Quill;
+if (!Vue.prototype.$isServer) Quill = require("quill");
+```
+
 ## Modular Version
 
 **JavaScript**
