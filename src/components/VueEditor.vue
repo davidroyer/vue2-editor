@@ -15,15 +15,11 @@
 </template>
 
 <script>
-import Vue from "vue";
+import Quill from "quill";
 import defaultToolbar from "@/helpers/default-toolbar";
 import oldApi from "@/helpers/old-api";
 import mergeDeep from "@/helpers/merge-deep";
 import MarkdownShortcuts from "@/helpers/markdown-shortcuts";
-
-let Quill;
-if (!Vue.prototype.$isServer) Quill = require("quill");
-console.log("Vue.prototype.$isServer: ", Vue.prototype.$isServer);
 
 export default {
   name: "VueEditor",
@@ -66,7 +62,7 @@ export default {
   data: () => ({
     quill: null
   }),
-  // quill: null,
+
   watch: {
     value(val) {
       if (val != this.quill.root.innerHTML && !this.quill.hasFocus()) {
