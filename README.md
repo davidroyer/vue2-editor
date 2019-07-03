@@ -18,7 +18,7 @@
 
 <!-- [fiddle](https://jsfiddle.net/su9zv0w9/1/) -->
 
-# Install
+## Install
 
 _You can use Yarn or NPM_
 
@@ -32,7 +32,7 @@ npm install vue2-editor
 yarn add vue2-editor
 ```
 
-# Usage
+## Usage
 
 ```javascript
 // Basic Use - Covers most scenarios
@@ -42,7 +42,7 @@ import { VueEditor } from "vue2-editor";
 import { VueEditor, Quill } from "vue2-editor";
 ```
 
-# Props
+## Props
 
 | Name                  | Type    | Default                                              | Description                                                                            |
 | --------------------- | ------- | ---------------------------------------------------- | -------------------------------------------------------------------------------------- |
@@ -65,9 +65,9 @@ import { VueEditor, Quill } from "vue2-editor";
 | selection-change | range, oldRange, source      | Emitted on Quill's `selection-change` event                                         |
 | text-change      | delta, oldDelta, source      | Emitted on Quill's `text-change` event                                              |
 
-# Examples
+## Examples
 
-## Example - Basic Setup
+### Example - Basic Setup
 
 ```vue
 <template>
@@ -93,7 +93,7 @@ export default {
 </script>
 ```
 
-## Example - Custom Image Handler
+### Example - Custom Image Handler
 
 If you choose to use the custom image handler, an event is emitted when a a photo is selected.
 You can see below that 3 parameters are passed.
@@ -102,7 +102,7 @@ You can see below that 3 parameters are passed.
 2. The Editor instance
 3. The cursor position at the time of upload so the image can be inserted at the correct position on success
 
-**NOTE** In addition to this example, I have created a [ example repo](https://github.com/davidroyer/vue2editor-images) demonstrating this new feature with an actual server.
+**NOTE** In addition to this example, I have created a [example repo](https://github.com/davidroyer/vue2editor-images) demonstrating this new feature with an actual server.
 
 ```vue
 <template>
@@ -153,7 +153,7 @@ export default {
 </script>
 ```
 
-## Example - Set Contents After Page Load
+### Example - Set Contents After Page Load
 
 ```vue
 <template>
@@ -186,7 +186,7 @@ export default {
 </script>
 ```
 
-## Example - Using Multiple Editors
+### Example - Using Multiple Editors
 
 ```vue
 <template>
@@ -221,7 +221,7 @@ export default {
 </style>
 ```
 
-## Example - Custom Toolbar
+### Example - Custom Toolbar
 
 ```vue
 <template>
@@ -252,7 +252,7 @@ export default {
 </script>
 ```
 
-## Example - Saving The Content
+### Example - Saving The Content
 
 ```vue
 <template>
@@ -286,7 +286,7 @@ export default {
 </script>
 ```
 
-## Example - Use a Live Preview
+### Example - Use a Live Preview
 
 ```vue
 <template>
@@ -313,11 +313,11 @@ export default {
 </script>
 ```
 
-## How To Use Custom Quill Modules
+### How To Use Custom Quill Modules
 
 There are two ways of using custom modules with Vue2Editor. This is partly because there have been cases in which errors are thrown when importing and attempting to declare custom modules, and partly because I believe it actually separates the concerns nicely.
 
-### Version 1 - **_Import and Register Yourself_**
+#### Version 1 - **_Import and Register Yourself_**
 
 Vue2Editor now exports Quill to assist in this process.
 
@@ -362,7 +362,7 @@ Vue2Editor now exports Quill to assist in this process.
 </script>
 ```
 
-### Version 2 - **_You Import | Vue2Editor Registers_**
+#### Version 2 - **_You Import | Vue2Editor Registers_**
 
 **_(Recommended way)_**
 
@@ -407,7 +407,7 @@ export default {
 
 ---
 
-# Development
+## Development
 
 Vue2Editor now uses [Poi](https://github.com/egoist/poi) for development
 
@@ -419,6 +419,6 @@ Vue2Editor now uses [Poi](https://github.com/egoist/poi) for development
 <!-- # Achnoledgements
 Markdown: https://github.com/patleeman/quill-markdown-shortcuts -->
 
-# License
+## License
 
 MIT
