@@ -1,37 +1,10 @@
+/* eslint-disable no-unused-vars */
 import Quill from "quill";
 let BlockEmbed = Quill.import("blots/block/embed");
 class HorizontalRule extends BlockEmbed {}
 HorizontalRule.blotName = "hr";
 HorizontalRule.tagName = "hr";
 Quill.register("formats/horizontal", HorizontalRule);
-
-// Quill.js Plugin - Markdown Shortcuts
-// This is a module for the Quill.js WYSIWYG editor (https://quilljs.com/)
-// which converts text entered as markdown to rich text.
-//
-// v0.0.5
-//
-// Author: Patrick Lee (me@patricklee.nyc)
-//
-// (c) Copyright 2017 Patrick Lee (me@patricklee.nyc).
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in
-// all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-// THE SOFTWARE.
-//
 
 class MarkdownShortcuts {
   constructor(quill, options) {
@@ -57,7 +30,7 @@ class MarkdownShortcuts {
       {
         name: "blockquote",
         pattern: /^(>)\s/g,
-        action: (text, selection) => {
+        action: (_text, selection) => {
           // Need to defer this action https://github.com/quilljs/quill/issues/1134
           setTimeout(() => {
             this.quill.formatLine(selection.index, 1, "blockquote", true);
@@ -68,7 +41,7 @@ class MarkdownShortcuts {
       {
         name: "code-block",
         pattern: /^`{3}(?:\s|\n)/g,
-        action: (text, selection) => {
+        action: (_text, selection) => {
           // Need to defer this action https://github.com/quilljs/quill/issues/1134
           setTimeout(() => {
             this.quill.formatLine(selection.index, 1, "code-block", true);
@@ -79,7 +52,7 @@ class MarkdownShortcuts {
       {
         name: "bolditalic",
         pattern: /(?:\*|_){3}(.+?)(?:\*|_){3}/g,
-        action: (text, selection, pattern, lineStart) => {
+        action: (text, _selection, pattern, lineStart) => {
           let match = pattern.exec(text);
 
           const annotatedText = match[0];
@@ -101,7 +74,7 @@ class MarkdownShortcuts {
       {
         name: "bold",
         pattern: /(?:\*|_){2}(.+?)(?:\*|_){2}/g,
-        action: (text, selection, pattern, lineStart) => {
+        action: (text, _selection, pattern, lineStart) => {
           let match = pattern.exec(text);
 
           const annotatedText = match[0];
@@ -120,7 +93,7 @@ class MarkdownShortcuts {
       {
         name: "italic",
         pattern: /(?:\*|_){1}(.+?)(?:\*|_){1}/g,
-        action: (text, selection, pattern, lineStart) => {
+        action: (text, _selection, pattern, lineStart) => {
           let match = pattern.exec(text);
 
           const annotatedText = match[0];
@@ -139,7 +112,7 @@ class MarkdownShortcuts {
       {
         name: "strikethrough",
         pattern: /(?:~~)(.+?)(?:~~)/g,
-        action: (text, selection, pattern, lineStart) => {
+        action: (text, _selection, pattern, lineStart) => {
           let match = pattern.exec(text);
 
           const annotatedText = match[0];
@@ -158,7 +131,7 @@ class MarkdownShortcuts {
       {
         name: "code",
         pattern: /(?:`)(.+?)(?:`)/g,
-        action: (text, selection, pattern, lineStart) => {
+        action: (text, _selection, pattern, lineStart) => {
           let match = pattern.exec(text);
 
           const annotatedText = match[0];
@@ -197,7 +170,7 @@ class MarkdownShortcuts {
       {
         name: "asterisk-ul",
         pattern: /^(\*|\+)\s$/g,
-        action: (text, selection, pattern) => {
+        action: (_text, selection, _pattern) => {
           setTimeout(() => {
             this.quill.formatLine(selection.index, 1, "list", "unordered");
             this.quill.deleteText(selection.index - 2, 2);
@@ -250,7 +223,7 @@ class MarkdownShortcuts {
     ];
 
     // Handler that looks for insert deltas that match specific characters
-    this.quill.on("text-change", (delta, oldContents, source) => {
+    this.quill.on("text-change", (delta, _oldContents, _source) => {
       for (let i = 0; i < delta.ops.length; i++) {
         if (delta.ops[i].hasOwnProperty("insert")) {
           if (delta.ops[i].insert === " ") {
