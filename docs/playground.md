@@ -1,10 +1,9 @@
 # Playground For Testing
 
-
 **Input**
 
-``` md
-<<< @/../@vuepress/markdown/__tests__/fragments/snippet.js{2}
+```md
+<<< @/../@vuepress/markdown/**tests**/fragments/snippet.js{2}
 ```
 
 **Output**
