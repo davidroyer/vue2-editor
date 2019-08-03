@@ -1,3 +1,4 @@
 {
-  "vetur.validation.template": false
+  "vetur.validation.template": false,
+  "workbench.colorCustomizations": {}
 }

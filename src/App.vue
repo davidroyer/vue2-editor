@@ -47,8 +47,13 @@
           <button class="ql-clean"></button>
         </span>
       </div>
-    </vue-editor> -->
-    <VueEditor ref="vEditor" v-model="content" />
+    </vue-editor>-->
+    <VueEditor
+      ref="vEditor"
+      v-model="content"
+      @focus="onEditorFocus"
+      @blur="onEditorBlur"
+    />
   </div>
 </template>
 
@@ -90,6 +95,14 @@ export default {
   methods: {
     handleTextChange(obj) {
       console.log("TCL: handleTextChange -> obj", obj);
+    },
+
+    onEditorBlur(quill) {
+      console.log("editor blur!", quill);
+    },
+
+    onEditorFocus(quill) {
+      console.log("editor focus!", quill);
     }
   }
 };
