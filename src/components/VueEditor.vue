@@ -167,12 +167,27 @@ export default {
       else if (range && !oldRange) this.$emit("focus", this.quill);
     },
 
-    handleTextChange() {
+    handleTextChange(delta, oldContents) {
       let editorContent =
         this.quill.getHTML() === "<p><br></p>" ? "" : this.quill.getHTML();
       this.$emit("input", editorContent);
+
+      if (this.useCustomImageHandler)
+        this.handleImageRemoved(delta, oldContents);
     },
 
+    handleImageRemoved(delta, oldContents) {
+      const currrentContents = this.quill.getContents();
+      const deletedContents = currrentContents.diff(oldContents);
+      const operations = deletedContents.ops;
+
+      operations.map(operation => {
+        if (operation.insert && operation.insert.hasOwnProperty("image")) {
+          const { image } = operation.insert;
+          this.$emit("imageRemoved", image);
+        }
+      });
+    },
     checkForCustomImageHandler() {
       this.useCustomImageHandler === true ? this.setupCustomImageHandler() : "";
     },
