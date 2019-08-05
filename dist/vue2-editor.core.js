@@ -1,5 +1,5 @@
 /*!
- * vue2-editor v2.9.1 
+ * vue2-editor v2.10.0 
  * (c) 2019 David Royer
  * Released under the MIT License.
  */
@@ -691,9 +691,24 @@
       handleSelectionChange: function handleSelectionChange(range, oldRange) {
         if (!range && oldRange) this.$emit("blur", this.quill);else if (range && !oldRange) this.$emit("focus", this.quill);
       },
-      handleTextChange: function handleTextChange() {
+      handleTextChange: function handleTextChange(delta, oldContents) {
         var editorContent = this.quill.getHTML() === "<p><br></p>" ? "" : this.quill.getHTML();
         this.$emit("input", editorContent);
+        if (this.useCustomImageHandler) this.handleImageRemoved(delta, oldContents);
+      },
+      handleImageRemoved: function handleImageRemoved(delta, oldContents) {
+        var _this2 = this;
+
+        var currrentContents = this.quill.getContents();
+        var deletedContents = currrentContents.diff(oldContents);
+        var operations = deletedContents.ops;
+        operations.map(function (operation) {
+          if (operation.insert && operation.insert.hasOwnProperty("image")) {
+            var image = operation.insert.image;
+
+            _this2.$emit("imageRemoved", image);
+          }
+        });
       },
       checkForCustomImageHandler: function checkForCustomImageHandler() {
         this.useCustomImageHandler === true ? this.setupCustomImageHandler() : "";
@@ -836,7 +851,7 @@
       undefined
     );
 
-  var version = "2.9.1"; // Declare install function executed by Vue.use()
+  var version = "2.10.0"; // Declare install function executed by Vue.use()
 
   function install(Vue) {
     if (install.installed) return;
