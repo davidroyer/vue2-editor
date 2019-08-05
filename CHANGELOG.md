@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.10.0](https://github.com/davidroyer/vue2-editor/compare/v2.9.1...v2.10.0) (2019-08-05)
+
+
+### Features
+
+* **imageRemoved:** new emitter for deleted images ([eecc696](https://github.com/davidroyer/vue2-editor/commit/eecc696))
+
+
+
 ### [2.9.1](https://github.com/davidroyer/vue2-editor/compare/v2.9.0...v2.9.1) (2019-07-03)
 
 
