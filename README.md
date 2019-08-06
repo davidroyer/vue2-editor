@@ -62,6 +62,7 @@ import { VueEditor, Quill } from "vue2-editor";
 | blur             | quill                        | Emitted on `blur` event                                                             |
 | focus            | quill                        | Emitted on `focus` event                                                            |
 | imageAdded       | file, Editor, cursorLocation | Emitted when `useCustomImageHandler` is true and photo is being added to the editor |
+| imageRemoved     | file, Editor, cursorLocation | Emitted when `useCustomImageHandler` is true and photo has been deleted             |
 | selection-change | range, oldRange, source      | Emitted on Quill's `selection-change` event                                         |
 | text-change      | delta, oldDelta, source      | Emitted on Quill's `text-change` event                                              |
 
@@ -241,11 +242,7 @@ export default {
   data() {
     return {
       content: "<h1>Html For Editor</h1>",
-      customToolbar: [
-        ["bold", "italic", "underline"],
-        [{ list: "ordered" }, { list: "bullet" }],
-        ["image", "code-block"]
-      ]
+      customToolbar: [["bold", "italic", "underline"], [{ list: "ordered" }, { list: "bullet" }], ["image", "code-block"]]
     };
   }
 };
@@ -389,10 +386,7 @@ export default {
   data() {
     return {
       content: "<h1>Initial Content</h1>",
-      customModulesForEditor: [
-        { alias: "imageDrop", module: ImageDrop },
-        { alias: "imageResize", module: ImageResize }
-      ],
+      customModulesForEditor: [{ alias: "imageDrop", module: ImageDrop }, { alias: "imageResize", module: ImageResize }],
       editorSettings: {
         modules: {
           imageDrop: true,

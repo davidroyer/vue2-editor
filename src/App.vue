@@ -15,7 +15,8 @@
 </template>
 
 <script>
-import axios from "axios";
+import axiosInstance from "@/helpers/axios";
+console.log("TCL: axiosInstance", axiosInstance);
 import Quill from "quill";
 const AlignStyle = Quill.import("attributors/style/align");
 Quill.register(AlignStyle, true);
@@ -73,29 +74,42 @@ export default {
       }).then(result => console.log("DELETE RESULT: ", result));
     },
 
-    handleImageAdded(file, Editor, cursorLocation) {
-      const CLIENT_ID = "993793b1d8d3e2e";
-      var formData = new FormData();
+    async handleImageAdded(file, Editor, cursorLocation) {
+      const formData = new FormData();
       formData.append("image", file);
-      axios({
-        url: "https://api.imgur.com/3/image",
-        method: "POST",
-        headers: { Authorization: "Client-ID " + CLIENT_ID },
-        data: formData
-      })
-        .then(result => {
-          const { link, id } = result.data.data;
-          Editor.insertEmbed(
-            cursorLocation,
-            "image",
-            {
-              id,
-              url: link
-            },
-            Quill.sources.USER
-          );
-        })
-        .catch(err => console.log(err));
+
+      const result = await axiosInstance.post(`image`, { formData });
+      console.log("ASYNC: handleImageAdded -> result", result);
+      const { link, id } = result.data.data;
+
+      Editor.insertEmbed(
+        cursorLocation,
+        "image",
+        {
+          id,
+          url: link
+        },
+        Quill.sources.USER
+      );
+      // axios({
+      //   url: "https://api.imgur.com/3/image",
+      //   method: "POST",
+      //   headers: { Authorization: "Client-ID " + CLIENT_ID },
+      //   data: formData
+      // })
+      // .then(result => {
+      //   const { link, id } = result.data.data;
+      //   Editor.insertEmbed(
+      //     cursorLocation,
+      //     "image",
+      //     {
+      //       id,
+      //       url: link
+      //     },
+      //     Quill.sources.USER
+      //   );
+      // })
+      // .catch(err => console.log(err));
     },
 
     handleImageRemoved(image) {
