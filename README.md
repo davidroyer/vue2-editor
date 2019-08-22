@@ -108,7 +108,7 @@ You can see below that 3 parameters are passed.
 ```vue
 <template>
   <div id="app">
-    <vue-editor id="editor" useCustomImageHandler @imageAdded="handleImageAdded" v-model="htmlForEditor"> </vue-editor>
+    <vue-editor id="editor" useCustomImageHandler @image-added="handleImageAdded" v-model="htmlForEditor"> </vue-editor>
   </div>
 </template>
 
