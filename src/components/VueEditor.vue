@@ -184,7 +184,7 @@ export default {
       operations.map(operation => {
         if (operation.insert && operation.insert.hasOwnProperty("image")) {
           const { image } = operation.insert;
-          this.$emit("imageRemoved", image);
+          this.$emit("image-removed", image);
         }
       });
     },
