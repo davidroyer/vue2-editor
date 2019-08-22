@@ -184,7 +184,7 @@ export default {
       operations.map(operation => {
         if (operation.insert && operation.insert.hasOwnProperty("image")) {
           const { image } = operation.insert;
-          this.$emit("imageRemoved", image);
+          this.$emit("image-removed", image);
         }
       });
     },
@@ -210,7 +210,7 @@ export default {
       let Editor = this.quill;
       let range = Editor.getSelection();
       let cursorLocation = range.index;
-      this.$emit("imageAdded", file, Editor, cursorLocation, resetUploader);
+      this.$emit("image-added", file, Editor, cursorLocation, resetUploader);
     }
   }
 };
