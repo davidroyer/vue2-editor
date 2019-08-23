@@ -1,5 +1,5 @@
 /*!
- * vue2-editor v2.10.0 
+ * vue2-editor v2.10.1 
  * (c) 2019 David Royer
  * Released under the MIT License.
  */
@@ -706,7 +706,7 @@
           if (operation.insert && operation.insert.hasOwnProperty("image")) {
             var image = operation.insert.image;
 
-            _this2.$emit("imageRemoved", image);
+            _this2.$emit("image-removed", image);
           }
         });
       },
@@ -730,7 +730,7 @@
         var Editor = this.quill;
         var range = Editor.getSelection();
         var cursorLocation = range.index;
-        this.$emit("imageAdded", file, Editor, cursorLocation, resetUploader);
+        this.$emit("image-added", file, Editor, cursorLocation, resetUploader);
       }
     }
   };
@@ -851,7 +851,7 @@
       undefined
     );
 
-  var version = "2.10.0"; // Declare install function executed by Vue.use()
+  var version = "2.10.1"; // Declare install function executed by Vue.use()
 
   function install(Vue) {
     if (install.installed) return;
