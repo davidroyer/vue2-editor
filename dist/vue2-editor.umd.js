@@ -1,5 +1,5 @@
 /*!
- * vue2-editor v2.10.1 
+ * vue2-editor v2.10.2 
  * (c) 2019 David Royer
  * Released under the MIT License.
  */
@@ -912,7 +912,7 @@
       undefined
     );
 
-  var version = "2.10.1"; // Declare install function executed by Vue.use()
+  var version = "2.10.2"; // Declare install function executed by Vue.use()
 
   function install(Vue) {
     if (install.installed) return;
