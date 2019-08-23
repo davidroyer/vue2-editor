@@ -61,8 +61,8 @@ import { VueEditor, Quill } from "vue2-editor";
 | ---------------- | ---------------------------- | ----------------------------------------------------------------------------------- |
 | blur             | quill                        | Emitted on `blur` event                                                             |
 | focus            | quill                        | Emitted on `focus` event                                                            |
-| imageAdded       | file, Editor, cursorLocation | Emitted when `useCustomImageHandler` is true and photo is being added to the editor |
-| imageRemoved     | file, Editor, cursorLocation | Emitted when `useCustomImageHandler` is true and photo has been deleted             |
+| image-added      | file, Editor, cursorLocation | Emitted when `useCustomImageHandler` is true and photo is being added to the editor |
+| image-removed    | file, Editor, cursorLocation | Emitted when `useCustomImageHandler` is true and photo has been deleted             |
 | selection-change | range, oldRange, source      | Emitted on Quill's `selection-change` event                                         |
 | text-change      | delta, oldDelta, source      | Emitted on Quill's `text-change` event                                              |
 
@@ -108,7 +108,7 @@ You can see below that 3 parameters are passed.
 ```vue
 <template>
   <div id="app">
-    <vue-editor id="editor" useCustomImageHandler @imageAdded="handleImageAdded" v-model="htmlForEditor"> </vue-editor>
+    <vue-editor id="editor" useCustomImageHandler @image-added="handleImageAdded" v-model="htmlForEditor"> </vue-editor>
   </div>
 </template>
 
