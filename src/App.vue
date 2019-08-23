@@ -9,19 +9,21 @@
       @focus="onEditorFocus"
       @blur="onEditorBlur"
       @imageAdded="handleImageAdded"
-      @imageRemoved="handleImageRemoved"
+      @image-removed="handleImageRemoved"
     />
   </div>
 </template>
 
 <script>
-import axiosInstance from "@/helpers/axios";
-console.log("TCL: axiosInstance", axiosInstance);
+// import axiosInstance from "@/helpers/axios";
+import axios from "axios";
 import Quill from "quill";
 const AlignStyle = Quill.import("attributors/style/align");
 Quill.register(AlignStyle, true);
 
 const BlockEmbed = Quill.import("blots/block/embed");
+
+const CLIENT_ID = "993793b1d8d3e2e";
 
 /**
  * Customize image so we can add an `id` attribute
@@ -78,10 +80,15 @@ export default {
       const formData = new FormData();
       formData.append("image", file);
 
-      const result = await axiosInstance.post(`image`, { formData });
-      console.log("ASYNC: handleImageAdded -> result", result);
-      const { link, id } = result.data.data;
+      const { data } = await axios({
+        url: "https://api.imgur.com/3/image",
+        method: "POST",
+        headers: { Authorization: "Client-ID " + CLIENT_ID },
+        data: formData
+      });
+      console.log("TCL: handleImageAdded -> data", data);
 
+      const { link, id } = data.data;
       Editor.insertEmbed(
         cursorLocation,
         "image",
@@ -91,25 +98,6 @@ export default {
         },
         Quill.sources.USER
       );
-      // axios({
-      //   url: "https://api.imgur.com/3/image",
-      //   method: "POST",
-      //   headers: { Authorization: "Client-ID " + CLIENT_ID },
-      //   data: formData
-      // })
-      // .then(result => {
-      //   const { link, id } = result.data.data;
-      //   Editor.insertEmbed(
-      //     cursorLocation,
-      //     "image",
-      //     {
-      //       id,
-      //       url: link
-      //     },
-      //     Quill.sources.USER
-      //   );
-      // })
-      // .catch(err => console.log(err));
     },
 
     handleImageRemoved(image) {
