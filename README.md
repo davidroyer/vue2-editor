@@ -254,7 +254,7 @@ export default {
 ```vue
 <template>
   <div id="app">
-    <button @click="saveContent"></button>
+    <button @click="handleSavingContent"></button>
     <vue-editor v-model="content"></vue-editor>
   </div>
 </template>
