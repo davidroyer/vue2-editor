@@ -1,5 +1,5 @@
 /*!
- * vue2-editor v2.10.1-next.8 
+ * vue2-editor v2.10.1-next.9 
  * (c) 2019 David Royer
  * Released under the MIT License.
  */
@@ -104,7 +104,7 @@
   var MarkdownShortcuts;
 
   if (!Vue.prototype.$isServer) {
-    console.log("In process.client for Nuxt.js APp");
+    console.log("In !Vue.prototype.$isServer");
     Quill = require("quill");
     MarkdownShortcuts = require("@/helpers/markdown-shortcuts").default;
     console.log("TCL: MarkdownShortcuts", MarkdownShortcuts);
