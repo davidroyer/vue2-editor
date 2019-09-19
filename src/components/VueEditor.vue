@@ -2,7 +2,7 @@
   <div class="quillWrapper">
     <slot name="toolbar"></slot>
     <div :id="id" ref="quillContainer"></div>
-    <input
+    <!-- <input
       v-if="useCustomImageHandler"
       id="file-upload"
       ref="fileInput"
@@ -10,28 +10,27 @@
       accept="image/*"
       style="display:none;"
       @change="emitImageInfo($event)"
-    />
+    /> -->
   </div>
 </template>
 
 <script>
+// import Quill from 'quill'
 import Vue from "vue";
 import defaultToolbar from "@/helpers/default-toolbar";
 import oldApi from "@/helpers/old-api";
 import mergeDeep from "@/helpers/merge-deep";
-// import MarkdownShortcuts from "@/helpers/markdown-shortcuts";
+// import MarkdownShortcuts from '@/helpers/markdown-shortcuts'
 
 let Quill;
 let MarkdownShortcuts;
+// if (!Vue.prototype.$isServer) Quill = require('quill')
 if (!Vue.prototype.$isServer) {
-  console.log("NOT SERVER");
-
   Quill = require("quill");
   MarkdownShortcuts = require("@/helpers/markdown-shortcuts");
 }
 
 export default {
-  name: "VueEditor",
   mixins: [oldApi],
   props: {
     id: {
@@ -74,6 +73,7 @@ export default {
 
   watch: {
     value(val) {
+      // eslint-disable-next-line eqeqeq
       if (val != this.quill.root.innerHTML && !this.quill.hasFocus()) {
         this.quill.root.innerHTML = val;
       }
@@ -84,11 +84,12 @@ export default {
   },
 
   mounted() {
-    this.$parent.$once("hook:mounted", () => {
-      console.log("in mounted hook");
+    // this.$parent.$once('hook:mounted', () => {
+    //   // eslint-disable-next-line no-console
+    //   console.log('in mounted hook')
 
-      this.$parent.$forceUpdate();
-    });
+    //   this.$parent.$forceUpdate()
+    // })
     this.registerCustomModules(Quill);
     this.registerPrototypes();
     this.initializeEditor();
@@ -109,7 +110,7 @@ export default {
     },
 
     setupQuillEditor() {
-      let editorConfig = {
+      const editorConfig = {
         debug: false,
         modules: this.setModules(),
         theme: "snow",
@@ -122,12 +123,12 @@ export default {
     },
 
     setModules() {
-      let modules = {
+      const modules = {
         toolbar: this.editorToolbar.length ? this.editorToolbar : defaultToolbar
       };
       if (this.useMarkdownShortcuts) {
         Quill.register("modules/markdownShortcuts", MarkdownShortcuts, true);
-        modules["markdownShortcuts"] = {};
+        modules.markdownShortcuts = {};
       }
       return modules;
     },
@@ -154,7 +155,7 @@ export default {
         return this.container.querySelector(".ql-editor").innerHTML;
       };
       Quill.prototype.getWordCount = function() {
-        return this.container.querySelector(".ql-editor").innerText.length;
+        return this.container.querySelector(".ql-editor").textContent.length;
       };
     },
 
@@ -182,7 +183,7 @@ export default {
     },
 
     handleTextChange(delta, oldContents) {
-      let editorContent =
+      const editorContent =
         this.quill.getHTML() === "<p><br></p>" ? "" : this.quill.getHTML();
       this.$emit("input", editorContent);
 
@@ -204,11 +205,12 @@ export default {
       });
     },
     checkForCustomImageHandler() {
+      // eslint-disable-next-line no-unused-expressions
       this.useCustomImageHandler === true ? this.setupCustomImageHandler() : "";
     },
 
     setupCustomImageHandler() {
-      let toolbar = this.quill.getModule("toolbar");
+      const toolbar = this.quill.getModule("toolbar");
       toolbar.addHandler("image", this.customImageHandler);
     },
 
@@ -218,13 +220,13 @@ export default {
 
     emitImageInfo($event) {
       const resetUploader = function() {
-        var uploader = document.getElementById("file-upload");
+        const uploader = document.getElementById("file-upload");
         uploader.value = "";
       };
-      let file = $event.target.files[0];
-      let Editor = this.quill;
-      let range = Editor.getSelection();
-      let cursorLocation = range.index;
+      const file = $event.target.files[0];
+      const Editor = this.quill;
+      const range = Editor.getSelection();
+      const cursorLocation = range.index;
       this.$emit("image-added", file, Editor, cursorLocation, resetUploader);
       this.$emit("imageAdded", file, Editor, cursorLocation, resetUploader);
     }
@@ -233,4 +235,3 @@ export default {
 </script>
 
 <style src="quill/dist/quill.snow.css"></style>
-<style src="../assets/vue2-editor.scss" lang="scss"></style>

@@ -1,35 +1,20 @@
-import Quill from "quill";
-import VueEditor from "@/components/VueEditor.vue";
+/* eslint-disable no-console */
+import VueEditor from "./VueEditor";
 
-const version = "__VERSION__";
+const Plugin = {
+  install(Vue, options = {}) {
+    Vue.component("VueEditor", VueEditor);
 
-// Declare install function executed by Vue.use()
-export function install(Vue) {
-  if (install.installed) return;
-  install.installed = true;
+    // Vue.prototype.$modal = {
+    //   show(name) {
+    //     location.hash = name
+    //   },
 
-  Vue.component("VueEditor", VueEditor);
-}
-
-const VPlugin = {
-  install,
-  version,
-  Quill,
-  VueEditor
+    //   hide(name) {
+    //     location.hash = '#'
+    //   }
+    // }
+  }
 };
 
-// Auto-install when vue is found (eg. in browser via <script> tag)
-let GlobalVue = null;
-if (typeof window !== "undefined") {
-  GlobalVue = window.Vue;
-} else if (typeof global !== "undefined") {
-  GlobalVue = global.Vue;
-}
-if (GlobalVue) {
-  GlobalVue.use(VPlugin);
-}
-
-export default VPlugin;
-export { VueEditor, Quill };
-
-/*************************************************/
+export default Plugin;
