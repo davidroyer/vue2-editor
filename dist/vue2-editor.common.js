@@ -1,5 +1,5 @@
 /*!
- * vue2-editor v2.10.1-next.5 
+ * vue2-editor v2.10.1-next.6 
  * (c) 2019 David Royer
  * Released under the MIT License.
  */
@@ -8894,33 +8894,13 @@ var __vue_staticRenderFns__ = [];
     undefined
   );
 
-// import Quill from "quill";
-var version = "2.10.1-next.5"; // Declare install function executed by Vue.use()
+/* eslint-disable no-console */
+var Plugin = {
+  install: function install(Vue) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    console.log("install -> options", options);
+    Vue.component("VueEditor", VueEditor);
+  }
+};
 
-function install(Vue) {
-  if (install.installed) return;
-  install.installed = true;
-  Vue.component("VueEditor", VueEditor);
-}
-var VPlugin = {
-  install: install,
-  version: version,
-  VueEditor: VueEditor
-}; // Auto-install when vue is found (eg. in browser via <script> tag)
-
-var GlobalVue = null;
-
-if (typeof window !== "undefined") {
-  GlobalVue = window.Vue;
-} else if (typeof global !== "undefined") {
-  GlobalVue = global.Vue;
-}
-
-if (GlobalVue) {
-  GlobalVue.use(VPlugin);
-}
-/*************************************************/
-
-exports.VueEditor = VueEditor;
-exports.default = VPlugin;
-exports.install = install;
+exports.default = Plugin;
