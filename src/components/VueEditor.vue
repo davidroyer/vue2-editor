@@ -15,11 +15,20 @@
 </template>
 
 <script>
-import Quill from "quill";
+import Vue from "vue";
 import defaultToolbar from "@/helpers/default-toolbar";
 import oldApi from "@/helpers/old-api";
 import mergeDeep from "@/helpers/merge-deep";
-import MarkdownShortcuts from "@/helpers/markdown-shortcuts";
+// import MarkdownShortcuts from "@/helpers/markdown-shortcuts";
+
+let Quill;
+let MarkdownShortcuts;
+if (!Vue.prototype.$isServer) {
+  console.log("NOT SERVER");
+
+  Quill = require("quill");
+  MarkdownShortcuts = require("@/helpers/markdown-shortcuts");
+}
 
 export default {
   name: "VueEditor",
@@ -75,6 +84,11 @@ export default {
   },
 
   mounted() {
+    this.$parent.$once("hook:mounted", () => {
+      console.log("in mounted hook");
+
+      this.$parent.$forceUpdate();
+    });
     this.registerCustomModules(Quill);
     this.registerPrototypes();
     this.initializeEditor();
@@ -185,6 +199,7 @@ export default {
         if (operation.insert && operation.insert.hasOwnProperty("image")) {
           const { image } = operation.insert;
           this.$emit("image-removed", image);
+          this.$emit("imageRemoved", image);
         }
       });
     },
@@ -210,6 +225,7 @@ export default {
       let Editor = this.quill;
       let range = Editor.getSelection();
       let cursorLocation = range.index;
+      this.$emit("image-added", file, Editor, cursorLocation, resetUploader);
       this.$emit("imageAdded", file, Editor, cursorLocation, resetUploader);
     }
   }
