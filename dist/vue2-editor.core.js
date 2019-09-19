@@ -1,15 +1,13 @@
 /*!
- * vue2-editor v2.10.1-next.1 
+ * vue2-editor v2.10.1-next.5 
  * (c) 2019 David Royer
  * Released under the MIT License.
  */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('quill')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'quill'], factory) :
-  (global = global || self, factory(global.Vue2Editor = {}, global.Quill));
-}(this, function (exports, Quill$1) { 'use strict';
-
-  Quill$1 = Quill$1 && Quill$1.hasOwnProperty('default') ? Quill$1['default'] : Quill$1;
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
+  typeof define === 'function' && define.amd ? define(['exports'], factory) :
+  (global = global || self, factory(global.Vue2Editor = {}));
+}(this, function (exports) { 'use strict';
 
   function _typeof(obj) {
     if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -8523,16 +8521,14 @@
   //
 
   var Quill;
-  var MarkdownShortcuts;
+  var MarkdownShortcuts; // if (!Vue.prototype.$isServer) Quill = require('quill')
 
   if (!Vue.prototype.$isServer) {
-    console.log("NOT SERVER");
     Quill = require("quill");
     MarkdownShortcuts = require("@/helpers/markdown-shortcuts");
   }
 
   var script = {
-    name: "VueEditor",
     mixins: [oldApi],
     props: {
       id: {
@@ -8579,6 +8575,7 @@
     },
     watch: {
       value: function value(val) {
+        // eslint-disable-next-line eqeqeq
         if (val != this.quill.root.innerHTML && !this.quill.hasFocus()) {
           this.quill.root.innerHTML = val;
         }
@@ -8588,13 +8585,11 @@
       }
     },
     mounted: function mounted() {
-      var _this = this;
-
-      this.$parent.$once("hook:mounted", function () {
-        console.log("in mounted hook");
-
-        _this.$parent.$forceUpdate();
-      });
+      // this.$parent.$once('hook:mounted', () => {
+      //   // eslint-disable-next-line no-console
+      //   console.log('in mounted hook')
+      //   this.$parent.$forceUpdate()
+      // })
       this.registerCustomModules(Quill);
       this.registerPrototypes();
       this.initializeEditor();
@@ -8629,7 +8624,7 @@
 
         if (this.useMarkdownShortcuts) {
           Quill.register("modules/markdownShortcuts", MarkdownShortcuts, true);
-          modules["markdownShortcuts"] = {};
+          modules.markdownShortcuts = {};
         }
 
         return modules;
@@ -8650,7 +8645,7 @@
         };
 
         Quill.prototype.getWordCount = function () {
-          return this.container.querySelector(".ql-editor").innerText.length;
+          return this.container.querySelector(".ql-editor").textContent.length;
         };
       },
       registerEditorEventListeners: function registerEditorEventListeners() {
@@ -8661,14 +8656,14 @@
         this.listenForEditorEvent("editor-change");
       },
       listenForEditorEvent: function listenForEditorEvent(type) {
-        var _this2 = this;
+        var _this = this;
 
         this.quill.on(type, function () {
           for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
             args[_key] = arguments[_key];
           }
 
-          _this2.$emit.apply(_this2, [type].concat(args));
+          _this.$emit.apply(_this, [type].concat(args));
         });
       },
       handleInitialContent: function handleInitialContent() {
@@ -8683,7 +8678,7 @@
         if (this.useCustomImageHandler) this.handleImageRemoved(delta, oldContents);
       },
       handleImageRemoved: function handleImageRemoved(delta, oldContents) {
-        var _this3 = this;
+        var _this2 = this;
 
         var currrentContents = this.quill.getContents();
         var deletedContents = currrentContents.diff(oldContents);
@@ -8692,13 +8687,14 @@
           if (operation.insert && operation.insert.hasOwnProperty("image")) {
             var image = operation.insert.image;
 
-            _this3.$emit("image-removed", image);
+            _this2.$emit("image-removed", image);
 
-            _this3.$emit("imageRemoved", image);
+            _this2.$emit("imageRemoved", image);
           }
         });
       },
       checkForCustomImageHandler: function checkForCustomImageHandler() {
+        // eslint-disable-next-line no-unused-expressions
         this.useCustomImageHandler === true ? this.setupCustomImageHandler() : "";
       },
       setupCustomImageHandler: function setupCustomImageHandler() {
@@ -8812,7 +8808,7 @@
   /* script */
   const __vue_script__ = script;
   /* template */
-  var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"quillWrapper"},[_vm._t("toolbar"),_vm._v(" "),_c('div',{ref:"quillContainer",attrs:{"id":_vm.id}}),_vm._v(" "),(_vm.useCustomImageHandler)?_c('input',{ref:"fileInput",staticStyle:{"display":"none"},attrs:{"id":"file-upload","type":"file","accept":"image/*"},on:{"change":function($event){return _vm.emitImageInfo($event)}}}):_vm._e()],2)};
+  var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"quillWrapper"},[_vm._t("toolbar"),_vm._v(" "),_c('div',{ref:"quillContainer",attrs:{"id":_vm.id}})],2)};
   var __vue_staticRenderFns__ = [];
 
     /* style */
@@ -8840,7 +8836,8 @@
       undefined
     );
 
-  var version = "2.10.1-next.1"; // Declare install function executed by Vue.use()
+  // import Quill from "quill";
+  var version = "2.10.1-next.5"; // Declare install function executed by Vue.use()
 
   function install(Vue) {
     if (install.installed) return;
@@ -8850,7 +8847,6 @@
   var VPlugin = {
     install: install,
     version: version,
-    Quill: Quill$1,
     VueEditor: VueEditor
   }; // Auto-install when vue is found (eg. in browser via <script> tag)
 
@@ -8867,7 +8863,6 @@
   }
   /*************************************************/
 
-  exports.Quill = Quill$1;
   exports.VueEditor = VueEditor;
   exports.default = VPlugin;
   exports.install = install;
