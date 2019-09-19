@@ -24,10 +24,10 @@ import mergeDeep from "@/helpers/merge-deep";
 
 let Quill;
 let MarkdownShortcuts;
-// if (!Vue.prototype.$isServer) Quill = require('quill')
 if (!Vue.prototype.$isServer) {
   Quill = require("quill");
-  MarkdownShortcuts = require("@/helpers/markdown-shortcuts");
+  MarkdownShortcuts = require("@/helpers/markdown-shortcuts").default;
+  console.log("TCL: MarkdownShortcuts", MarkdownShortcuts);
 }
 
 export default {
