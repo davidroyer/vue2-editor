@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.10.1-next.7](https://github.com/davidroyer/vue2-editor/compare/v2.10.1-next.6...v2.10.1-next.7) (2019-09-19)
+
+
+### Bug Fixes
+
+* **ssr:** fixes MarkdownShortcuts ([1c3478a](https://github.com/davidroyer/vue2-editor/commit/1c3478a))
+
+
+
 ### [2.10.1-next.6](https://github.com/davidroyer/vue2-editor/compare/v2.10.1-next.5...v2.10.1-next.6) (2019-09-19)
 
 
