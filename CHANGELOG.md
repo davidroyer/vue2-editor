@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.10.1-next.0](https://github.com/davidroyer/vue2-editor/compare/v2.10.0...v2.10.1-next.0) (2019-09-19)
+
+
+### Bug Fixes
+
+* Fixes emitted names. Closes [#4635](https://github.com/davidroyer/vue2-editor/issues/4635). ([e70b3a7](https://github.com/davidroyer/vue2-editor/commit/e70b3a7))
+
+
+
 ## [2.10.0](https://github.com/davidroyer/vue2-editor/compare/v2.9.1...v2.10.0) (2019-08-05)
 
 
