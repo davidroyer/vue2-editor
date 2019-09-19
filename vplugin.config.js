@@ -1,5 +1,7 @@
 module.exports = {
   globals: {
-    quill: "Quill"
-  }
+    quill: "Quill",
+    vue: "Vue"
+  },
+  external: ["vue"]
 };

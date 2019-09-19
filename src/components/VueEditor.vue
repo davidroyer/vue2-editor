@@ -15,15 +15,15 @@
 </template>
 
 <script>
-// import Vue from "vue";
+import Vue from "vue";
 import defaultToolbar from "@/helpers/default-toolbar";
 import oldApi from "@/helpers/old-api";
 import mergeDeep from "@/helpers/merge-deep";
 
 let Quill;
 let MarkdownShortcuts;
-if (process.client) {
-  console.log("In process.client for Nuxt.js APp");
+if (!Vue.prototype.$isServer) {
+  console.log("In !Vue.prototype.$isServer");
 
   Quill = require("quill");
   MarkdownShortcuts = require("@/helpers/markdown-shortcuts").default;

@@ -4,10 +4,12 @@
  * Released under the MIT License.
  */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (global = global || self, factory(global.Vue2Editor = {}));
-}(this, function (exports) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('vue')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'vue'], factory) :
+  (global = global || self, factory(global.Vue2Editor = {}, global.Vue));
+}(this, function (exports, Vue) { 'use strict';
+
+  Vue = Vue && Vue.hasOwnProperty('default') ? Vue['default'] : Vue;
 
   var defaultToolbar = [[{
     header: [false, 1, 2, 3, 4, 5, 6]
@@ -101,7 +103,7 @@
   var Quill;
   var MarkdownShortcuts;
 
-  if (process.client) {
+  if (!Vue.prototype.$isServer) {
     console.log("In process.client for Nuxt.js APp");
     Quill = require("quill");
     MarkdownShortcuts = require("@/helpers/markdown-shortcuts").default;
