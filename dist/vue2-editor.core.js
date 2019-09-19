@@ -1,5 +1,5 @@
 /*!
- * vue2-editor v2.10.1-next.6 
+ * vue2-editor v2.10.1-next.7 
  * (c) 2019 David Royer
  * Released under the MIT License.
  */
@@ -8521,11 +8521,12 @@
   //
 
   var Quill;
-  var MarkdownShortcuts; // if (!Vue.prototype.$isServer) Quill = require('quill')
+  var MarkdownShortcuts;
 
   if (!Vue.prototype.$isServer) {
     Quill = require("quill");
-    MarkdownShortcuts = require("@/helpers/markdown-shortcuts");
+    MarkdownShortcuts = require("@/helpers/markdown-shortcuts").default;
+    console.log("TCL: MarkdownShortcuts", MarkdownShortcuts);
   }
 
   var script = {
