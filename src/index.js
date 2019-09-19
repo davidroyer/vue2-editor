@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import VueEditor from "./VueEditor";
+import VueEditor from "./components/VueEditor";
 
 const Plugin = {
   install(Vue, options = {}) {
