@@ -1,5 +1,5 @@
 /*!
- * vue2-editor v2.10.0 
+ * vue2-editor v2.10.1-next.0 
  * (c) 2019 David Royer
  * Released under the MIT License.
  */
@@ -148,6 +148,10 @@
   }
 
   function _iterableToArrayLimit(arr, i) {
+    if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+      return;
+    }
+
     var _arr = [];
     var _n = true;
     var _d = false;
@@ -609,6 +613,13 @@
       }
     },
     mounted: function mounted() {
+      var _this = this;
+
+      this.$parent.$once("hook:mounted", function () {
+        console.log("in mounted hook");
+
+        _this.$parent.$forceUpdate();
+      });
       this.registerCustomModules(Quill);
       this.registerPrototypes();
       this.initializeEditor();
@@ -675,14 +686,14 @@
         this.listenForEditorEvent("editor-change");
       },
       listenForEditorEvent: function listenForEditorEvent(type) {
-        var _this = this;
+        var _this2 = this;
 
         this.quill.on(type, function () {
           for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
             args[_key] = arguments[_key];
           }
 
-          _this.$emit.apply(_this, [type].concat(args));
+          _this2.$emit.apply(_this2, [type].concat(args));
         });
       },
       handleInitialContent: function handleInitialContent() {
@@ -697,7 +708,7 @@
         if (this.useCustomImageHandler) this.handleImageRemoved(delta, oldContents);
       },
       handleImageRemoved: function handleImageRemoved(delta, oldContents) {
-        var _this2 = this;
+        var _this3 = this;
 
         var currrentContents = this.quill.getContents();
         var deletedContents = currrentContents.diff(oldContents);
@@ -706,7 +717,9 @@
           if (operation.insert && operation.insert.hasOwnProperty("image")) {
             var image = operation.insert.image;
 
-            _this2.$emit("imageRemoved", image);
+            _this3.$emit("image-removed", image);
+
+            _this3.$emit("imageRemoved", image);
           }
         });
       },
@@ -730,6 +743,7 @@
         var Editor = this.quill;
         var range = Editor.getSelection();
         var cursorLocation = range.index;
+        this.$emit("image-added", file, Editor, cursorLocation, resetUploader);
         this.$emit("imageAdded", file, Editor, cursorLocation, resetUploader);
       }
     }
@@ -851,7 +865,7 @@
       undefined
     );
 
-  var version = "2.10.0"; // Declare install function executed by Vue.use()
+  var version = "2.10.1-next.0"; // Declare install function executed by Vue.use()
 
   function install(Vue) {
     if (install.installed) return;
