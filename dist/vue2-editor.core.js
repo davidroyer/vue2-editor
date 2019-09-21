@@ -1,5 +1,5 @@
 /*!
- * vue2-editor v2.10.1-next.10 
+ * vue2-editor v2.10.1-next.11 
  * (c) 2019 David Royer
  * Released under the MIT License.
  */
@@ -8519,14 +8519,12 @@
   }
 
   //
-  var Quill;
-  var MarkdownShortcuts;
+  var Quill; // let MarkdownShortcuts;
 
   if (!Vue.prototype.$isServer) {
     console.log("In !Vue.prototype.$isServer");
-    Quill = require("quill");
-    MarkdownShortcuts = require("@/helpers/markdown-shortcuts").default;
-    console.log("TCL: MarkdownShortcuts", MarkdownShortcuts);
+    Quill = require("quill"); // MarkdownShortcuts = require("@/helpers/markdown-shortcuts").default;
+    // console.log("TCL: MarkdownShortcuts", MarkdownShortcuts);
   }
 
   var script = {
@@ -8621,12 +8619,10 @@
       setModules: function setModules() {
         var modules = {
           toolbar: this.editorToolbar.length ? this.editorToolbar : defaultToolbar
-        };
-
-        if (this.useMarkdownShortcuts) {
-          Quill.register("modules/markdownShortcuts", MarkdownShortcuts, true);
-          modules.markdownShortcuts = {};
-        }
+        }; // if (this.useMarkdownShortcuts) {
+        //   Quill.register("modules/markdownShortcuts", MarkdownShortcuts, true);
+        //   modules.markdownShortcuts = {};
+        // }
 
         return modules;
       },
