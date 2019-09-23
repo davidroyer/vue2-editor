@@ -1,5 +1,5 @@
 /*!
- * vue2-editor v2.10.1-next.11 
+ * vue2-editor v2.10.1-next.14 
  * (c) 2019 David Royer
  * Released under the MIT License.
  */
@@ -8519,12 +8519,13 @@
   }
 
   //
-  var Quill; // let MarkdownShortcuts;
+
+  var Quill;
+  var MarkdownShortcuts; // if (!Vue.prototype.$isServer) Quill = require('quill')
 
   if (!Vue.prototype.$isServer) {
-    console.log("In !Vue.prototype.$isServer");
-    Quill = require("quill"); // MarkdownShortcuts = require("@/helpers/markdown-shortcuts").default;
-    // console.log("TCL: MarkdownShortcuts", MarkdownShortcuts);
+    Quill = require("quill");
+    MarkdownShortcuts = require("@/helpers/markdown-shortcuts");
   }
 
   var script = {
@@ -8619,10 +8620,12 @@
       setModules: function setModules() {
         var modules = {
           toolbar: this.editorToolbar.length ? this.editorToolbar : defaultToolbar
-        }; // if (this.useMarkdownShortcuts) {
-        //   Quill.register("modules/markdownShortcuts", MarkdownShortcuts, true);
-        //   modules.markdownShortcuts = {};
-        // }
+        };
+
+        if (this.useMarkdownShortcuts) {
+          Quill.register("modules/markdownShortcuts", MarkdownShortcuts, true);
+          modules.markdownShortcuts = {};
+        }
 
         return modules;
       },
@@ -8833,12 +8836,56 @@
       undefined
     );
 
+  //
+  //
+  //
+  //
+  //
+  //
+  var script$1 = {};
+
+  /* script */
+  const __vue_script__$1 = script$1;
+  /* template */
+  var __vue_render__$1 = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)};
+  var __vue_staticRenderFns__$1 = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h2',[_vm._v("Simple Component")])])}];
+
+    /* style */
+    const __vue_inject_styles__$1 = undefined;
+    /* scoped */
+    const __vue_scope_id__$1 = "data-v-50b6c3fe";
+    /* module identifier */
+    const __vue_module_identifier__$1 = undefined;
+    /* functional template */
+    const __vue_is_functional_template__$1 = false;
+    /* style inject */
+    
+    /* style inject SSR */
+    
+
+    
+    var VSimple = normalizeComponent_1(
+      { render: __vue_render__$1, staticRenderFns: __vue_staticRenderFns__$1 },
+      __vue_inject_styles__$1,
+      __vue_script__$1,
+      __vue_scope_id__$1,
+      __vue_is_functional_template__$1,
+      __vue_module_identifier__$1,
+      undefined,
+      undefined
+    );
+
   /* eslint-disable no-console */
+  // import NEditor from "./components/NEditor.js";
+  // console.log("TCL: VComp", VComp);
+  // eslint-disable-next-line no-console
+
+  console.log("TCL: VueEditor", VueEditor);
   var Plugin = {
     install: function install(Vue) {
-      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      console.log("install -> options", options);
       Vue.component("VueEditor", VueEditor);
+      Vue.component("VSimple", VSimple); // Vue.component("VComp", VComp);
+      // Vue.component("NEditor", NEditor);
     }
   };
 
