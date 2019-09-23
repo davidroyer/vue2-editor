@@ -15,19 +15,19 @@
 </template>
 
 <script>
+// import Quill from 'quill'
 import Vue from "vue";
 import defaultToolbar from "@/helpers/default-toolbar";
 import oldApi from "@/helpers/old-api";
 import mergeDeep from "@/helpers/merge-deep";
+// import MarkdownShortcuts from '@/helpers/markdown-shortcuts'
 
 let Quill;
 let MarkdownShortcuts;
+// if (!Vue.prototype.$isServer) Quill = require('quill')
 if (!Vue.prototype.$isServer) {
-  console.log("In !Vue.prototype.$isServer");
-
   Quill = require("quill");
-  MarkdownShortcuts = require("@/helpers/markdown-shortcuts").default;
-  console.log("TCL: MarkdownShortcuts", MarkdownShortcuts);
+  MarkdownShortcuts = require("@/helpers/markdown-shortcuts");
 }
 
 export default {
