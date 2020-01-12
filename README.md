@@ -42,7 +42,18 @@ import { VueEditor } from "vue2-editor";
 import { VueEditor, Quill } from "vue2-editor";
 ```
 
+or add it as a global component
+
+```javascript
+import VueEditor from "vue2-editor";
+
+// Register the component globaly. You can access it in your template as vue-editor
+Vue.use(VueEditor)
+```
+
+
 ## Props
+
 
 | Name                  | Type    | Default                                              | Description                                                                            |
 | --------------------- | ------- | ---------------------------------------------------- | -------------------------------------------------------------------------------------- |
