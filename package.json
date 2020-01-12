@@ -1,12 +1,118 @@
 {
   "name": "vue2-editor",
-  "version": "2.6.6",
-  "private": false,
+  "version": "2.10.2",
+  "description": "HTML editor using Vue.js 2, and Quill.js, an open source editor",
   "author": {
     "name": "David Royer",
     "email": "droyer01@gmail.com"
   },
-  "description": "HTML editor using Vue.js 2, and Quill.js, an open source editor",
+  "license": "MIT",
+  "scripts": {
+    "lint": "vue-cli-service lint",
+    "build": "BUILD_TYPE=modular vue-cli-service build",
+    "build:modular": "BUILD_TYPE=modular vue-cli-service build",
+    "demo": "vue-cli-service demo",
+    "dev": "vue-cli-service serve",
+    "docs": "vue-cli-service docs --mode serve",
+    "docs:build": "vue-cli-service docs --mode build",
+    "docs:preview": "http-server docs/.vuepress/dist",
+    "release": "standard-version && git push --follow-tags && npm publish",
+    "release:next": "standard-version --prerelease next && git push --follow-tags origin dev && npm publish --tag next",
+    "update:vp": "yarn upgrade vue-cli-plugin-vplugin"
+  },
+  "standard-version": {
+    "scripts": {
+      "postbump": "yarn build && git add dist && git commit -m 'chore: new build'"
+    },
+    "types": [
+      {
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "chore",
+        "hidden": true
+      },
+      {
+        "type": "docs",
+        "hidden": true
+      },
+      {
+        "type": "imp",
+        "section": "Improvements"
+      },
+      {
+        "type": "style",
+        "hidden": true
+      },
+      {
+        "type": "refactor",
+        "section": "Refactoring"
+      },
+      {
+        "type": "perf",
+        "hidden": true
+      },
+      {
+        "type": "test",
+        "hidden": true
+      }
+    ]
+  },
+  "main": "dist/vue2-editor.common.js",
+  "module": "dist/vue2-editor.esm.js",
+  "unpkg": "dist/vue2-editor.umd.min.js",
+  "files": [
+    "dist",
+    "dist/vue2-editor.common.js",
+    "dist/vue2-editor.umd.min.js",
+    "dist/vue2-editor.umd.js",
+    "dist/vue2-editor.esm.js"
+  ],
+  "dependencies": {
+    "quill": "^1.3.6"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.6.1",
+    "@commitlint/config-conventional": "^7.6.0",
+    "@vue/cli-plugin-babel": "^3.7.0",
+    "@vue/cli-plugin-eslint": "^3.7.0",
+    "@vue/cli-service": "^3.7.0",
+    "@vue/eslint-config-prettier": "^4.0.1",
+    "@vuepress/plugin-google-analytics": "^1.0.0-rc.1",
+    "axios": "^0.19.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "highlight.js": "^9.15.6",
+    "http-server": "^0.11.1",
+    "node-sass": "^4.12.0",
+    "querystringify": "^2.1.1",
+    "quill-image-drop-module": "^1.0.3",
+    "quill-image-resize-module": "^3.0.0",
+    "sass": "^1.21.0",
+    "sass-loader": "^7.1.0",
+    "standard-version": "^6.0.1",
+    "vue": "^2.6.10",
+    "vue-cli-plugin-vplugin": "latest",
+    "vue-router": "^3.0.6",
+    "vue-template-compiler": "^2.5.21",
+    "vuepress-plugin-demo-block": "^0.7.2",
+    "vuepress-plugin-live": "^1.1.0"
+  },
+  "peerDependencies": {},
+  "eslintIgnore": [
+    "/dist",
+    "/node_modules",
+    "/demo",
+    "!.vuepress"
+  ],
+  "jsdelivr": "dist/vue2-editor.umd.min.js",
   "keywords": [
     "vue",
     "vue-component",
@@ -14,51 +120,13 @@
     "html editor",
     "text editor"
   ],
+  "productName": "Vue2Editor",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/davidroyer/vue2-editor.git"
   },
-  "main": "dist/vue2-editor.js",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "commit": "git-cz",
-    "commit:add": "git add . && git-cz",
-    "dev": "poi dev/index.js",
-    "docs": "docsify serve ./docs",
-    "docs:build": "npx vuedoc.md ./src/components/*.vue --output docs/components/",
-    "doc:comp": "npx vuedoc.md --section API --output ./README.md ./src/VueEditor.vue",
-    "test": "echo lol",
-    "lint": "poi --eslint",
-    "build": "poi build ./src/index.js --library Vue2Editor",
-    "release": "release-it"
-  },
-  "devDependencies": {
-    "axios": "^0.16.2",
-    "commitizen": "^2.10.1",
-    "conventional-changelog-cli": "^2.0.1",
-    "cz-conventional-changelog": "^2.1.0",
-    "gh-pages": "^0.12.0",
-    "node-sass": "^4.7.2",
-    "poi": "^9.6.13",
-    "quill-image-drop-module": "^1.0.3",
-    "quill-image-resize-module": "^3.0.0",
-    "release-it": "^7.4.8",
-    "sass-loader": "^6.0.6",
-    "spectre.css": "^0.2.12"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "lodash.merge": "^4.6.0",
-    "quill": "^1.3.6"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  }
+  "sideeffects": false
 }

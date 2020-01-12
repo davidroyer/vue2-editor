@@ -1,20 +1,35 @@
-/**
- * Vue2-Editor
- */
-import VueEditor from './VueEditor.vue'
-import _Quill from 'quill'
-const Quill = window.Quill || _Quill
+import Quill from "quill";
+import VueEditor from "@/components/VueEditor.vue";
 
-const Vue2Editor = {
-  VueEditor,
-  install: function(Vue) {
-    Vue.component(VueEditor.name, VueEditor)
-  }
+const version = "__VERSION__";
+
+// Declare install function executed by Vue.use()
+export function install(Vue) {
+  if (install.installed) return;
+  install.installed = true;
+
+  Vue.component("VueEditor", VueEditor);
 }
 
-if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(Vue2Editor)
+const VPlugin = {
+  install,
+  version,
+  Quill,
+  VueEditor
+};
+
+// Auto-install when vue is found (eg. in browser via <script> tag)
+let GlobalVue = null;
+if (typeof window !== "undefined") {
+  GlobalVue = window.Vue;
+} else if (typeof global !== "undefined") {
+  GlobalVue = global.Vue;
+}
+if (GlobalVue) {
+  GlobalVue.use(VPlugin);
 }
 
-export default Vue2Editor
-export { VueEditor, Quill }
+export default VPlugin;
+export { VueEditor, Quill };
+
+/*************************************************/

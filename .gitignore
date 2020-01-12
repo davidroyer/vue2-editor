@@ -1,19 +1,31 @@
-.idea/
-node_modules/
-demo/
-.npmignore
 .DS_Store
-npm-debug.log
+node_modules
+# public
+dist/*.gz
+dist/*.gz
+dist/.DS_Store
+coverage
+docs/.vuepress/dist
+# dist
+# local env files
+.env.local
+.env.*.local
 
-*.log
-**/**/.DS_Store
+# related test files
+/tests/e2e/reports
+/tests/e2e/videos
+/tests/e2e/screenshots
 
-# produced by vbuild
-dist
-dist-example
-
-dev/cloudinary.vue
-dev/Backup-App.vue
-NOTES.md
-
+# editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+# Backups
 .BACKUP
+.STORAGE
+
+public-demos
