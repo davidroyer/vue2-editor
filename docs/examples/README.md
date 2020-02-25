@@ -123,7 +123,7 @@ export default {
 
 ## Saving The Content
 
-<<< @/docs/.vuepress/code-examples/source/custom-toolbar.vue
+<<< @/docs/.vuepress/code-examples/source/save-content.vue
 
 <hr class="spacer" style="margin: 1em 0 1.75em !important; opacity: 0;"/>
 
