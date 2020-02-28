@@ -25,13 +25,13 @@
 
 ## Events
 
-| Name             | Parameters                   | Description                                                                         |
-| ---------------- | ---------------------------- | ----------------------------------------------------------------------------------- |
-| focus            | quill                        | Emitted on `focus` event                                                            |
-| blur             | quill                        | Emitted on `blur` event                                                             |
-| selection-change | range, oldRange, source      | Emitted on Quill's `selection-change` event                                         |
-| text-change      | delta, oldDelta, source      | Emitted on Quill's `text-change` event                                              |
-| image-added      | file, Editor, cursorLocation | Emitted when `useCustomImageHandler` is true and photo is being added to the editor |
-| image-removed    | image                        | Emitted when `useCustomImageHandler` is true and photo has been deleted             |
+| Name             | Parameters                                  | Description                                                                         |
+| ---------------- | ------------------------------------------- | ----------------------------------------------------------------------------------- |
+| focus            | quill                                       | Emitted on `focus` event                                                            |
+| blur             | quill                                       | Emitted on `blur` event                                                             |
+| selection-change | range, oldRange, source                     | Emitted on Quill's `selection-change` event                                         |
+| text-change      | delta, oldDelta, source                     | Emitted on Quill's `text-change` event                                              |
+| image-added      | file, Editor, cursorLocation, resetUploader | Emitted when `useCustomImageHandler` is true and photo is being added to the editor |
+| image-removed    | image                                       | Emitted when `useCustomImageHandler` is true and photo has been deleted             |
 
 <!-- Emitted when the default save button is clicked -->
