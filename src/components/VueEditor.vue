@@ -65,8 +65,8 @@ export default {
 
   watch: {
     value(val) {
-      if (val != this.quill.root.innerHTML && !this.quill.hasFocus()) {
-        this.quill.root.innerHTML = val;
+      if (val != this.quill.getHTML() && !this.quill.hasFocus()) {
+        this.quill.clipboard.dangerouslyPasteHTML(val);
       }
     },
     disabled(status) {
@@ -159,7 +159,7 @@ export default {
     },
 
     handleInitialContent() {
-      if (this.value) this.quill.root.innerHTML = this.value; // Set initial editor content
+      if (this.value) this.quill.clipboard.dangerouslyPasteHTML(this.value); // Set initial editor content
     },
 
     handleSelectionChange(range, oldRange) {
