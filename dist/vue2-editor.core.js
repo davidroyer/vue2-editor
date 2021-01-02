@@ -1,6 +1,6 @@
 /*!
  * vue2-editor v2.10.2 
- * (c) 2019 David Royer
+ * (c) 2020 David Royer
  * Released under the MIT License.
  */
 (function (global, factory) {
@@ -600,8 +600,8 @@
     },
     watch: {
       value: function value(val) {
-        if (val != this.quill.root.innerHTML && !this.quill.hasFocus()) {
-          this.quill.root.innerHTML = val;
+        if (val != this.quill.getHTML() && !this.quill.hasFocus()) {
+          this.quill.clipboard.dangerouslyPasteHTML(val);
         }
       },
       disabled: function disabled(status) {
@@ -686,7 +686,7 @@
         });
       },
       handleInitialContent: function handleInitialContent() {
-        if (this.value) this.quill.root.innerHTML = this.value; // Set initial editor content
+        if (this.value) this.quill.clipboard.dangerouslyPasteHTML(this.value); // Set initial editor content
       },
       handleSelectionChange: function handleSelectionChange(range, oldRange) {
         if (!range && oldRange) this.$emit("blur", this.quill);else if (range && !oldRange) this.$emit("focus", this.quill);
