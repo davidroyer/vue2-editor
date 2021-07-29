@@ -3,7 +3,7 @@
     <!-- <button @click="deleteImage">Delete</button> -->
     <button @click="savePost">Save Post</button>
     <div>new</div>
-    <VueEditor v-model="content" />
+    <VueEditor v-model="content" use-markdown-shortcuts />
     <!-- <NuxtEditor /> -->
     <br />
     <hr />
