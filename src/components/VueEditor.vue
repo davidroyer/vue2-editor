@@ -15,11 +15,12 @@
 </template>
 
 <script>
-import Quill from "quill";
 import defaultToolbar from "@/helpers/default-toolbar";
 import oldApi from "@/helpers/old-api";
 import mergeDeep from "@/helpers/merge-deep";
 import MarkdownShortcuts from "@/helpers/markdown-shortcuts";
+
+let Quill = {};
 
 export default {
   name: "VueEditor",
@@ -74,7 +75,9 @@ export default {
     }
   },
 
-  mounted() {
+  async mounted() {
+    Quill = (await import("quill")).default;
+
     this.registerCustomModules(Quill);
     this.registerPrototypes();
     this.initializeEditor();
