@@ -19,9 +19,10 @@
 import defaultToolbar from "@/helpers/default-toolbar";
 import oldApi from "@/helpers/old-api";
 import mergeDeep from "@/helpers/merge-deep";
-import MarkdownShortcuts from "@/helpers/markdown-shortcuts";
+// import MarkdownShortcuts from "@/helpers/markdown-shortcuts";
 
 let Quill = {};
+let MarkdownShortcuts;
 
 export default {
   name: "VueEditor",
@@ -78,6 +79,9 @@ export default {
 
   async mounted() {
     Quill = (await import("quill")).default;
+    MarkdownShortcuts = (await import("@/helpers/markdown-shortcuts")).default;
+
+    console.info("MarkdownShortcuts", MarkdownShortcuts);
 
     this.registerCustomModules(Quill);
     this.registerPrototypes();
