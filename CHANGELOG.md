@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.10.3-ssr.2](https://github.com/davidroyer/vue2-editor/compare/v2.10.3-ssr.1...v2.10.3-ssr.2) (2021-07-29)
+
+
+
 ### [2.10.3-ssr.1](https://github.com/davidroyer/vue2-editor/compare/v2.10.3-ssr.0...v2.10.3-ssr.1) (2021-07-29)
 
 
