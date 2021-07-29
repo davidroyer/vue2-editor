@@ -19,7 +19,7 @@
 import defaultToolbar from "@/helpers/default-toolbar";
 import oldApi from "@/helpers/old-api";
 import mergeDeep from "@/helpers/merge-deep";
-import MarkdownShortcuts from "@/helpers/markdown-shortcuts";
+// import MarkdownShortcuts from "@/helpers/markdown-shortcuts";
 
 let Quill = {};
 
@@ -79,6 +79,8 @@ export default {
   async mounted() {
     Quill = (await import("quill")).default;
 
+    console.info("Test log");
+
     this.registerCustomModules(Quill);
     this.registerPrototypes();
     this.initializeEditor();
@@ -115,10 +117,10 @@ export default {
       let modules = {
         toolbar: this.editorToolbar.length ? this.editorToolbar : defaultToolbar
       };
-      if (this.useMarkdownShortcuts) {
-        Quill.register("modules/markdownShortcuts", MarkdownShortcuts, true);
-        modules["markdownShortcuts"] = {};
-      }
+      // if (this.useMarkdownShortcuts) {
+      //   Quill.register("modules/markdownShortcuts", MarkdownShortcuts, true);
+      //   modules["markdownShortcuts"] = {};
+      // }
       return modules;
     },
 
