@@ -1,5 +1,5 @@
 /*!
- * vue2-editor v2.10.3-ssr.1 
+ * vue2-editor v2.10.3-ssr.2 
  * (c) 2021 David Royer
  * Released under the MIT License.
  */
@@ -1626,7 +1626,7 @@
       undefined
     );
 
-  var version = "2.10.3-ssr.1"; // Declare install function executed by Vue.use()
+  var version = "2.10.3-ssr.2"; // Declare install function executed by Vue.use()
 
   function install(Vue) {
     if (install.installed) return;
