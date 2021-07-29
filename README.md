@@ -42,6 +42,16 @@ import { VueEditor } from "vue2-editor";
 import { VueEditor, Quill } from "vue2-editor";
 ```
 
+## Nuxt.js
+
+Add `vue2-editor/nuxt` to modules section of `nuxt.config.js`
+
+```javascript
+{
+  modules: ["vue2-editor/nuxt"];
+}
+```
+
 ## Props
 
 | Name                  | Type    | Default                                              | Description                                                                            |
@@ -108,7 +118,13 @@ You can see below that 3 parameters are passed.
 ```vue
 <template>
   <div id="app">
-    <vue-editor id="editor" useCustomImageHandler @image-added="handleImageAdded" v-model="htmlForEditor"> </vue-editor>
+    <vue-editor
+      id="editor"
+      useCustomImageHandler
+      @image-added="handleImageAdded"
+      v-model="htmlForEditor"
+    >
+    </vue-editor>
   </div>
 </template>
 
@@ -242,7 +258,11 @@ export default {
   data() {
     return {
       content: "<h1>Html For Editor</h1>",
-      customToolbar: [["bold", "italic", "underline"], [{ list: "ordered" }, { list: "bullet" }], ["image", "code-block"]]
+      customToolbar: [
+        ["bold", "italic", "underline"],
+        [{ list: "ordered" }, { list: "bullet" }],
+        ["image", "code-block"]
+      ]
     };
   }
 };
@@ -370,7 +390,12 @@ Vue2Editor now exports Quill to assist in this process.
 ```vue
 <template>
   <div id="app">
-    <vue-editor :customModules="customModulesForEditor" :editorOptions="editorSettings" v-model="content"> </vue-editor>
+    <vue-editor
+      :customModules="customModulesForEditor"
+      :editorOptions="editorSettings"
+      v-model="content"
+    >
+    </vue-editor>
   </div>
 </template>
 
@@ -386,7 +411,10 @@ export default {
   data() {
     return {
       content: "<h1>Initial Content</h1>",
-      customModulesForEditor: [{ alias: "imageDrop", module: ImageDrop }, { alias: "imageResize", module: ImageResize }],
+      customModulesForEditor: [
+        { alias: "imageDrop", module: ImageDrop },
+        { alias: "imageResize", module: ImageResize }
+      ],
       editorSettings: {
         modules: {
           imageDrop: true,

@@ -69,10 +69,7 @@
   "unpkg": "dist/vue2-editor.umd.min.js",
   "files": [
     "dist",
-    "dist/vue2-editor.common.js",
-    "dist/vue2-editor.umd.min.js",
-    "dist/vue2-editor.umd.js",
-    "dist/vue2-editor.esm.js"
+    "nuxt"
   ],
   "dependencies": {
     "quill": "^1.3.6"
