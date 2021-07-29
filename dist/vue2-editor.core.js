@@ -1,5 +1,5 @@
 /*!
- * vue2-editor v2.10.3-ssr.0 
+ * vue2-editor v2.10.3-ssr.1 
  * (c) 2021 David Royer
  * Released under the MIT License.
  */
@@ -1492,7 +1492,7 @@
         var toolbar = this.quill.getModule("toolbar");
         toolbar.addHandler("image", this.customImageHandler);
       },
-      customImageHandler: function customImageHandler(image, callback) {
+      customImageHandler: function customImageHandler() {
         this.$refs.fileInput.click();
       },
       emitImageInfo: function emitImageInfo($event) {
@@ -1626,7 +1626,7 @@
       undefined
     );
 
-  var version = "2.10.3-ssr.0"; // Declare install function executed by Vue.use()
+  var version = "2.10.3-ssr.1"; // Declare install function executed by Vue.use()
 
   function install(Vue) {
     if (install.installed) return;
@@ -1636,7 +1636,6 @@
   var VPlugin = {
     install: install,
     version: version,
-    Quill: Quill$1,
     VueEditor: VueEditor
   }; // Auto-install when vue is found (eg. in browser via <script> tag)
 
@@ -1653,7 +1652,6 @@
   }
   /*************************************************/
 
-  exports.Quill = Quill$1;
   exports.VueEditor = VueEditor;
   exports.default = VPlugin;
   exports.install = install;
