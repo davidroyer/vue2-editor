@@ -18,6 +18,7 @@
     "docs:preview": "http-server docs/.vuepress/dist",
     "release": "standard-version && git push --follow-tags && npm publish",
     "release:next": "standard-version --prerelease next && git push --follow-tags origin dev && npm publish --tag next",
+    "release:ssr": "standard-version --prerelease ssr && git push --follow-tags origin ssr && npm publish --tag ssr",
     "update:vp": "yarn upgrade vue-cli-plugin-vplugin"
   },
   "standard-version": {
