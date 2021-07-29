@@ -27,7 +27,7 @@ export default {
   // components: { NuxtEditor },
 
   data: () => ({
-    content: "<h1>Starting content 2</h1>",
+    content: "<h1>Starting content 3</h1>",
     posts: [],
     numberOfPosts: null
   }),
@@ -79,7 +79,7 @@ export default {
       const { data } = await axios(dbConfig);
       console.log("🚀 ~ file: App.vue ~ line 79 ~ getPosts ~ data", data);
       this.posts = data;
-      this.content = data[2].content;
+      // this.content = data[2].content;
       this.numberOfPosts = data.length;
     }
   }

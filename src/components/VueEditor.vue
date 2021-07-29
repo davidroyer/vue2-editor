@@ -15,6 +15,7 @@
 </template>
 
 <script>
+// import Quill from 'quill'
 import defaultToolbar from "@/helpers/default-toolbar";
 import oldApi from "@/helpers/old-api";
 import mergeDeep from "@/helpers/merge-deep";
@@ -200,7 +201,7 @@ export default {
       toolbar.addHandler("image", this.customImageHandler);
     },
 
-    customImageHandler(image, callback) {
+    customImageHandler() {
       this.$refs.fileInput.click();
     },
 
