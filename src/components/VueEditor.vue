@@ -15,14 +15,11 @@
 </template>
 
 <script>
-// import Quill from 'quill'
+import Quill from "quill";
 import defaultToolbar from "@/helpers/default-toolbar";
 import oldApi from "@/helpers/old-api";
 import mergeDeep from "@/helpers/merge-deep";
-// import MarkdownShortcuts from "@/helpers/markdown-shortcuts";
-
-let Quill = {};
-// let MarkdownShortcuts;
+import MarkdownShortcuts from "@/helpers/markdown-shortcuts";
 
 export default {
   name: "VueEditor",
@@ -77,10 +74,7 @@ export default {
     }
   },
 
-  async mounted() {
-    Quill = (await import("quill")).default;
-    // MarkdownShortcuts = (await import("@/helpers/markdown-shortcuts")).default;
-
+  mounted() {
     this.registerCustomModules(Quill);
     this.registerPrototypes();
     this.initializeEditor();
@@ -117,10 +111,10 @@ export default {
       let modules = {
         toolbar: this.editorToolbar.length ? this.editorToolbar : defaultToolbar
       };
-      // if (this.useMarkdownShortcuts) {
-      //   Quill.register("modules/markdownShortcuts", MarkdownShortcuts, true);
-      //   modules["markdownShortcuts"] = {};
-      // }
+      if (this.useMarkdownShortcuts) {
+        Quill.register("modules/markdownShortcuts", MarkdownShortcuts, true);
+        modules["markdownShortcuts"] = {};
+      }
       return modules;
     },
 
