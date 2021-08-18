@@ -23,7 +23,7 @@
   },
   "standard-version": {
     "scripts": {
-      "postbump": "yarn build && git add dist && git commit -m 'chore: new build'"
+      "postbump": "npm run build && git add dist && git commit -m 'chore: new build'"
     },
     "types": [
       {
