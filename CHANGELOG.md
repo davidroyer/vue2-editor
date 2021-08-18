@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.10.3-ssr.4](https://github.com/davidroyer/vue2-editor/compare/v2.10.3-ssr.3...v2.10.3-ssr.4) (2021-08-18)
+
+
+### Refactoring
+
+* now using `npm` in script ([435e558](https://github.com/davidroyer/vue2-editor/commit/435e558))
+* reverts to original code ([e738762](https://github.com/davidroyer/vue2-editor/commit/e738762))
+
+
+
 ### [2.10.3-ssr.3](https://github.com/davidroyer/vue2-editor/compare/v2.10.3-ssr.2...v2.10.3-ssr.3) (2021-07-29)
 
 
