@@ -52,6 +52,16 @@ Add `vue2-editor/nuxt` to modules section of `nuxt.config.js`
 }
 ```
 
+To avoid seeing warnings from Vue about a mismatch in content, you'll need to
+wrap the `VueEditor` component with the `client-only` component Nuxt provides as
+shown here:
+
+```html
+<client-only>
+  <VueEditor />
+</client-only>
+```
+
 ## Props
 
 | Name                  | Type    | Default                                              | Description                                                                            |
