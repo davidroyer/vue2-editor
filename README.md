@@ -167,7 +167,7 @@ export default {
         data: formData
       })
         .then(result => {
-          let url = result.data.url; // Get url from response
+          const url = result.data.url; // Get url from response
           Editor.insertEmbed(cursorLocation, "image", url);
           resetUploader();
         })
