@@ -2,6 +2,7 @@ name: Close inactive issues
 on:
   schedule:
     - cron: "58 4 * * *"
+  workflow_dispatch:
 
 jobs:
   close-issues:
@@ -12,6 +13,7 @@ jobs:
     steps:
       - uses: actions/stale@v4
         with:
+          operations-per-run: 100
           days-before-issue-stale: 60
           days-before-issue-close: 7
           stale-issue-label: "stale"
