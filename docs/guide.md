@@ -65,6 +65,26 @@ This allows for more control and customization. Also, this allows for other Quil
 
 <<< @/docs/.vuepress/snippets/modular.vue
 
+## Nuxt.js
+
+Add `vue2-editor/nuxt` to modules section of `nuxt.config.js`
+
+```javascript
+{
+  modules: ["vue2-editor/nuxt"];
+}
+```
+
+To avoid seeing warnings from Vue about a mismatch in content, you'll need to
+wrap the `VueEditor` component with the `client-only` component Nuxt provides as
+shown here:
+
+```html
+<client-only>
+  <VueEditor />
+</client-only>
+```
+
 <!-- ## Nuxt
 
 <iframe src="https://codesandbox.io/embed/nuxt-vue2editor-example-pcny9?fontsize=14" title="Nuxt & Vue2Editor Example" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe> -->
