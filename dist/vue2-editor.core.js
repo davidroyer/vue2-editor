@@ -1,5 +1,5 @@
 /*!
- * vue2-editor v2.10.3-ssr.4 
+ * vue2-editor v2.10.3-ssr.5 
  * (c) 2021 David Royer
  * Released under the MIT License.
  */
@@ -389,6 +389,7 @@
       }, {
         name: "asterisk-ul",
         pattern: /^(\*|\+)\s$/g,
+        // eslint-disable-next-line no-unused-vars
         action: function action(_text, selection, _pattern) {
           setTimeout(function () {
             _this.quill.formatLine(selection.index, 1, "list", "unordered");
@@ -433,6 +434,7 @@
           }
         }
       }]; // Handler that looks for insert deltas that match specific characters
+      // eslint-disable-next-line no-unused-vars
 
       this.quill.on("text-change", function (delta, _oldContents, _source) {
         for (var i = 0; i < delta.ops.length; i++) {
@@ -851,7 +853,7 @@
       undefined
     );
 
-  var version = "2.10.3-ssr.4"; // Declare install function executed by Vue.use()
+  var version = "2.10.3-ssr.5"; // Declare install function executed by Vue.use()
 
   function install(Vue) {
     if (install.installed) return;
