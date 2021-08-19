@@ -169,6 +169,7 @@ class MarkdownShortcuts {
       {
         name: "asterisk-ul",
         pattern: /^(\*|\+)\s$/g,
+        // eslint-disable-next-line no-unused-vars
         action: (_text, selection, _pattern) => {
           setTimeout(() => {
             this.quill.formatLine(selection.index, 1, "list", "unordered");
@@ -222,6 +223,7 @@ class MarkdownShortcuts {
     ];
 
     // Handler that looks for insert deltas that match specific characters
+    // eslint-disable-next-line no-unused-vars
     this.quill.on("text-change", (delta, _oldContents, _source) => {
       for (let i = 0; i < delta.ops.length; i++) {
         if (delta.ops[i].hasOwnProperty("insert")) {
