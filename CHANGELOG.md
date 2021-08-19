@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.10.3-ssr.5](https://github.com/davidroyer/vue2-editor/compare/v2.10.3-ssr.4...v2.10.3-ssr.5) (2021-08-19)
+
+
+### Improvements
+
+* improves code by using `const` instead of `let` ([68d825a](https://github.com/davidroyer/vue2-editor/commit/68d825a))
+
+
+
 ### [2.10.3-ssr.4](https://github.com/davidroyer/vue2-editor/compare/v2.10.3-ssr.3...v2.10.3-ssr.4) (2021-08-18)
 
 
