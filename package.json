@@ -1,6 +1,6 @@
 {
   "name": "vue2-editor",
-  "version": "2.10.2",
+  "version": "2.10.3-ssr.5",
   "description": "HTML editor using Vue.js 2, and Quill.js, an open source editor",
   "author": {
     "name": "David Royer",
@@ -18,11 +18,12 @@
     "docs:preview": "http-server docs/.vuepress/dist",
     "release": "standard-version && git push --follow-tags && npm publish",
     "release:next": "standard-version --prerelease next && git push --follow-tags origin dev && npm publish --tag next",
+    "release:ssr": "standard-version --prerelease ssr && git push --follow-tags origin ssr && npm publish --tag ssr",
     "update:vp": "yarn upgrade vue-cli-plugin-vplugin"
   },
   "standard-version": {
     "scripts": {
-      "postbump": "yarn build && git add dist && git commit -m 'chore: new build'"
+      "postbump": "npm run build && git add dist && git commit -m 'chore: new build'"
     },
     "types": [
       {
@@ -68,10 +69,7 @@
   "unpkg": "dist/vue2-editor.umd.min.js",
   "files": [
     "dist",
-    "dist/vue2-editor.common.js",
-    "dist/vue2-editor.umd.min.js",
-    "dist/vue2-editor.umd.js",
-    "dist/vue2-editor.esm.js"
+    "nuxt"
   ],
   "dependencies": {
     "quill": "^1.3.6"
@@ -84,7 +82,7 @@
     "@vue/cli-service": "^3.7.0",
     "@vue/eslint-config-prettier": "^4.0.1",
     "@vuepress/plugin-google-analytics": "^1.0.0-rc.1",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.0",

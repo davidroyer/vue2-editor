@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-vars */
 import Quill from "quill";
-let BlockEmbed = Quill.import("blots/block/embed");
+const BlockEmbed = Quill.import("blots/block/embed");
 class HorizontalRule extends BlockEmbed {}
 HorizontalRule.blotName = "hr";
 HorizontalRule.tagName = "hr";
@@ -53,7 +52,7 @@ class MarkdownShortcuts {
         name: "bolditalic",
         pattern: /(?:\*|_){3}(.+?)(?:\*|_){3}/g,
         action: (text, _selection, pattern, lineStart) => {
-          let match = pattern.exec(text);
+          const match = pattern.exec(text);
 
           const annotatedText = match[0];
           const matchedText = match[1];
@@ -75,7 +74,7 @@ class MarkdownShortcuts {
         name: "bold",
         pattern: /(?:\*|_){2}(.+?)(?:\*|_){2}/g,
         action: (text, _selection, pattern, lineStart) => {
-          let match = pattern.exec(text);
+          const match = pattern.exec(text);
 
           const annotatedText = match[0];
           const matchedText = match[1];
@@ -94,7 +93,7 @@ class MarkdownShortcuts {
         name: "italic",
         pattern: /(?:\*|_){1}(.+?)(?:\*|_){1}/g,
         action: (text, _selection, pattern, lineStart) => {
-          let match = pattern.exec(text);
+          const match = pattern.exec(text);
 
           const annotatedText = match[0];
           const matchedText = match[1];
@@ -113,7 +112,7 @@ class MarkdownShortcuts {
         name: "strikethrough",
         pattern: /(?:~~)(.+?)(?:~~)/g,
         action: (text, _selection, pattern, lineStart) => {
-          let match = pattern.exec(text);
+          const match = pattern.exec(text);
 
           const annotatedText = match[0];
           const matchedText = match[1];
@@ -132,7 +131,7 @@ class MarkdownShortcuts {
         name: "code",
         pattern: /(?:`)(.+?)(?:`)/g,
         action: (text, _selection, pattern, lineStart) => {
-          let match = pattern.exec(text);
+          const match = pattern.exec(text);
 
           const annotatedText = match[0];
           const matchedText = match[1];
@@ -170,6 +169,7 @@ class MarkdownShortcuts {
       {
         name: "asterisk-ul",
         pattern: /^(\*|\+)\s$/g,
+        // eslint-disable-next-line no-unused-vars
         action: (_text, selection, _pattern) => {
           setTimeout(() => {
             this.quill.formatLine(selection.index, 1, "list", "unordered");
@@ -223,6 +223,7 @@ class MarkdownShortcuts {
     ];
 
     // Handler that looks for insert deltas that match specific characters
+    // eslint-disable-next-line no-unused-vars
     this.quill.on("text-change", (delta, _oldContents, _source) => {
       for (let i = 0; i < delta.ops.length; i++) {
         if (delta.ops[i].hasOwnProperty("insert")) {
@@ -264,7 +265,7 @@ class MarkdownShortcuts {
   }
 
   onEnter() {
-    let selection = this.quill.getSelection();
+    const selection = this.quill.getSelection();
     if (!selection) return;
     const [line, offset] = this.quill.getLine(selection.index);
     const text = line.domNode.textContent + " ";

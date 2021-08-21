@@ -95,7 +95,7 @@ export default {
     },
 
     setupQuillEditor() {
-      let editorConfig = {
+      const editorConfig = {
         debug: false,
         modules: this.setModules(),
         theme: "snow",
@@ -108,7 +108,7 @@ export default {
     },
 
     setModules() {
-      let modules = {
+      const modules = {
         toolbar: this.editorToolbar.length ? this.editorToolbar : defaultToolbar
       };
       if (this.useMarkdownShortcuts) {
@@ -168,7 +168,7 @@ export default {
     },
 
     handleTextChange(delta, oldContents) {
-      let editorContent =
+      const editorContent =
         this.quill.getHTML() === "<p><br></p>" ? "" : this.quill.getHTML();
       this.$emit("input", editorContent);
 
@@ -193,11 +193,11 @@ export default {
     },
 
     setupCustomImageHandler() {
-      let toolbar = this.quill.getModule("toolbar");
+      const toolbar = this.quill.getModule("toolbar");
       toolbar.addHandler("image", this.customImageHandler);
     },
 
-    customImageHandler(image, callback) {
+    customImageHandler() {
       this.$refs.fileInput.click();
     },
 
@@ -206,10 +206,10 @@ export default {
         var uploader = document.getElementById("file-upload");
         uploader.value = "";
       };
-      let file = $event.target.files[0];
-      let Editor = this.quill;
-      let range = Editor.getSelection();
-      let cursorLocation = range.index;
+      const file = $event.target.files[0];
+      const Editor = this.quill;
+      const range = Editor.getSelection();
+      const cursorLocation = range.index;
       this.$emit("image-added", file, Editor, cursorLocation, resetUploader);
     }
   }

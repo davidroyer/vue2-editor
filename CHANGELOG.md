@@ -2,6 +2,51 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.10.3-ssr.5](https://github.com/davidroyer/vue2-editor/compare/v2.10.3-ssr.4...v2.10.3-ssr.5) (2021-08-19)
+
+
+### Improvements
+
+* improves code by using `const` instead of `let` ([68d825a](https://github.com/davidroyer/vue2-editor/commit/68d825a))
+
+
+
+### [2.10.3-ssr.4](https://github.com/davidroyer/vue2-editor/compare/v2.10.3-ssr.3...v2.10.3-ssr.4) (2021-08-18)
+
+
+### Refactoring
+
+* now using `npm` in script ([435e558](https://github.com/davidroyer/vue2-editor/commit/435e558))
+* reverts to original code ([e738762](https://github.com/davidroyer/vue2-editor/commit/e738762))
+
+
+
+### [2.10.3-ssr.3](https://github.com/davidroyer/vue2-editor/compare/v2.10.3-ssr.2...v2.10.3-ssr.3) (2021-07-29)
+
+
+### Bug Fixes
+
+* resolves badly merged code ([81185f7](https://github.com/davidroyer/vue2-editor/commit/81185f7))
+
+
+
+### [2.10.3-ssr.2](https://github.com/davidroyer/vue2-editor/compare/v2.10.3-ssr.1...v2.10.3-ssr.2) (2021-07-29)
+
+
+
+### [2.10.3-ssr.1](https://github.com/davidroyer/vue2-editor/compare/v2.10.3-ssr.0...v2.10.3-ssr.1) (2021-07-29)
+
+
+
+### [2.10.3-ssr.0](https://github.com/davidroyer/vue2-editor/compare/v2.10.2...v2.10.3-ssr.0) (2021-07-29)
+
+
+### Bug Fixes
+
+* fixes dev issue not working ([76d5701](https://github.com/davidroyer/vue2-editor/commit/76d5701))
+
+
+
 ### [2.10.2](https://github.com/davidroyer/vue2-editor/compare/v2.10.1...v2.10.2) (2019-08-23)
 
 
