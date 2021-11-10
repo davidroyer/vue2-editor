@@ -4,7 +4,7 @@
     <div :id="id" ref="quillContainer"></div>
     <input
       v-if="useCustomImageHandler"
-      id="file-upload"
+      :id="file-upload + id"
       ref="fileInput"
       type="file"
       accept="image/*"
