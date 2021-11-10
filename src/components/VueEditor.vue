@@ -203,7 +203,7 @@ export default {
 
     emitImageInfo($event) {
       const resetUploader = function() {
-        var uploader = document.getElementById("file-upload");
+        var uploader = document.getElementById("file-upload" + this.id);
         uploader.value = "";
       };
       const file = $event.target.files[0];
