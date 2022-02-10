@@ -89,7 +89,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "highlight.js": "^9.15.6",
     "http-server": "^0.11.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "querystringify": "^2.1.1",
     "quill-image-drop-module": "^1.0.3",
     "quill-image-resize-module": "^3.0.0",
