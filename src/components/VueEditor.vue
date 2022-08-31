@@ -1,6 +1,8 @@
 <template>
   <div class="quillWrapper">
-    <slot name="toolbar"></slot>
+    <slot name="toolbar">
+      <button id="ql-better-table" class="ql-table">Add table</button>
+    </slot>
     <div :id="id" ref="quillContainer"></div>
     <input
       v-if="useCustomImageHandler"
@@ -20,6 +22,7 @@ import defaultToolbar from "@/helpers/default-toolbar";
 import oldApi from "@/helpers/old-api";
 import mergeDeep from "@/helpers/merge-deep";
 import MarkdownShortcuts from "@/helpers/markdown-shortcuts";
+import QuillBetterTable from "quill-better-table";
 
 export default {
   name: "VueEditor",
@@ -115,6 +118,31 @@ export default {
         Quill.register("modules/markdownShortcuts", MarkdownShortcuts, true);
         modules["markdownShortcuts"] = {};
       }
+      modules["table"] = false;
+      // better-table module config
+      Quill.register(
+        {
+          "modules/better-table": QuillBetterTable
+        },
+        true
+      );
+      modules["better-table"] = {
+        operationMenu: {
+          items: {
+            unmergeCells: {
+              text: "Another unmerge cells name"
+            }
+          }
+        }
+      };
+      modules["keyboard"] = {
+        bindings: QuillBetterTable.keyboardBindings
+      };
+      document.body.querySelector("#ql-better-table").onclick = () => {
+        let tableModule = this.quill.getModule("better-table");
+        tableModule.insertTable(3, 3);
+      };
+      // better-table module config end
       return modules;
     },
 
@@ -218,3 +246,4 @@ export default {
 
 <style src="quill/dist/quill.snow.css"></style>
 <style src="../assets/vue2-editor.scss" lang="scss"></style>
+<style src="../assets/quill-better-table.css"></style>
