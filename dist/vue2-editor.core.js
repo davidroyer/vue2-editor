@@ -1,15 +1,16 @@
 /*!
  * vue2-editor v2.10.3 
- * (c) 2021 David Royer
+ * (c) 2022 David Royer
  * Released under the MIT License.
  */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('quill')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'quill'], factory) :
-  (global = global || self, factory(global.Vue2Editor = {}, global.Quill));
-}(this, function (exports, Quill) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('quill'), require('quill-better-table')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'quill', 'quill-better-table'], factory) :
+  (global = global || self, factory(global.Vue2Editor = {}, global.Quill, global.QuillBetterTable));
+}(this, function (exports, Quill, QuillBetterTable) { 'use strict';
 
   Quill = Quill && Quill.hasOwnProperty('default') ? Quill['default'] : Quill;
+  QuillBetterTable = QuillBetterTable && QuillBetterTable.hasOwnProperty('default') ? QuillBetterTable['default'] : QuillBetterTable;
 
   var defaultToolbar = [[{
     header: [false, 1, 2, 3, 4, 5, 6]
@@ -553,6 +554,184 @@
     return MarkdownShortcuts;
   }(); // module.exports = MarkdownShortcuts;
 
+  /* eslint-disable no-unused-vars */
+
+  /** @class Abstract class representing a tool for a Quill Editor toolbar. */
+  var QuillToolbarItem =
+  /*#__PURE__*/
+  function () {
+    function QuillToolbarItem(options) {
+      _classCallCheck(this, QuillToolbarItem);
+
+      var me = this;
+      me.options = options;
+      me.qlFormatsEl = document.createElement("span");
+      me.qlFormatsEl.className = "ql-formats";
+    }
+    /**
+     * Attaches this tool to the given Quill Editor instance.
+     *
+     * @param {Quill} quill - The Quill Editor instance that this tool should get added to.
+     */
+
+
+    _createClass(QuillToolbarItem, [{
+      key: "attach",
+      value: function attach(quill) {
+        var me = this;
+        me.quill = quill;
+        me.toolbar = quill.getModule("toolbar");
+        me.toolbarEl = me.toolbar.container;
+        me.toolbarEl.appendChild(me.qlFormatsEl);
+      }
+      /**
+       * Detaches this tool from the given Quill Editor instance.
+       *
+       * @param {Quill} quill - The Quill Editor instance that this tool should get added to.
+       */
+
+    }, {
+      key: "detach",
+      value: function detach(quill) {
+        var me = this;
+        me.toolbarEl.removeChild(me.qlFormatsEl);
+      }
+      /**
+       * Calculate the width of text.
+       *
+       * @param {string} text - The text of which the length should be calculated.
+       * @param {string} [font="500 14px 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"] - The font css that shuold be applied to the text before calculating the width.
+       */
+
+    }, {
+      key: "_getTextWidth",
+      value: function _getTextWidth(text) {
+        var font = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "500 14px 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif";
+        var canvas = this._getTextWidth.canvas || (this._getTextWidth.canvas = document.createElement("canvas"));
+        var context = canvas.getContext("2d");
+        context.font = font;
+        var metrics = context.measureText(text);
+        return metrics.width;
+      }
+      /**
+       * Add a global css rule to the document.
+       *
+       * @param {string} cssRule - CSS rules
+       */
+
+    }, {
+      key: "_addCssRule",
+      value: function _addCssRule(cssRule) {
+        var style = document.createElement("style");
+        document.head.appendChild(style);
+        style.sheet.insertRule(cssRule, 0);
+      }
+      /**
+       * Generate a random ID.
+       *
+       * @returns {string} random 10 digit ID
+       */
+
+    }, {
+      key: "_generateId",
+      value: function _generateId() {
+        return Math.random().toString().substr(2, 10);
+      }
+    }]);
+
+    return QuillToolbarItem;
+  }();
+  /** @class Class representing a button tool for a Quill Editor toolbar. */
+
+
+  var QuillToolbarButton =
+  /*#__PURE__*/
+  function (_QuillToolbarItem2) {
+    _inherits(QuillToolbarButton, _QuillToolbarItem2);
+
+    /**
+     * Creates an instance of QuillToolbarButton.
+     *
+     * @constructor
+     * @param {object} [options] - The options/settings for this QuillToolbarButton.
+     * @param {string} [options.id=`button-${random10digitNumber}`] - The id of the quill tool.
+     * @param {string} [options.value] - The default hidden value of the button.
+     * @param {string} options.icon - The default icon this button tool will have.
+     */
+    function QuillToolbarButton(options) {
+      var _this2;
+
+      _classCallCheck(this, QuillToolbarButton);
+
+      _this2 = _possibleConstructorReturn(this, _getPrototypeOf(QuillToolbarButton).call(this, options));
+
+      var me = _assertThisInitialized(_this2);
+
+      me.id = me.options.id || "button-".concat(me._generateId());
+      me.qlButton = document.createElement("button");
+      me.qlButton.className = "ql-".concat(me.id);
+      me.setValue(me.options.value);
+      me.setIcon(me.options.icon);
+
+      me.qlButton.onclick = function (evt) {
+        evt.preventDefault();
+        me.onClick(me.quill);
+      };
+
+      me.qlFormatsEl.appendChild(me.qlButton);
+      return _this2;
+    }
+    /**
+     * Set the icon for this button tool.
+     *
+     * @param {string} newLabel - The <svg> or <img> html tag to use as an icon. (Make sure it's 18x18 in size.)
+     */
+
+
+    _createClass(QuillToolbarButton, [{
+      key: "setIcon",
+      value: function setIcon(imageHtml) {
+        var me = this;
+        me.qlButton.innerHTML = imageHtml;
+      }
+      /**
+       * Set the hidden value of this button tool.
+       *
+       * @param {string} newLabel - The <svg> or <img> html tag to use as an icon. (Make sure it's 18x18 in size.)
+       */
+
+    }, {
+      key: "setValue",
+      value: function setValue(value) {
+        var me = this;
+        me.qlButton.value = value;
+      }
+      /**
+       * Set the hidden value of this button tool.
+       *
+       * @param {string} newLabel - The <svg> or <img> html tag to use as an icon. (Make sure it's 18x18 in size.)
+       */
+
+    }, {
+      key: "getValue",
+      value: function getValue() {
+        var me = this;
+        return me.qlButton.value;
+      }
+      /**
+       * A callback that gets called automatically when the button is clicked, tapped or triggered witht he keyboard etc. This callback is expected to be overwritten.
+       *
+       * @param {Quill} quill - The quill instance the dropdown tool is attached to.
+       */
+
+    }, {
+      key: "onClick",
+      value: function onClick(button, quill) {}
+    }]);
+
+    return QuillToolbarButton;
+  }(QuillToolbarItem);
+
   //
   var script = {
     name: "VueEditor",
@@ -637,6 +816,7 @@
         };
         this.prepareEditorConfig(editorConfig);
         this.quill = new Quill(this.$refs.quillContainer, editorConfig);
+        this.addCustomToolbar();
       },
       setModules: function setModules() {
         var modules = {
@@ -648,7 +828,38 @@
           modules["markdownShortcuts"] = {};
         }
 
+        modules["table"] = false; // better-table module config
+
+        Quill.register({
+          "modules/better-table": QuillBetterTable
+        }, true);
+        modules["better-table"] = {
+          operationMenu: {
+            items: {
+              unmergeCells: {
+                text: "Another unmerge cells name"
+              }
+            }
+          }
+        };
+        modules["keyboard"] = {
+          bindings: QuillBetterTable.keyboardBindings
+        }; // better-table module config end
+
         return modules;
+      },
+      addCustomToolbar: function addCustomToolbar() {
+        var myButton = new QuillToolbarButton({
+          icon: "<svg width=\"24px\" height=\"24px\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\">\n  <path fill=\"none\" stroke=\"#000\" stroke-width=\"2\" d=\"M8,5 L8,23 M16,5 L16,23 M1,11 L23,11 M1,5 L23,5 M1,17 L23,17 M1,1 L23,1 L23,23 L1,23 L1,1 Z\"/>\n</svg>"
+        });
+
+        myButton.onClick = function (quill) {
+          // adding better vue table
+          var tableModule = quill.getModule("better-table");
+          tableModule.insertTable(3, 3); // For example, get the selected text and convert it to uppercase:
+        };
+
+        myButton.attach(this.quill);
       },
       prepareEditorConfig: function prepareEditorConfig(editorConfig) {
         if (Object.keys(this.editorOptions).length > 0 && this.editorOptions.constructor === Object) {
