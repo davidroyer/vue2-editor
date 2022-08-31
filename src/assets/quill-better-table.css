@@ -114,9 +114,3 @@ table.quill-better-table td {
   display: block;
   width: 8px;
   height: 100%; }
-
-.ql-better-table {
-  background: no-repeat scroll 30% 30% transparent !important;
-  background-image: url("../assets/table.svg") !important;
-  text-align: center;
-}
