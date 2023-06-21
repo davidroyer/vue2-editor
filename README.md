@@ -83,6 +83,7 @@ shown here:
 | focus            | quill                        | Emitted on `focus` event                                                            |
 | image-added      | file, Editor, cursorLocation | Emitted when `useCustomImageHandler` is true and photo is being added to the editor |
 | image-removed    | file, Editor, cursorLocation | Emitted when `useCustomImageHandler` is true and photo has been deleted             |
+| ready            | quill instance               | Emitted when the component is mounted, and returns the quill instance               |
 | selection-change | range, oldRange, source      | Emitted on Quill's `selection-change` event                                         |
 | text-change      | delta, oldDelta, source      | Emitted on Quill's `text-change` event                                              |
 
